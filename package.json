@@ -8,6 +8,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "node": "./dist/ui.cjs.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/ui.es.js",
       "require": "./dist/ui.umd.js"

@@ -21,6 +21,10 @@ const app = async (): Promise<UserConfigExport> => {
         insertTypesEntry: true,
       }),
     ],
+    ssr: {
+      target: 'node',
+      noExternal: [ "@radix-ui/*" ]
+    },
     css: {
       postcss: {
         plugins: [tailwindcss],
@@ -30,7 +34,7 @@ const app = async (): Promise<UserConfigExport> => {
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
         name: formattedName,
-        formats: ['es', 'umd'],
+        formats: ['es', 'umd', 'cjs'],
         fileName: (format) => `${formattedName}.${format}.js`,
       },
       rollupOptions: {
