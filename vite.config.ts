@@ -5,6 +5,7 @@ import dts from 'vite-plugin-dts'
 import tailwindcss from 'tailwindcss'
 import { UserConfigExport } from 'vite'
 import { name } from './package.json'
+import { fileURLToPath } from 'node:url'
 
 const app = async (): Promise<UserConfigExport> => {
   /**
@@ -21,6 +22,11 @@ const app = async (): Promise<UserConfigExport> => {
         insertTypesEntry: true,
       }),
     ],
+    resolve: {
+      alias: [
+        { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      ]
+    },
     ssr: {
       target: 'node',
       noExternal: [ "@radix-ui/*" ]
@@ -32,10 +38,6 @@ const app = async (): Promise<UserConfigExport> => {
     },
     build: {
       ssr: true,
-      minify: true,
-      terserOptions: {
-        compress: true
-      },
       cssMinify: true,
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
@@ -46,6 +48,7 @@ const app = async (): Promise<UserConfigExport> => {
       rollupOptions: {
         external: ['react', 'react/jsx-runtime', 'react-dom', 'tailwindcss'],
         output: {
+          banner: '"use client";',
           globals: {
             react: 'React',
             'react/jsx-runtime': 'react/jsx-runtime',
