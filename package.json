@@ -3,15 +3,14 @@
   "version": "0.0.1",
   "description": "ui library for dm family",
   "private": true,
-  "main": "./dist/ui.umd.js",
-  "module": "./dist/ui.es.js",
+  "main": "./dist/ui.js",
+  "module": "./dist/ui.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "node": "./dist/ui.cjs.js",
       "types": "./dist/index.d.ts",
-      "import": "./dist/ui.es.js",
-      "require": "./dist/ui.umd.js"
+      "import": "./dist/ui.mjs",
+      "require": "./dist/ui.js"
     },
     "./dist/style.css": "./dist/style.css"
   },

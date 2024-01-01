@@ -31,10 +31,16 @@ const app = async (): Promise<UserConfigExport> => {
       },
     },
     build: {
+      ssr: true,
+      minify: true,
+      terserOptions: {
+        compress: true
+      },
+      cssMinify: true,
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
         name: formattedName,
-        formats: ['es', 'umd', 'cjs'],
+        formats: ['es', 'umd'],
         fileName: (format) => `${formattedName}.${format}.js`,
       },
       rollupOptions: {
