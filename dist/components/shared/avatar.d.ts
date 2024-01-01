@@ -6,5 +6,5 @@ type Props = {
     src: string | StaticImageData | null;
     className?: string;
 };
-declare const _default: import("react").MemoExoticComponent<({ size, isSubscriber, src, className }: Props) => import("react/jsx-runtime").JSX.Element>;
+declare const _default: import("react").MemoExoticComponent<({ size, isSubscriber, src, className }: Props) => JSX.Element>;
 export default _default;

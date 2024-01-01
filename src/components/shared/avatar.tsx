@@ -9,7 +9,7 @@ type Props = {
     src: string | StaticImageData | null
     className?: string
 }
-const Avatar = ({ size=24, isSubscriber=false, src, className='' }: Props) => {
+const Avatar = ({ size=24, isSubscriber=false, src, className='' }: Props): JSX.Element => {
     const iconWrapperSize = size * .5
     const iconSize = iconWrapperSize * .5
     return (

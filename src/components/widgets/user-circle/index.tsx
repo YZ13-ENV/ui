@@ -3,18 +3,13 @@ import { useMediaQuery } from "react-responsive"
 import DesktopMenu from "./ui/desktop"
 import MobileMenu from "./ui/mobile"
 import { Auth } from "firebase/auth"
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { Button } from "../../ui/button"
-
-// import {} from 'react'
 
 type Props = {
-    auth: Auth
+    auth?: Auth
 }
 const UserCircle = ({ auth }: Props) => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 786px)' })
-    const [user, loading] = useAuthState(auth)
-    if (!user || !loading) return <Button variant='outline'>Войти</Button>
+    if (!auth) return <div className="w-9 h-9 rounded-full bg-muted" />
     if (!isTabletOrMobile) return <DesktopMenu auth={auth} />
     return <MobileMenu auth={auth} />
 }
