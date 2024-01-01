@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "ui library for dm family",
   "private": true,
-  "main": "./dist/ui.js",
-  "module": "./dist/ui.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/ui.mjs",
-      "require": "./dist/ui.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./dist/style.css": "./dist/style.css"
   },
