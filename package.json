@@ -17,6 +17,9 @@
   "engines": {
     "node": "21"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "tsc && vite build",
