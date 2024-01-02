@@ -1,10 +1,2 @@
-export declare const projects: {
-    key: number;
-    name: string;
-    link: string;
-    themedIcon: {
-        dark: string;
-        light: string;
-    };
-    icon: string;
-}[];
+import { Project } from '../types/common';
+export declare const projects: Project[];

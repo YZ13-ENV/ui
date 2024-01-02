@@ -1,4 +1,4 @@
-import { BiSolidGrid } from "react-icons/bi"
+import { MdGridView } from "react-icons/md"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { projects } from "@/const/projects"
 import { Button } from "../ui/button"
@@ -11,7 +11,7 @@ const ProjectsGrid = () => {
         <Popover>
             <PopoverTrigger asChild className="rounded-full border w-9 h-9 flex items-center bg-background justify-center">
                 <Button size='icon' variant="ghost">
-                    <BiSolidGrid size={20} />
+                    <MdGridView size={20} />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="projects-grid">

@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/md/index.esm.js")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/md/index.esm.js"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global.Image, global.React, global["react-icons/bi"], global["react-icons/pi"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/md"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$2) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global.Image, global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -3994,7 +3994,7 @@
     const cookies = getCookies(document);
     const themeCookie = cookies ? cookies["theme"] : "dark";
     return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiSolidGrid, { size: 20 }) }) }),
+      /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdGridView, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsx(PopoverContent, { className: "projects-grid", children: projects.map(
         (project) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
           /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsxRuntime.jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
@@ -5510,19 +5510,133 @@
     }
   ));
   DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
-  const DesktopMenu = ({ user }) => {
-    return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenu, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted border shrink-0" }) }),
-      /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: [
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuLabel, { children: /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
-          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
-          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-normal text-muted-foreground", children: user == null ? void 0 : user.email })
-        ] }) }),
-        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-48" }),
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { className: "text-inherit flex items-center justify-center", children: "Выйти из профиля" }),
+  const defaultMenuMap = [
+    {
+      type: "wrapper",
+      className: "flex flex-col w-full h-fit",
+      items: [
+        {
+          type: "user"
+        },
+        {
+          type: "links",
+          items: []
+        }
+      ]
+    },
+    {
+      type: "wrapper",
+      className: "flex flex-col w-full h-fit mt-auto",
+      items: [
+        {
+          type: "projects",
+          projects
+        },
+        {
+          type: "sign-out"
+        },
+        {
+          type: "membership",
+          activeState: "inactive",
+          state: {
+            active: "У вас уже есть Плюс",
+            inactive: /* @__PURE__ */ jsxRuntime.jsx(Button, { variant: "outline", className: "w-full", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: "/plus", children: "Получить Плюс" }) })
+          }
+        }
+      ]
+    }
+  ];
+  const UserSection$1 = ({ description, displayName }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+      /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
+      /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
+    ] });
+  };
+  const LinksSection$1 = ({ section }) => {
+    const isEmpty = section.items.length === 0;
+    const noTitle = !section.title;
+    if (!noTitle || !isEmpty)
+      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
         /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuLabel, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-normal text-muted-foreground", children: 'Подписка "Плюс"' }) }) })
-      ] })
+        section.items && section.items.map(
+          (item) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { children: item.text })
+        ),
+        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
+      ] });
+  };
+  const ProjectsSection$1 = ({ section }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuLabel, { children: "Проекты" }),
+      section.projects && section.projects.map(
+        (project) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { asChild: true, className: "flex items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
+          /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
+        ] }) }, project.key + "-menu")
+      ),
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
+    ] });
+  };
+  const MembershipSection$1 = ({ section }) => {
+    if (typeof section.state[section.activeState] === "string")
+      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
+      ] });
+    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
+      section.state[section.activeState]
+    ] });
+  };
+  const SignOutSection$1 = ({ section }) => {
+    return /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { className: "flex items-center justify-center py-2", onClick: section.action && section.action, children: "Выйти из профиля" });
+  };
+  const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenu, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsxRuntime.jsx(
+        "img",
+        {
+          src: user.photoURL,
+          alt: "user-profile-img",
+          style: { width: `${size2}px`, height: `${size2}px` },
+          className: "w-9 h-9 rounded-full bg-muted border shrink-0"
+        }
+      ) : /* @__PURE__ */ jsxRuntime.jsx(
+        "div",
+        {
+          style: { width: `${size2}px`, height: `${size2}px` },
+          className: "w-9 h-9 rounded-full bg-muted border shrink-0 flex items-center justify-center",
+          children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiUser, { size: 18 })
+        }
+      ) }),
+      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: menuMap && menuMap.map((item, i) => {
+        if (item.type === "user")
+          return /* @__PURE__ */ jsxRuntime.jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-item-no-wrapper");
+        if (item.type === "links")
+          return /* @__PURE__ */ jsxRuntime.jsx(LinksSection$1, { section: item }, i + "-item-no-wrapper");
+        if (item.type === "projects")
+          return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection$1, { section: item }, i + "-item-no-wrapper");
+        if (item.type === "membership")
+          return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection$1, { section: item }, i + "-item-no-wrapper");
+        if (item.type === "sign-out")
+          return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection$1, { section: item }, i + "-item-no-wrapper");
+        if (item.type === "wrapper") {
+          return /* @__PURE__ */ jsxRuntime.jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
+            if (wrapperItem.type === "user")
+              return /* @__PURE__ */ jsxRuntime.jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "item-with-wrapper");
+            if (wrapperItem.type === "links")
+              return /* @__PURE__ */ jsxRuntime.jsx(LinksSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+            if (wrapperItem.type === "projects")
+              return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+            if (wrapperItem.type === "membership")
+              return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+            if (wrapperItem.type === "sign-out")
+              return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+          }) }, i + "-item-wrapper");
+        }
+        return null;
+      }) })
     ] });
   };
   const $5d3850c4d0b4e6c7$var$DIALOG_NAME = "Dialog";
@@ -5834,6 +5948,19 @@
     }
   ));
   DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
+  const LinksSection = ({ section }) => {
+    const isEmpty = section.items.length === 0;
+    const noTitle = !section.title;
+    if (!noTitle || !isEmpty)
+      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
+        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
+        section.items && section.items.map(
+          (item) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { children: item.text })
+        ),
+        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
+      ] });
+  };
   const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
   const $89eedd556c436f6a$var$ORIENTATIONS = [
     "horizontal",
@@ -5892,45 +6019,87 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     )
   );
   Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
-  const MobileMenu = ({ user }) => {
-    return /* @__PURE__ */ jsxRuntime.jsxs(Dialog, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
-      /* @__PURE__ */ jsxRuntime.jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
-        /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col w-full h-fit", children: [
-          /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-center", children: [
-            /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
-            /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: user == null ? void 0 : user.email })
-          ] }),
-          /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
-          /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit flex flex-col py-6" })
-        ] }),
-        /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col w-full h-fit mt-auto", children: [
-          /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit py-6", children: [
-            /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
-            /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col w-full h-fit my-4 gap-2", children: [
-              /* @__PURE__ */ jsxRuntime.jsx("span", { className: "font-medium", children: "Другие проекты" }),
-              projects.filter((_, i) => i < 3).map(
-                (project) => /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
-                  /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
-                  /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
-                ] }) }, project.key + "-menu")
-              )
-            ] }),
-            /* @__PURE__ */ jsxRuntime.jsx(Separator, {})
-          ] }),
-          /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit py-2", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { className: "w-full text-inherit", variant: "outline", size: "lg", children: "Выйти из профиля" }) }),
-          /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
-          /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: 'Подписка "Плюс"' }) })
-        ] })
-      ] })
+  const MembershipSection = ({ section }) => {
+    if (typeof section.state[section.activeState] === "string")
+      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
+      ] });
+    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+      section.state[section.activeState]
     ] });
   };
-  const UserCircle = ({ user, activeMenu = "desktop", buttonSize = "default" }) => {
+  const ProjectsSection = ({ section }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+      /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col my-4", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
+        section.projects && section.projects.map(
+          (project) => /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
+            /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
+            /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
+          ] }) }, project.key + "-menu")
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntime.jsx(Separator, {})
+    ] });
+  };
+  const SignOutSection = ({ section }) => {
+    return /* @__PURE__ */ jsxRuntime.jsx(Button, { className: "flex items-center justify-center py-2", variant: "ghost", onClick: section.action && section.action, children: "Выйти из профиля" });
+  };
+  const UserSection = ({ description, displayName }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+      /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
+      /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
+    ] });
+  };
+  const MobileMenu = ({ user, menuMap = defaultMenuMap }) => {
+    return /* @__PURE__ */ jsxRuntime.jsxs(Dialog, { children: [
+      /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
+      /* @__PURE__ */ jsxRuntime.jsx(DialogContent, { className: "rounded-none w-full h-full", children: menuMap && menuMap.map((item, i) => {
+        if (item.type === "user")
+          return /* @__PURE__ */ jsxRuntime.jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "mobile-item-no-wrapper");
+        if (item.type === "links")
+          return /* @__PURE__ */ jsxRuntime.jsx(LinksSection, { section: item }, i + "mobile-item-no-wrapper");
+        if (item.type === "projects")
+          return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection, { section: item }, i + "mobile-item-no-wrapper");
+        if (item.type === "membership")
+          return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection, { section: item }, i + "mobile-item-no-wrapper");
+        if (item.type === "sign-out")
+          return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection, { section: item }, i + "mobile-item-no-wrapper");
+        if (item.type === "wrapper") {
+          return /* @__PURE__ */ jsxRuntime.jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
+            if (wrapperItem.type === "user")
+              return /* @__PURE__ */ jsxRuntime.jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "mobile-item-with-wrapper");
+            if (wrapperItem.type === "links")
+              return /* @__PURE__ */ jsxRuntime.jsx(LinksSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+            if (wrapperItem.type === "projects")
+              return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+            if (wrapperItem.type === "membership")
+              return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+            if (wrapperItem.type === "sign-out")
+              return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+          }) }, i + "-mobile-item-wrapper");
+        }
+        return null;
+      }) })
+    ] });
+  };
+  const UserCircle = ({
+    user,
+    size: size2 = 36,
+    loginLink = "/login",
+    activeMenu = "desktop",
+    buttonSize = "default",
+    isSubscriber = false,
+    map = void 0
+  }) => {
     if (!user)
-      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", children: "Войти" });
+      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: loginLink, children: "Войти" }) });
     if (activeMenu === "desktop")
-      return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user });
-    return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user });
+      return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user, size: size2, menuMap: map });
+    return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user, menuMap: map });
   };
   exports2.Avatar = avatar;
   exports2.ProjectsGrid = ProjectsGrid;

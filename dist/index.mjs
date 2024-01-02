@@ -1,16 +1,16 @@
 "use client";
-import { jsxs, jsx } from "react/jsx-runtime";
+import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
 import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiSolidGrid, BiMenu } from "react-icons/bi/index.esm.js";
+import { BiUser, BiMenu } from "react-icons/bi/index.esm.js";
 import { PiCrownSimpleBold } from "react-icons/pi/index.esm.js";
+import { MdGridView, MdOpenInNew } from "react-icons/md/index.esm.js";
 import * as ReactDOM from "react-dom";
 import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
-import { MdOpenInNew } from "react-icons/md/index.esm.js";
 const globals = "";
 const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {
   const iconWrapperSize = size2 * 0.5;
@@ -3984,7 +3984,7 @@ const ProjectsGrid = () => {
   const cookies = getCookies(document);
   const themeCookie = cookies ? cookies["theme"] : "dark";
   return /* @__PURE__ */ jsxs(Popover, { children: [
-    /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(BiSolidGrid, { size: 20 }) }) }),
+    /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(MdGridView, { size: 20 }) }) }),
     /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(
       (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
         /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
@@ -5500,19 +5500,133 @@ const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) =>
   }
 ));
 DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
-const DesktopMenu = ({ user }) => {
-  return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
-    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted border shrink-0" }) }),
-    /* @__PURE__ */ jsxs(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: [
-      /* @__PURE__ */ jsx(DropdownMenuLabel, { children: /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
-        /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
-        /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: user == null ? void 0 : user.email })
-      ] }) }),
-      /* @__PURE__ */ jsx("div", { className: "w-full h-48" }),
-      /* @__PURE__ */ jsx(DropdownMenuItem, { className: "text-inherit flex items-center justify-center", children: "Выйти из профиля" }),
+const defaultMenuMap = [
+  {
+    type: "wrapper",
+    className: "flex flex-col w-full h-fit",
+    items: [
+      {
+        type: "user"
+      },
+      {
+        type: "links",
+        items: []
+      }
+    ]
+  },
+  {
+    type: "wrapper",
+    className: "flex flex-col w-full h-fit mt-auto",
+    items: [
+      {
+        type: "projects",
+        projects
+      },
+      {
+        type: "sign-out"
+      },
+      {
+        type: "membership",
+        activeState: "inactive",
+        state: {
+          active: "У вас уже есть Плюс",
+          inactive: /* @__PURE__ */ jsx(Button, { variant: "outline", className: "w-full", children: /* @__PURE__ */ jsx("a", { href: "/plus", children: "Получить Плюс" }) })
+        }
+      }
+    ]
+  }
+];
+const UserSection$1 = ({ description, displayName }) => {
+  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+    /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
+    /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
+  ] });
+};
+const LinksSection$1 = ({ section }) => {
+  const isEmpty = section.items.length === 0;
+  const noTitle = !section.title;
+  if (!noTitle || !isEmpty)
+    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      /* @__PURE__ */ jsx("span", { children: section.title }),
       /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-      /* @__PURE__ */ jsx(DropdownMenuLabel, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-full h-fit flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: 'Подписка "Плюс"' }) }) })
-    ] })
+      section.items && section.items.map(
+        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { children: item.text })
+      ),
+      /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
+    ] });
+};
+const ProjectsSection$1 = ({ section }) => {
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
+    /* @__PURE__ */ jsx(DropdownMenuLabel, { children: "Проекты" }),
+    section.projects && section.projects.map(
+      (project) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, className: "flex items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
+        /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
+        /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
+      ] }) }, project.key + "-menu")
+    ),
+    /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
+  ] });
+};
+const MembershipSection$1 = ({ section }) => {
+  if (typeof section.state[section.activeState] === "string")
+    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
+    ] });
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
+    section.state[section.activeState]
+  ] });
+};
+const SignOutSection$1 = ({ section }) => {
+  return /* @__PURE__ */ jsx(DropdownMenuItem, { className: "flex items-center justify-center py-2", onClick: section.action && section.action, children: "Выйти из профиля" });
+};
+const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
+  return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
+    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsx(
+      "img",
+      {
+        src: user.photoURL,
+        alt: "user-profile-img",
+        style: { width: `${size2}px`, height: `${size2}px` },
+        className: "w-9 h-9 rounded-full bg-muted border shrink-0"
+      }
+    ) : /* @__PURE__ */ jsx(
+      "div",
+      {
+        style: { width: `${size2}px`, height: `${size2}px` },
+        className: "w-9 h-9 rounded-full bg-muted border shrink-0 flex items-center justify-center",
+        children: /* @__PURE__ */ jsx(BiUser, { size: 18 })
+      }
+    ) }),
+    /* @__PURE__ */ jsx(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: menuMap && menuMap.map((item, i) => {
+      if (item.type === "user")
+        return /* @__PURE__ */ jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-item-no-wrapper");
+      if (item.type === "links")
+        return /* @__PURE__ */ jsx(LinksSection$1, { section: item }, i + "-item-no-wrapper");
+      if (item.type === "projects")
+        return /* @__PURE__ */ jsx(ProjectsSection$1, { section: item }, i + "-item-no-wrapper");
+      if (item.type === "membership")
+        return /* @__PURE__ */ jsx(MembershipSection$1, { section: item }, i + "-item-no-wrapper");
+      if (item.type === "sign-out")
+        return /* @__PURE__ */ jsx(SignOutSection$1, { section: item }, i + "-item-no-wrapper");
+      if (item.type === "wrapper") {
+        return /* @__PURE__ */ jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
+          if (wrapperItem.type === "user")
+            return /* @__PURE__ */ jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "item-with-wrapper");
+          if (wrapperItem.type === "links")
+            return /* @__PURE__ */ jsx(LinksSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+          if (wrapperItem.type === "projects")
+            return /* @__PURE__ */ jsx(ProjectsSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+          if (wrapperItem.type === "membership")
+            return /* @__PURE__ */ jsx(MembershipSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+          if (wrapperItem.type === "sign-out")
+            return /* @__PURE__ */ jsx(SignOutSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
+        }) }, i + "-item-wrapper");
+      }
+      return null;
+    }) })
   ] });
 };
 const $5d3850c4d0b4e6c7$var$DIALOG_NAME = "Dialog";
@@ -5824,6 +5938,19 @@ const DialogDescription = React.forwardRef(({ className, ...props }, ref) => /* 
   }
 ));
 DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
+const LinksSection = ({ section }) => {
+  const isEmpty = section.items.length === 0;
+  const noTitle = !section.title;
+  if (!noTitle || !isEmpty)
+    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      /* @__PURE__ */ jsx("span", { children: section.title }),
+      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
+      section.items && section.items.map(
+        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { children: item.text })
+      ),
+      /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
+    ] });
+};
 const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
 const $89eedd556c436f6a$var$ORIENTATIONS = [
   "horizontal",
@@ -5882,45 +6009,87 @@ const Separator = React.forwardRef(
   )
 );
 Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
-const MobileMenu = ({ user }) => {
-  return /* @__PURE__ */ jsxs(Dialog, { children: [
-    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
-    /* @__PURE__ */ jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
-      /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit", children: [
-        /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-center", children: [
-          /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
-          /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: user == null ? void 0 : user.email })
-        ] }),
-        /* @__PURE__ */ jsx(Separator, {}),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-fit flex flex-col py-6" })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit mt-auto", children: [
-        /* @__PURE__ */ jsxs("div", { className: "w-full h-fit py-6", children: [
-          /* @__PURE__ */ jsx(Separator, {}),
-          /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit my-4 gap-2", children: [
-            /* @__PURE__ */ jsx("span", { className: "font-medium", children: "Другие проекты" }),
-            projects.filter((_, i) => i < 3).map(
-              (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
-                /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
-                /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
-              ] }) }, project.key + "-menu")
-            )
-          ] }),
-          /* @__PURE__ */ jsx(Separator, {})
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-fit py-2", children: /* @__PURE__ */ jsx(Button, { className: "w-full text-inherit", variant: "outline", size: "lg", children: "Выйти из профиля" }) }),
-        /* @__PURE__ */ jsx(Separator, {}),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: 'Подписка "Плюс"' }) })
-      ] })
-    ] })
+const MembershipSection = ({ section }) => {
+  if (typeof section.state[section.activeState] === "string")
+    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      /* @__PURE__ */ jsx(Separator, {}),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
+    ] });
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    /* @__PURE__ */ jsx(Separator, {}),
+    section.state[section.activeState]
   ] });
 };
-const UserCircle = ({ user, activeMenu = "desktop", buttonSize = "default" }) => {
+const ProjectsSection = ({ section }) => {
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    /* @__PURE__ */ jsx(Separator, {}),
+    /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col my-4", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
+      section.projects && section.projects.map(
+        (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
+          /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
+          /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
+        ] }) }, project.key + "-menu")
+      )
+    ] }),
+    /* @__PURE__ */ jsx(Separator, {})
+  ] });
+};
+const SignOutSection = ({ section }) => {
+  return /* @__PURE__ */ jsx(Button, { className: "flex items-center justify-center py-2", variant: "ghost", onClick: section.action && section.action, children: "Выйти из профиля" });
+};
+const UserSection = ({ description, displayName }) => {
+  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+    /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
+    /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
+  ] });
+};
+const MobileMenu = ({ user, menuMap = defaultMenuMap }) => {
+  return /* @__PURE__ */ jsxs(Dialog, { children: [
+    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
+    /* @__PURE__ */ jsx(DialogContent, { className: "rounded-none w-full h-full", children: menuMap && menuMap.map((item, i) => {
+      if (item.type === "user")
+        return /* @__PURE__ */ jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "mobile-item-no-wrapper");
+      if (item.type === "links")
+        return /* @__PURE__ */ jsx(LinksSection, { section: item }, i + "mobile-item-no-wrapper");
+      if (item.type === "projects")
+        return /* @__PURE__ */ jsx(ProjectsSection, { section: item }, i + "mobile-item-no-wrapper");
+      if (item.type === "membership")
+        return /* @__PURE__ */ jsx(MembershipSection, { section: item }, i + "mobile-item-no-wrapper");
+      if (item.type === "sign-out")
+        return /* @__PURE__ */ jsx(SignOutSection, { section: item }, i + "mobile-item-no-wrapper");
+      if (item.type === "wrapper") {
+        return /* @__PURE__ */ jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
+          if (wrapperItem.type === "user")
+            return /* @__PURE__ */ jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "mobile-item-with-wrapper");
+          if (wrapperItem.type === "links")
+            return /* @__PURE__ */ jsx(LinksSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+          if (wrapperItem.type === "projects")
+            return /* @__PURE__ */ jsx(ProjectsSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+          if (wrapperItem.type === "membership")
+            return /* @__PURE__ */ jsx(MembershipSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+          if (wrapperItem.type === "sign-out")
+            return /* @__PURE__ */ jsx(SignOutSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
+        }) }, i + "-mobile-item-wrapper");
+      }
+      return null;
+    }) })
+  ] });
+};
+const UserCircle = ({
+  user,
+  size: size2 = 36,
+  loginLink = "/login",
+  activeMenu = "desktop",
+  buttonSize = "default",
+  isSubscriber = false,
+  map = void 0
+}) => {
   if (!user)
-    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", children: "Войти" });
+    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsx("a", { href: loginLink, children: "Войти" }) });
   if (activeMenu === "desktop")
-    return /* @__PURE__ */ jsx(DesktopMenu, { user });
-  return /* @__PURE__ */ jsx(MobileMenu, { user });
+    return /* @__PURE__ */ jsx(DesktopMenu, { user, size: size2, menuMap: map });
+  return /* @__PURE__ */ jsx(MobileMenu, { user, menuMap: map });
 };
 export {
   avatar as Avatar,
