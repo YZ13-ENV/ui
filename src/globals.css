@@ -74,3 +74,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .projects-grid {
+    /* used in projects-grid.tsx */
+    @apply h-96 grid p-4 grid-cols-3 grid-rows-6
+  }
+}

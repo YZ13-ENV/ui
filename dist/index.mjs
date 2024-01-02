@@ -1,17 +1,17 @@
 "use client";
-import { jsxs, jsx } from "react/jsx-runtime";
+import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
-import { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiSolidGrid } from "react-icons/bi/index.esm.js";
+import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
+import { BiUser, BiSolidGrid, BiMenu } from "react-icons/bi/index.esm.js";
 import { PiCrownSimpleBold } from "react-icons/pi/index.esm.js";
 import * as ReactDOM from "react-dom";
 import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
-import { useMediaQuery } from "react-responsive";
 import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
+import { MdOpenInNew } from "react-icons/md/index.esm.js";
 const globals = "";
 const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {
   const iconWrapperSize = size2 * 0.5;
@@ -3663,7 +3663,7 @@ var ReactRemoveScroll = React.forwardRef(function(props, ref) {
   return React.createElement(RemoveScroll, __assign({}, props, { ref, sideCar: SideCar }));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-const $am6gm$RemoveScroll = ReactRemoveScroll;
+const $67UHm$RemoveScroll = ReactRemoveScroll;
 const $cb5cc270b50c6fcd$var$POPOVER_NAME = "Popover";
 const [$cb5cc270b50c6fcd$var$createPopoverContext, $cb5cc270b50c6fcd$export$c8393c9e73286932] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($cb5cc270b50c6fcd$var$POPOVER_NAME, [
   $cf1ac5d9fe0e8206$export$722aac194ae923
@@ -3766,7 +3766,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ forwardRef((pr
     if (content)
       return hideOthers(content);
   }, []);
-  return /* @__PURE__ */ createElement($am6gm$RemoveScroll, {
+  return /* @__PURE__ */ createElement($67UHm$RemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
   }, /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends({}, props, {
@@ -3899,18 +3899,30 @@ const projects = [
     key: 1,
     name: "YZ13",
     link: "https://yz13.darkmaterial.space",
+    themedIcon: {
+      dark: "https://cdn.darkmaterial.space/dm/icons/YZ13-dark.svg",
+      light: "https://cdn.darkmaterial.space/dm/icons/YZ13-light.svg"
+    },
     icon: "https://cdn.darkmaterial.space/dm/icons/YZ13-dark.svg"
   },
   {
     key: 2,
     name: "DM",
     link: "https://darkmaterial.space",
+    themedIcon: {
+      dark: "https://cdn.darkmaterial.space/dm/icons/DM-dark.svg",
+      light: "https://cdn.darkmaterial.space/dm/icons/DM-light.svg"
+    },
     icon: "https://cdn.darkmaterial.space/dm/icons/DM-dark.svg"
   },
   {
     key: 3,
-    name: "YZ13",
+    name: "Frame",
     link: "https://frame.darkmaterial.space",
+    themedIcon: {
+      dark: "https://cdn.darkmaterial.space/dm/icons/frame-dark.svg",
+      light: "https://cdn.darkmaterial.space/dm/icons/frame-light.svg"
+    },
     icon: "https://cdn.darkmaterial.space/dm/icons/frame-dark.svg"
   }
 ];
@@ -3953,32 +3965,1972 @@ const Button = React.forwardRef(
   }
 );
 Button.displayName = "Button";
+const getCookies = (document2) => {
+  if (!document2)
+    return null;
+  const cookies = document2.cookie.split("; ");
+  const cookiesObj = cookies.map((item) => {
+    const cookie = item.split("=");
+    return { [cookie[0]]: cookie[1] };
+  });
+  const result = cookiesObj.reduce((a, b) => {
+    return {
+      ...a,
+      ...b
+    };
+  });
+  return result;
+};
 const ProjectsGrid = () => {
+  const cookies = getCookies(document);
+  const themeCookie = cookies ? cookies["theme"] : "dark";
   return /* @__PURE__ */ jsxs(Popover, { children: [
     /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(BiSolidGrid, { size: 20 }) }) }),
-    /* @__PURE__ */ jsx(PopoverContent, { className: "h-96 grid p-4 grid-cols-3 grid-rows-6", children: projects.map(
+    /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(
       (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
-        /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.icon, className: "w-full h-full", alt: "project-icon" }) }),
+        /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
         /* @__PURE__ */ jsx("span", { className: "text-xs text-center", children: project.name })
       ] }, project.key)
     ) })
   ] });
 };
-const DesktopMenu = ({ auth }) => {
-  useAuthState(auth);
-  return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted shrink-0" });
+function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
+  const PROVIDER_NAME = name + "CollectionProvider";
+  const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
+  const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(PROVIDER_NAME, {
+    collectionRef: {
+      current: null
+    },
+    itemMap: /* @__PURE__ */ new Map()
+  });
+  const CollectionProvider = (props) => {
+    const { scope, children } = props;
+    const ref = React__default.useRef(null);
+    const itemMap = React__default.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ React__default.createElement(CollectionProviderImpl, {
+      scope,
+      itemMap,
+      collectionRef: ref
+    }, children);
+  };
+  const COLLECTION_SLOT_NAME = name + "CollectionSlot";
+  const CollectionSlot = /* @__PURE__ */ React__default.forwardRef((props, forwardedRef) => {
+    const { scope, children } = props;
+    const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
+    const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.collectionRef);
+    return /* @__PURE__ */ React__default.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360, {
+      ref: composedRefs
+    }, children);
+  });
+  const ITEM_SLOT_NAME = name + "CollectionItemSlot";
+  const ITEM_DATA_ATTR = "data-radix-collection-item";
+  const CollectionItemSlot = /* @__PURE__ */ React__default.forwardRef((props, forwardedRef) => {
+    const { scope, children, ...itemData } = props;
+    const ref = React__default.useRef(null);
+    const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+    const context = useCollectionContext(ITEM_SLOT_NAME, scope);
+    React__default.useEffect(() => {
+      context.itemMap.set(ref, {
+        ref,
+        ...itemData
+      });
+      return () => void context.itemMap.delete(ref);
+    });
+    return /* @__PURE__ */ React__default.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360, {
+      [ITEM_DATA_ATTR]: "",
+      ref: composedRefs
+    }, children);
+  });
+  function useCollection(scope) {
+    const context = useCollectionContext(name + "CollectionConsumer", scope);
+    const getItems = React__default.useCallback(() => {
+      const collectionNode = context.collectionRef.current;
+      if (!collectionNode)
+        return [];
+      const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
+      const items = Array.from(context.itemMap.values());
+      const orderedItems = items.sort(
+        (a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current)
+      );
+      return orderedItems;
+    }, [
+      context.collectionRef,
+      context.itemMap
+    ]);
+    return getItems;
+  }
+  return [
+    {
+      Provider: CollectionProvider,
+      Slot: CollectionSlot,
+      ItemSlot: CollectionItemSlot
+    },
+    useCollection,
+    createCollectionScope
+  ];
+}
+const $f631663db3294ace$var$DirectionContext = /* @__PURE__ */ createContext(void 0);
+function $f631663db3294ace$export$b39126d51d94e6f3(localDir) {
+  const globalDir = useContext($f631663db3294ace$var$DirectionContext);
+  return localDir || globalDir || "ltr";
+}
+const $d7bdfb9eb0fdf311$var$ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
+const $d7bdfb9eb0fdf311$var$EVENT_OPTIONS = {
+  bubbles: false,
+  cancelable: true
 };
+const $d7bdfb9eb0fdf311$var$GROUP_NAME = "RovingFocusGroup";
+const [$d7bdfb9eb0fdf311$var$Collection, $d7bdfb9eb0fdf311$var$useCollection, $d7bdfb9eb0fdf311$var$createCollectionScope] = $e02a7d9cb1dc128c$export$c74125a8e3af6bb2($d7bdfb9eb0fdf311$var$GROUP_NAME);
+const [$d7bdfb9eb0fdf311$var$createRovingFocusGroupContext, $d7bdfb9eb0fdf311$export$c7109489551a4f4] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($d7bdfb9eb0fdf311$var$GROUP_NAME, [
+  $d7bdfb9eb0fdf311$var$createCollectionScope
+]);
+const [$d7bdfb9eb0fdf311$var$RovingFocusProvider, $d7bdfb9eb0fdf311$var$useRovingFocusContext] = $d7bdfb9eb0fdf311$var$createRovingFocusGroupContext($d7bdfb9eb0fdf311$var$GROUP_NAME);
+const $d7bdfb9eb0fdf311$export$8699f7c8af148338 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.Provider, {
+    scope: props.__scopeRovingFocusGroup
+  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.Slot, {
+    scope: props.__scopeRovingFocusGroup
+  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$RovingFocusGroupImpl, _extends({}, props, {
+    ref: forwardedRef
+  }))));
+});
+const $d7bdfb9eb0fdf311$var$RovingFocusGroupImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeRovingFocusGroup, orientation, loop = false, dir, currentTabStopId: currentTabStopIdProp, defaultCurrentTabStopId, onCurrentTabStopIdChange, onEntryFocus, ...groupProps } = props;
+  const ref = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+  const direction = $f631663db3294ace$export$b39126d51d94e6f3(dir);
+  const [currentTabStopId = null, setCurrentTabStopId] = $71cd76cc60e0454e$export$6f32135080cb4c3({
+    prop: currentTabStopIdProp,
+    defaultProp: defaultCurrentTabStopId,
+    onChange: onCurrentTabStopIdChange
+  });
+  const [isTabbingBackOut, setIsTabbingBackOut] = useState(false);
+  const handleEntryFocus = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onEntryFocus);
+  const getItems = $d7bdfb9eb0fdf311$var$useCollection(__scopeRovingFocusGroup);
+  const isClickFocusRef = useRef(false);
+  const [focusableItemsCount, setFocusableItemsCount] = useState(0);
+  useEffect(() => {
+    const node = ref.current;
+    if (node) {
+      node.addEventListener($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, handleEntryFocus);
+      return () => node.removeEventListener($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, handleEntryFocus);
+    }
+  }, [
+    handleEntryFocus
+  ]);
+  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$RovingFocusProvider, {
+    scope: __scopeRovingFocusGroup,
+    orientation,
+    dir: direction,
+    loop,
+    currentTabStopId,
+    onItemFocus: useCallback(
+      (tabStopId) => setCurrentTabStopId(tabStopId),
+      [
+        setCurrentTabStopId
+      ]
+    ),
+    onItemShiftTab: useCallback(
+      () => setIsTabbingBackOut(true),
+      []
+    ),
+    onFocusableItemAdd: useCallback(
+      () => setFocusableItemsCount(
+        (prevCount) => prevCount + 1
+      ),
+      []
+    ),
+    onFocusableItemRemove: useCallback(
+      () => setFocusableItemsCount(
+        (prevCount) => prevCount - 1
+      ),
+      []
+    )
+  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+    tabIndex: isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0,
+    "data-orientation": orientation
+  }, groupProps, {
+    ref: composedRefs,
+    style: {
+      outline: "none",
+      ...props.style
+    },
+    onMouseDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onMouseDown, () => {
+      isClickFocusRef.current = true;
+    }),
+    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onFocus, (event) => {
+      const isKeyboardFocus = !isClickFocusRef.current;
+      if (event.target === event.currentTarget && isKeyboardFocus && !isTabbingBackOut) {
+        const entryFocusEvent = new CustomEvent($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, $d7bdfb9eb0fdf311$var$EVENT_OPTIONS);
+        event.currentTarget.dispatchEvent(entryFocusEvent);
+        if (!entryFocusEvent.defaultPrevented) {
+          const items = getItems().filter(
+            (item) => item.focusable
+          );
+          const activeItem = items.find(
+            (item) => item.active
+          );
+          const currentItem = items.find(
+            (item) => item.id === currentTabStopId
+          );
+          const candidateItems = [
+            activeItem,
+            currentItem,
+            ...items
+          ].filter(Boolean);
+          const candidateNodes = candidateItems.map(
+            (item) => item.ref.current
+          );
+          $d7bdfb9eb0fdf311$var$focusFirst(candidateNodes);
+        }
+      }
+      isClickFocusRef.current = false;
+    }),
+    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onBlur,
+      () => setIsTabbingBackOut(false)
+    )
+  })));
+});
+const $d7bdfb9eb0fdf311$var$ITEM_NAME = "RovingFocusGroupItem";
+const $d7bdfb9eb0fdf311$export$ab9df7c53fe8454 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, ...itemProps } = props;
+  const autoId = $1746a345f3d73bb7$export$f680877a34711e37();
+  const id = tabStopId || autoId;
+  const context = $d7bdfb9eb0fdf311$var$useRovingFocusContext($d7bdfb9eb0fdf311$var$ITEM_NAME, __scopeRovingFocusGroup);
+  const isCurrentTabStop = context.currentTabStopId === id;
+  const getItems = $d7bdfb9eb0fdf311$var$useCollection(__scopeRovingFocusGroup);
+  const { onFocusableItemAdd, onFocusableItemRemove } = context;
+  useEffect(() => {
+    if (focusable) {
+      onFocusableItemAdd();
+      return () => onFocusableItemRemove();
+    }
+  }, [
+    focusable,
+    onFocusableItemAdd,
+    onFocusableItemRemove
+  ]);
+  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.ItemSlot, {
+    scope: __scopeRovingFocusGroup,
+    id,
+    focusable,
+    active
+  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.span, _extends({
+    tabIndex: isCurrentTabStop ? 0 : -1,
+    "data-orientation": context.orientation
+  }, itemProps, {
+    ref: forwardedRef,
+    onMouseDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onMouseDown, (event) => {
+      if (!focusable)
+        event.preventDefault();
+      else
+        context.onItemFocus(id);
+    }),
+    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onFocus,
+      () => context.onItemFocus(id)
+    ),
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
+      if (event.key === "Tab" && event.shiftKey) {
+        context.onItemShiftTab();
+        return;
+      }
+      if (event.target !== event.currentTarget)
+        return;
+      const focusIntent = $d7bdfb9eb0fdf311$var$getFocusIntent(event, context.orientation, context.dir);
+      if (focusIntent !== void 0) {
+        event.preventDefault();
+        const items = getItems().filter(
+          (item) => item.focusable
+        );
+        let candidateNodes = items.map(
+          (item) => item.ref.current
+        );
+        if (focusIntent === "last")
+          candidateNodes.reverse();
+        else if (focusIntent === "prev" || focusIntent === "next") {
+          if (focusIntent === "prev")
+            candidateNodes.reverse();
+          const currentIndex = candidateNodes.indexOf(event.currentTarget);
+          candidateNodes = context.loop ? $d7bdfb9eb0fdf311$var$wrapArray(candidateNodes, currentIndex + 1) : candidateNodes.slice(currentIndex + 1);
+        }
+        setTimeout(
+          () => $d7bdfb9eb0fdf311$var$focusFirst(candidateNodes)
+        );
+      }
+    })
+  })));
+});
+const $d7bdfb9eb0fdf311$var$MAP_KEY_TO_FOCUS_INTENT = {
+  ArrowLeft: "prev",
+  ArrowUp: "prev",
+  ArrowRight: "next",
+  ArrowDown: "next",
+  PageUp: "first",
+  Home: "first",
+  PageDown: "last",
+  End: "last"
+};
+function $d7bdfb9eb0fdf311$var$getDirectionAwareKey(key, dir) {
+  if (dir !== "rtl")
+    return key;
+  return key === "ArrowLeft" ? "ArrowRight" : key === "ArrowRight" ? "ArrowLeft" : key;
+}
+function $d7bdfb9eb0fdf311$var$getFocusIntent(event, orientation, dir) {
+  const key = $d7bdfb9eb0fdf311$var$getDirectionAwareKey(event.key, dir);
+  if (orientation === "vertical" && [
+    "ArrowLeft",
+    "ArrowRight"
+  ].includes(key))
+    return void 0;
+  if (orientation === "horizontal" && [
+    "ArrowUp",
+    "ArrowDown"
+  ].includes(key))
+    return void 0;
+  return $d7bdfb9eb0fdf311$var$MAP_KEY_TO_FOCUS_INTENT[key];
+}
+function $d7bdfb9eb0fdf311$var$focusFirst(candidates) {
+  const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+  for (const candidate of candidates) {
+    if (candidate === PREVIOUSLY_FOCUSED_ELEMENT)
+      return;
+    candidate.focus();
+    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT)
+      return;
+  }
+}
+function $d7bdfb9eb0fdf311$var$wrapArray(array, startIndex) {
+  return array.map(
+    (_, index2) => array[(startIndex + index2) % array.length]
+  );
+}
+const $d7bdfb9eb0fdf311$export$be92b6f5f03c0fe9 = $d7bdfb9eb0fdf311$export$8699f7c8af148338;
+const $d7bdfb9eb0fdf311$export$6d08773d2e66f8f2 = $d7bdfb9eb0fdf311$export$ab9df7c53fe8454;
+const $6cc32821e9371a1c$var$SELECTION_KEYS = [
+  "Enter",
+  " "
+];
+const $6cc32821e9371a1c$var$FIRST_KEYS = [
+  "ArrowDown",
+  "PageUp",
+  "Home"
+];
+const $6cc32821e9371a1c$var$LAST_KEYS = [
+  "ArrowUp",
+  "PageDown",
+  "End"
+];
+const $6cc32821e9371a1c$var$FIRST_LAST_KEYS = [
+  ...$6cc32821e9371a1c$var$FIRST_KEYS,
+  ...$6cc32821e9371a1c$var$LAST_KEYS
+];
+const $6cc32821e9371a1c$var$SUB_OPEN_KEYS = {
+  ltr: [
+    ...$6cc32821e9371a1c$var$SELECTION_KEYS,
+    "ArrowRight"
+  ],
+  rtl: [
+    ...$6cc32821e9371a1c$var$SELECTION_KEYS,
+    "ArrowLeft"
+  ]
+};
+const $6cc32821e9371a1c$var$SUB_CLOSE_KEYS = {
+  ltr: [
+    "ArrowLeft"
+  ],
+  rtl: [
+    "ArrowRight"
+  ]
+};
+const $6cc32821e9371a1c$var$MENU_NAME = "Menu";
+const [$6cc32821e9371a1c$var$Collection, $6cc32821e9371a1c$var$useCollection, $6cc32821e9371a1c$var$createCollectionScope] = $e02a7d9cb1dc128c$export$c74125a8e3af6bb2($6cc32821e9371a1c$var$MENU_NAME);
+const [$6cc32821e9371a1c$var$createMenuContext, $6cc32821e9371a1c$export$4027731b685e72eb] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($6cc32821e9371a1c$var$MENU_NAME, [
+  $6cc32821e9371a1c$var$createCollectionScope,
+  $cf1ac5d9fe0e8206$export$722aac194ae923,
+  $d7bdfb9eb0fdf311$export$c7109489551a4f4
+]);
+const $6cc32821e9371a1c$var$usePopperScope = $cf1ac5d9fe0e8206$export$722aac194ae923();
+const $6cc32821e9371a1c$var$useRovingFocusGroupScope = $d7bdfb9eb0fdf311$export$c7109489551a4f4();
+const [$6cc32821e9371a1c$var$MenuProvider, $6cc32821e9371a1c$var$useMenuContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$MENU_NAME);
+const [$6cc32821e9371a1c$var$MenuRootProvider, $6cc32821e9371a1c$var$useMenuRootContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$MENU_NAME);
+const $6cc32821e9371a1c$export$d9b273488cd8ce6f = (props) => {
+  const { __scopeMenu, open = false, children, dir, onOpenChange, modal = true } = props;
+  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
+  const [content, setContent] = useState(null);
+  const isUsingKeyboardRef = useRef(false);
+  const handleOpenChange = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onOpenChange);
+  const direction = $f631663db3294ace$export$b39126d51d94e6f3(dir);
+  useEffect(() => {
+    const handleKeyDown = () => {
+      isUsingKeyboardRef.current = true;
+      document.addEventListener("pointerdown", handlePointer, {
+        capture: true,
+        once: true
+      });
+      document.addEventListener("pointermove", handlePointer, {
+        capture: true,
+        once: true
+      });
+    };
+    const handlePointer = () => isUsingKeyboardRef.current = false;
+    document.addEventListener("keydown", handleKeyDown, {
+      capture: true
+    });
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown, {
+        capture: true
+      });
+      document.removeEventListener("pointerdown", handlePointer, {
+        capture: true
+      });
+      document.removeEventListener("pointermove", handlePointer, {
+        capture: true
+      });
+    };
+  }, []);
+  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9, popperScope, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuProvider, {
+    scope: __scopeMenu,
+    open,
+    onOpenChange: handleOpenChange,
+    content,
+    onContentChange: setContent
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootProvider, {
+    scope: __scopeMenu,
+    onClose: useCallback(
+      () => handleOpenChange(false),
+      [
+        handleOpenChange
+      ]
+    ),
+    isUsingKeyboardRef,
+    dir: direction,
+    modal
+  }, children)));
+};
+const $6cc32821e9371a1c$export$9fa5ebd18bee4d43 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, ...anchorProps } = props;
+  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
+  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends({}, popperScope, anchorProps, {
+    ref: forwardedRef
+  }));
+});
+const $6cc32821e9371a1c$var$PORTAL_NAME = "MenuPortal";
+const [$6cc32821e9371a1c$var$PortalProvider, $6cc32821e9371a1c$var$usePortalContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$PORTAL_NAME, {
+  forceMount: void 0
+});
+const $6cc32821e9371a1c$export$793392f970497feb = (props) => {
+  const { __scopeMenu, forceMount, children, container } = props;
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$PORTAL_NAME, __scopeMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$PortalProvider, {
+    scope: __scopeMenu,
+    forceMount
+  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context.open
+  }, /* @__PURE__ */ createElement($f1701beae083dbae$export$602eac185826482c, {
+    asChild: true,
+    container
+  }, children)));
+};
+const $6cc32821e9371a1c$var$CONTENT_NAME = "MenuContent";
+const [$6cc32821e9371a1c$var$MenuContentProvider, $6cc32821e9371a1c$var$useMenuContentContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$CONTENT_NAME);
+const $6cc32821e9371a1c$export$479f0f2f71193efe = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const portalContext = $6cc32821e9371a1c$var$usePortalContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const { forceMount = portalContext.forceMount, ...contentProps } = props;
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Provider, {
+    scope: props.__scopeMenu
+  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context.open
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Slot, {
+    scope: props.__scopeMenu
+  }, rootContext.modal ? /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootContentModal, _extends({}, contentProps, {
+    ref: forwardedRef
+  })) : /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootContentNonModal, _extends({}, contentProps, {
+    ref: forwardedRef
+  })))));
+});
+const $6cc32821e9371a1c$var$MenuRootContentModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const ref = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+  useEffect(() => {
+    const content = ref.current;
+    if (content)
+      return hideOthers(content);
+  }, []);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({}, props, {
+    ref: composedRefs,
+    trapFocus: context.open,
+    disableOutsidePointerEvents: context.open,
+    disableOutsideScroll: true,
+    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onFocusOutside,
+      (event) => event.preventDefault(),
+      {
+        checkForDefaultPrevented: false
+      }
+    ),
+    onDismiss: () => context.onOpenChange(false)
+  }));
+});
+const $6cc32821e9371a1c$var$MenuRootContentNonModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({}, props, {
+    ref: forwardedRef,
+    trapFocus: false,
+    disableOutsidePointerEvents: false,
+    disableOutsideScroll: false,
+    onDismiss: () => context.onOpenChange(false)
+  }));
+});
+const $6cc32821e9371a1c$var$MenuContentImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, loop = false, trapFocus, onOpenAutoFocus, onCloseAutoFocus, disableOutsidePointerEvents, onEntryFocus, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, disableOutsideScroll, ...contentProps } = props;
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, __scopeMenu);
+  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, __scopeMenu);
+  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
+  const rovingFocusGroupScope = $6cc32821e9371a1c$var$useRovingFocusGroupScope(__scopeMenu);
+  const getItems = $6cc32821e9371a1c$var$useCollection(__scopeMenu);
+  const [currentItemId, setCurrentItemId] = useState(null);
+  const contentRef = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, contentRef, context.onContentChange);
+  const timerRef = useRef(0);
+  const searchRef = useRef("");
+  const pointerGraceTimerRef = useRef(0);
+  const pointerGraceIntentRef = useRef(null);
+  const pointerDirRef = useRef("right");
+  const lastPointerXRef = useRef(0);
+  const ScrollLockWrapper = disableOutsideScroll ? $67UHm$RemoveScroll : Fragment;
+  const scrollLockWrapperProps = disableOutsideScroll ? {
+    as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
+    allowPinchZoom: true
+  } : void 0;
+  const handleTypeaheadSearch = (key) => {
+    var _items$find, _items$find2;
+    const search = searchRef.current + key;
+    const items = getItems().filter(
+      (item) => !item.disabled
+    );
+    const currentItem = document.activeElement;
+    const currentMatch = (_items$find = items.find(
+      (item) => item.ref.current === currentItem
+    )) === null || _items$find === void 0 ? void 0 : _items$find.textValue;
+    const values = items.map(
+      (item) => item.textValue
+    );
+    const nextMatch = $6cc32821e9371a1c$var$getNextMatch(values, search, currentMatch);
+    const newItem = (_items$find2 = items.find(
+      (item) => item.textValue === nextMatch
+    )) === null || _items$find2 === void 0 ? void 0 : _items$find2.ref.current;
+    (function updateSearch(value) {
+      searchRef.current = value;
+      window.clearTimeout(timerRef.current);
+      if (value !== "")
+        timerRef.current = window.setTimeout(
+          () => updateSearch(""),
+          1e3
+        );
+    })(search);
+    if (newItem)
+      setTimeout(
+        () => newItem.focus()
+      );
+  };
+  useEffect(() => {
+    return () => window.clearTimeout(timerRef.current);
+  }, []);
+  $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c();
+  const isPointerMovingToSubmenu = useCallback((event) => {
+    var _pointerGraceIntentRe, _pointerGraceIntentRe2;
+    const isMovingTowards = pointerDirRef.current === ((_pointerGraceIntentRe = pointerGraceIntentRef.current) === null || _pointerGraceIntentRe === void 0 ? void 0 : _pointerGraceIntentRe.side);
+    return isMovingTowards && $6cc32821e9371a1c$var$isPointerInGraceArea(event, (_pointerGraceIntentRe2 = pointerGraceIntentRef.current) === null || _pointerGraceIntentRe2 === void 0 ? void 0 : _pointerGraceIntentRe2.area);
+  }, []);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentProvider, {
+    scope: __scopeMenu,
+    searchRef,
+    onItemEnter: useCallback((event) => {
+      if (isPointerMovingToSubmenu(event))
+        event.preventDefault();
+    }, [
+      isPointerMovingToSubmenu
+    ]),
+    onItemLeave: useCallback((event) => {
+      var _contentRef$current;
+      if (isPointerMovingToSubmenu(event))
+        return;
+      (_contentRef$current = contentRef.current) === null || _contentRef$current === void 0 || _contentRef$current.focus();
+      setCurrentItemId(null);
+    }, [
+      isPointerMovingToSubmenu
+    ]),
+    onTriggerLeave: useCallback((event) => {
+      if (isPointerMovingToSubmenu(event))
+        event.preventDefault();
+    }, [
+      isPointerMovingToSubmenu
+    ]),
+    pointerGraceTimerRef,
+    onPointerGraceIntentChange: useCallback((intent) => {
+      pointerGraceIntentRef.current = intent;
+    }, [])
+  }, /* @__PURE__ */ createElement(ScrollLockWrapper, scrollLockWrapperProps, /* @__PURE__ */ createElement($d3863c46a17e8a28$export$20e40289641fbbb6, {
+    asChild: true,
+    trapped: trapFocus,
+    onMountAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(onOpenAutoFocus, (event) => {
+      var _contentRef$current2;
+      event.preventDefault();
+      (_contentRef$current2 = contentRef.current) === null || _contentRef$current2 === void 0 || _contentRef$current2.focus();
+    }),
+    onUnmountAutoFocus: onCloseAutoFocus
+  }, /* @__PURE__ */ createElement($5cb92bef7577960e$export$177fb62ff3ec1f22, {
+    asChild: true,
+    disableOutsidePointerEvents,
+    onEscapeKeyDown,
+    onPointerDownOutside,
+    onFocusOutside,
+    onInteractOutside,
+    onDismiss
+  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$export$be92b6f5f03c0fe9, _extends({
+    asChild: true
+  }, rovingFocusGroupScope, {
+    dir: rootContext.dir,
+    orientation: "vertical",
+    loop,
+    currentTabStopId: currentItemId,
+    onCurrentTabStopIdChange: setCurrentItemId,
+    onEntryFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(onEntryFocus, (event) => {
+      if (!rootContext.isUsingKeyboardRef.current)
+        event.preventDefault();
+    })
+  }), /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends({
+    role: "menu",
+    "aria-orientation": "vertical",
+    "data-state": $6cc32821e9371a1c$var$getOpenState(context.open),
+    "data-radix-menu-content": "",
+    dir: rootContext.dir
+  }, popperScope, contentProps, {
+    ref: composedRefs,
+    style: {
+      outline: "none",
+      ...contentProps.style
+    },
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(contentProps.onKeyDown, (event) => {
+      const target = event.target;
+      const isKeyDownInside = target.closest("[data-radix-menu-content]") === event.currentTarget;
+      const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
+      const isCharacterKey = event.key.length === 1;
+      if (isKeyDownInside) {
+        if (event.key === "Tab")
+          event.preventDefault();
+        if (!isModifierKey && isCharacterKey)
+          handleTypeaheadSearch(event.key);
+      }
+      const content = contentRef.current;
+      if (event.target !== content)
+        return;
+      if (!$6cc32821e9371a1c$var$FIRST_LAST_KEYS.includes(event.key))
+        return;
+      event.preventDefault();
+      const items = getItems().filter(
+        (item) => !item.disabled
+      );
+      const candidateNodes = items.map(
+        (item) => item.ref.current
+      );
+      if ($6cc32821e9371a1c$var$LAST_KEYS.includes(event.key))
+        candidateNodes.reverse();
+      $6cc32821e9371a1c$var$focusFirst(candidateNodes);
+    }),
+    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onBlur, (event) => {
+      if (!event.currentTarget.contains(event.target)) {
+        window.clearTimeout(timerRef.current);
+        searchRef.current = "";
+      }
+    }),
+    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
+      const target = event.target;
+      const pointerXHasChanged = lastPointerXRef.current !== event.clientX;
+      if (event.currentTarget.contains(target) && pointerXHasChanged) {
+        const newDir = event.clientX > lastPointerXRef.current ? "right" : "left";
+        pointerDirRef.current = newDir;
+        lastPointerXRef.current = event.clientX;
+      }
+    }))
+  })))))));
+});
+const $6cc32821e9371a1c$export$dd37bec0e8a99143 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, ...labelProps } = props;
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, labelProps, {
+    ref: forwardedRef
+  }));
+});
+const $6cc32821e9371a1c$var$ITEM_NAME = "MenuItem";
+const $6cc32821e9371a1c$var$ITEM_SELECT = "menu.itemSelect";
+const $6cc32821e9371a1c$export$2ce376c2cc3355c8 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { disabled = false, onSelect, ...itemProps } = props;
+  const ref = useRef(null);
+  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$ITEM_NAME, props.__scopeMenu);
+  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$ITEM_NAME, props.__scopeMenu);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+  const isPointerDownRef = useRef(false);
+  const handleSelect = () => {
+    const menuItem = ref.current;
+    if (!disabled && menuItem) {
+      const itemSelectEvent = new CustomEvent($6cc32821e9371a1c$var$ITEM_SELECT, {
+        bubbles: true,
+        cancelable: true
+      });
+      menuItem.addEventListener(
+        $6cc32821e9371a1c$var$ITEM_SELECT,
+        (event) => onSelect === null || onSelect === void 0 ? void 0 : onSelect(event),
+        {
+          once: true
+        }
+      );
+      $8927f6f2acc4f386$export$6d1a0317bde7de7f(menuItem, itemSelectEvent);
+      if (itemSelectEvent.defaultPrevented)
+        isPointerDownRef.current = false;
+      else
+        rootContext.onClose();
+    }
+  };
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends({}, itemProps, {
+    ref: composedRefs,
+    disabled,
+    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, handleSelect),
+    onPointerDown: (event) => {
+      var _props$onPointerDown;
+      (_props$onPointerDown = props.onPointerDown) === null || _props$onPointerDown === void 0 || _props$onPointerDown.call(props, event);
+      isPointerDownRef.current = true;
+    },
+    onPointerUp: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerUp, (event) => {
+      var _event$currentTarget;
+      if (!isPointerDownRef.current)
+        (_event$currentTarget = event.currentTarget) === null || _event$currentTarget === void 0 || _event$currentTarget.click();
+    }),
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
+      const isTypingAhead = contentContext.searchRef.current !== "";
+      if (disabled || isTypingAhead && event.key === " ")
+        return;
+      if ($6cc32821e9371a1c$var$SELECTION_KEYS.includes(event.key)) {
+        event.currentTarget.click();
+        event.preventDefault();
+      }
+    })
+  }));
+});
+const $6cc32821e9371a1c$var$MenuItemImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, disabled = false, textValue, ...itemProps } = props;
+  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$ITEM_NAME, __scopeMenu);
+  const rovingFocusGroupScope = $6cc32821e9371a1c$var$useRovingFocusGroupScope(__scopeMenu);
+  const ref = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+  const [isFocused, setIsFocused] = useState(false);
+  const [textContent, setTextContent] = useState("");
+  useEffect(() => {
+    const menuItem = ref.current;
+    if (menuItem) {
+      var _menuItem$textContent;
+      setTextContent(((_menuItem$textContent = menuItem.textContent) !== null && _menuItem$textContent !== void 0 ? _menuItem$textContent : "").trim());
+    }
+  }, [
+    itemProps.children
+  ]);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.ItemSlot, {
+    scope: __scopeMenu,
+    disabled,
+    textValue: textValue !== null && textValue !== void 0 ? textValue : textContent
+  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends({
+    asChild: true
+  }, rovingFocusGroupScope, {
+    focusable: !disabled
+  }), /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+    role: "menuitem",
+    "data-highlighted": isFocused ? "" : void 0,
+    "aria-disabled": disabled || void 0,
+    "data-disabled": disabled ? "" : void 0
+  }, itemProps, {
+    ref: composedRefs,
+    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
+      if (disabled)
+        contentContext.onItemLeave(event);
+      else {
+        contentContext.onItemEnter(event);
+        if (!event.defaultPrevented) {
+          const item = event.currentTarget;
+          item.focus();
+        }
+      }
+    })),
+    onPointerLeave: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerLeave, $6cc32821e9371a1c$var$whenMouse(
+      (event) => contentContext.onItemLeave(event)
+    )),
+    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onFocus,
+      () => setIsFocused(true)
+    ),
+    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onBlur,
+      () => setIsFocused(false)
+    )
+  }))));
+});
+const $6cc32821e9371a1c$export$f6f243521332502d = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { checked = false, onCheckedChange, ...checkboxItemProps } = props;
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
+    scope: props.__scopeMenu,
+    checked
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends({
+    role: "menuitemcheckbox",
+    "aria-checked": $6cc32821e9371a1c$var$isIndeterminate(checked) ? "mixed" : checked
+  }, checkboxItemProps, {
+    ref: forwardedRef,
+    "data-state": $6cc32821e9371a1c$var$getCheckedState(checked),
+    onSelect: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      checkboxItemProps.onSelect,
+      () => onCheckedChange === null || onCheckedChange === void 0 ? void 0 : onCheckedChange($6cc32821e9371a1c$var$isIndeterminate(checked) ? true : !checked),
+      {
+        checkForDefaultPrevented: false
+      }
+    )
+  })));
+});
+const $6cc32821e9371a1c$var$RADIO_GROUP_NAME = "MenuRadioGroup";
+const [$6cc32821e9371a1c$var$RadioGroupProvider, $6cc32821e9371a1c$var$useRadioGroupContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$RADIO_GROUP_NAME, {
+  value: void 0,
+  onValueChange: () => {
+  }
+});
+const $6cc32821e9371a1c$var$RADIO_ITEM_NAME = "MenuRadioItem";
+const $6cc32821e9371a1c$export$69bd225e9817f6d0 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { value, ...radioItemProps } = props;
+  const context = $6cc32821e9371a1c$var$useRadioGroupContext($6cc32821e9371a1c$var$RADIO_ITEM_NAME, props.__scopeMenu);
+  const checked = value === context.value;
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
+    scope: props.__scopeMenu,
+    checked
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends({
+    role: "menuitemradio",
+    "aria-checked": checked
+  }, radioItemProps, {
+    ref: forwardedRef,
+    "data-state": $6cc32821e9371a1c$var$getCheckedState(checked),
+    onSelect: $e42e1063c40fb3ef$export$b9ecd428b558ff10(radioItemProps.onSelect, () => {
+      var _context$onValueChang;
+      return (_context$onValueChang = context.onValueChange) === null || _context$onValueChang === void 0 ? void 0 : _context$onValueChang.call(context, value);
+    }, {
+      checkForDefaultPrevented: false
+    })
+  })));
+});
+const $6cc32821e9371a1c$var$ITEM_INDICATOR_NAME = "MenuItemIndicator";
+const [$6cc32821e9371a1c$var$ItemIndicatorProvider, $6cc32821e9371a1c$var$useItemIndicatorContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, {
+  checked: false
+});
+const $6cc32821e9371a1c$export$a2593e23056970a3 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, forceMount, ...itemIndicatorProps } = props;
+  const indicatorContext = $6cc32821e9371a1c$var$useItemIndicatorContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, __scopeMenu);
+  return /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || $6cc32821e9371a1c$var$isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true
+  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.span, _extends({}, itemIndicatorProps, {
+    ref: forwardedRef,
+    "data-state": $6cc32821e9371a1c$var$getCheckedState(indicatorContext.checked)
+  })));
+});
+const $6cc32821e9371a1c$export$1cec7dcdd713e220 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeMenu, ...separatorProps } = props;
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+    role: "separator",
+    "aria-orientation": "horizontal"
+  }, separatorProps, {
+    ref: forwardedRef
+  }));
+});
+const $6cc32821e9371a1c$var$SUB_NAME = "MenuSub";
+const [$6cc32821e9371a1c$var$MenuSubProvider, $6cc32821e9371a1c$var$useMenuSubContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$SUB_NAME);
+const $6cc32821e9371a1c$var$SUB_TRIGGER_NAME = "MenuSubTrigger";
+const $6cc32821e9371a1c$export$5fbbb3ba7297405f = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
+  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
+  const subContext = $6cc32821e9371a1c$var$useMenuSubContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
+  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
+  const openTimerRef = useRef(null);
+  const { pointerGraceTimerRef, onPointerGraceIntentChange } = contentContext;
+  const scope = {
+    __scopeMenu: props.__scopeMenu
+  };
+  const clearOpenTimer = useCallback(() => {
+    if (openTimerRef.current)
+      window.clearTimeout(openTimerRef.current);
+    openTimerRef.current = null;
+  }, []);
+  useEffect(
+    () => clearOpenTimer,
+    [
+      clearOpenTimer
+    ]
+  );
+  useEffect(() => {
+    const pointerGraceTimer = pointerGraceTimerRef.current;
+    return () => {
+      window.clearTimeout(pointerGraceTimer);
+      onPointerGraceIntentChange(null);
+    };
+  }, [
+    pointerGraceTimerRef,
+    onPointerGraceIntentChange
+  ]);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$9fa5ebd18bee4d43, _extends({
+    asChild: true
+  }, scope), /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends({
+    id: subContext.triggerId,
+    "aria-haspopup": "menu",
+    "aria-expanded": context.open,
+    "aria-controls": subContext.contentId,
+    "data-state": $6cc32821e9371a1c$var$getOpenState(context.open)
+  }, props, {
+    ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, subContext.onTriggerChange),
+    onClick: (event) => {
+      var _props$onClick;
+      (_props$onClick = props.onClick) === null || _props$onClick === void 0 || _props$onClick.call(props, event);
+      if (props.disabled || event.defaultPrevented)
+        return;
+      event.currentTarget.focus();
+      if (!context.open)
+        context.onOpenChange(true);
+    },
+    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
+      contentContext.onItemEnter(event);
+      if (event.defaultPrevented)
+        return;
+      if (!props.disabled && !context.open && !openTimerRef.current) {
+        contentContext.onPointerGraceIntentChange(null);
+        openTimerRef.current = window.setTimeout(() => {
+          context.onOpenChange(true);
+          clearOpenTimer();
+        }, 100);
+      }
+    })),
+    onPointerLeave: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerLeave, $6cc32821e9371a1c$var$whenMouse((event) => {
+      var _context$content;
+      clearOpenTimer();
+      const contentRect = (_context$content = context.content) === null || _context$content === void 0 ? void 0 : _context$content.getBoundingClientRect();
+      if (contentRect) {
+        var _context$content2;
+        const side = (_context$content2 = context.content) === null || _context$content2 === void 0 ? void 0 : _context$content2.dataset.side;
+        const rightSide = side === "right";
+        const bleed = rightSide ? -5 : 5;
+        const contentNearEdge = contentRect[rightSide ? "left" : "right"];
+        const contentFarEdge = contentRect[rightSide ? "right" : "left"];
+        contentContext.onPointerGraceIntentChange({
+          area: [
+            // consistently within polygon bounds
+            {
+              x: event.clientX + bleed,
+              y: event.clientY
+            },
+            {
+              x: contentNearEdge,
+              y: contentRect.top
+            },
+            {
+              x: contentFarEdge,
+              y: contentRect.top
+            },
+            {
+              x: contentFarEdge,
+              y: contentRect.bottom
+            },
+            {
+              x: contentNearEdge,
+              y: contentRect.bottom
+            }
+          ],
+          side
+        });
+        window.clearTimeout(pointerGraceTimerRef.current);
+        pointerGraceTimerRef.current = window.setTimeout(
+          () => contentContext.onPointerGraceIntentChange(null),
+          300
+        );
+      } else {
+        contentContext.onTriggerLeave(event);
+        if (event.defaultPrevented)
+          return;
+        contentContext.onPointerGraceIntentChange(null);
+      }
+    })),
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
+      const isTypingAhead = contentContext.searchRef.current !== "";
+      if (props.disabled || isTypingAhead && event.key === " ")
+        return;
+      if ($6cc32821e9371a1c$var$SUB_OPEN_KEYS[rootContext.dir].includes(event.key)) {
+        var _context$content3;
+        context.onOpenChange(true);
+        (_context$content3 = context.content) === null || _context$content3 === void 0 || _context$content3.focus();
+        event.preventDefault();
+      }
+    })
+  })));
+});
+const $6cc32821e9371a1c$var$SUB_CONTENT_NAME = "MenuSubContent";
+const $6cc32821e9371a1c$export$e7142ab31822bde6 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const portalContext = $6cc32821e9371a1c$var$usePortalContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const { forceMount = portalContext.forceMount, ...subContentProps } = props;
+  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
+  const subContext = $6cc32821e9371a1c$var$useMenuSubContext($6cc32821e9371a1c$var$SUB_CONTENT_NAME, props.__scopeMenu);
+  const ref = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Provider, {
+    scope: props.__scopeMenu
+  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context.open
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Slot, {
+    scope: props.__scopeMenu
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({
+    id: subContext.contentId,
+    "aria-labelledby": subContext.triggerId
+  }, subContentProps, {
+    ref: composedRefs,
+    align: "start",
+    side: rootContext.dir === "rtl" ? "left" : "right",
+    disableOutsidePointerEvents: false,
+    disableOutsideScroll: false,
+    trapFocus: false,
+    onOpenAutoFocus: (event) => {
+      var _ref$current;
+      if (rootContext.isUsingKeyboardRef.current)
+        (_ref$current = ref.current) === null || _ref$current === void 0 || _ref$current.focus();
+      event.preventDefault();
+    },
+    onCloseAutoFocus: (event) => event.preventDefault(),
+    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onFocusOutside, (event) => {
+      if (event.target !== subContext.trigger)
+        context.onOpenChange(false);
+    }),
+    onEscapeKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onEscapeKeyDown, (event) => {
+      rootContext.onClose();
+      event.preventDefault();
+    }),
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
+      const isKeyDownInside = event.currentTarget.contains(event.target);
+      const isCloseKey = $6cc32821e9371a1c$var$SUB_CLOSE_KEYS[rootContext.dir].includes(event.key);
+      if (isKeyDownInside && isCloseKey) {
+        var _subContext$trigger;
+        context.onOpenChange(false);
+        (_subContext$trigger = subContext.trigger) === null || _subContext$trigger === void 0 || _subContext$trigger.focus();
+        event.preventDefault();
+      }
+    })
+  })))));
+});
+function $6cc32821e9371a1c$var$getOpenState(open) {
+  return open ? "open" : "closed";
+}
+function $6cc32821e9371a1c$var$isIndeterminate(checked) {
+  return checked === "indeterminate";
+}
+function $6cc32821e9371a1c$var$getCheckedState(checked) {
+  return $6cc32821e9371a1c$var$isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
+}
+function $6cc32821e9371a1c$var$focusFirst(candidates) {
+  const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+  for (const candidate of candidates) {
+    if (candidate === PREVIOUSLY_FOCUSED_ELEMENT)
+      return;
+    candidate.focus();
+    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT)
+      return;
+  }
+}
+function $6cc32821e9371a1c$var$wrapArray(array, startIndex) {
+  return array.map(
+    (_, index2) => array[(startIndex + index2) % array.length]
+  );
+}
+function $6cc32821e9371a1c$var$getNextMatch(values, search, currentMatch) {
+  const isRepeated = search.length > 1 && Array.from(search).every(
+    (char) => char === search[0]
+  );
+  const normalizedSearch = isRepeated ? search[0] : search;
+  const currentMatchIndex = currentMatch ? values.indexOf(currentMatch) : -1;
+  let wrappedValues = $6cc32821e9371a1c$var$wrapArray(values, Math.max(currentMatchIndex, 0));
+  const excludeCurrentMatch = normalizedSearch.length === 1;
+  if (excludeCurrentMatch)
+    wrappedValues = wrappedValues.filter(
+      (v) => v !== currentMatch
+    );
+  const nextMatch = wrappedValues.find(
+    (value) => value.toLowerCase().startsWith(normalizedSearch.toLowerCase())
+  );
+  return nextMatch !== currentMatch ? nextMatch : void 0;
+}
+function $6cc32821e9371a1c$var$isPointInPolygon(point, polygon) {
+  const { x, y } = point;
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].x;
+    const yi = polygon[i].y;
+    const xj = polygon[j].x;
+    const yj = polygon[j].y;
+    const intersect = yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi;
+    if (intersect)
+      inside = !inside;
+  }
+  return inside;
+}
+function $6cc32821e9371a1c$var$isPointerInGraceArea(event, area) {
+  if (!area)
+    return false;
+  const cursorPos = {
+    x: event.clientX,
+    y: event.clientY
+  };
+  return $6cc32821e9371a1c$var$isPointInPolygon(cursorPos, area);
+}
+function $6cc32821e9371a1c$var$whenMouse(handler) {
+  return (event) => event.pointerType === "mouse" ? handler(event) : void 0;
+}
+const $6cc32821e9371a1c$export$be92b6f5f03c0fe9 = $6cc32821e9371a1c$export$d9b273488cd8ce6f;
+const $6cc32821e9371a1c$export$b688253958b8dfe7 = $6cc32821e9371a1c$export$9fa5ebd18bee4d43;
+const $6cc32821e9371a1c$export$602eac185826482c = $6cc32821e9371a1c$export$793392f970497feb;
+const $6cc32821e9371a1c$export$7c6e2c02157bb7d2 = $6cc32821e9371a1c$export$479f0f2f71193efe;
+const $6cc32821e9371a1c$export$b04be29aa201d4f5 = $6cc32821e9371a1c$export$dd37bec0e8a99143;
+const $6cc32821e9371a1c$export$6d08773d2e66f8f2 = $6cc32821e9371a1c$export$2ce376c2cc3355c8;
+const $6cc32821e9371a1c$export$16ce288f89fa631c = $6cc32821e9371a1c$export$f6f243521332502d;
+const $6cc32821e9371a1c$export$371ab307eab489c0 = $6cc32821e9371a1c$export$69bd225e9817f6d0;
+const $6cc32821e9371a1c$export$c3468e2714d175fa = $6cc32821e9371a1c$export$a2593e23056970a3;
+const $6cc32821e9371a1c$export$1ff3c3f08ae963c0 = $6cc32821e9371a1c$export$1cec7dcdd713e220;
+const $6cc32821e9371a1c$export$2ea8a7a591ac5eac = $6cc32821e9371a1c$export$5fbbb3ba7297405f;
+const $6cc32821e9371a1c$export$6d4de93b380beddf = $6cc32821e9371a1c$export$e7142ab31822bde6;
+const $d08ef79370b62062$var$DROPDOWN_MENU_NAME = "DropdownMenu";
+const [$d08ef79370b62062$var$createDropdownMenuContext, $d08ef79370b62062$export$c0623cd925aeb687] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($d08ef79370b62062$var$DROPDOWN_MENU_NAME, [
+  $6cc32821e9371a1c$export$4027731b685e72eb
+]);
+const $d08ef79370b62062$var$useMenuScope = $6cc32821e9371a1c$export$4027731b685e72eb();
+const [$d08ef79370b62062$var$DropdownMenuProvider, $d08ef79370b62062$var$useDropdownMenuContext] = $d08ef79370b62062$var$createDropdownMenuContext($d08ef79370b62062$var$DROPDOWN_MENU_NAME);
+const $d08ef79370b62062$export$e44a253a59704894 = (props) => {
+  const { __scopeDropdownMenu, children, dir, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  const triggerRef = useRef(null);
+  const [open = false, setOpen] = $71cd76cc60e0454e$export$6f32135080cb4c3({
+    prop: openProp,
+    defaultProp: defaultOpen,
+    onChange: onOpenChange
+  });
+  return /* @__PURE__ */ createElement($d08ef79370b62062$var$DropdownMenuProvider, {
+    scope: __scopeDropdownMenu,
+    triggerId: $1746a345f3d73bb7$export$f680877a34711e37(),
+    triggerRef,
+    contentId: $1746a345f3d73bb7$export$f680877a34711e37(),
+    open,
+    onOpenChange: setOpen,
+    onOpenToggle: useCallback(
+      () => setOpen(
+        (prevOpen) => !prevOpen
+      ),
+      [
+        setOpen
+      ]
+    ),
+    modal
+  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$be92b6f5f03c0fe9, _extends({}, menuScope, {
+    open,
+    onOpenChange: setOpen,
+    dir,
+    modal
+  }), children));
+};
+const $d08ef79370b62062$var$TRIGGER_NAME = "DropdownMenuTrigger";
+const $d08ef79370b62062$export$d2469213b3befba9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, disabled = false, ...triggerProps } = props;
+  const context = $d08ef79370b62062$var$useDropdownMenuContext($d08ef79370b62062$var$TRIGGER_NAME, __scopeDropdownMenu);
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$b688253958b8dfe7, _extends({
+    asChild: true
+  }, menuScope), /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    type: "button",
+    id: context.triggerId,
+    "aria-haspopup": "menu",
+    "aria-expanded": context.open,
+    "aria-controls": context.open ? context.contentId : void 0,
+    "data-state": context.open ? "open" : "closed",
+    "data-disabled": disabled ? "" : void 0,
+    disabled
+  }, triggerProps, {
+    ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, context.triggerRef),
+    onPointerDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDown, (event) => {
+      if (!disabled && event.button === 0 && event.ctrlKey === false) {
+        context.onOpenToggle();
+        if (!context.open)
+          event.preventDefault();
+      }
+    }),
+    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
+      if (disabled)
+        return;
+      if ([
+        "Enter",
+        " "
+      ].includes(event.key))
+        context.onOpenToggle();
+      if (event.key === "ArrowDown")
+        context.onOpenChange(true);
+      if ([
+        "Enter",
+        " ",
+        "ArrowDown"
+      ].includes(event.key))
+        event.preventDefault();
+    })
+  })));
+});
+const $d08ef79370b62062$export$cd369b4d4d54efc9 = (props) => {
+  const { __scopeDropdownMenu, ...portalProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$602eac185826482c, _extends({}, menuScope, portalProps));
+};
+const $d08ef79370b62062$var$CONTENT_NAME = "DropdownMenuContent";
+const $d08ef79370b62062$export$6e76d93a37c01248 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...contentProps } = props;
+  const context = $d08ef79370b62062$var$useDropdownMenuContext($d08ef79370b62062$var$CONTENT_NAME, __scopeDropdownMenu);
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  const hasInteractedOutsideRef = useRef(false);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$7c6e2c02157bb7d2, _extends({
+    id: context.contentId,
+    "aria-labelledby": context.triggerId
+  }, menuScope, contentProps, {
+    ref: forwardedRef,
+    onCloseAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onCloseAutoFocus, (event) => {
+      var _context$triggerRef$c;
+      if (!hasInteractedOutsideRef.current)
+        (_context$triggerRef$c = context.triggerRef.current) === null || _context$triggerRef$c === void 0 || _context$triggerRef$c.focus();
+      hasInteractedOutsideRef.current = false;
+      event.preventDefault();
+    }),
+    onInteractOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onInteractOutside, (event) => {
+      const originalEvent = event.detail.originalEvent;
+      const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+      const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+      if (!context.modal || isRightClick)
+        hasInteractedOutsideRef.current = true;
+    }),
+    style: {
+      ...props.style,
+      "--radix-dropdown-menu-content-transform-origin": "var(--radix-popper-transform-origin)",
+      "--radix-dropdown-menu-content-available-width": "var(--radix-popper-available-width)",
+      "--radix-dropdown-menu-content-available-height": "var(--radix-popper-available-height)",
+      "--radix-dropdown-menu-trigger-width": "var(--radix-popper-anchor-width)",
+      "--radix-dropdown-menu-trigger-height": "var(--radix-popper-anchor-height)"
+    }
+  }));
+});
+const $d08ef79370b62062$export$76e48c5b57f24495 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...labelProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$b04be29aa201d4f5, _extends({}, menuScope, labelProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$ed97964d1871885d = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...itemProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$6d08773d2e66f8f2, _extends({}, menuScope, itemProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$53a69729da201fa9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...checkboxItemProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends({}, menuScope, checkboxItemProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$e4f69b41b1637536 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...radioItemProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends({}, menuScope, radioItemProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$42355ae145153fb6 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends({}, menuScope, itemIndicatorProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$da160178fd3bc7e9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...separatorProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$1ff3c3f08ae963c0, _extends({}, menuScope, separatorProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$21dcb7ec56f874cf = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...subTriggerProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ea8a7a591ac5eac, _extends({}, menuScope, subTriggerProps, {
+    ref: forwardedRef
+  }));
+});
+const $d08ef79370b62062$export$f34ec8bc2482cc5f = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDropdownMenu, ...subContentProps } = props;
+  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
+  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$6d4de93b380beddf, _extends({}, menuScope, subContentProps, {
+    ref: forwardedRef,
+    style: {
+      ...props.style,
+      "--radix-dropdown-menu-content-transform-origin": "var(--radix-popper-transform-origin)",
+      "--radix-dropdown-menu-content-available-width": "var(--radix-popper-available-width)",
+      "--radix-dropdown-menu-content-available-height": "var(--radix-popper-available-height)",
+      "--radix-dropdown-menu-trigger-width": "var(--radix-popper-anchor-width)",
+      "--radix-dropdown-menu-trigger-height": "var(--radix-popper-anchor-height)"
+    }
+  }));
+});
+const $d08ef79370b62062$export$be92b6f5f03c0fe9 = $d08ef79370b62062$export$e44a253a59704894;
+const $d08ef79370b62062$export$41fb9f06171c75f4 = $d08ef79370b62062$export$d2469213b3befba9;
+const $d08ef79370b62062$export$602eac185826482c = $d08ef79370b62062$export$cd369b4d4d54efc9;
+const $d08ef79370b62062$export$7c6e2c02157bb7d2 = $d08ef79370b62062$export$6e76d93a37c01248;
+const $d08ef79370b62062$export$b04be29aa201d4f5 = $d08ef79370b62062$export$76e48c5b57f24495;
+const $d08ef79370b62062$export$6d08773d2e66f8f2 = $d08ef79370b62062$export$ed97964d1871885d;
+const $d08ef79370b62062$export$16ce288f89fa631c = $d08ef79370b62062$export$53a69729da201fa9;
+const $d08ef79370b62062$export$371ab307eab489c0 = $d08ef79370b62062$export$e4f69b41b1637536;
+const $d08ef79370b62062$export$c3468e2714d175fa = $d08ef79370b62062$export$42355ae145153fb6;
+const $d08ef79370b62062$export$1ff3c3f08ae963c0 = $d08ef79370b62062$export$da160178fd3bc7e9;
+const $d08ef79370b62062$export$2ea8a7a591ac5eac = $d08ef79370b62062$export$21dcb7ec56f874cf;
+const $d08ef79370b62062$export$6d4de93b380beddf = $d08ef79370b62062$export$f34ec8bc2482cc5f;
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0)
+      continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+var _excluded$T = ["color"];
+var CheckIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
+  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$T);
+  return createElement("svg", Object.assign({
+    width: "15",
+    height: "15",
+    viewBox: "0 0 15 15",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props, {
+    ref: forwardedRef
+  }), createElement("path", {
+    d: "M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z",
+    fill: color,
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  }));
+});
+var _excluded$Y = ["color"];
+var ChevronRightIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
+  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$Y);
+  return createElement("svg", Object.assign({
+    width: "15",
+    height: "15",
+    viewBox: "0 0 15 15",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props, {
+    ref: forwardedRef
+  }), createElement("path", {
+    d: "M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z",
+    fill: color,
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  }));
+});
+var _excluded$1r = ["color"];
+var Cross2Icon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
+  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$1r);
+  return createElement("svg", Object.assign({
+    width: "15",
+    height: "15",
+    viewBox: "0 0 15 15",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props, {
+    ref: forwardedRef
+  }), createElement("path", {
+    d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
+    fill: color,
+    fillRule: "evenodd",
+    clipRule: "evenodd"
+  }));
+});
+var _excluded$1I = ["color"];
+var DotFilledIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
+  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$1I);
+  return createElement("svg", Object.assign({
+    width: "15",
+    height: "15",
+    viewBox: "0 0 15 15",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props, {
+    ref: forwardedRef
+  }), createElement("path", {
+    d: "M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z",
+    fill: color
+  }));
+});
+const DropdownMenu = $d08ef79370b62062$export$be92b6f5f03c0fe9;
+const DropdownMenuTrigger = $d08ef79370b62062$export$41fb9f06171c75f4;
+const DropdownMenuSubTrigger = React.forwardRef(({ className, inset, children, ...props }, ref) => /* @__PURE__ */ jsxs(
+  $d08ef79370b62062$export$2ea8a7a591ac5eac,
+  {
+    ref,
+    className: cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
+      inset && "pl-8",
+      className
+    ),
+    ...props,
+    children: [
+      children,
+      /* @__PURE__ */ jsx(ChevronRightIcon, { className: "ml-auto h-4 w-4" })
+    ]
+  }
+));
+DropdownMenuSubTrigger.displayName = $d08ef79370b62062$export$2ea8a7a591ac5eac.displayName;
+const DropdownMenuSubContent = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  $d08ef79370b62062$export$6d4de93b380beddf,
+  {
+    ref,
+    className: cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    ),
+    ...props
+  }
+));
+DropdownMenuSubContent.displayName = $d08ef79370b62062$export$6d4de93b380beddf.displayName;
+const DropdownMenuContent = React.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx($d08ef79370b62062$export$602eac185826482c, { children: /* @__PURE__ */ jsx(
+  $d08ef79370b62062$export$7c6e2c02157bb7d2,
+  {
+    ref,
+    sideOffset,
+    className: cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    ),
+    ...props
+  }
+) }));
+DropdownMenuContent.displayName = $d08ef79370b62062$export$7c6e2c02157bb7d2.displayName;
+const DropdownMenuItem = React.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx(
+  $d08ef79370b62062$export$6d08773d2e66f8f2,
+  {
+    ref,
+    className: cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      inset && "pl-8",
+      className
+    ),
+    ...props
+  }
+));
+DropdownMenuItem.displayName = $d08ef79370b62062$export$6d08773d2e66f8f2.displayName;
+const DropdownMenuCheckboxItem = React.forwardRef(({ className, children, checked, ...props }, ref) => /* @__PURE__ */ jsxs(
+  $d08ef79370b62062$export$16ce288f89fa631c,
+  {
+    ref,
+    className: cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    ),
+    checked,
+    ...props,
+    children: [
+      /* @__PURE__ */ jsx("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx($d08ef79370b62062$export$c3468e2714d175fa, { children: /* @__PURE__ */ jsx(CheckIcon, { className: "h-4 w-4" }) }) }),
+      children
+    ]
+  }
+));
+DropdownMenuCheckboxItem.displayName = $d08ef79370b62062$export$16ce288f89fa631c.displayName;
+const DropdownMenuRadioItem = React.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs(
+  $d08ef79370b62062$export$371ab307eab489c0,
+  {
+    ref,
+    className: cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    ),
+    ...props,
+    children: [
+      /* @__PURE__ */ jsx("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx($d08ef79370b62062$export$c3468e2714d175fa, { children: /* @__PURE__ */ jsx(DotFilledIcon, { className: "h-4 w-4 fill-current" }) }) }),
+      children
+    ]
+  }
+));
+DropdownMenuRadioItem.displayName = $d08ef79370b62062$export$371ab307eab489c0.displayName;
+const DropdownMenuLabel = React.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx(
+  $d08ef79370b62062$export$b04be29aa201d4f5,
+  {
+    ref,
+    className: cn(
+      "px-2 py-1.5 text-sm font-semibold",
+      inset && "pl-8",
+      className
+    ),
+    ...props
+  }
+));
+DropdownMenuLabel.displayName = $d08ef79370b62062$export$b04be29aa201d4f5.displayName;
+const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  $d08ef79370b62062$export$1ff3c3f08ae963c0,
+  {
+    ref,
+    className: cn("-mx-1 my-1 h-px bg-muted", className),
+    ...props
+  }
+));
+DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
+const DesktopMenu = ({ auth }) => {
+  const [user, loading] = useAuthState(auth);
+  const getSignOut = async () => {
+    await (auth == null ? void 0 : auth.signOut());
+  };
+  return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
+    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted border shrink-0" }) }),
+    /* @__PURE__ */ jsxs(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: [
+      /* @__PURE__ */ jsx(DropdownMenuLabel, { children: /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
+        /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: user == null ? void 0 : user.email })
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-48" }),
+      /* @__PURE__ */ jsx(DropdownMenuItem, { onClick: getSignOut, className: "text-inherit flex items-center justify-center", children: "Выйти из профиля" }),
+      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
+      /* @__PURE__ */ jsx(DropdownMenuLabel, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-full h-fit flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: 'Подписка "Плюс"' }) }) })
+    ] })
+  ] });
+};
+const $5d3850c4d0b4e6c7$var$DIALOG_NAME = "Dialog";
+const [$5d3850c4d0b4e6c7$var$createDialogContext, $5d3850c4d0b4e6c7$export$cc702773b8ea3e41] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($5d3850c4d0b4e6c7$var$DIALOG_NAME);
+const [$5d3850c4d0b4e6c7$var$DialogProvider, $5d3850c4d0b4e6c7$var$useDialogContext] = $5d3850c4d0b4e6c7$var$createDialogContext($5d3850c4d0b4e6c7$var$DIALOG_NAME);
+const $5d3850c4d0b4e6c7$export$3ddf2d174ce01153 = (props) => {
+  const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
+  const triggerRef = useRef(null);
+  const contentRef = useRef(null);
+  const [open = false, setOpen] = $71cd76cc60e0454e$export$6f32135080cb4c3({
+    prop: openProp,
+    defaultProp: defaultOpen,
+    onChange: onOpenChange
+  });
+  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogProvider, {
+    scope: __scopeDialog,
+    triggerRef,
+    contentRef,
+    contentId: $1746a345f3d73bb7$export$f680877a34711e37(),
+    titleId: $1746a345f3d73bb7$export$f680877a34711e37(),
+    descriptionId: $1746a345f3d73bb7$export$f680877a34711e37(),
+    open,
+    onOpenChange: setOpen,
+    onOpenToggle: useCallback(
+      () => setOpen(
+        (prevOpen) => !prevOpen
+      ),
+      [
+        setOpen
+      ]
+    ),
+    modal
+  }, children);
+};
+const $5d3850c4d0b4e6c7$var$TRIGGER_NAME = "DialogTrigger";
+const $5d3850c4d0b4e6c7$export$2e1e1122cf0cba88 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, ...triggerProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$TRIGGER_NAME, __scopeDialog);
+  const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.triggerRef);
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    type: "button",
+    "aria-haspopup": "dialog",
+    "aria-expanded": context.open,
+    "aria-controls": context.contentId,
+    "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
+  }, triggerProps, {
+    ref: composedTriggerRef,
+    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context.onOpenToggle)
+  }));
+});
+const $5d3850c4d0b4e6c7$var$PORTAL_NAME = "DialogPortal";
+const [$5d3850c4d0b4e6c7$var$PortalProvider, $5d3850c4d0b4e6c7$var$usePortalContext] = $5d3850c4d0b4e6c7$var$createDialogContext($5d3850c4d0b4e6c7$var$PORTAL_NAME, {
+  forceMount: void 0
+});
+const $5d3850c4d0b4e6c7$export$dad7c95542bacce0 = (props) => {
+  const { __scopeDialog, forceMount, children, container } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$PORTAL_NAME, __scopeDialog);
+  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$PortalProvider, {
+    scope: __scopeDialog,
+    forceMount
+  }, Children.map(
+    children,
+    (child) => /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+      present: forceMount || context.open
+    }, /* @__PURE__ */ createElement($f1701beae083dbae$export$602eac185826482c, {
+      asChild: true,
+      container
+    }, child))
+  ));
+};
+const $5d3850c4d0b4e6c7$var$OVERLAY_NAME = "DialogOverlay";
+const $5d3850c4d0b4e6c7$export$bd1d06c79be19e17 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const portalContext = $5d3850c4d0b4e6c7$var$usePortalContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
+  const { forceMount = portalContext.forceMount, ...overlayProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
+  return context.modal ? /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context.open
+  }, /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends({}, overlayProps, {
+    ref: forwardedRef
+  }))) : null;
+});
+const $5d3850c4d0b4e6c7$var$DialogOverlayImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, ...overlayProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, __scopeDialog);
+  return (
+    // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
+    // ie. when `Overlay` and `Content` are siblings
+    /* @__PURE__ */ createElement($67UHm$RemoveScroll, {
+      as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
+      allowPinchZoom: true,
+      shards: [
+        context.contentRef
+      ]
+    }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+      "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
+    }, overlayProps, {
+      ref: forwardedRef,
+      style: {
+        pointerEvents: "auto",
+        ...overlayProps.style
+      }
+    })))
+  );
+});
+const $5d3850c4d0b4e6c7$var$CONTENT_NAME = "DialogContent";
+const $5d3850c4d0b4e6c7$export$b6d9565de1e068cf = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const portalContext = $5d3850c4d0b4e6c7$var$usePortalContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
+  const { forceMount = portalContext.forceMount, ...contentProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
+  return /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context.open
+  }, context.modal ? /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends({}, contentProps, {
+    ref: forwardedRef
+  })) : /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends({}, contentProps, {
+    ref: forwardedRef
+  })));
+});
+const $5d3850c4d0b4e6c7$var$DialogContentModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
+  const contentRef = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.contentRef, contentRef);
+  useEffect(() => {
+    const content = contentRef.current;
+    if (content)
+      return hideOthers(content);
+  }, []);
+  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends({}, props, {
+    ref: composedRefs,
+    trapFocus: context.open,
+    disableOutsidePointerEvents: true,
+    onCloseAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onCloseAutoFocus, (event) => {
+      var _context$triggerRef$c;
+      event.preventDefault();
+      (_context$triggerRef$c = context.triggerRef.current) === null || _context$triggerRef$c === void 0 || _context$triggerRef$c.focus();
+    }),
+    onPointerDownOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDownOutside, (event) => {
+      const originalEvent = event.detail.originalEvent;
+      const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+      const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+      if (isRightClick)
+        event.preventDefault();
+    }),
+    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onFocusOutside,
+      (event) => event.preventDefault()
+    )
+  }));
+});
+const $5d3850c4d0b4e6c7$var$DialogContentNonModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
+  const hasInteractedOutsideRef = useRef(false);
+  const hasPointerDownOutsideRef = useRef(false);
+  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends({}, props, {
+    ref: forwardedRef,
+    trapFocus: false,
+    disableOutsidePointerEvents: false,
+    onCloseAutoFocus: (event) => {
+      var _props$onCloseAutoFoc;
+      (_props$onCloseAutoFoc = props.onCloseAutoFocus) === null || _props$onCloseAutoFoc === void 0 || _props$onCloseAutoFoc.call(props, event);
+      if (!event.defaultPrevented) {
+        var _context$triggerRef$c2;
+        if (!hasInteractedOutsideRef.current)
+          (_context$triggerRef$c2 = context.triggerRef.current) === null || _context$triggerRef$c2 === void 0 || _context$triggerRef$c2.focus();
+        event.preventDefault();
+      }
+      hasInteractedOutsideRef.current = false;
+      hasPointerDownOutsideRef.current = false;
+    },
+    onInteractOutside: (event) => {
+      var _props$onInteractOuts, _context$triggerRef$c3;
+      (_props$onInteractOuts = props.onInteractOutside) === null || _props$onInteractOuts === void 0 || _props$onInteractOuts.call(props, event);
+      if (!event.defaultPrevented) {
+        hasInteractedOutsideRef.current = true;
+        if (event.detail.originalEvent.type === "pointerdown")
+          hasPointerDownOutsideRef.current = true;
+      }
+      const target = event.target;
+      const targetIsTrigger = (_context$triggerRef$c3 = context.triggerRef.current) === null || _context$triggerRef$c3 === void 0 ? void 0 : _context$triggerRef$c3.contains(target);
+      if (targetIsTrigger)
+        event.preventDefault();
+      if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current)
+        event.preventDefault();
+    }
+  }));
+});
+const $5d3850c4d0b4e6c7$var$DialogContentImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, __scopeDialog);
+  const contentRef = useRef(null);
+  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, contentRef);
+  $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c();
+  return /* @__PURE__ */ createElement(Fragment, null, /* @__PURE__ */ createElement($d3863c46a17e8a28$export$20e40289641fbbb6, {
+    asChild: true,
+    loop: true,
+    trapped: trapFocus,
+    onMountAutoFocus: onOpenAutoFocus,
+    onUnmountAutoFocus: onCloseAutoFocus
+  }, /* @__PURE__ */ createElement($5cb92bef7577960e$export$177fb62ff3ec1f22, _extends({
+    role: "dialog",
+    id: context.contentId,
+    "aria-describedby": context.descriptionId,
+    "aria-labelledby": context.titleId,
+    "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
+  }, contentProps, {
+    ref: composedRefs,
+    onDismiss: () => context.onOpenChange(false)
+  }))), false);
+});
+const $5d3850c4d0b4e6c7$var$TITLE_NAME = "DialogTitle";
+const $5d3850c4d0b4e6c7$export$16f7638e4a34b909 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, ...titleProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$TITLE_NAME, __scopeDialog);
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.h2, _extends({
+    id: context.titleId
+  }, titleProps, {
+    ref: forwardedRef
+  }));
+});
+const $5d3850c4d0b4e6c7$var$DESCRIPTION_NAME = "DialogDescription";
+const $5d3850c4d0b4e6c7$export$94e94c2ec2c954d5 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, ...descriptionProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$DESCRIPTION_NAME, __scopeDialog);
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.p, _extends({
+    id: context.descriptionId
+  }, descriptionProps, {
+    ref: forwardedRef
+  }));
+});
+const $5d3850c4d0b4e6c7$var$CLOSE_NAME = "DialogClose";
+const $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { __scopeDialog, ...closeProps } = props;
+  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CLOSE_NAME, __scopeDialog);
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    type: "button"
+  }, closeProps, {
+    ref: forwardedRef,
+    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
+      props.onClick,
+      () => context.onOpenChange(false)
+    )
+  }));
+});
+function $5d3850c4d0b4e6c7$var$getState(open) {
+  return open ? "open" : "closed";
+}
+const $5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9 = $5d3850c4d0b4e6c7$export$3ddf2d174ce01153;
+const $5d3850c4d0b4e6c7$export$41fb9f06171c75f4 = $5d3850c4d0b4e6c7$export$2e1e1122cf0cba88;
+const $5d3850c4d0b4e6c7$export$602eac185826482c = $5d3850c4d0b4e6c7$export$dad7c95542bacce0;
+const $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff = $5d3850c4d0b4e6c7$export$bd1d06c79be19e17;
+const $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2 = $5d3850c4d0b4e6c7$export$b6d9565de1e068cf;
+const $5d3850c4d0b4e6c7$export$f99233281efd08a0 = $5d3850c4d0b4e6c7$export$16f7638e4a34b909;
+const $5d3850c4d0b4e6c7$export$393edc798c47379d = $5d3850c4d0b4e6c7$export$94e94c2ec2c954d5;
+const $5d3850c4d0b4e6c7$export$f39c2d165cd861fe = $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac;
+const Dialog = $5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9;
+const DialogTrigger = $5d3850c4d0b4e6c7$export$41fb9f06171c75f4;
+const DialogPortal = $5d3850c4d0b4e6c7$export$602eac185826482c;
+const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff,
+  {
+    ref,
+    className: cn(
+      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className
+    ),
+    ...props
+  }
+));
+DialogOverlay.displayName = $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff.displayName;
+const DialogContent = React.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs(DialogPortal, { children: [
+  /* @__PURE__ */ jsx(DialogOverlay, {}),
+  /* @__PURE__ */ jsxs(
+    $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2,
+    {
+      ref,
+      className: cn(
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        className
+      ),
+      ...props,
+      children: [
+        children,
+        /* @__PURE__ */ jsxs($5d3850c4d0b4e6c7$export$f39c2d165cd861fe, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", children: [
+          /* @__PURE__ */ jsx(Cross2Icon, { className: "h-4 w-4" }),
+          /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Close" })
+        ] })
+      ]
+    }
+  )
+] }));
+DialogContent.displayName = $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2.displayName;
+const DialogTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  $5d3850c4d0b4e6c7$export$f99233281efd08a0,
+  {
+    ref,
+    className: cn(
+      "text-lg font-semibold leading-none tracking-tight",
+      className
+    ),
+    ...props
+  }
+));
+DialogTitle.displayName = $5d3850c4d0b4e6c7$export$f99233281efd08a0.displayName;
+const DialogDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
+  $5d3850c4d0b4e6c7$export$393edc798c47379d,
+  {
+    ref,
+    className: cn("text-sm text-muted-foreground", className),
+    ...props
+  }
+));
+DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
+const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
+const $89eedd556c436f6a$var$ORIENTATIONS = [
+  "horizontal",
+  "vertical"
+];
+const $89eedd556c436f6a$export$1ff3c3f08ae963c0 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
+  const { decorative, orientation: orientationProp = $89eedd556c436f6a$var$DEFAULT_ORIENTATION, ...domProps } = props;
+  const orientation = $89eedd556c436f6a$var$isValidOrientation(orientationProp) ? orientationProp : $89eedd556c436f6a$var$DEFAULT_ORIENTATION;
+  const ariaOrientation = orientation === "vertical" ? orientation : void 0;
+  const semanticProps = decorative ? {
+    role: "none"
+  } : {
+    "aria-orientation": ariaOrientation,
+    role: "separator"
+  };
+  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+    "data-orientation": orientation
+  }, semanticProps, domProps, {
+    ref: forwardedRef
+  }));
+});
+$89eedd556c436f6a$export$1ff3c3f08ae963c0.propTypes = {
+  orientation(props, propName, componentName) {
+    const propValue = props[propName];
+    const strVal = String(propValue);
+    if (propValue && !$89eedd556c436f6a$var$isValidOrientation(propValue))
+      return new Error($89eedd556c436f6a$var$getInvalidOrientationError(strVal, componentName));
+    return null;
+  }
+};
+function $89eedd556c436f6a$var$getInvalidOrientationError(value, componentName) {
+  return `Invalid prop \`orientation\` of value \`${value}\` supplied to \`${componentName}\`, expected one of:
+  - horizontal
+  - vertical
+
+Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
+}
+function $89eedd556c436f6a$var$isValidOrientation(orientation) {
+  return $89eedd556c436f6a$var$ORIENTATIONS.includes(orientation);
+}
+const $89eedd556c436f6a$export$be92b6f5f03c0fe9 = $89eedd556c436f6a$export$1ff3c3f08ae963c0;
+const Separator = React.forwardRef(
+  ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => /* @__PURE__ */ jsx(
+    $89eedd556c436f6a$export$be92b6f5f03c0fe9,
+    {
+      ref,
+      decorative,
+      orientation,
+      className: cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        className
+      ),
+      ...props
+    }
+  )
+);
+Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
 const MobileMenu = ({ auth }) => {
-  useAuthState(auth);
-  return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted shrink-0" });
+  const [user, loading] = useAuthState(auth);
+  const getSignOut = async () => {
+    await (auth == null ? void 0 : auth.signOut());
+  };
+  return /* @__PURE__ */ jsxs(Dialog, { children: [
+    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
+    /* @__PURE__ */ jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit", children: [
+        /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-center", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: user == null ? void 0 : user.displayName }),
+          /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: user == null ? void 0 : user.email })
+        ] }),
+        /* @__PURE__ */ jsx(Separator, {}),
+        /* @__PURE__ */ jsx("div", { className: "w-full h-fit flex flex-col py-6" })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit mt-auto", children: [
+        /* @__PURE__ */ jsxs("div", { className: "w-full h-fit py-6", children: [
+          /* @__PURE__ */ jsx(Separator, {}),
+          /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit my-4 gap-2", children: [
+            /* @__PURE__ */ jsx("span", { className: "font-medium", children: "Другие проекты" }),
+            projects.filter((_, i) => i < 3).map(
+              (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
+                /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
+                /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
+              ] }) }, project.key + "-menu")
+            )
+          ] }),
+          /* @__PURE__ */ jsx(Separator, {})
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "w-full h-fit py-2", children: /* @__PURE__ */ jsx(Button, { onClick: getSignOut, className: "w-full text-inherit", variant: "outline", size: "lg", children: "Выйти из профиля" }) }),
+        /* @__PURE__ */ jsx(Separator, {}),
+        /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: 'Подписка "Плюс"' }) })
+      ] })
+    ] })
+  ] });
 };
 const UserCircle = ({ auth }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 786px)" });
   if (!auth)
-    return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" });
-  if (!isTabletOrMobile)
-    return /* @__PURE__ */ jsx(DesktopMenu, { auth });
-  return /* @__PURE__ */ jsx(MobileMenu, { auth });
+    return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted flex items-center border justify-center", children: /* @__PURE__ */ jsx(BiUser, { className: "text-muted-foreground" }) });
+  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+    /* @__PURE__ */ jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsx(DesktopMenu, { auth }) }),
+    /* @__PURE__ */ jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsx(MobileMenu, { auth }) })
+  ] });
 };
 export {
   avatar as Avatar,

@@ -46,10 +46,16 @@ const app = async (): Promise<UserConfigExport> => {
         fileName: (format) => `${formattedName}.${format}.js`,
       },
       rollupOptions: {
-        external: ['react', 'react/jsx-runtime', 'react-dom', 'tailwindcss'],
+        external: ['react', 'react/jsx-runtime', 'react-dom', 'tailwindcss', 'react-firebase-hooks'],
         output: {
           banner: '"use client";',
           globals: {
+            "react-icons/bi/index.esm.js": "react-icons/bi",
+            "react-icons/pi/index.esm.js": "react-icons/pi",
+            "react-icons/md/index.esm.js": "react-icons/md",
+            "tailwind-merge": "tailwind-merge",
+            "class-variance-authority": "class-variance-authority",
+            "react-firebase-hooks/auth/dist/index.esm.js": "react-firebase-hooks/auth",
             react: 'React',
             'react/jsx-runtime': 'react/jsx-runtime',
             'react-dom': 'ReactDOM',
