@@ -9,7 +9,7 @@ const ProjectsGrid = () => {
     const themeCookie = cookies ? cookies['theme'] as 'light' | 'dark' : 'dark'
     return (
         <Popover>
-            <PopoverTrigger asChild className="rounded-full border w-9 h-9 flex items-center justify-center">
+            <PopoverTrigger asChild className="rounded-full border w-9 h-9 flex items-center bg-background justify-center">
                 <Button size='icon' variant="ghost">
                     <BiSolidGrid size={20} />
                 </Button>

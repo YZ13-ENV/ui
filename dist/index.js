@@ -3994,7 +3994,7 @@
     const cookies = getCookies(document);
     const themeCookie = cookies ? cookies["theme"] : "dark";
     return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiSolidGrid, { size: 20 }) }) }),
+      /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiSolidGrid, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsx(PopoverContent, { className: "projects-grid", children: projects.map(
         (project) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
           /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsxRuntime.jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
@@ -5894,7 +5894,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
   Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
   const MobileMenu = ({ user }) => {
     return /* @__PURE__ */ jsxRuntime.jsxs(Dialog, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
+      /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
         /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "flex flex-col w-full h-fit", children: [
           /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-center", children: [
@@ -5925,13 +5925,12 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       ] })
     ] });
   };
-  const UserCircle = ({ user }) => {
+  const UserCircle = ({ user, activeMenu = "desktop", buttonSize = "default" }) => {
     if (!user)
-      return /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted flex items-center border justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiUser, { className: "text-muted-foreground" }) });
-    return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user }) }),
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user }) })
-    ] });
+      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", children: "Войти" });
+    if (activeMenu === "desktop")
+      return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user });
+    return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user });
   };
   exports2.Avatar = avatar;
   exports2.ProjectsGrid = ProjectsGrid;

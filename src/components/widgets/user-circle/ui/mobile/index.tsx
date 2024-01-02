@@ -13,7 +13,7 @@ const MobileMenu = ({ user }: Props) => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <div className="w-9 h-9 rounded-full border shrink-0 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center">
                     <BiMenu size={20} />
                 </div>
             </DialogTrigger>

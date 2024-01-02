@@ -1,5 +1,5 @@
 "use client";
-import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
+import { jsxs, jsx } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
 import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
@@ -3984,7 +3984,7 @@ const ProjectsGrid = () => {
   const cookies = getCookies(document);
   const themeCookie = cookies ? cookies["theme"] : "dark";
   return /* @__PURE__ */ jsxs(Popover, { children: [
-    /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(BiSolidGrid, { size: 20 }) }) }),
+    /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(BiSolidGrid, { size: 20 }) }) }),
     /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(
       (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
         /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
@@ -5884,7 +5884,7 @@ const Separator = React.forwardRef(
 Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
 const MobileMenu = ({ user }) => {
   return /* @__PURE__ */ jsxs(Dialog, { children: [
-    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
+    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
     /* @__PURE__ */ jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex flex-col w-full h-fit", children: [
         /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-center", children: [
@@ -5915,13 +5915,12 @@ const MobileMenu = ({ user }) => {
     ] })
   ] });
 };
-const UserCircle = ({ user }) => {
+const UserCircle = ({ user, activeMenu = "desktop", buttonSize = "default" }) => {
   if (!user)
-    return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted flex items-center border justify-center", children: /* @__PURE__ */ jsx(BiUser, { className: "text-muted-foreground" }) });
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsx(DesktopMenu, { user }) }),
-    /* @__PURE__ */ jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsx(MobileMenu, { user }) })
-  ] });
+    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", children: "Войти" });
+  if (activeMenu === "desktop")
+    return /* @__PURE__ */ jsx(DesktopMenu, { user });
+  return /* @__PURE__ */ jsx(MobileMenu, { user });
 };
 export {
   avatar as Avatar,
