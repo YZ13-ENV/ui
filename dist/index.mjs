@@ -5590,15 +5590,7 @@ const SignOutSection$1 = ({ section }) => {
 };
 const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
   return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
-    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsx(
-      "img",
-      {
-        src: user.photoURL,
-        alt: "user-profile-img",
-        style: { width: `${size2}px`, height: `${size2}px` },
-        className: "w-9 h-9 rounded-full bg-muted border shrink-0"
-      }
-    ) : /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsx("div", { style: { width: `${size2}px`, height: `${size2}px` }, children: /* @__PURE__ */ jsx("img", { src: user.photoURL, alt: "user-profile-img", className: "w-full h-full rounded-full object-cover" }) }) : /* @__PURE__ */ jsx(
       "div",
       {
         style: { width: `${size2}px`, height: `${size2}px` },

@@ -20,9 +20,9 @@ const DesktopMenu = ({ user, size=36, menuMap=defaultMenuMap }: Props) => {
             <DropdownMenuTrigger asChild>
                 {
                     user.photoURL
-                    ? <img src={user.photoURL} alt='user-profile-img'
-                    style={{ width: `${size}px`, height: `${size}px` }}
-                    className="w-9 h-9 rounded-full bg-muted border shrink-0" />
+                    ? <div style={{ width: `${size}px`, height: `${size}px` }}>
+                        <img src={user.photoURL} alt='user-profile-img' className="w-full h-full rounded-full object-cover" />
+                    </div>
                     : <div style={{ width: `${size}px`, height: `${size}px` }}
                     className="w-9 h-9 rounded-full bg-muted border shrink-0 flex items-center justify-center">
                         <BiUser size={18} />
