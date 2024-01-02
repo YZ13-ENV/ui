@@ -1,15 +1,10 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useAuthState } from "@/helpers/useAuthState"
-import { Auth } from "firebase/auth"
+import { User } from "firebase/auth"
 
 type Props = {
-    auth: Auth
+    user: User
 }
-const DesktopMenu = ({ auth }: Props) => {
-    const [user, loading] = useAuthState(auth)
-    const getSignOut = async() => {
-        await auth?.signOut()
-    }
+const DesktopMenu = ({ user }: Props) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -23,7 +18,7 @@ const DesktopMenu = ({ auth }: Props) => {
                     </div>
                 </DropdownMenuLabel>
                 <div className="w-full h-48"></div>
-                <DropdownMenuItem onClick={getSignOut} className="text-inherit flex items-center justify-center">Выйти из профиля</DropdownMenuItem>
+                <DropdownMenuItem className="text-inherit flex items-center justify-center">Выйти из профиля</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuLabel asChild>
                     <div className="w-full h-fit flex items-center justify-center">

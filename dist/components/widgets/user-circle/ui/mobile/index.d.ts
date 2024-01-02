@@ -1,6 +1,6 @@
-import { Auth } from "firebase/auth";
+import { User } from "firebase/auth";
 type Props = {
-    auth: Auth;
+    user: User;
 };
-declare const MobileMenu: ({ auth }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const MobileMenu: ({ user }: Props) => import("react/jsx-runtime").JSX.Element;
 export default MobileMenu;

@@ -2,19 +2,14 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Separator } from "@/components/ui/separator"
 import { projects } from "@/const/projects"
-import { useAuthState } from "@/helpers/useAuthState"
-import { Auth } from "firebase/auth"
+import { User } from "firebase/auth"
 import { BiMenu } from "react-icons/bi"
 import { MdOpenInNew } from "react-icons/md"
 
 type Props = {
-    auth: Auth
+    user: User
 }
-const MobileMenu = ({ auth }: Props) => {
-    const [user, loading] = useAuthState(auth)
-    const getSignOut = async() => {
-        await auth?.signOut()
-    }
+const MobileMenu = ({ user }: Props) => {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -54,7 +49,7 @@ const MobileMenu = ({ auth }: Props) => {
                         <Separator />
                     </div>
                     <div className="w-full h-fit py-2">
-                        <Button onClick={getSignOut} className="w-full text-inherit" variant='outline' size='lg'>Выйти из профиля</Button>
+                        <Button className="w-full text-inherit" variant='outline' size='lg'>Выйти из профиля</Button>
                     </div>
                     <Separator />
                     <div className="w-full h-fit pt-5 flex items-center justify-center">

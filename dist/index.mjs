@@ -10,7 +10,6 @@ import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
-import { onAuthStateChanged } from "firebase/auth";
 import { MdOpenInNew } from "react-icons/md/index.esm.js";
 const globals = "";
 const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {
@@ -5501,22 +5500,7 @@ const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) =>
   }
 ));
 DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
-const useAuthState = (auth) => {
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    const listener = onAuthStateChanged(auth, setUser, setError);
-    return () => {
-      listener();
-    };
-  }, [auth]);
-  return [user, error];
-};
-const DesktopMenu = ({ auth }) => {
-  const [user, loading] = useAuthState(auth);
-  const getSignOut = async () => {
-    await (auth == null ? void 0 : auth.signOut());
-  };
+const DesktopMenu = ({ user }) => {
   return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
     /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted border shrink-0" }) }),
     /* @__PURE__ */ jsxs(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: [
@@ -5525,7 +5509,7 @@ const DesktopMenu = ({ auth }) => {
         /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: user == null ? void 0 : user.email })
       ] }) }),
       /* @__PURE__ */ jsx("div", { className: "w-full h-48" }),
-      /* @__PURE__ */ jsx(DropdownMenuItem, { onClick: getSignOut, className: "text-inherit flex items-center justify-center", children: "Выйти из профиля" }),
+      /* @__PURE__ */ jsx(DropdownMenuItem, { className: "text-inherit flex items-center justify-center", children: "Выйти из профиля" }),
       /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
       /* @__PURE__ */ jsx(DropdownMenuLabel, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-full h-fit flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: 'Подписка "Плюс"' }) }) })
     ] })
@@ -5898,11 +5882,7 @@ const Separator = React.forwardRef(
   )
 );
 Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
-const MobileMenu = ({ auth }) => {
-  const [user, loading] = useAuthState(auth);
-  const getSignOut = async () => {
-    await (auth == null ? void 0 : auth.signOut());
-  };
+const MobileMenu = ({ user }) => {
   return /* @__PURE__ */ jsxs(Dialog, { children: [
     /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
     /* @__PURE__ */ jsxs(DialogContent, { className: "rounded-none w-full h-full", children: [
@@ -5928,19 +5908,19 @@ const MobileMenu = ({ auth }) => {
           ] }),
           /* @__PURE__ */ jsx(Separator, {})
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "w-full h-fit py-2", children: /* @__PURE__ */ jsx(Button, { onClick: getSignOut, className: "w-full text-inherit", variant: "outline", size: "lg", children: "Выйти из профиля" }) }),
+        /* @__PURE__ */ jsx("div", { className: "w-full h-fit py-2", children: /* @__PURE__ */ jsx(Button, { className: "w-full text-inherit", variant: "outline", size: "lg", children: "Выйти из профиля" }) }),
         /* @__PURE__ */ jsx(Separator, {}),
         /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: 'Подписка "Плюс"' }) })
       ] })
     ] })
   ] });
 };
-const UserCircle = ({ auth }) => {
-  if (!auth)
+const UserCircle = ({ user }) => {
+  if (!user)
     return /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted flex items-center border justify-center", children: /* @__PURE__ */ jsx(BiUser, { className: "text-muted-foreground" }) });
   return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsx(DesktopMenu, { auth }) }),
-    /* @__PURE__ */ jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsx(MobileMenu, { auth }) })
+    /* @__PURE__ */ jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsx(DesktopMenu, { user }) }),
+    /* @__PURE__ */ jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsx(MobileMenu, { user }) })
   ] });
 };
 export {

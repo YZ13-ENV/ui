@@ -1,6 +1,6 @@
-import { Auth } from "firebase/auth";
+import { User } from "firebase/auth";
 type Props = {
-    auth: Auth;
+    user: User;
 };
-declare const DesktopMenu: ({ auth }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const DesktopMenu: ({ user }: Props) => import("react/jsx-runtime").JSX.Element;
 export default DesktopMenu;
