@@ -3991,8 +3991,14 @@
     return result;
   };
   const ProjectsGrid = () => {
-    const cookies = getCookies(document);
+    const [cookies, setCookies] = React.useState(null);
     const themeCookie = cookies ? cookies["theme"] : "dark";
+    React.useEffect(() => {
+      if (typeof document !== "undefined") {
+        const takenCookies = getCookies(document);
+        setCookies(takenCookies);
+      }
+    }, [typeof document]);
     return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdGridView, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsx(PopoverContent, { className: "projects-grid", children: projects.map(

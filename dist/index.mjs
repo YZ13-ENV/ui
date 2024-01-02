@@ -3981,8 +3981,14 @@ const getCookies = (document2) => {
   return result;
 };
 const ProjectsGrid = () => {
-  const cookies = getCookies(document);
+  const [cookies, setCookies] = useState(null);
   const themeCookie = cookies ? cookies["theme"] : "dark";
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const takenCookies = getCookies(document);
+      setCookies(takenCookies);
+    }
+  }, [typeof document]);
   return /* @__PURE__ */ jsxs(Popover, { children: [
     /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(MdGridView, { size: 20 }) }) }),
     /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(

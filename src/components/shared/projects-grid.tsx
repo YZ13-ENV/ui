@@ -3,10 +3,17 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { projects } from "@/const/projects"
 import { Button } from "../ui/button"
 import { getCookies } from "@/helpers/cookie"
+import { useEffect, useState } from "react"
 
 const ProjectsGrid = () => {
-    const cookies = getCookies(document)
+    const [cookies, setCookies] = useState<{ [key: string]: string } | null>(null)
     const themeCookie = cookies ? cookies['theme'] as 'light' | 'dark' : 'dark'
+    useEffect(() => {
+        if (typeof document !== 'undefined') {
+            const takenCookies = getCookies(document)
+            setCookies(takenCookies)
+        }
+    },[typeof document])
     return (
         <Popover>
             <PopoverTrigger asChild className="rounded-full border w-9 h-9 flex items-center bg-background justify-center">
