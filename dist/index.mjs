@@ -10,7 +10,7 @@ import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
-import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
+import { onAuthStateChanged } from "firebase/auth";
 import { MdOpenInNew } from "react-icons/md/index.esm.js";
 const globals = "";
 const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {
@@ -5501,6 +5501,17 @@ const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) =>
   }
 ));
 DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
+const useAuthState = (auth) => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const listener = onAuthStateChanged(auth, setUser, setError);
+    return () => {
+      listener();
+    };
+  }, [auth]);
+  return [user, error];
+};
 const DesktopMenu = ({ auth }) => {
   const [user, loading] = useAuthState(auth);
   const getSignOut = async () => {

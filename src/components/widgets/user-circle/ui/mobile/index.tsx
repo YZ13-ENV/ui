@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Separator } from "@/components/ui/separator"
 import { projects } from "@/const/projects"
+import { useAuthState } from "@/helpers/useAuthState"
 import { Auth } from "firebase/auth"
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { BiMenu } from "react-icons/bi"
 import { MdOpenInNew } from "react-icons/md"
 

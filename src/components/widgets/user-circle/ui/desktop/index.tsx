@@ -1,6 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useAuthState } from "@/helpers/useAuthState"
 import { Auth } from "firebase/auth"
-import { useAuthState } from 'react-firebase-hooks/auth'
 
 type Props = {
     auth: Auth

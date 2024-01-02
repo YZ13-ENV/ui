@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("react-icons/md/index.esm.js")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-firebase-hooks/auth/dist/index.esm.js", "react-icons/md/index.esm.js"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global.Image, global.React, global["react-icons/bi"], global["react-icons/pi"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-firebase-hooks/auth"], global["react-icons/md"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$2, index_esm_js$3) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("firebase/auth"), require("react-icons/md/index.esm.js")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "firebase/auth", "react-icons/md/index.esm.js"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global.Image, global.React, global["react-icons/bi"], global["react-icons/pi"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global.auth, global["react-icons/md"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, auth, index_esm_js$2) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -5510,10 +5510,21 @@
     }
   ));
   DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
-  const DesktopMenu = ({ auth }) => {
-    const [user, loading] = index_esm_js$2.useAuthState(auth);
+  const useAuthState = (auth$1) => {
+    const [user, setUser] = React.useState(null);
+    const [error, setError] = React.useState(null);
+    React.useEffect(() => {
+      const listener = auth.onAuthStateChanged(auth$1, setUser, setError);
+      return () => {
+        listener();
+      };
+    }, [auth$1]);
+    return [user, error];
+  };
+  const DesktopMenu = ({ auth: auth2 }) => {
+    const [user, loading] = useAuthState(auth2);
     const getSignOut = async () => {
-      await (auth == null ? void 0 : auth.signOut());
+      await (auth2 == null ? void 0 : auth2.signOut());
     };
     return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenu, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted border shrink-0" }) }),
@@ -5896,10 +5907,10 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     )
   );
   Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
-  const MobileMenu = ({ auth }) => {
-    const [user, loading] = index_esm_js$2.useAuthState(auth);
+  const MobileMenu = ({ auth: auth2 }) => {
+    const [user, loading] = useAuthState(auth2);
     const getSignOut = async () => {
-      await (auth == null ? void 0 : auth.signOut());
+      await (auth2 == null ? void 0 : auth2.signOut());
     };
     return /* @__PURE__ */ jsxRuntime.jsxs(Dialog, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
@@ -5920,7 +5931,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
               projects.filter((_, i) => i < 3).map(
                 (project) => /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
                   /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
-                  /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$3.MdOpenInNew, { size: 18 })
+                  /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
                 ] }) }, project.key + "-menu")
               )
             ] }),
@@ -5933,12 +5944,12 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       ] })
     ] });
   };
-  const UserCircle = ({ auth }) => {
-    if (!auth)
+  const UserCircle = ({ auth: auth2 }) => {
+    if (!auth2)
       return /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted flex items-center border justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiUser, { className: "text-muted-foreground" }) });
     return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { auth }) }),
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { auth }) })
+      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:flex hidden", children: /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { auth: auth2 }) }),
+      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "md:hidden flex", children: /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { auth: auth2 }) })
     ] });
   };
   exports2.Avatar = avatar;
