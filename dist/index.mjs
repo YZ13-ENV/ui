@@ -6091,7 +6091,7 @@ const UserCircle = ({
   activeMenu = "desktop",
   buttonSize = "default",
   isSubscriber = false,
-  map = void 0
+  map = defaultMenuMap
 }) => {
   if (!user)
     return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsx("a", { href: loginLink, children: "Войти" }) });

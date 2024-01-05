@@ -4,6 +4,7 @@ import DesktopMenu from "./ui/desktop"
 import MobileMenu from "./ui/mobile"
 import { User } from "firebase/auth"
 import { MenuMapProps } from "@/types/common"
+import { defaultMenuMap } from "@/const/default-menu-map"
 
 type Props = {
     user?: User
@@ -21,7 +22,7 @@ const UserCircle = ({
         activeMenu='desktop', 
         buttonSize='default',
         isSubscriber=false,
-        map=undefined
+        map=defaultMenuMap
     }: Props) => {
     if (!user) return <Button size={buttonSize} variant='outline'><a href={loginLink}>Войти</a></Button>
     if (activeMenu === 'desktop') return <DesktopMenu user={user} size={size} menuMap={map} />

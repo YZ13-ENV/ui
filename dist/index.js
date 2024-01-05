@@ -6101,7 +6101,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     activeMenu = "desktop",
     buttonSize = "default",
     isSubscriber = false,
-    map = void 0
+    map = defaultMenuMap
   }) => {
     if (!user)
       return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: loginLink, children: "Войти" }) });
