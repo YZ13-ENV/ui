@@ -1,4 +1,3 @@
-import { DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 
 type Props = {
     displayName: string

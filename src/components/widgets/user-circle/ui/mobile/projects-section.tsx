@@ -24,7 +24,6 @@ const ProjectsSection = ({ section }: Props) => {
                     )
                 }
             </div>
-            <Separator />
         </>
     )
 }

@@ -5576,9 +5576,11 @@ const LinksSection$1 = ({ section }) => {
       /* @__PURE__ */ jsx("span", { children: section.title }),
       /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
       section.items && section.items.map(
-        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { children: item.text })
-      ),
-      /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
+        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
+          item.icon && item.icon({}),
+          item.text
+        ] }) })
+      )
     ] });
 };
 const ProjectsSection$1 = ({ section }) => {
@@ -5590,8 +5592,7 @@ const ProjectsSection$1 = ({ section }) => {
         /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
         /* @__PURE__ */ jsx(MdOpenInNew, { size: 18, className: "ml-auto" })
       ] }) }, project.key + "-menu")
-    ),
-    /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
+    )
   ] });
 };
 const MembershipSection$1 = ({ section }) => {
@@ -6026,8 +6027,7 @@ const LinksSection = ({ section }) => {
           item.icon && item.icon({}),
           item.text
         ] })
-      ),
-      /* @__PURE__ */ jsx(Separator, {})
+      )
     ] });
 };
 const MembershipSection = ({ section }) => {
@@ -6052,8 +6052,7 @@ const ProjectsSection = ({ section }) => {
           /* @__PURE__ */ jsx(MdOpenInNew, { size: 18, className: "ml-auto" })
         ] }) }, project.key + "-menu")
       )
-    ] }),
-    /* @__PURE__ */ jsx(Separator, {})
+    ] })
   ] });
 };
 const SignOutSection = ({ section }) => {

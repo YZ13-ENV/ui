@@ -20,7 +20,6 @@ const LinksSection = ({ section }: Props) => {
                     </a>
                 )
             }
-            <Separator />
         </>
     )
 }

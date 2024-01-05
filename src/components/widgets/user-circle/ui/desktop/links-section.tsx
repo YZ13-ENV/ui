@@ -14,10 +14,14 @@ const LinksSection = ({ section }: Props) => {
             <DropdownMenuSeparator />
             {
                 section.items && section.items.map(
-                    item => <DropdownMenuItem>{item.text}</DropdownMenuItem>
+                    item => <DropdownMenuItem asChild>
+                        <a href={item.link} className="flex items-center py-2 justify-start gap-2">
+                            { item.icon && item.icon({}) }
+                            { item.text }
+                        </a>
+                    </DropdownMenuItem>
                 )
             }
-            <DropdownMenuSeparator />
         </>
     )
 }

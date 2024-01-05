@@ -5586,9 +5586,11 @@
         /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
         /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
         section.items && section.items.map(
-          (item) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { children: item.text })
-        ),
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
+          (item) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
+            item.icon && item.icon({}),
+            item.text
+          ] }) })
+        )
       ] });
   };
   const ProjectsSection$1 = ({ section }) => {
@@ -5600,8 +5602,7 @@
           /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
           /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18, className: "ml-auto" })
         ] }) }, project.key + "-menu")
-      ),
-      /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
+      )
     ] });
   };
   const MembershipSection$1 = ({ section }) => {
@@ -6036,8 +6037,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
             item.icon && item.icon({}),
             item.text
           ] })
-        ),
-        /* @__PURE__ */ jsxRuntime.jsx(Separator, {})
+        )
       ] });
   };
   const MembershipSection = ({ section }) => {
@@ -6062,8 +6062,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
             /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18, className: "ml-auto" })
           ] }) }, project.key + "-menu")
         )
-      ] }),
-      /* @__PURE__ */ jsxRuntime.jsx(Separator, {})
+      ] })
     ] });
   };
   const SignOutSection = ({ section }) => {

@@ -21,7 +21,6 @@ const ProjectsSection = ({ section }: Props) => {
                     </DropdownMenuItem>
                 )
             }
-            <DropdownMenuSeparator />
         </>
     )
 }
