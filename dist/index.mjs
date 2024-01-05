@@ -3,7 +3,7 @@ import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
 import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiMenu } from "react-icons/bi/index.esm.js";
+import { BiUser, BiCog, BiMenu } from "react-icons/bi/index.esm.js";
 import { PiCrownSimpleBold } from "react-icons/pi/index.esm.js";
 import { MdGridView, MdOpenInNew } from "react-icons/md/index.esm.js";
 import * as ReactDOM from "react-dom";
@@ -5526,7 +5526,17 @@ const defaultMenuMap = [
       },
       {
         type: "links",
-        items: []
+        items: [
+          {
+            text: "",
+            link: ""
+          },
+          {
+            icon: BiCog,
+            text: "Настройки",
+            link: "/settings"
+          }
+        ]
       }
     ]
   },
@@ -5946,19 +5956,6 @@ const DialogDescription = React.forwardRef(({ className, ...props }, ref) => /* 
   }
 ));
 DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
-const LinksSection = ({ section }) => {
-  const isEmpty = section.items.length === 0;
-  const noTitle = !section.title;
-  if (!noTitle || !isEmpty)
-    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-      /* @__PURE__ */ jsx("span", { children: section.title }),
-      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-      section.items && section.items.map(
-        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { children: item.text })
-      ),
-      /* @__PURE__ */ jsx(DropdownMenuSeparator, {})
-    ] });
-};
 const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
 const $89eedd556c436f6a$var$ORIENTATIONS = [
   "horizontal",
@@ -6017,6 +6014,22 @@ const Separator = React.forwardRef(
   )
 );
 Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
+const LinksSection = ({ section }) => {
+  const isEmpty = section.items.length === 0;
+  const noTitle = !section.title;
+  if (!noTitle || !isEmpty)
+    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
+      /* @__PURE__ */ jsx("span", { children: section.title }),
+      /* @__PURE__ */ jsx(Separator, {}),
+      section.items && section.items.map(
+        (item) => /* @__PURE__ */ jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
+          item.icon && item.icon({}),
+          item.text
+        ] })
+      ),
+      /* @__PURE__ */ jsx(Separator, {})
+    ] });
+};
 const MembershipSection = ({ section }) => {
   if (typeof section.state[section.activeState] === "string")
     return /* @__PURE__ */ jsxs(Fragment$1, { children: [
@@ -6034,9 +6047,9 @@ const ProjectsSection = ({ section }) => {
     /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col my-4", children: [
       /* @__PURE__ */ jsx("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
       section.projects && section.projects.map(
-        (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
+        (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", children: /* @__PURE__ */ jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
           /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
-          /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
+          /* @__PURE__ */ jsx(MdOpenInNew, { size: 18, className: "ml-auto" })
         ] }) }, project.key + "-menu")
       )
     ] }),

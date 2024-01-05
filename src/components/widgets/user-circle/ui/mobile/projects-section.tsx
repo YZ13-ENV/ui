@@ -15,10 +15,10 @@ const ProjectsSection = ({ section }: Props) => {
                 <span className="text-base font-medium mb-2">Проекты</span>
                 {
                     section.projects && section.projects.map(
-                        project => <Button asChild key={project.key + '-menu'} variant='ghost' className="flex px-0 items-center justify-between">
-                            <a href={project.link}>
+                        project => <Button asChild key={project.key + '-menu'} variant='ghost' >
+                            <a href={project.link} className="flex px-0 items-center justify-between w-full">
                                 <span className="text-base">{project.name}</span>
-                                <MdOpenInNew size={18} />
+                                <MdOpenInNew size={18} className="ml-auto" />
                             </a>
                         </Button>
                     )

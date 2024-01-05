@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MenuMapProps } from "@/types/common";
 import { projects } from "./projects";
+import { BiCog } from "react-icons/bi";
 
 export const defaultMenuMap: MenuMapProps = [
     {
@@ -12,7 +13,17 @@ export const defaultMenuMap: MenuMapProps = [
             },
             {
                 type: 'links',
-                items: []
+                items: [
+                    {
+                        text: '',
+                        link: ''
+                    },
+                    {
+                        icon: BiCog,
+                        text: 'Настройки',
+                        link: '/settings'
+                    }
+                ]
             },
         ]
     },

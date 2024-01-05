@@ -5536,7 +5536,17 @@
         },
         {
           type: "links",
-          items: []
+          items: [
+            {
+              text: "",
+              link: ""
+            },
+            {
+              icon: index_esm_js.BiCog,
+              text: "Настройки",
+              link: "/settings"
+            }
+          ]
         }
       ]
     },
@@ -5956,19 +5966,6 @@
     }
   ));
   DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
-  const LinksSection = ({ section }) => {
-    const isEmpty = section.items.length === 0;
-    const noTitle = !section.title;
-    if (!noTitle || !isEmpty)
-      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
-        section.items && section.items.map(
-          (item) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { children: item.text })
-        ),
-        /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
-      ] });
-  };
   const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
   const $89eedd556c436f6a$var$ORIENTATIONS = [
     "horizontal",
@@ -6027,6 +6024,22 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     )
   );
   Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
+  const LinksSection = ({ section }) => {
+    const isEmpty = section.items.length === 0;
+    const noTitle = !section.title;
+    if (!noTitle || !isEmpty)
+      return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
+        /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+        section.items && section.items.map(
+          (item) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
+            item.icon && item.icon({}),
+            item.text
+          ] })
+        ),
+        /* @__PURE__ */ jsxRuntime.jsx(Separator, {})
+      ] });
+  };
   const MembershipSection = ({ section }) => {
     if (typeof section.state[section.activeState] === "string")
       return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
@@ -6044,9 +6057,9 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col my-4", children: [
         /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
         section.projects && section.projects.map(
-          (project) => /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "ghost", className: "flex px-0 items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
+          (project) => /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
             /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
-            /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
+            /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18, className: "ml-auto" })
           ] }) }, project.key + "-menu")
         )
       ] }),

@@ -1,4 +1,4 @@
-import { DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
+import { Separator } from "@/components/ui/separator"
 import { LinksSection as LinksSectionProps } from "@/types/common"
 
 type Props = {
@@ -11,13 +11,16 @@ const LinksSection = ({ section }: Props) => {
     return (
         <>
             <span>{section.title}</span>
-            <DropdownMenuSeparator />
+            <Separator />
             {
                 section.items && section.items.map(
-                    item => <DropdownMenuItem>{item.text}</DropdownMenuItem>
+                    item => <a href={item.link} className="flex items-center py-2 justify-start gap-2">
+                        { item.icon && item.icon({}) }
+                        { item.text }
+                    </a>
                 )
             }
-            <DropdownMenuSeparator />
+            <Separator />
         </>
     )
 }
