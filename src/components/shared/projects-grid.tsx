@@ -23,7 +23,7 @@ const ProjectsGrid = () => {
             </PopoverTrigger>
             <PopoverContent className="projects-grid">
                 {
-                    projects.map(project => <a href={project.link} key={project.key} className="w-full h-full flex flex-col items-center justify-center gap-2">
+                    projects.map(project => <a href={project.link} key={project.key} className="w-full h-full flex flex-col items-center justify-center gap-2 rounded-md hover:bg-muted p-1">
                         <div className="w-7 h-7 relative">
                             <img src={project.themedIcon ? project.themedIcon[themeCookie] : project.icon} className="w-full h-full" alt="project-icon" />
                         </div>

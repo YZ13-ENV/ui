@@ -139,6 +139,6 @@
 @layer components {
   .projects-grid {
     /* used in projects-grid.tsx */
-    @apply h-96 grid p-4 grid-cols-3 grid-rows-6
+    @apply h-fit grid p-4 grid-cols-4 gap-2 auto-rows-auto
   }
 }

@@ -4012,7 +4012,7 @@
     return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdGridView, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsx(PopoverContent, { className: "projects-grid", children: projects.map(
-        (project) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
+        (project) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2 rounded-md hover:bg-muted p-1", children: [
           /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsxRuntime.jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
           /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs text-center", children: project.name })
         ] }, project.key)

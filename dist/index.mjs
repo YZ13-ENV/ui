@@ -4002,7 +4002,7 @@ const ProjectsGrid = () => {
   return /* @__PURE__ */ jsxs(Popover, { children: [
     /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(MdGridView, { size: 20 }) }) }),
     /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(
-      (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2", children: [
+      (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2 rounded-md hover:bg-muted p-1", children: [
         /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
         /* @__PURE__ */ jsx("span", { className: "text-xs text-center", children: project.name })
       ] }, project.key)
