@@ -16,7 +16,7 @@ const ProjectsSection = ({ section }: Props) => {
                     project => <DropdownMenuItem asChild key={project.key + '-menu'} >
                         <a href={project.link} className="flex px-0 items-center justify-between w-full">
                             <span className="text-base">{project.name}</span>
-                            <MdOpenInNew size={18} />
+                            <MdOpenInNew size={18} className="ml-auto" />
                         </a>
                     </DropdownMenuItem>
                 )

@@ -5598,7 +5598,7 @@
       section.projects && section.projects.map(
         (project) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
           /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
-          /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
+          /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18, className: "ml-auto" })
         ] }) }, project.key + "-menu")
       ),
       /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {})
