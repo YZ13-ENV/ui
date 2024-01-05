@@ -5596,7 +5596,7 @@
       /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuSeparator, {}),
       /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuLabel, { children: "Проекты" }),
       section.projects && section.projects.map(
-        (project) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { asChild: true, className: "flex items-center justify-between", children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, children: [
+        (project) => /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
           /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-base", children: project.name }),
           /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$2.MdOpenInNew, { size: 18 })
         ] }) }, project.key + "-menu")

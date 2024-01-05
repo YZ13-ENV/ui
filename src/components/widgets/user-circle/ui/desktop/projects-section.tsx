@@ -13,8 +13,8 @@ const ProjectsSection = ({ section }: Props) => {
             <DropdownMenuLabel>Проекты</DropdownMenuLabel>
             {
                 section.projects && section.projects.map(
-                    project => <DropdownMenuItem asChild key={project.key + '-menu'} className="flex items-center justify-between">
-                        <a href={project.link}>
+                    project => <DropdownMenuItem asChild key={project.key + '-menu'} >
+                        <a href={project.link} className="flex px-0 items-center justify-between w-full">
                             <span className="text-base">{project.name}</span>
                             <MdOpenInNew size={18} />
                         </a>

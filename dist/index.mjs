@@ -5586,7 +5586,7 @@ const ProjectsSection$1 = ({ section }) => {
     /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
     /* @__PURE__ */ jsx(DropdownMenuLabel, { children: "Проекты" }),
     section.projects && section.projects.map(
-      (project) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, className: "flex items-center justify-between", children: /* @__PURE__ */ jsxs("a", { href: project.link, children: [
+      (project) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
         /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
         /* @__PURE__ */ jsx(MdOpenInNew, { size: 18 })
       ] }) }, project.key + "-menu")
