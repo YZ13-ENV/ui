@@ -1167,7 +1167,7 @@
       right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
     };
   }
-  const arrow$1 = (options2) => ({
+  const arrow$2 = (options2) => ({
     name: "arrow",
     options: options2,
     async fn(state) {
@@ -1229,7 +1229,7 @@
       };
     }
   });
-  const flip = function(options2) {
+  const flip$1 = function(options2) {
     if (options2 === void 0) {
       options2 = {};
     }
@@ -1334,7 +1334,7 @@
   function isAnySideFullyClipped(overflow) {
     return sides.some((side) => overflow[side] >= 0);
   }
-  const hide = function(options2) {
+  const hide$1 = function(options2) {
     if (options2 === void 0) {
       options2 = {};
     }
@@ -1451,7 +1451,7 @@
       }
     };
   };
-  const shift = function(options2) {
+  const shift$1 = function(options2) {
     if (options2 === void 0) {
       options2 = {};
     }
@@ -1519,7 +1519,7 @@
       }
     };
   };
-  const limitShift = function(options2) {
+  const limitShift$1 = function(options2) {
     if (options2 === void 0) {
       options2 = {};
     }
@@ -1584,7 +1584,7 @@
       }
     };
   };
-  const size = function(options2) {
+  const size$1 = function(options2) {
     if (options2 === void 0) {
       options2 = {};
     }
@@ -1668,7 +1668,7 @@
   }
   function getWindow(node) {
     var _node$ownerDocument;
-    return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+    return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
   }
   function getDocumentElement(node) {
     var _ref;
@@ -2070,7 +2070,14 @@
     };
   }
   function getDimensions(element) {
-    return getCssDimensions(element);
+    const {
+      width,
+      height
+    } = getCssDimensions(element);
+    return {
+      width,
+      height
+    };
   }
   function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
     const isOffsetParentAnElement = isHTMLElement(offsetParent);
@@ -2291,6 +2298,12 @@
       }
     };
   }
+  const shift = shift$1;
+  const flip = flip$1;
+  const size = size$1;
+  const hide = hide$1;
+  const arrow$1 = arrow$2;
+  const limitShift = limitShift$1;
   const computePosition = (reference, floating, options2) => {
     const cache = /* @__PURE__ */ new Map();
     const mergedOptions = {
@@ -5538,10 +5551,6 @@
           type: "links",
           items: [
             {
-              text: "",
-              link: ""
-            },
-            {
               icon: index_esm_js.BiCog,
               text: "Настройки",
               link: "/settings"
@@ -5554,10 +5563,6 @@
       type: "wrapper",
       className: "flex flex-col w-full h-fit mt-auto",
       items: [
-        {
-          type: "projects",
-          projects
-        },
         {
           type: "sign-out"
         },
@@ -5617,7 +5622,10 @@
     ] });
   };
   const SignOutSection$1 = ({ section }) => {
-    return /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuItem, { className: "flex items-center justify-center py-2", onClick: section.action && section.action, children: "Выйти из профиля" });
+    return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenuItem, { className: "gap-2 py-2", onClick: section.action && section.action, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiLogOut, {}),
+      "Выйти из профиля"
+    ] });
   };
   const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
     return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenu, { children: [
@@ -6066,7 +6074,10 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     ] });
   };
   const SignOutSection = ({ section }) => {
-    return /* @__PURE__ */ jsxRuntime.jsx(Button, { className: "flex items-center justify-center py-2", variant: "ghost", onClick: section.action && section.action, children: "Выйти из профиля" });
+    return /* @__PURE__ */ jsxRuntime.jsxs(Button, { className: "gap-2 py-2", variant: "ghost", onClick: section.action && section.action, children: [
+      /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiLogOut, {}),
+      "Выйти из профиля"
+    ] });
   };
   const UserSection = ({ description, displayName }) => {
     return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
@@ -6112,11 +6123,10 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     loginLink = "/login",
     activeMenu = "desktop",
     buttonSize = "default",
-    isSubscriber = false,
     map = defaultMenuMap
   }) => {
     if (!user)
-      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: loginLink, children: "Войти" }) });
+      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: loginLink, children: "Войти" }) });
     if (activeMenu === "desktop")
       return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user, size: size2, menuMap: map });
     return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user, menuMap: map });

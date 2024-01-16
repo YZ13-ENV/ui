@@ -10,5 +10,5 @@ type Props = {
     isSubscriber?: boolean;
     map?: MenuMapProps;
 };
-declare const UserCircle: ({ user, size, loginLink, activeMenu, buttonSize, isSubscriber, map }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const UserCircle: ({ user, size, loginLink, activeMenu, buttonSize, map }: Props) => import("react/jsx-runtime").JSX.Element;
 export { UserCircle };

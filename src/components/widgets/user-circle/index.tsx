@@ -15,16 +15,15 @@ type Props = {
     isSubscriber?: boolean
     map?: MenuMapProps
 }
-const UserCircle = ({ 
-        user, 
-        size=36, 
-        loginLink='/login', 
-        activeMenu='desktop', 
+const UserCircle = ({
+        user,
+        size=36,
+        loginLink='/login',
+        activeMenu='desktop',
         buttonSize='default',
-        isSubscriber=false,
         map=defaultMenuMap
     }: Props) => {
-    if (!user) return <Button size={buttonSize} variant='outline'><a href={loginLink}>Войти</a></Button>
+    if (!user) return <Button size={buttonSize} variant='outline' asChild><a href={loginLink}>Войти</a></Button>
     if (activeMenu === 'desktop') return <DesktopMenu user={user} size={size} menuMap={map} />
     return <MobileMenu user={user} menuMap={map} />
 }

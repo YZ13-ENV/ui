@@ -3,7 +3,7 @@ import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
 import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiCog, BiMenu } from "react-icons/bi/index.esm.js";
+import { BiUser, BiCog, BiLogOut, BiMenu } from "react-icons/bi/index.esm.js";
 import { PiCrownSimpleBold } from "react-icons/pi/index.esm.js";
 import { MdGridView, MdOpenInNew } from "react-icons/md/index.esm.js";
 import * as ReactDOM from "react-dom";
@@ -1157,7 +1157,7 @@ async function detectOverflow(state, options) {
     right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
   };
 }
-const arrow$1 = (options) => ({
+const arrow$2 = (options) => ({
   name: "arrow",
   options,
   async fn(state) {
@@ -1219,7 +1219,7 @@ const arrow$1 = (options) => ({
     };
   }
 });
-const flip = function(options) {
+const flip$1 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -1324,7 +1324,7 @@ function getSideOffsets(overflow, rect) {
 function isAnySideFullyClipped(overflow) {
   return sides.some((side) => overflow[side] >= 0);
 }
-const hide = function(options) {
+const hide$1 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -1441,7 +1441,7 @@ const offset = function(options) {
     }
   };
 };
-const shift = function(options) {
+const shift$1 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -1509,7 +1509,7 @@ const shift = function(options) {
     }
   };
 };
-const limitShift = function(options) {
+const limitShift$1 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -1574,7 +1574,7 @@ const limitShift = function(options) {
     }
   };
 };
-const size = function(options) {
+const size$1 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -1658,7 +1658,7 @@ function getNodeName(node) {
 }
 function getWindow(node) {
   var _node$ownerDocument;
-  return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+  return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
 }
 function getDocumentElement(node) {
   var _ref;
@@ -2060,7 +2060,14 @@ function getClippingRect(_ref) {
   };
 }
 function getDimensions(element) {
-  return getCssDimensions(element);
+  const {
+    width,
+    height
+  } = getCssDimensions(element);
+  return {
+    width,
+    height
+  };
 }
 function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
   const isOffsetParentAnElement = isHTMLElement(offsetParent);
@@ -2281,6 +2288,12 @@ function autoUpdate(reference, floating, update, options) {
     }
   };
 }
+const shift = shift$1;
+const flip = flip$1;
+const size = size$1;
+const hide = hide$1;
+const arrow$1 = arrow$2;
+const limitShift = limitShift$1;
 const computePosition = (reference, floating, options) => {
   const cache = /* @__PURE__ */ new Map();
   const mergedOptions = {
@@ -5528,10 +5541,6 @@ const defaultMenuMap = [
         type: "links",
         items: [
           {
-            text: "",
-            link: ""
-          },
-          {
             icon: BiCog,
             text: "Настройки",
             link: "/settings"
@@ -5544,10 +5553,6 @@ const defaultMenuMap = [
     type: "wrapper",
     className: "flex flex-col w-full h-fit mt-auto",
     items: [
-      {
-        type: "projects",
-        projects
-      },
       {
         type: "sign-out"
       },
@@ -5607,7 +5612,10 @@ const MembershipSection$1 = ({ section }) => {
   ] });
 };
 const SignOutSection$1 = ({ section }) => {
-  return /* @__PURE__ */ jsx(DropdownMenuItem, { className: "flex items-center justify-center py-2", onClick: section.action && section.action, children: "Выйти из профиля" });
+  return /* @__PURE__ */ jsxs(DropdownMenuItem, { className: "gap-2 py-2", onClick: section.action && section.action, children: [
+    /* @__PURE__ */ jsx(BiLogOut, {}),
+    "Выйти из профиля"
+  ] });
 };
 const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
   return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
@@ -6056,7 +6064,10 @@ const ProjectsSection = ({ section }) => {
   ] });
 };
 const SignOutSection = ({ section }) => {
-  return /* @__PURE__ */ jsx(Button, { className: "flex items-center justify-center py-2", variant: "ghost", onClick: section.action && section.action, children: "Выйти из профиля" });
+  return /* @__PURE__ */ jsxs(Button, { className: "gap-2 py-2", variant: "ghost", onClick: section.action && section.action, children: [
+    /* @__PURE__ */ jsx(BiLogOut, {}),
+    "Выйти из профиля"
+  ] });
 };
 const UserSection = ({ description, displayName }) => {
   return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
@@ -6102,11 +6113,10 @@ const UserCircle = ({
   loginLink = "/login",
   activeMenu = "desktop",
   buttonSize = "default",
-  isSubscriber = false,
   map = defaultMenuMap
 }) => {
   if (!user)
-    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", children: /* @__PURE__ */ jsx("a", { href: loginLink, children: "Войти" }) });
+    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsx("a", { href: loginLink, children: "Войти" }) });
   if (activeMenu === "desktop")
     return /* @__PURE__ */ jsx(DesktopMenu, { user, size: size2, menuMap: map });
   return /* @__PURE__ */ jsx(MobileMenu, { user, menuMap: map });
