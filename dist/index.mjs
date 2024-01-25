@@ -3,14 +3,19 @@ import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import Image from "next/image.js";
 import * as React from "react";
 import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiCog, BiLogOut, BiMenu } from "react-icons/bi/index.esm.js";
-import { PiCrownSimpleBold } from "react-icons/pi/index.esm.js";
+import { BiUser, BiCog, BiLogOut, BiMenu, BiTrashAlt } from "react-icons/bi/index.esm.js";
+import { PiCrownSimpleBold, PiBellBold } from "react-icons/pi/index.esm.js";
 import { MdGridView, MdOpenInNew } from "react-icons/md/index.esm.js";
 import * as ReactDOM from "react-dom";
 import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
+import { notifications } from "api";
+import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
+import { DateTime } from "luxon";
+import { useInViewport } from "ahooks";
+import { io } from "socket.io-client";
 const globals = "";
 const projects = [
   {
@@ -2154,13 +2159,13 @@ const platform = {
   isRTL
 };
 function observeMove(element, onMove) {
-  let io = null;
+  let io2 = null;
   let timeoutId;
   const root = getDocumentElement(element);
   function cleanup() {
     clearTimeout(timeoutId);
-    io && io.disconnect();
-    io = null;
+    io2 && io2.disconnect();
+    io2 = null;
   }
   function refresh(skip, threshold) {
     if (skip === void 0) {
@@ -2209,15 +2214,15 @@ function observeMove(element, onMove) {
       isFirstUpdate = false;
     }
     try {
-      io = new IntersectionObserver(handleObserve, {
+      io2 = new IntersectionObserver(handleObserve, {
         ...options,
         // Handle <iframe>s
         root: root.ownerDocument
       });
     } catch (e) {
-      io = new IntersectionObserver(handleObserve, options);
+      io2 = new IntersectionObserver(handleObserve, options);
     }
-    io.observe(element);
+    io2.observe(element);
   }
   refresh(true);
   return cleanup;
@@ -6121,8 +6126,93 @@ const UserCircle = ({
     return /* @__PURE__ */ jsx(DesktopMenu, { user, size: size2, menuMap: map });
   return /* @__PURE__ */ jsx(MobileMenu, { user, menuMap: map });
 };
+const Notification = ({ notification }) => {
+  const ref = useRef(null);
+  const [isInView] = useInViewport(ref);
+  const { fromSeconds } = DateTime;
+  const formattedDate = fromSeconds(notification.createdAt);
+  useEffect(() => {
+    if (!notification.isViewed && isInView)
+      notifications.patch(notification.receiver, notification.doc_id, { isViewed: true });
+  }, [notification.isViewed, isInView]);
+  return /* @__PURE__ */ jsxs("div", { ref, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
+    /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+    /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
+      /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx(
+      Button,
+      {
+        size: "icon",
+        variant: "ghost",
+        className: "opacity-0 group-hover:opacity-100 transition-opacity rounded-full",
+        onClick: () => notifications.delete(notification.receiver, notification.doc_id),
+        children: /* @__PURE__ */ jsx(BiTrashAlt, {})
+      }
+    ) })
+  ] });
+};
+const Notification$1 = memo(Notification);
+const api_host = (
+  // process.env.NEXT_PUBLIC_API_HOST_PROD as string
+  process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_API_HOST_DEV : process.env.NEXT_PUBLIC_API_HOST_PROD
+);
+const Notifications = ({ auth }) => {
+  const [open, setOpen] = useState(false);
+  const [user] = useAuthState(auth);
+  const [received, setReceived] = useState([]);
+  const hasNoViewed = received.filter((notification) => !notification.isViewed);
+  const clear = () => {
+    if (received.length && user) {
+      received.forEach(
+        (item) => notifications.delete(user.uid, item.doc_id)
+      );
+    }
+  };
+  useEffect(() => {
+    const socket = io(api_host);
+    socket.on("connect", () => {
+      console.log("Connected to notifications");
+      if (user) {
+        socket.emit("notifications", user.uid);
+      }
+    });
+    socket.on("notifications", (data) => {
+      setReceived(data);
+    });
+    socket.on("exception", (data) => {
+      console.log("event", data);
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected");
+    });
+    return () => {
+      socket.close();
+    };
+  }, [user == null ? void 0 : user.uid]);
+  if (!user || !auth)
+    return null;
+  return /* @__PURE__ */ jsxs(Popover, { open: user ? open : false, onOpenChange: (state) => setOpen(state), children: [
+    /* @__PURE__ */ jsxs(PopoverTrigger, { className: "relative w-9 h-9 rounded-full flex items-center justify-center border bg-background", children: [
+      hasNoViewed.length !== 0 && /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-2.5 h-2.5 rounded-full bg-primary" }),
+      /* @__PURE__ */ jsx(PiBellBold, { size: 16 })
+    ] }),
+    /* @__PURE__ */ jsxs(PopoverContent, { className: "w-96 p-0 flex flex-col bg-background", children: [
+      /* @__PURE__ */ jsx("div", { className: "w-full border-b p-3 flex items-center", children: /* @__PURE__ */ jsx("div", { className: "w-fit h-fit flex items-center gap-4", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: "Входящие" }) }) }),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-full flex flex-col", children: !received.length ? /* @__PURE__ */ jsx("div", { className: "w-full h-64 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-center text-sm text-muted-foreground", children: "Нет новых уведомлений" }) }) : received.map(
+        (notification, i) => /* @__PURE__ */ jsxs(Fragment$1, { children: [
+          /* @__PURE__ */ jsx(Notification$1, { notification }, notification.doc_id),
+          i !== received.length - 1 && /* @__PURE__ */ jsx(Separator, {}, notification.doc_id + "-separator")
+        ] })
+      ) }),
+      /* @__PURE__ */ jsx("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ jsx(Button, { size: "sm", onClick: clear, variant: "ghost", children: "Очистить" }) })
+    ] })
+  ] });
+};
 export {
   avatar as Avatar,
+  Notifications,
   ProjectsGrid,
   UserCircle,
   projects

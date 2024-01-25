@@ -53,6 +53,8 @@ const app = async (): Promise<UserConfigExport> => {
             "react-icons/bi/index.esm.js": "react-icons/bi",
             "react-icons/pi/index.esm.js": "react-icons/pi",
             "react-icons/md/index.esm.js": "react-icons/md",
+            "socket.io-client": "socket.io-client",
+            "next/image.js": "next/image",
             "tailwind-merge": "tailwind-merge",
             "class-variance-authority": "class-variance-authority",
             "react-firebase-hooks/auth/dist/index.esm.js": "react-firebase-hooks/auth",

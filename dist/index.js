@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global.Image, global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, api, index_esm_js$3, luxon, ahooks, socket_ioClient) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -6131,7 +6131,92 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user, size: size2, menuMap: map });
     return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user, menuMap: map });
   };
+  const Notification = ({ notification }) => {
+    const ref = React.useRef(null);
+    const [isInView] = ahooks.useInViewport(ref);
+    const { fromSeconds } = luxon.DateTime;
+    const formattedDate = fromSeconds(notification.createdAt);
+    React.useEffect(() => {
+      if (!notification.isViewed && isInView)
+        api.notifications.patch(notification.receiver, notification.doc_id, { isViewed: true });
+    }, [notification.isViewed, isInView]);
+    return /* @__PURE__ */ jsxRuntime.jsxs("div", { ref, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
+      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+      /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm", children: notification.message }),
+        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+      ] }),
+      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx(
+        Button,
+        {
+          size: "icon",
+          variant: "ghost",
+          className: "opacity-0 group-hover:opacity-100 transition-opacity rounded-full",
+          onClick: () => api.notifications.delete(notification.receiver, notification.doc_id),
+          children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiTrashAlt, {})
+        }
+      ) })
+    ] });
+  };
+  const Notification$1 = React.memo(Notification);
+  const api_host = (
+    // process.env.NEXT_PUBLIC_API_HOST_PROD as string
+    process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_API_HOST_DEV : process.env.NEXT_PUBLIC_API_HOST_PROD
+  );
+  const Notifications = ({ auth }) => {
+    const [open, setOpen] = React.useState(false);
+    const [user] = index_esm_js$3.useAuthState(auth);
+    const [received, setReceived] = React.useState([]);
+    const hasNoViewed = received.filter((notification) => !notification.isViewed);
+    const clear = () => {
+      if (received.length && user) {
+        received.forEach(
+          (item) => api.notifications.delete(user.uid, item.doc_id)
+        );
+      }
+    };
+    React.useEffect(() => {
+      const socket = socket_ioClient.io(api_host);
+      socket.on("connect", () => {
+        console.log("Connected to notifications");
+        if (user) {
+          socket.emit("notifications", user.uid);
+        }
+      });
+      socket.on("notifications", (data) => {
+        setReceived(data);
+      });
+      socket.on("exception", (data) => {
+        console.log("event", data);
+      });
+      socket.on("disconnect", () => {
+        console.log("Disconnected");
+      });
+      return () => {
+        socket.close();
+      };
+    }, [user == null ? void 0 : user.uid]);
+    if (!user || !auth)
+      return null;
+    return /* @__PURE__ */ jsxRuntime.jsxs(Popover, { open: user ? open : false, onOpenChange: (state) => setOpen(state), children: [
+      /* @__PURE__ */ jsxRuntime.jsxs(PopoverTrigger, { className: "relative w-9 h-9 rounded-full flex items-center justify-center border bg-background", children: [
+        hasNoViewed.length !== 0 && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "absolute top-0 left-0 w-2.5 h-2.5 rounded-full bg-primary" }),
+        /* @__PURE__ */ jsxRuntime.jsx(index_esm_js$1.PiBellBold, { size: 16 })
+      ] }),
+      /* @__PURE__ */ jsxRuntime.jsxs(PopoverContent, { className: "w-96 p-0 flex flex-col bg-background", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full border-b p-3 flex items-center", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-fit h-fit flex items-center gap-4", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: "Входящие" }) }) }),
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-full flex flex-col", children: !received.length ? /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-64 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-center text-sm text-muted-foreground", children: "Нет новых уведомлений" }) }) : received.map(
+          (notification, i) => /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+            /* @__PURE__ */ jsxRuntime.jsx(Notification$1, { notification }, notification.doc_id),
+            i !== received.length - 1 && /* @__PURE__ */ jsxRuntime.jsx(Separator, {}, notification.doc_id + "-separator")
+          ] })
+        ) }),
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "sm", onClick: clear, variant: "ghost", children: "Очистить" }) })
+      ] })
+    ] });
+  };
   exports2.Avatar = avatar;
+  exports2.Notifications = Notifications;
   exports2.ProjectsGrid = ProjectsGrid;
   exports2.UserCircle = UserCircle;
   exports2.projects = projects;
