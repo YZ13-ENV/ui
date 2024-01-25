@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, api, index_esm_js$3, luxon, ahooks, socket_ioClient) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, socket_ioClient) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -5551,6 +5551,11 @@
           type: "links",
           items: [
             {
+              icon: index_esm_js$3.TiDocumentText,
+              text: "Документация",
+              link: "https://docs.darkmaterial.space"
+            },
+            {
               icon: index_esm_js.BiCog,
               text: "Настройки",
               link: "/settings"
@@ -5627,7 +5632,10 @@
       "Выйти из профиля"
     ] });
   };
-  const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
+  const DesktopMenu = ({ user, size: size2 = 36, buttonSize, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
+    const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
+    if (!user)
+      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: `${defaultLoginLink}${loginLink}`, children: "Войти" }) });
     return /* @__PURE__ */ jsxRuntime.jsxs(DropdownMenu, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsxRuntime.jsx("div", { style: { width: `${size2}px`, height: `${size2}px` }, children: /* @__PURE__ */ jsxRuntime.jsx("img", { src: user.photoURL, alt: "user-profile-img", className: "w-full h-full rounded-full object-cover" }) }) : /* @__PURE__ */ jsxRuntime.jsx(
         "div",
@@ -6039,7 +6047,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
     if (!noTitle || !isEmpty)
       return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
         /* @__PURE__ */ jsxRuntime.jsx("span", { children: section.title }),
-        /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+        /* @__PURE__ */ jsxRuntime.jsx(Separator, { className: "my-2" }),
         section.items && section.items.map(
           (item) => /* @__PURE__ */ jsxRuntime.jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
             item.icon && item.icon({}),
@@ -6055,7 +6063,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
         /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
       ] });
     return /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntime.jsx(Separator, {}),
+      /* @__PURE__ */ jsxRuntime.jsx(Separator, { className: "my-2" }),
       section.state[section.activeState]
     ] });
   };
@@ -6085,31 +6093,61 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
     ] });
   };
-  const MobileMenu = ({ user, menuMap = defaultMenuMap }) => {
+  const AuthSection = ({ loginLink = "https://darkmaterial.space" }) => {
+    const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
+    const defaultSignUpLink = "https://auth.darkmaterial.space/signup?continue=";
+    const sign_in_link = `${defaultLoginLink}${loginLink}`;
+    const sign_up_link = `${defaultSignUpLink}${loginLink}`;
+    return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col gap-2 mb-4", children: [
+      /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "outline", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: sign_in_link, children: "Войти" }) }),
+      /* @__PURE__ */ jsxRuntime.jsx(Button, { asChild: true, variant: "default", children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: sign_up_link, children: "Зарегистрироваться" }) })
+    ] });
+  };
+  const MobileMenu = ({ user, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
     return /* @__PURE__ */ jsxRuntime.jsxs(Dialog, { children: [
       /* @__PURE__ */ jsxRuntime.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(index_esm_js.BiMenu, { size: 20 }) }) }),
       /* @__PURE__ */ jsxRuntime.jsx(DialogContent, { className: "rounded-none w-full h-full", children: menuMap && menuMap.map((item, i) => {
-        if (item.type === "user")
-          return /* @__PURE__ */ jsxRuntime.jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "mobile-item-no-wrapper");
+        if (item.type === "user") {
+          if (user)
+            return /* @__PURE__ */ jsxRuntime.jsx(
+              UserSection,
+              {
+                displayName: user.displayName || "Пользователь",
+                description: user.email || "Не указано"
+              },
+              i + "mobile-item-no-wrapper"
+            );
+          return /* @__PURE__ */ jsxRuntime.jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
+        }
         if (item.type === "links")
           return /* @__PURE__ */ jsxRuntime.jsx(LinksSection, { section: item }, i + "mobile-item-no-wrapper");
         if (item.type === "projects")
           return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection, { section: item }, i + "mobile-item-no-wrapper");
         if (item.type === "membership")
           return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection, { section: item }, i + "mobile-item-no-wrapper");
-        if (item.type === "sign-out")
+        if (item.type === "sign-out" && user)
           return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection, { section: item }, i + "mobile-item-no-wrapper");
         if (item.type === "wrapper") {
           return /* @__PURE__ */ jsxRuntime.jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
-            if (wrapperItem.type === "user")
-              return /* @__PURE__ */ jsxRuntime.jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "mobile-item-with-wrapper");
+            if (wrapperItem.type === "user") {
+              if (user)
+                return /* @__PURE__ */ jsxRuntime.jsx(
+                  UserSection,
+                  {
+                    displayName: user.displayName || "Пользователь",
+                    description: user.email || "Не указано"
+                  },
+                  i + "-" + index2 + "mobile-item-with-wrapper"
+                );
+              return /* @__PURE__ */ jsxRuntime.jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
+            }
             if (wrapperItem.type === "links")
               return /* @__PURE__ */ jsxRuntime.jsx(LinksSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
             if (wrapperItem.type === "projects")
               return /* @__PURE__ */ jsxRuntime.jsx(ProjectsSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
             if (wrapperItem.type === "membership")
               return /* @__PURE__ */ jsxRuntime.jsx(MembershipSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-            if (wrapperItem.type === "sign-out")
+            if (wrapperItem.type === "sign-out" && user)
               return /* @__PURE__ */ jsxRuntime.jsx(SignOutSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
           }) }, i + "-mobile-item-wrapper");
         }
@@ -6120,16 +6158,30 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
   const UserCircle = ({
     user,
     size: size2 = 36,
-    loginLink = "/login",
+    loginLink = "https://darkmaterial.space",
     activeMenu = "desktop",
     buttonSize = "default",
     map = defaultMenuMap
   }) => {
-    if (!user)
-      return /* @__PURE__ */ jsxRuntime.jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsxRuntime.jsx("a", { href: loginLink, children: "Войти" }) });
     if (activeMenu === "desktop")
-      return /* @__PURE__ */ jsxRuntime.jsx(DesktopMenu, { user, size: size2, menuMap: map });
-    return /* @__PURE__ */ jsxRuntime.jsx(MobileMenu, { user, menuMap: map });
+      return /* @__PURE__ */ jsxRuntime.jsx(
+        DesktopMenu,
+        {
+          buttonSize,
+          user,
+          size: size2,
+          menuMap: map,
+          loginLink
+        }
+      );
+    return /* @__PURE__ */ jsxRuntime.jsx(
+      MobileMenu,
+      {
+        user,
+        menuMap: map,
+        loginLink
+      }
+    );
   };
   const Notification = ({ notification }) => {
     const ref = React.useRef(null);
@@ -6165,7 +6217,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
   );
   const Notifications = ({ auth }) => {
     const [open, setOpen] = React.useState(false);
-    const [user] = index_esm_js$3.useAuthState(auth);
+    const [user] = index_esm_js$4.useAuthState(auth);
     const [received, setReceived] = React.useState([]);
     const hasNoViewed = received.filter((notification) => !notification.isViewed);
     const clear = () => {

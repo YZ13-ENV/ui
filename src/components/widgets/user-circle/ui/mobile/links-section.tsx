@@ -11,7 +11,7 @@ const LinksSection = ({ section }: Props) => {
     return (
         <>
             <span>{section.title}</span>
-            <Separator />
+            <Separator className="my-2" />
             {
                 section.items && section.items.map(
                     item => <a href={item.link} className="flex items-center py-2 justify-start gap-2">

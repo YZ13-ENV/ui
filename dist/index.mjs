@@ -11,6 +11,7 @@ import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
+import { TiDocumentText } from "react-icons/ti/index.esm.js";
 import { notifications } from "api";
 import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
 import { DateTime } from "luxon";
@@ -5546,6 +5547,11 @@ const defaultMenuMap = [
         type: "links",
         items: [
           {
+            icon: TiDocumentText,
+            text: "Документация",
+            link: "https://docs.darkmaterial.space"
+          },
+          {
             icon: BiCog,
             text: "Настройки",
             link: "/settings"
@@ -5622,7 +5628,10 @@ const SignOutSection$1 = ({ section }) => {
     "Выйти из профиля"
   ] });
 };
-const DesktopMenu = ({ user, size: size2 = 36, menuMap = defaultMenuMap }) => {
+const DesktopMenu = ({ user, size: size2 = 36, buttonSize, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
+  const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
+  if (!user)
+    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsx("a", { href: `${defaultLoginLink}${loginLink}`, children: "Войти" }) });
   return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
     /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsx("div", { style: { width: `${size2}px`, height: `${size2}px` }, children: /* @__PURE__ */ jsx("img", { src: user.photoURL, alt: "user-profile-img", className: "w-full h-full rounded-full object-cover" }) }) : /* @__PURE__ */ jsx(
       "div",
@@ -6034,7 +6043,7 @@ const LinksSection = ({ section }) => {
   if (!noTitle || !isEmpty)
     return /* @__PURE__ */ jsxs(Fragment$1, { children: [
       /* @__PURE__ */ jsx("span", { children: section.title }),
-      /* @__PURE__ */ jsx(Separator, {}),
+      /* @__PURE__ */ jsx(Separator, { className: "my-2" }),
       section.items && section.items.map(
         (item) => /* @__PURE__ */ jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
           item.icon && item.icon({}),
@@ -6050,7 +6059,7 @@ const MembershipSection = ({ section }) => {
       /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
     ] });
   return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx(Separator, {}),
+    /* @__PURE__ */ jsx(Separator, { className: "my-2" }),
     section.state[section.activeState]
   ] });
 };
@@ -6080,31 +6089,61 @@ const UserSection = ({ description, displayName }) => {
     /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
   ] });
 };
-const MobileMenu = ({ user, menuMap = defaultMenuMap }) => {
+const AuthSection = ({ loginLink = "https://darkmaterial.space" }) => {
+  const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
+  const defaultSignUpLink = "https://auth.darkmaterial.space/signup?continue=";
+  const sign_in_link = `${defaultLoginLink}${loginLink}`;
+  const sign_up_link = `${defaultSignUpLink}${loginLink}`;
+  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col gap-2 mb-4", children: [
+    /* @__PURE__ */ jsx(Button, { asChild: true, variant: "outline", children: /* @__PURE__ */ jsx("a", { href: sign_in_link, children: "Войти" }) }),
+    /* @__PURE__ */ jsx(Button, { asChild: true, variant: "default", children: /* @__PURE__ */ jsx("a", { href: sign_up_link, children: "Зарегистрироваться" }) })
+  ] });
+};
+const MobileMenu = ({ user, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
   return /* @__PURE__ */ jsxs(Dialog, { children: [
     /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
     /* @__PURE__ */ jsx(DialogContent, { className: "rounded-none w-full h-full", children: menuMap && menuMap.map((item, i) => {
-      if (item.type === "user")
-        return /* @__PURE__ */ jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "mobile-item-no-wrapper");
+      if (item.type === "user") {
+        if (user)
+          return /* @__PURE__ */ jsx(
+            UserSection,
+            {
+              displayName: user.displayName || "Пользователь",
+              description: user.email || "Не указано"
+            },
+            i + "mobile-item-no-wrapper"
+          );
+        return /* @__PURE__ */ jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
+      }
       if (item.type === "links")
         return /* @__PURE__ */ jsx(LinksSection, { section: item }, i + "mobile-item-no-wrapper");
       if (item.type === "projects")
         return /* @__PURE__ */ jsx(ProjectsSection, { section: item }, i + "mobile-item-no-wrapper");
       if (item.type === "membership")
         return /* @__PURE__ */ jsx(MembershipSection, { section: item }, i + "mobile-item-no-wrapper");
-      if (item.type === "sign-out")
+      if (item.type === "sign-out" && user)
         return /* @__PURE__ */ jsx(SignOutSection, { section: item }, i + "mobile-item-no-wrapper");
       if (item.type === "wrapper") {
         return /* @__PURE__ */ jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
-          if (wrapperItem.type === "user")
-            return /* @__PURE__ */ jsx(UserSection, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "mobile-item-with-wrapper");
+          if (wrapperItem.type === "user") {
+            if (user)
+              return /* @__PURE__ */ jsx(
+                UserSection,
+                {
+                  displayName: user.displayName || "Пользователь",
+                  description: user.email || "Не указано"
+                },
+                i + "-" + index2 + "mobile-item-with-wrapper"
+              );
+            return /* @__PURE__ */ jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
+          }
           if (wrapperItem.type === "links")
             return /* @__PURE__ */ jsx(LinksSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
           if (wrapperItem.type === "projects")
             return /* @__PURE__ */ jsx(ProjectsSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
           if (wrapperItem.type === "membership")
             return /* @__PURE__ */ jsx(MembershipSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-          if (wrapperItem.type === "sign-out")
+          if (wrapperItem.type === "sign-out" && user)
             return /* @__PURE__ */ jsx(SignOutSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
         }) }, i + "-mobile-item-wrapper");
       }
@@ -6115,16 +6154,30 @@ const MobileMenu = ({ user, menuMap = defaultMenuMap }) => {
 const UserCircle = ({
   user,
   size: size2 = 36,
-  loginLink = "/login",
+  loginLink = "https://darkmaterial.space",
   activeMenu = "desktop",
   buttonSize = "default",
   map = defaultMenuMap
 }) => {
-  if (!user)
-    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsx("a", { href: loginLink, children: "Войти" }) });
   if (activeMenu === "desktop")
-    return /* @__PURE__ */ jsx(DesktopMenu, { user, size: size2, menuMap: map });
-  return /* @__PURE__ */ jsx(MobileMenu, { user, menuMap: map });
+    return /* @__PURE__ */ jsx(
+      DesktopMenu,
+      {
+        buttonSize,
+        user,
+        size: size2,
+        menuMap: map,
+        loginLink
+      }
+    );
+  return /* @__PURE__ */ jsx(
+    MobileMenu,
+    {
+      user,
+      menuMap: map,
+      loginLink
+    }
+  );
 };
 const Notification = ({ notification }) => {
   const ref = useRef(null);

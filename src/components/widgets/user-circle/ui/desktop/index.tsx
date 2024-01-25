@@ -1,4 +1,4 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { defaultMenuMap } from "@/const/default-menu-map"
 import { MenuMapProps } from "@/types/common"
 import { User } from "firebase/auth"
@@ -8,13 +8,20 @@ import LinksSection from "./links-section"
 import ProjectsSection from "./projects-section"
 import MembershipSection from "./membership-section"
 import SignOutSection from "./sign-out-section"
+import { Button, ButtonProps } from "@/components/ui/button"
 
 type Props = {
-    user: User
+    user?: User
     size?: number
     menuMap?: MenuMapProps
+    buttonSize?: ButtonProps['size']
+    loginLink?: string
 }
-const DesktopMenu = ({ user, size=36, menuMap=defaultMenuMap }: Props) => {
+const DesktopMenu = ({ user, size=36, buttonSize, loginLink='https://darkmaterial.space', menuMap=defaultMenuMap }: Props) => {
+    const defaultLoginLink = 'https://auth.darkmaterial.space/login?continue='
+    if (!user) return <Button size={buttonSize} variant='outline' asChild>
+        <a href={`${defaultLoginLink}${loginLink}`}>Войти</a>
+    </Button>
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -30,7 +37,7 @@ const DesktopMenu = ({ user, size=36, menuMap=defaultMenuMap }: Props) => {
                 }
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 w-60 rounded-xl">
-                { 
+                {
                     menuMap && menuMap.map((item, i) => {
                         if (item.type === 'user') return <UserSection key={i + '-item-no-wrapper'} displayName={user.displayName || 'Пользователь'} description={user.email || 'Не указано'} />
                         if (item.type === 'links') return <LinksSection key={i + '-item-no-wrapper'} section={item} />

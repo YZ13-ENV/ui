@@ -14,7 +14,7 @@ const MembershipSection = ({ section }: Props) => {
         </>
     )
     return <>
-        <Separator />
+        <Separator className="my-2" />
         { section.state[section.activeState] as JSX.Element }
     </>
 }

@@ -53,6 +53,7 @@ const app = async (): Promise<UserConfigExport> => {
             "react-icons/bi/index.esm.js": "react-icons/bi",
             "react-icons/pi/index.esm.js": "react-icons/pi",
             "react-icons/md/index.esm.js": "react-icons/md",
+            "react-icons/ti/index.esm.js": "react-icons/ti",
             "socket.io-client": "socket.io-client",
             "next/image.js": "next/image",
             "tailwind-merge": "tailwind-merge",

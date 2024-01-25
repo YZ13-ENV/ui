@@ -18,14 +18,23 @@ type Props = {
 const UserCircle = ({
         user,
         size=36,
-        loginLink='/login',
+        loginLink='https://darkmaterial.space',
         activeMenu='desktop',
         buttonSize='default',
         map=defaultMenuMap
     }: Props) => {
-    if (!user) return <Button size={buttonSize} variant='outline' asChild><a href={loginLink}>Войти</a></Button>
-    if (activeMenu === 'desktop') return <DesktopMenu user={user} size={size} menuMap={map} />
-    return <MobileMenu user={user} menuMap={map} />
+    if (activeMenu === 'desktop') return <DesktopMenu
+    buttonSize={buttonSize}
+    user={user}
+    size={size}
+    menuMap={map}
+    loginLink={loginLink}
+    />
+    return <MobileMenu
+    user={user}
+    menuMap={map}
+    loginLink={loginLink}
+    />
 }
 
 export { UserCircle }

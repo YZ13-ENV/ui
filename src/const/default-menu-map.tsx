@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MenuMapProps } from "@/types/common";
 import { BiCog } from "react-icons/bi";
+import { TiDocumentText } from 'react-icons/ti'
 
 export const defaultMenuMap: MenuMapProps = [
     {
@@ -13,6 +14,11 @@ export const defaultMenuMap: MenuMapProps = [
             {
                 type: 'links',
                 items: [
+                    {
+                        icon: TiDocumentText,
+                        text: 'Документация',
+                        link: 'https://docs.darkmaterial.space'
+                    },
                     {
                         icon: BiCog,
                         text: 'Настройки',
