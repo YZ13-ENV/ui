@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils"
 import { ElementRef, useEffect, useMemo, useRef, useState } from "react"
 
 type Props = {
+  className?: string
   starsCount?: number
 }
-const StarField = ({ starsCount=50 }: Props) => {
+const StarField = ({ className='', starsCount=50 }: Props) => {
   const stars = useMemo(() => { return Array.from({ length: starsCount }).map((_, i) => i) }, [])
   const ref = useRef<ElementRef<'div'>>(null)
   const [width, setWidth] = useState<number>(0)
@@ -24,7 +25,8 @@ const StarField = ({ starsCount=50 }: Props) => {
   return (
     <div ref={ref} className={cn(
       visible ? 'opacity-100' : 'opacity-0',
-      "absolute w-full h-full"
+      "absolute w-full h-full",
+      className
     )}>
       {
         stars.map(

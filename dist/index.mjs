@@ -4059,7 +4059,7 @@ const format = {
   },
   randomNum: (min2 = 0, max2 = 100) => Math.floor(Math.random() * (max2 - min2 + 1) + min2)
 };
-const StarField = ({ starsCount = 50 }) => {
+const StarField = ({ className = "", starsCount = 50 }) => {
   const stars = useMemo(() => {
     return Array.from({ length: starsCount }).map((_, i) => i);
   }, []);
@@ -4078,7 +4078,8 @@ const StarField = ({ starsCount = 50 }) => {
   }, [ref]);
   return /* @__PURE__ */ jsx("div", { ref, className: cn(
     visible ? "opacity-100" : "opacity-0",
-    "absolute w-full h-full"
+    "absolute w-full h-full",
+    className
   ), children: stars.map(
     (star) => /* @__PURE__ */ jsx(
       "div",
