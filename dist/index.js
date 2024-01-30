@@ -4032,6 +4032,71 @@
       ) })
     ] });
   };
+  const format = {
+    numbers: (num) => {
+      if (num < 999) {
+        return num;
+      } else if (num >= 1e3 && num <= 999999) {
+        return (num / 1e3).toFixed(1) + " тыс.";
+      } else
+        return (num / 1e6).toFixed(1) + " млн.";
+    },
+    random: (len, charSet) => {
+      charSet = charSet || "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      var randomString = "";
+      for (var i = 0; i < len; i++) {
+        var randomPoz = Math.floor(Math.random() * charSet.length);
+        randomString += charSet.substring(randomPoz, randomPoz + 1);
+      }
+      return randomString;
+    },
+    generateId: (len, onlyNumbers) => {
+      const charSet = onlyNumbers ? "0123456789" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let result = "";
+      for (let i = 0; i < len; i++) {
+        const randomPoz = Math.floor(Math.random() * charSet.length);
+        result += charSet.substring(randomPoz, randomPoz + 1);
+      }
+      if (onlyNumbers)
+        return parseInt(result);
+      return result;
+    },
+    randomNum: (min2 = 0, max2 = 100) => Math.floor(Math.random() * (max2 - min2 + 1) + min2)
+  };
+  const StarField = ({ starsCount = 50 }) => {
+    const stars = React.useMemo(() => {
+      return Array.from({ length: starsCount }).map((_, i) => i);
+    }, []);
+    const ref = React.useRef(null);
+    const [width, setWidth] = React.useState(0);
+    const [height, setHeight] = React.useState(0);
+    const [visible, setVisible] = React.useState(false);
+    React.useEffect(() => {
+      const div = ref.current;
+      if (div) {
+        const { clientWidth, clientHeight } = div;
+        setWidth(clientWidth);
+        setHeight(clientHeight);
+        setVisible(true);
+      }
+    }, [ref]);
+    return /* @__PURE__ */ jsxRuntime.jsx("div", { ref, className: cn(
+      visible ? "opacity-100" : "opacity-0",
+      "absolute w-full h-full"
+    ), children: stars.map(
+      (star) => /* @__PURE__ */ jsxRuntime.jsx(
+        "div",
+        {
+          style: {
+            top: format.randomNum(0 + 10, height - 10),
+            left: format.randomNum(0 + 10, width - 10)
+          },
+          className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
+        },
+        "star-" + star
+      )
+    ) });
+  };
   function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
     const PROVIDER_NAME = name + "CollectionProvider";
     const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
@@ -6270,6 +6335,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
   exports2.Avatar = avatar;
   exports2.Notifications = Notifications;
   exports2.ProjectsGrid = ProjectsGrid;
+  exports2.StarField = StarField;
   exports2.UserCircle = UserCircle;
   exports2.projects = projects;
   Object.defineProperty(exports2, Symbol.toStringTag, { value: "Module" });
