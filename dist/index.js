@@ -4098,6 +4098,34 @@
       )
     ) });
   };
+  const defaultStyle = {
+    resize: "none",
+    outline: "none",
+    display: "block",
+    overflow: "hidden",
+    backgroundColor: "transparent"
+  };
+  const Textarea = (props) => {
+    const ref = React.useRef(null);
+    const onChange = (e) => {
+      if (props.onChange)
+        props.onChange(e);
+      if (ref.current) {
+        ref.current.style.height = "40px";
+        const scrollHeight = ref.current.scrollHeight;
+        ref.current.style.height = scrollHeight + "px";
+      }
+    };
+    React.useLayoutEffect(() => {
+      const area = ref.current;
+      if (props.value && area) {
+        ref.current.style.height = "40px";
+        const scrollHeight = ref.current.scrollHeight;
+        ref.current.style.height = scrollHeight + "px";
+      }
+    }, [props.value, ref]);
+    return /* @__PURE__ */ jsxRuntime.jsx("textarea", { ...props, ref, onChange, style: { ...defaultStyle } });
+  };
   function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
     const PROVIDER_NAME = name + "CollectionProvider";
     const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
@@ -6337,6 +6365,7 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
   exports2.Notifications = Notifications;
   exports2.ProjectsGrid = ProjectsGrid;
   exports2.StarField = StarField;
+  exports2.Textarea = Textarea;
   exports2.UserCircle = UserCircle;
   exports2.projects = projects;
   Object.defineProperty(exports2, Symbol.toStringTag, { value: "Module" });

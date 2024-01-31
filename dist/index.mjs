@@ -4094,6 +4094,34 @@ const StarField = ({ className = "", starsCount = 50 }) => {
     )
   ) });
 };
+const defaultStyle = {
+  resize: "none",
+  outline: "none",
+  display: "block",
+  overflow: "hidden",
+  backgroundColor: "transparent"
+};
+const Textarea = (props) => {
+  const ref = useRef(null);
+  const onChange = (e) => {
+    if (props.onChange)
+      props.onChange(e);
+    if (ref.current) {
+      ref.current.style.height = "40px";
+      const scrollHeight = ref.current.scrollHeight;
+      ref.current.style.height = scrollHeight + "px";
+    }
+  };
+  useLayoutEffect(() => {
+    const area = ref.current;
+    if (props.value && area) {
+      ref.current.style.height = "40px";
+      const scrollHeight = ref.current.scrollHeight;
+      ref.current.style.height = scrollHeight + "px";
+    }
+  }, [props.value, ref]);
+  return /* @__PURE__ */ jsx("textarea", { ...props, ref, onChange, style: { ...defaultStyle } });
+};
 function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
   const PROVIDER_NAME = name + "CollectionProvider";
   const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
@@ -6334,6 +6362,7 @@ export {
   Notifications,
   ProjectsGrid,
   StarField,
+  Textarea,
   UserCircle,
   projects
 };
