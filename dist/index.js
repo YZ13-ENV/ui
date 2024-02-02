@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, socket_ioClient) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"], global["framer-motion"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, socket_ioClient, framerMotion) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -4063,41 +4063,6 @@
     },
     randomNum: (min2 = 0, max2 = 100) => Math.floor(Math.random() * (max2 - min2 + 1) + min2)
   };
-  const StarField = ({ className = "", starsCount = 50 }) => {
-    const stars = React.useMemo(() => {
-      return Array.from({ length: starsCount }).map((_, i) => i);
-    }, []);
-    const ref = React.useRef(null);
-    const [width, setWidth] = React.useState(0);
-    const [height, setHeight] = React.useState(0);
-    const [visible, setVisible] = React.useState(false);
-    React.useEffect(() => {
-      const div = ref.current;
-      if (div) {
-        const { clientWidth, clientHeight } = div;
-        setWidth(clientWidth);
-        setHeight(clientHeight);
-        setVisible(true);
-      }
-    }, [ref]);
-    return /* @__PURE__ */ jsxRuntime.jsx("div", { ref, className: cn(
-      visible ? "opacity-100" : "opacity-0",
-      "absolute w-full h-full",
-      className
-    ), children: stars.map(
-      (star) => /* @__PURE__ */ jsxRuntime.jsx(
-        "div",
-        {
-          style: {
-            top: format.randomNum(0 + 10, height - 10),
-            left: format.randomNum(0 + 10, width - 10)
-          },
-          className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
-        },
-        "star-" + star
-      )
-    ) });
-  };
   const defaultStyle = {
     resize: "none",
     outline: "none",
@@ -6360,6 +6325,57 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
         /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ jsxRuntime.jsx(Button, { size: "sm", onClick: clear, variant: "ghost", children: "Очистить" }) })
       ] })
     ] });
+  };
+  const Star = ({ index: index2, height, width }) => {
+    const delay = format.randomNum(0, 10);
+    const brightLevel = format.randomNum(0, 2);
+    const duration = format.randomNum(1, 3);
+    const size2 = format.randomNum(1, 3);
+    const levels = [
+      { min: 0.25, max: 0.5 },
+      { min: 0.5, max: 0.7 },
+      { min: 0.6, max: 1 }
+    ];
+    return /* @__PURE__ */ jsxRuntime.jsx(
+      framerMotion.motion.div,
+      {
+        initial: { opacity: levels[brightLevel].min },
+        animate: { opacity: levels[brightLevel].max },
+        transition: { repeat: Infinity, repeatType: "mirror", duration, delay },
+        style: {
+          width: `${size2}px`,
+          height: `${size2}px`,
+          top: format.randomNum(0 + 10, height - 10),
+          left: format.randomNum(0 + 10, width - 10)
+        },
+        className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
+      },
+      "star-" + index2
+    );
+  };
+  const StarField = ({ starsCount = 50 }) => {
+    const stars = React.useMemo(() => {
+      return Array.from({ length: starsCount }).map((_, i) => i);
+    }, []);
+    const ref = React.useRef(null);
+    const [width, setWidth] = React.useState(0);
+    const [height, setHeight] = React.useState(0);
+    const [visible, setVisible] = React.useState(false);
+    React.useEffect(() => {
+      const div = ref.current;
+      if (div) {
+        const { offsetWidth, offsetHeight } = div;
+        setWidth(offsetWidth);
+        setHeight(offsetHeight);
+        setVisible(true);
+      }
+    }, [ref]);
+    return /* @__PURE__ */ jsxRuntime.jsx("div", { ref, className: cn(
+      visible ? "opacity-100" : "opacity-0",
+      "absolute w-full h-full z-[-1]"
+    ), children: stars.map(
+      (star) => /* @__PURE__ */ jsxRuntime.jsx(Star, { width, height, index: star }, "star-" + star + "-" + format.generateId(6))
+    ) });
   };
   exports2.Avatar = avatar;
   exports2.Notifications = Notifications;

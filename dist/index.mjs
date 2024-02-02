@@ -17,6 +17,7 @@ import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
 import { DateTime } from "luxon";
 import { useInViewport } from "ahooks";
 import { io } from "socket.io-client";
+import { motion } from "framer-motion";
 const globals = "";
 const projects = [
   {
@@ -4059,41 +4060,6 @@ const format = {
   },
   randomNum: (min2 = 0, max2 = 100) => Math.floor(Math.random() * (max2 - min2 + 1) + min2)
 };
-const StarField = ({ className = "", starsCount = 50 }) => {
-  const stars = useMemo(() => {
-    return Array.from({ length: starsCount }).map((_, i) => i);
-  }, []);
-  const ref = useRef(null);
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const div = ref.current;
-    if (div) {
-      const { clientWidth, clientHeight } = div;
-      setWidth(clientWidth);
-      setHeight(clientHeight);
-      setVisible(true);
-    }
-  }, [ref]);
-  return /* @__PURE__ */ jsx("div", { ref, className: cn(
-    visible ? "opacity-100" : "opacity-0",
-    "absolute w-full h-full",
-    className
-  ), children: stars.map(
-    (star) => /* @__PURE__ */ jsx(
-      "div",
-      {
-        style: {
-          top: format.randomNum(0 + 10, height - 10),
-          left: format.randomNum(0 + 10, width - 10)
-        },
-        className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
-      },
-      "star-" + star
-    )
-  ) });
-};
 const defaultStyle = {
   resize: "none",
   outline: "none",
@@ -6356,6 +6322,57 @@ const Notifications = ({ auth }) => {
       /* @__PURE__ */ jsx("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ jsx(Button, { size: "sm", onClick: clear, variant: "ghost", children: "Очистить" }) })
     ] })
   ] });
+};
+const Star = ({ index: index2, height, width }) => {
+  const delay = format.randomNum(0, 10);
+  const brightLevel = format.randomNum(0, 2);
+  const duration = format.randomNum(1, 3);
+  const size2 = format.randomNum(1, 3);
+  const levels = [
+    { min: 0.25, max: 0.5 },
+    { min: 0.5, max: 0.7 },
+    { min: 0.6, max: 1 }
+  ];
+  return /* @__PURE__ */ jsx(
+    motion.div,
+    {
+      initial: { opacity: levels[brightLevel].min },
+      animate: { opacity: levels[brightLevel].max },
+      transition: { repeat: Infinity, repeatType: "mirror", duration, delay },
+      style: {
+        width: `${size2}px`,
+        height: `${size2}px`,
+        top: format.randomNum(0 + 10, height - 10),
+        left: format.randomNum(0 + 10, width - 10)
+      },
+      className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
+    },
+    "star-" + index2
+  );
+};
+const StarField = ({ starsCount = 50 }) => {
+  const stars = useMemo(() => {
+    return Array.from({ length: starsCount }).map((_, i) => i);
+  }, []);
+  const ref = useRef(null);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const div = ref.current;
+    if (div) {
+      const { offsetWidth, offsetHeight } = div;
+      setWidth(offsetWidth);
+      setHeight(offsetHeight);
+      setVisible(true);
+    }
+  }, [ref]);
+  return /* @__PURE__ */ jsx("div", { ref, className: cn(
+    visible ? "opacity-100" : "opacity-0",
+    "absolute w-full h-full z-[-1]"
+  ), children: stars.map(
+    (star) => /* @__PURE__ */ jsx(Star, { width, height, index: star }, "star-" + star + "-" + format.generateId(6))
+  ) });
 };
 export {
   avatar as Avatar,
