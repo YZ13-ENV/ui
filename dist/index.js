@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.socket["io-client"], global["framer-motion"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, socket_ioClient, framerMotion) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("next/link.js"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "next/link.js", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.Link, global.socket["io-client"], global["framer-motion"]));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, Link, socket_ioClient, framerMotion) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -6252,10 +6252,18 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
         api.notifications.patch(notification.receiver, notification.doc_id, { isViewed: true });
     }, [notification.isViewed, isInView]);
     return /* @__PURE__ */ jsxRuntime.jsxs("div", { ref, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
-      /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
-        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm", children: notification.message }),
-        /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+      notification.link ? /* @__PURE__ */ jsxRuntime.jsxs(Link, { className: "w-fit h-fit flex items-center", href: notification.link, children: [
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+        /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm", children: notification.message }),
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+        ] })
+      ] }) : /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-fit h-fit flex items-center", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+        /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-sm", children: notification.message }),
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+        ] })
       ] }),
       /* @__PURE__ */ jsxRuntime.jsx("div", { className: "p-4", children: /* @__PURE__ */ jsxRuntime.jsx(
         Button,

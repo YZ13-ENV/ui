@@ -16,6 +16,7 @@ import { notifications } from "api";
 import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
 import { DateTime } from "luxon";
 import { useInViewport } from "ahooks";
+import Link from "next/link.js";
 import { io } from "socket.io-client";
 import { motion } from "framer-motion";
 const globals = "";
@@ -6249,10 +6250,18 @@ const Notification = ({ notification }) => {
       notifications.patch(notification.receiver, notification.doc_id, { isViewed: true });
   }, [notification.isViewed, isInView]);
   return /* @__PURE__ */ jsxs("div", { ref, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
-    /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
-    /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
-      /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
-      /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+    notification.link ? /* @__PURE__ */ jsxs(Link, { className: "w-fit h-fit flex items-center", href: notification.link, children: [
+      /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+      /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
+        /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+      ] })
+    ] }) : /* @__PURE__ */ jsxs("div", { className: "w-fit h-fit flex items-center", children: [
+      /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+      /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
+        /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+      ] })
     ] }),
     /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx(
       Button,
