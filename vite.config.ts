@@ -56,6 +56,7 @@ const app = async (): Promise<UserConfigExport> => {
             "react-icons/ti/index.esm.js": "react-icons/ti",
             "socket.io-client": "socket.io-client",
             "next/image.js": "next/image",
+            "next/link.js": "next/link",
             "framer-motion": "framer-motion",
             "tailwind-merge": "tailwind-merge",
             "class-variance-authority": "class-variance-authority",

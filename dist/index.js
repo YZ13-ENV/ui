@@ -1,5 +1,5 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("next/link.js"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "next/link.js", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global.Link, global.socket["io-client"], global["framer-motion"]));
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("next/link.js"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "next/link.js", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global["next/link"], global.socket["io-client"], global["framer-motion"]));
 })(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, Link, socket_ioClient, framerMotion) {
   "use strict";"use client";
 
@@ -62,6 +62,26 @@
         light: "https://cdn.darkmaterial.space/dm/icons/keeper-light.svg"
       },
       icon: "https://cdn.darkmaterial.space/dm/icons/keeper-dark.svg"
+    },
+    {
+      key: 5,
+      name: "Docs",
+      link: "https://docs.darkmaterial.space",
+      themedIcon: {
+        dark: "https://cdn.darkmaterial.space/dm/icons/dm-star-dark.svg",
+        light: "https://cdn.darkmaterial.space/dm/icons/dm-star-light.svg"
+      },
+      icon: "https://cdn.darkmaterial.space/dm/icons/dm-star-dark.svg"
+    },
+    {
+      key: 6,
+      name: "Team",
+      link: "https://team.darkmaterial.space",
+      themedIcon: {
+        dark: "https://cdn.darkmaterial.space/dm/icons/team-dark.svg",
+        light: "https://cdn.darkmaterial.space/dm/icons/team-dark.svg"
+      },
+      icon: "https://cdn.darkmaterial.space/dm/icons/team-dark.svg"
     }
   ];
   const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {

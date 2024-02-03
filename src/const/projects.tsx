@@ -41,5 +41,25 @@ export const projects: Project[] = [
             light: 'https://cdn.darkmaterial.space/dm/icons/keeper-light.svg',
         },
         icon: 'https://cdn.darkmaterial.space/dm/icons/keeper-dark.svg'
+    },
+    {
+    	key: 5,
+    	name: 'Docs',
+    	link: 'https://docs.darkmaterial.space',
+    	themedIcon: {
+    	    dark: 'https://cdn.darkmaterial.space/dm/icons/dm-star-dark.svg',
+    	    light: 'https://cdn.darkmaterial.space/dm/icons/dm-star-light.svg'
+	},
+	icon: 'https://cdn.darkmaterial.space/dm/icons/dm-star-dark.svg'
+    },
+    {
+    	key: 6,
+    	name: 'Team',
+    	link: 'https://team.darkmaterial.space',
+    	themedIcon: {
+    	    dark: 'https://cdn.darkmaterial.space/dm/icons/team-dark.svg',
+    	    light: 'https://cdn.darkmaterial.space/dm/icons/team-dark.svg'
+	},
+	icon: 'https://cdn.darkmaterial.space/dm/icons/team-dark.svg'
     }
 ]
