@@ -11,6 +11,7 @@ import ReactDOM__default, { flushSync } from "react-dom";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cva } from "class-variance-authority";
+import dynamic from "next/dynamic.js";
 import { TiDocumentText } from "react-icons/ti/index.esm.js";
 import { notifications } from "api";
 import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
@@ -3422,8 +3423,8 @@ var styleHookSingleton = function() {
 var styleSingleton = function() {
   var useStyle = styleHookSingleton();
   var Sheet = function(_a) {
-    var styles = _a.styles, dynamic = _a.dynamic;
-    useStyle(styles, dynamic);
+    var styles = _a.styles, dynamic2 = _a.dynamic;
+    useStyle(styles, dynamic2);
     return null;
   };
   return Sheet;
@@ -4109,6 +4110,14 @@ const Textarea = (props) => {
   }, [props.value, ref]);
   return /* @__PURE__ */ jsx("textarea", { ...props, ref, onChange, style: { ...defaultStyle } });
 };
+const Editor = dynamic(() => import("./markdown-88eabd60.mjs"), {
+  // Make sure we turn SSR off
+  ssr: false
+});
+const ForwardRefEditor = forwardRef(
+  (props, ref) => /* @__PURE__ */ jsx(Editor, { ...props, editorRef: ref })
+);
+ForwardRefEditor.displayName = "ForwardRefEditor";
 function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
   const PROVIDER_NAME = name + "CollectionProvider";
   const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
@@ -6405,6 +6414,7 @@ const StarField = ({ starsCount = 50 }) => {
 };
 export {
   avatar as Avatar,
+  ForwardRefEditor,
   Notifications,
   ProjectsGrid,
   StarField,

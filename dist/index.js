@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("next/link.js"), require("socket.io-client"), require("framer-motion")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "next/link.js", "socket.io-client", "framer-motion"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global["next/link"], global.socket["io-client"], global["framer-motion"]));
-})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, Link, socket_ioClient, framerMotion) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("react/jsx-runtime"), require("next/image.js"), require("react"), require("react-icons/bi/index.esm.js"), require("react-icons/pi/index.esm.js"), require("react-icons/md/index.esm.js"), require("react-dom"), require("clsx"), require("tailwind-merge"), require("class-variance-authority"), require("next/dynamic.js"), require("react-icons/ti/index.esm.js"), require("api"), require("react-firebase-hooks/auth/dist/index.esm.js"), require("luxon"), require("ahooks"), require("next/link.js"), require("socket.io-client"), require("framer-motion"), require("@mdxeditor/editor")) : typeof define === "function" && define.amd ? define(["exports", "react/jsx-runtime", "next/image.js", "react", "react-icons/bi/index.esm.js", "react-icons/pi/index.esm.js", "react-icons/md/index.esm.js", "react-dom", "clsx", "tailwind-merge", "class-variance-authority", "next/dynamic.js", "react-icons/ti/index.esm.js", "api", "react-firebase-hooks/auth/dist/index.esm.js", "luxon", "ahooks", "next/link.js", "socket.io-client", "framer-motion", "@mdxeditor/editor"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global["react/jsx-runtime"], global["next/image"], global.React, global["react-icons/bi"], global["react-icons/pi"], global["react-icons/md"], global.ReactDOM, global.clsx, global["tailwind-merge"], global["class-variance-authority"], global.dynamic, global["react-icons/ti"], global.api, global["react-firebase-hooks/auth"], global.luxon, global.ahooks, global["next/link"], global.socket["io-client"], global["framer-motion"], global.editor));
+})(this, function(exports2, jsxRuntime, Image, React, index_esm_js, index_esm_js$1, index_esm_js$2, ReactDOM, clsx, tailwindMerge, classVarianceAuthority, dynamic, index_esm_js$3, api, index_esm_js$4, luxon, ahooks, Link, socket_ioClient, framerMotion, editor) {
   "use strict";"use client";
 
   function _interopNamespaceDefault(e) {
@@ -3424,8 +3424,8 @@
   var styleSingleton = function() {
     var useStyle = styleHookSingleton();
     var Sheet = function(_a) {
-      var styles = _a.styles, dynamic = _a.dynamic;
-      useStyle(styles, dynamic);
+      var styles = _a.styles, dynamic2 = _a.dynamic;
+      useStyle(styles, dynamic2);
       return null;
     };
     return Sheet;
@@ -4111,6 +4111,14 @@
     }, [props.value, ref]);
     return /* @__PURE__ */ jsxRuntime.jsx("textarea", { ...props, ref, onChange, style: { ...defaultStyle } });
   };
+  const Editor = dynamic(() => Promise.resolve().then(() => markdown), {
+    // Make sure we turn SSR off
+    ssr: false
+  });
+  const ForwardRefEditor = React.forwardRef(
+    (props, ref) => /* @__PURE__ */ jsxRuntime.jsx(Editor, { ...props, editorRef: ref })
+  );
+  ForwardRefEditor.displayName = "ForwardRefEditor";
   function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
     const PROVIDER_NAME = name + "CollectionProvider";
     const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
@@ -6405,7 +6413,33 @@ Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
       (star) => /* @__PURE__ */ jsxRuntime.jsx(Star, { width, height, index: star }, "star-" + star + "-" + format.generateId(6))
     ) });
   };
+  function InitializedMDXEditor({
+    editorRef,
+    ...props
+  }) {
+    return /* @__PURE__ */ jsxRuntime.jsx(
+      editor.MDXEditor,
+      {
+        contentEditableClassName: "!ring-0 !border-0 !outline-none md-layout",
+        plugins: [
+          editor.headingsPlugin(),
+          editor.listsPlugin(),
+          editor.linkPlugin({ disableAutoLink: true }),
+          editor.quotePlugin(),
+          editor.thematicBreakPlugin(),
+          editor.markdownShortcutPlugin()
+        ],
+        ...props,
+        ref: editorRef
+      }
+    );
+  }
+  const markdown = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    default: InitializedMDXEditor
+  }, Symbol.toStringTag, { value: "Module" }));
   exports2.Avatar = avatar;
+  exports2.ForwardRefEditor = ForwardRefEditor;
   exports2.Notifications = Notifications;
   exports2.ProjectsGrid = ProjectsGrid;
   exports2.StarField = StarField;
