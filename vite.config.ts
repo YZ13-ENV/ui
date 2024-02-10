@@ -37,6 +37,7 @@ const app = async (): Promise<UserConfigExport> => {
       },
     },
     build: {
+      minify: 'esbuild',
       ssr: true,
       cssMinify: true,
       lib: {

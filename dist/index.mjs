@@ -1,27 +1,26 @@
 "use client";
-import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
-import Image from "next/image.js";
-import * as React from "react";
-import React__default, { memo, useCallback, createContext, useMemo, createElement, useContext, forwardRef, Children, isValidElement, cloneElement, Fragment, useEffect, useRef, useState, useLayoutEffect, useReducer } from "react";
-import { BiUser, BiCog, BiLogOut, BiMenu, BiTrashAlt } from "react-icons/bi/index.esm.js";
-import { PiCrownSimpleBold, PiBellBold } from "react-icons/pi/index.esm.js";
-import { MdGridView, MdOpenInNew } from "react-icons/md/index.esm.js";
-import * as ReactDOM from "react-dom";
-import ReactDOM__default, { flushSync } from "react-dom";
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { cva } from "class-variance-authority";
-import dynamic from "next/dynamic.js";
-import { TiDocumentText } from "react-icons/ti/index.esm.js";
-import { notifications } from "api";
-import { useAuthState } from "react-firebase-hooks/auth/dist/index.esm.js";
-import { DateTime } from "luxon";
-import { useInViewport } from "ahooks";
-import Link from "next/link.js";
-import { io } from "socket.io-client";
-import { motion } from "framer-motion";
-const globals = "";
-const projects = [
+import { jsxs as A, jsx as h, Fragment as pe } from "react/jsx-runtime";
+import zr from "next/image.js";
+import * as C from "react";
+import ie, { memo as no, useCallback as V, createContext as mt, useMemo as je, createElement as g, useContext as Xt, forwardRef as _, Children as Oe, isValidElement as ht, cloneElement as Zt, Fragment as qt, useEffect as F, useRef as D, useState as U, useLayoutEffect as Qt, useReducer as Kr } from "react";
+import { BiUser as oo, BiCog as Vr, BiLogOut as ro, BiMenu as jr, BiTrashAlt as Hr } from "react-icons/bi/index.esm.js";
+import { PiCrownSimpleBold as Gr, PiBellBold as Yr } from "react-icons/pi/index.esm.js";
+import { MdGridView as Xr, MdOpenInNew as co } from "react-icons/md/index.esm.js";
+import * as Zr from "react-dom";
+import qr, { flushSync as io } from "react-dom";
+import { clsx as Qr } from "clsx";
+import { twMerge as Jr } from "tailwind-merge";
+import { cva as ec } from "class-variance-authority";
+import tc from "next/dynamic.js";
+import { TiDocumentText as nc } from "react-icons/ti/index.esm.js";
+import { notifications as Lt } from "api";
+import { useAuthState as oc } from "react-firebase-hooks/auth/dist/index.esm.js";
+import { DateTime as rc } from "luxon";
+import { useInViewport as cc } from "ahooks";
+import ic from "next/link.js";
+import { io as ac } from "socket.io-client";
+import { motion as sc } from "framer-motion";
+const lc = [
   {
     key: 1,
     name: "YZ13",
@@ -82,231 +81,185 @@ const projects = [
     },
     icon: "https://cdn.darkmaterial.space/dm/icons/team-dark.svg"
   }
-];
-const Avatar = ({ size: size2 = 24, isSubscriber = false, src, className = "" }) => {
-  const iconWrapperSize = size2 * 0.5;
-  const iconSize = iconWrapperSize * 0.5;
-  return /* @__PURE__ */ jsxs(
+], dc = ({ size: e = 24, isSubscriber: t = !1, src: n, className: o = "" }) => {
+  const r = e * 0.5, c = r * 0.5;
+  return /* @__PURE__ */ A(
     "div",
     {
-      style: { width: `${size2}px`, height: `${size2}px` },
-      className: `relative flex items-center justify-center overflow-visible border rounded-full shrink-0 bg-background border-inherit ${className}`,
+      style: { width: `${e}px`, height: `${e}px` },
+      className: `relative flex items-center justify-center overflow-visible border rounded-full shrink-0 bg-background border-inherit ${o}`,
       children: [
-        src ? /* @__PURE__ */ jsx(Image, { src, className: "rounded-full !relative", fill: true, alt: "@avatar" }) : /* @__PURE__ */ jsx(BiUser, { size: size2 / 2 }),
-        isSubscriber && /* @__PURE__ */ jsx("div", { style: {
+        n ? /* @__PURE__ */ h(zr, { src: n, className: "rounded-full !relative", fill: !0, alt: "@avatar" }) : /* @__PURE__ */ h(oo, { size: e / 2 }),
+        t && /* @__PURE__ */ h("div", { style: {
           // maxWidth: '64px',
           // maxHeight: '64px',
-          top: `-${iconWrapperSize * 0.25}px`,
-          left: `-${iconWrapperSize * 0.25}px`,
-          width: `${iconWrapperSize}px`,
-          height: `${iconWrapperSize}px`
-        }, className: "absolute flex items-center justify-center border-2 rounded-full text-muted-foreground border-background bg-muted", children: /* @__PURE__ */ jsx(PiCrownSimpleBold, { size: iconSize }) })
+          top: `-${r * 0.25}px`,
+          left: `-${r * 0.25}px`,
+          width: `${r}px`,
+          height: `${r}px`
+        }, className: "absolute flex items-center justify-center border-2 rounded-full text-muted-foreground border-background bg-muted", children: /* @__PURE__ */ h(Gr, { size: c }) })
       ]
     }
   );
-};
-const avatar = memo(Avatar);
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+}, gd = no(dc);
+function P() {
+  return P = Object.assign ? Object.assign.bind() : function(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var n = arguments[t];
+      for (var o in n)
+        Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
     }
-    return target;
-  };
-  return _extends.apply(this, arguments);
+    return e;
+  }, P.apply(this, arguments);
 }
-function $e42e1063c40fb3ef$export$b9ecd428b558ff10(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
-  return function handleEvent(event) {
-    originalEventHandler === null || originalEventHandler === void 0 || originalEventHandler(event);
-    if (checkForDefaultPrevented === false || !event.defaultPrevented)
-      return ourEventHandler === null || ourEventHandler === void 0 ? void 0 : ourEventHandler(event);
+function R(e, t, { checkForDefaultPrevented: n = !0 } = {}) {
+  return function(r) {
+    if (e == null || e(r), n === !1 || !r.defaultPrevented)
+      return t == null ? void 0 : t(r);
   };
 }
-function $6ed0406888f73fc4$var$setRef(ref, value) {
-  if (typeof ref === "function")
-    ref(value);
-  else if (ref !== null && ref !== void 0)
-    ref.current = value;
+function uc(e, t) {
+  typeof e == "function" ? e(t) : e != null && (e.current = t);
 }
-function $6ed0406888f73fc4$export$43e446d32b3d21af(...refs) {
-  return (node) => refs.forEach(
-    (ref) => $6ed0406888f73fc4$var$setRef(ref, node)
+function xt(...e) {
+  return (t) => e.forEach(
+    (n) => uc(n, t)
   );
 }
-function $6ed0406888f73fc4$export$c7b2cbe3552a0d05(...refs) {
-  return useCallback($6ed0406888f73fc4$export$43e446d32b3d21af(...refs), refs);
+function G(...e) {
+  return V(xt(...e), e);
 }
-function $c512c27ab02ef895$export$50c7b4e9d9f19c1(scopeName, createContextScopeDeps = []) {
-  let defaultContexts = [];
-  function $c512c27ab02ef895$export$fd42f52fd3ae1109(rootComponentName, defaultContext) {
-    const BaseContext = /* @__PURE__ */ createContext(defaultContext);
-    const index2 = defaultContexts.length;
-    defaultContexts = [
-      ...defaultContexts,
-      defaultContext
+function Ne(e, t = []) {
+  let n = [];
+  function o(c, i) {
+    const a = /* @__PURE__ */ mt(i), s = n.length;
+    n = [
+      ...n,
+      i
     ];
-    function Provider(props) {
-      const { scope, children, ...context } = props;
-      const Context = (scope === null || scope === void 0 ? void 0 : scope[scopeName][index2]) || BaseContext;
-      const value = useMemo(
-        () => context,
-        Object.values(context)
+    function l(d) {
+      const { scope: m, children: f, ...v } = d, p = (m == null ? void 0 : m[e][s]) || a, b = je(
+        () => v,
+        Object.values(v)
       );
-      return /* @__PURE__ */ createElement(Context.Provider, {
-        value
-      }, children);
+      return /* @__PURE__ */ g(p.Provider, {
+        value: b
+      }, f);
     }
-    function useContext$1(consumerName, scope) {
-      const Context = (scope === null || scope === void 0 ? void 0 : scope[scopeName][index2]) || BaseContext;
-      const context = useContext(Context);
-      if (context)
-        return context;
-      if (defaultContext !== void 0)
-        return defaultContext;
-      throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+    function u(d, m) {
+      const f = (m == null ? void 0 : m[e][s]) || a, v = Xt(f);
+      if (v)
+        return v;
+      if (i !== void 0)
+        return i;
+      throw new Error(`\`${d}\` must be used within \`${c}\``);
     }
-    Provider.displayName = rootComponentName + "Provider";
-    return [
-      Provider,
-      useContext$1
+    return l.displayName = c + "Provider", [
+      l,
+      u
     ];
   }
-  const createScope = () => {
-    const scopeContexts = defaultContexts.map((defaultContext) => {
-      return /* @__PURE__ */ createContext(defaultContext);
-    });
-    return function useScope(scope) {
-      const contexts = (scope === null || scope === void 0 ? void 0 : scope[scopeName]) || scopeContexts;
-      return useMemo(
+  const r = () => {
+    const c = n.map((i) => /* @__PURE__ */ mt(i));
+    return function(a) {
+      const s = (a == null ? void 0 : a[e]) || c;
+      return je(
         () => ({
-          [`__scope${scopeName}`]: {
-            ...scope,
-            [scopeName]: contexts
+          [`__scope${e}`]: {
+            ...a,
+            [e]: s
           }
         }),
         [
-          scope,
-          contexts
+          a,
+          s
         ]
       );
     };
   };
-  createScope.scopeName = scopeName;
-  return [
-    $c512c27ab02ef895$export$fd42f52fd3ae1109,
-    $c512c27ab02ef895$var$composeContextScopes(createScope, ...createContextScopeDeps)
+  return r.scopeName = e, [
+    o,
+    fc(r, ...t)
   ];
 }
-function $c512c27ab02ef895$var$composeContextScopes(...scopes) {
-  const baseScope = scopes[0];
-  if (scopes.length === 1)
-    return baseScope;
-  const createScope1 = () => {
-    const scopeHooks = scopes.map(
-      (createScope) => ({
-        useScope: createScope(),
-        scopeName: createScope.scopeName
+function fc(...e) {
+  const t = e[0];
+  if (e.length === 1)
+    return t;
+  const n = () => {
+    const o = e.map(
+      (r) => ({
+        useScope: r(),
+        scopeName: r.scopeName
       })
     );
-    return function useComposedScopes(overrideScopes) {
-      const nextScopes1 = scopeHooks.reduce((nextScopes, { useScope, scopeName }) => {
-        const scopeProps = useScope(overrideScopes);
-        const currentScope = scopeProps[`__scope${scopeName}`];
+    return function(c) {
+      const i = o.reduce((a, { useScope: s, scopeName: l }) => {
+        const d = s(c)[`__scope${l}`];
         return {
-          ...nextScopes,
-          ...currentScope
+          ...a,
+          ...d
         };
       }, {});
-      return useMemo(
+      return je(
         () => ({
-          [`__scope${baseScope.scopeName}`]: nextScopes1
+          [`__scope${t.scopeName}`]: i
         }),
         [
-          nextScopes1
+          i
         ]
       );
     };
   };
-  createScope1.scopeName = baseScope.scopeName;
-  return createScope1;
+  return n.scopeName = t.scopeName, n;
 }
-const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { children, ...slotProps } = props;
-  const childrenArray = Children.toArray(children);
-  const slottable = childrenArray.find($5e63c961fc1ce211$var$isSlottable);
-  if (slottable) {
-    const newElement = slottable.props.children;
-    const newChildren = childrenArray.map((child) => {
-      if (child === slottable) {
-        if (Children.count(newElement) > 1)
-          return Children.only(null);
-        return /* @__PURE__ */ isValidElement(newElement) ? newElement.props.children : null;
-      } else
-        return child;
-    });
-    return /* @__PURE__ */ createElement($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
-      ref: forwardedRef
-    }), /* @__PURE__ */ isValidElement(newElement) ? /* @__PURE__ */ cloneElement(newElement, void 0, newChildren) : null);
+const xe = /* @__PURE__ */ _((e, t) => {
+  const { children: n, ...o } = e, r = Oe.toArray(n), c = r.find(mc);
+  if (c) {
+    const i = c.props.children, a = r.map((s) => s === c ? Oe.count(i) > 1 ? Oe.only(null) : /* @__PURE__ */ ht(i) ? i.props.children : null : s);
+    return /* @__PURE__ */ g(Bt, P({}, o, {
+      ref: t
+    }), /* @__PURE__ */ ht(i) ? /* @__PURE__ */ Zt(i, void 0, a) : null);
   }
-  return /* @__PURE__ */ createElement($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
-    ref: forwardedRef
-  }), children);
+  return /* @__PURE__ */ g(Bt, P({}, o, {
+    ref: t
+  }), n);
 });
-$5e63c961fc1ce211$export$8c6ed5c666ac1360.displayName = "Slot";
-const $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { children, ...slotProps } = props;
-  if (/* @__PURE__ */ isValidElement(children))
-    return /* @__PURE__ */ cloneElement(children, {
-      ...$5e63c961fc1ce211$var$mergeProps(slotProps, children.props),
-      ref: forwardedRef ? $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, children.ref) : children.ref
-    });
-  return Children.count(children) > 1 ? Children.only(null) : null;
+xe.displayName = "Slot";
+const Bt = /* @__PURE__ */ _((e, t) => {
+  const { children: n, ...o } = e;
+  return /* @__PURE__ */ ht(n) ? /* @__PURE__ */ Zt(n, {
+    ...hc(o, n.props),
+    ref: t ? xt(t, n.ref) : n.ref
+  }) : Oe.count(n) > 1 ? Oe.only(null) : null;
 });
-$5e63c961fc1ce211$var$SlotClone.displayName = "SlotClone";
-const $5e63c961fc1ce211$export$d9f1ccf0bdb05d45 = ({ children }) => {
-  return /* @__PURE__ */ createElement(Fragment, null, children);
-};
-function $5e63c961fc1ce211$var$isSlottable(child) {
-  return /* @__PURE__ */ isValidElement(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
+Bt.displayName = "SlotClone";
+const pc = ({ children: e }) => /* @__PURE__ */ g(qt, null, e);
+function mc(e) {
+  return /* @__PURE__ */ ht(e) && e.type === pc;
 }
-function $5e63c961fc1ce211$var$mergeProps(slotProps, childProps) {
-  const overrideProps = {
-    ...childProps
+function hc(e, t) {
+  const n = {
+    ...t
   };
-  for (const propName in childProps) {
-    const slotPropValue = slotProps[propName];
-    const childPropValue = childProps[propName];
-    const isHandler = /^on[A-Z]/.test(propName);
-    if (isHandler) {
-      if (slotPropValue && childPropValue)
-        overrideProps[propName] = (...args) => {
-          childPropValue(...args);
-          slotPropValue(...args);
-        };
-      else if (slotPropValue)
-        overrideProps[propName] = slotPropValue;
-    } else if (propName === "style")
-      overrideProps[propName] = {
-        ...slotPropValue,
-        ...childPropValue
-      };
-    else if (propName === "className")
-      overrideProps[propName] = [
-        slotPropValue,
-        childPropValue
-      ].filter(Boolean).join(" ");
+  for (const o in t) {
+    const r = e[o], c = t[o];
+    /^on[A-Z]/.test(o) ? r && c ? n[o] = (...a) => {
+      c(...a), r(...a);
+    } : r && (n[o] = r) : o === "style" ? n[o] = {
+      ...r,
+      ...c
+    } : o === "className" && (n[o] = [
+      r,
+      c
+    ].filter(Boolean).join(" "));
   }
   return {
-    ...slotProps,
-    ...overrideProps
+    ...e,
+    ...n
   };
 }
-const $8927f6f2acc4f386$var$NODES = [
+const vc = [
   "a",
   "button",
   "div",
@@ -323,2558 +276,1796 @@ const $8927f6f2acc4f386$var$NODES = [
   "span",
   "svg",
   "ul"
-];
-const $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.reduce((primitive, node) => {
-  const Node2 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-    const { asChild, ...primitiveProps } = props;
-    const Comp = asChild ? $5e63c961fc1ce211$export$8c6ed5c666ac1360 : node;
-    useEffect(() => {
-      window[Symbol.for("radix-ui")] = true;
-    }, []);
-    return /* @__PURE__ */ createElement(Comp, _extends({}, primitiveProps, {
-      ref: forwardedRef
+], j = vc.reduce((e, t) => {
+  const n = /* @__PURE__ */ _((o, r) => {
+    const { asChild: c, ...i } = o, a = c ? xe : t;
+    return F(() => {
+      window[Symbol.for("radix-ui")] = !0;
+    }, []), /* @__PURE__ */ g(a, P({}, i, {
+      ref: r
     }));
   });
-  Node2.displayName = `Primitive.${node}`;
-  return {
-    ...primitive,
-    [node]: Node2
+  return n.displayName = `Primitive.${t}`, {
+    ...e,
+    [t]: n
   };
 }, {});
-function $8927f6f2acc4f386$export$6d1a0317bde7de7f(target, event) {
-  if (target)
-    flushSync(
-      () => target.dispatchEvent(event)
-    );
+function ao(e, t) {
+  e && io(
+    () => e.dispatchEvent(t)
+  );
 }
-function $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(callback) {
-  const callbackRef = useRef(callback);
-  useEffect(() => {
-    callbackRef.current = callback;
-  });
-  return useMemo(
-    () => (...args) => {
-      var _callbackRef$current;
-      return (_callbackRef$current = callbackRef.current) === null || _callbackRef$current === void 0 ? void 0 : _callbackRef$current.call(callbackRef, ...args);
+function se(e) {
+  const t = D(e);
+  return F(() => {
+    t.current = e;
+  }), je(
+    () => (...n) => {
+      var o;
+      return (o = t.current) === null || o === void 0 ? void 0 : o.call(t, ...n);
     },
     []
   );
 }
-function $addc16e1bbe58fd0$export$3a72a57244d6e765(onEscapeKeyDownProp, ownerDocument = globalThis === null || globalThis === void 0 ? void 0 : globalThis.document) {
-  const onEscapeKeyDown = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onEscapeKeyDownProp);
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape")
-        onEscapeKeyDown(event);
+function gc(e, t = globalThis == null ? void 0 : globalThis.document) {
+  const n = se(e);
+  F(() => {
+    const o = (r) => {
+      r.key === "Escape" && n(r);
     };
-    ownerDocument.addEventListener("keydown", handleKeyDown);
-    return () => ownerDocument.removeEventListener("keydown", handleKeyDown);
+    return t.addEventListener("keydown", o), () => t.removeEventListener("keydown", o);
   }, [
-    onEscapeKeyDown,
-    ownerDocument
+    n,
+    t
   ]);
 }
-const $5cb92bef7577960e$var$CONTEXT_UPDATE = "dismissableLayer.update";
-const $5cb92bef7577960e$var$POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
-const $5cb92bef7577960e$var$FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
-let $5cb92bef7577960e$var$originalBodyPointerEvents;
-const $5cb92bef7577960e$var$DismissableLayerContext = /* @__PURE__ */ createContext({
+const Ut = "dismissableLayer.update", bc = "dismissableLayer.pointerDownOutside", $c = "dismissableLayer.focusOutside";
+let Cn;
+const wc = /* @__PURE__ */ mt({
   layers: /* @__PURE__ */ new Set(),
   layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
   branches: /* @__PURE__ */ new Set()
-});
-const $5cb92bef7577960e$export$177fb62ff3ec1f22 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  var _node$ownerDocument;
-  const { disableOutsidePointerEvents = false, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, ...layerProps } = props;
-  const context = useContext($5cb92bef7577960e$var$DismissableLayerContext);
-  const [node1, setNode] = useState(null);
-  const ownerDocument = (_node$ownerDocument = node1 === null || node1 === void 0 ? void 0 : node1.ownerDocument) !== null && _node$ownerDocument !== void 0 ? _node$ownerDocument : globalThis === null || globalThis === void 0 ? void 0 : globalThis.document;
-  const [, force] = useState({});
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(
-    forwardedRef,
-    (node) => setNode(node)
-  );
-  const layers = Array.from(context.layers);
-  const [highestLayerWithOutsidePointerEventsDisabled] = [
-    ...context.layersWithOutsidePointerEventsDisabled
-  ].slice(-1);
-  const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
-  const index2 = node1 ? layers.indexOf(node1) : -1;
-  const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
-  const isPointerEventsEnabled = index2 >= highestLayerWithOutsidePointerEventsDisabledIndex;
-  const pointerDownOutside = $5cb92bef7577960e$var$usePointerDownOutside((event) => {
-    const target = event.target;
-    const isPointerDownOnBranch = [
-      ...context.branches
+}), Jt = /* @__PURE__ */ _((e, t) => {
+  var n;
+  const { disableOutsidePointerEvents: o = !1, onEscapeKeyDown: r, onPointerDownOutside: c, onFocusOutside: i, onInteractOutside: a, onDismiss: s, ...l } = e, u = Xt(wc), [d, m] = U(null), f = (n = d == null ? void 0 : d.ownerDocument) !== null && n !== void 0 ? n : globalThis == null ? void 0 : globalThis.document, [, v] = U({}), p = G(
+    t,
+    (S) => m(S)
+  ), b = Array.from(u.layers), [$] = [
+    ...u.layersWithOutsidePointerEventsDisabled
+  ].slice(-1), w = b.indexOf($), y = d ? b.indexOf(d) : -1, x = u.layersWithOutsidePointerEventsDisabled.size > 0, E = y >= w, M = xc((S) => {
+    const k = S.target, W = [
+      ...u.branches
     ].some(
-      (branch) => branch.contains(target)
+      (z) => z.contains(k)
     );
-    if (!isPointerEventsEnabled || isPointerDownOnBranch)
-      return;
-    onPointerDownOutside === null || onPointerDownOutside === void 0 || onPointerDownOutside(event);
-    onInteractOutside === null || onInteractOutside === void 0 || onInteractOutside(event);
-    if (!event.defaultPrevented)
-      onDismiss === null || onDismiss === void 0 || onDismiss();
-  }, ownerDocument);
-  const focusOutside = $5cb92bef7577960e$var$useFocusOutside((event) => {
-    const target = event.target;
-    const isFocusInBranch = [
-      ...context.branches
+    !E || W || (c == null || c(S), a == null || a(S), S.defaultPrevented || s == null || s());
+  }, f), O = yc((S) => {
+    const k = S.target;
+    [
+      ...u.branches
     ].some(
-      (branch) => branch.contains(target)
-    );
-    if (isFocusInBranch)
-      return;
-    onFocusOutside === null || onFocusOutside === void 0 || onFocusOutside(event);
-    onInteractOutside === null || onInteractOutside === void 0 || onInteractOutside(event);
-    if (!event.defaultPrevented)
-      onDismiss === null || onDismiss === void 0 || onDismiss();
-  }, ownerDocument);
-  $addc16e1bbe58fd0$export$3a72a57244d6e765((event) => {
-    const isHighestLayer = index2 === context.layers.size - 1;
-    if (!isHighestLayer)
-      return;
-    onEscapeKeyDown === null || onEscapeKeyDown === void 0 || onEscapeKeyDown(event);
-    if (!event.defaultPrevented && onDismiss) {
-      event.preventDefault();
-      onDismiss();
-    }
-  }, ownerDocument);
-  useEffect(() => {
-    if (!node1)
-      return;
-    if (disableOutsidePointerEvents) {
-      if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
-        $5cb92bef7577960e$var$originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
-        ownerDocument.body.style.pointerEvents = "none";
-      }
-      context.layersWithOutsidePointerEventsDisabled.add(node1);
-    }
-    context.layers.add(node1);
-    $5cb92bef7577960e$var$dispatchUpdate();
-    return () => {
-      if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1)
-        ownerDocument.body.style.pointerEvents = $5cb92bef7577960e$var$originalBodyPointerEvents;
-    };
+      (z) => z.contains(k)
+    ) || (i == null || i(S), a == null || a(S), S.defaultPrevented || s == null || s());
+  }, f);
+  return gc((S) => {
+    y === u.layers.size - 1 && (r == null || r(S), !S.defaultPrevented && s && (S.preventDefault(), s()));
+  }, f), F(() => {
+    if (d)
+      return o && (u.layersWithOutsidePointerEventsDisabled.size === 0 && (Cn = f.body.style.pointerEvents, f.body.style.pointerEvents = "none"), u.layersWithOutsidePointerEventsDisabled.add(d)), u.layers.add(d), En(), () => {
+        o && u.layersWithOutsidePointerEventsDisabled.size === 1 && (f.body.style.pointerEvents = Cn);
+      };
   }, [
-    node1,
-    ownerDocument,
-    disableOutsidePointerEvents,
-    context
-  ]);
-  useEffect(() => {
-    return () => {
-      if (!node1)
-        return;
-      context.layers.delete(node1);
-      context.layersWithOutsidePointerEventsDisabled.delete(node1);
-      $5cb92bef7577960e$var$dispatchUpdate();
-    };
+    d,
+    f,
+    o,
+    u
+  ]), F(() => () => {
+    d && (u.layers.delete(d), u.layersWithOutsidePointerEventsDisabled.delete(d), En());
   }, [
-    node1,
-    context
-  ]);
-  useEffect(() => {
-    const handleUpdate = () => force({});
-    document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
-    return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
-  }, []);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, layerProps, {
-    ref: composedRefs,
+    d,
+    u
+  ]), F(() => {
+    const S = () => v({});
+    return document.addEventListener(Ut, S), () => document.removeEventListener(Ut, S);
+  }, []), /* @__PURE__ */ g(j.div, P({}, l, {
+    ref: p,
     style: {
-      pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
-      ...props.style
+      pointerEvents: x ? E ? "auto" : "none" : void 0,
+      ...e.style
     },
-    onFocusCapture: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onFocusCapture, focusOutside.onFocusCapture),
-    onBlurCapture: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onBlurCapture, focusOutside.onBlurCapture),
-    onPointerDownCapture: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDownCapture, pointerDownOutside.onPointerDownCapture)
+    onFocusCapture: R(e.onFocusCapture, O.onFocusCapture),
+    onBlurCapture: R(e.onBlurCapture, O.onBlurCapture),
+    onPointerDownCapture: R(e.onPointerDownCapture, M.onPointerDownCapture)
   }));
 });
-function $5cb92bef7577960e$var$usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis === null || globalThis === void 0 ? void 0 : globalThis.document) {
-  const handlePointerDownOutside = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onPointerDownOutside);
-  const isPointerInsideReactTreeRef = useRef(false);
-  const handleClickRef = useRef(() => {
+function xc(e, t = globalThis == null ? void 0 : globalThis.document) {
+  const n = se(e), o = D(!1), r = D(() => {
   });
-  useEffect(() => {
-    const handlePointerDown = (event) => {
-      if (event.target && !isPointerInsideReactTreeRef.current) {
-        let handleAndDispatchPointerDownOutsideEvent = function() {
-          $5cb92bef7577960e$var$handleAndDispatchCustomEvent($5cb92bef7577960e$var$POINTER_DOWN_OUTSIDE, handlePointerDownOutside, eventDetail, {
-            discrete: true
+  return F(() => {
+    const c = (a) => {
+      if (a.target && !o.current) {
+        let l = function() {
+          so(bc, n, s, {
+            discrete: !0
           });
         };
-        const eventDetail = {
-          originalEvent: event
+        const s = {
+          originalEvent: a
         };
-        if (event.pointerType === "touch") {
-          ownerDocument.removeEventListener("click", handleClickRef.current);
-          handleClickRef.current = handleAndDispatchPointerDownOutsideEvent;
-          ownerDocument.addEventListener("click", handleClickRef.current, {
-            once: true
-          });
-        } else
-          handleAndDispatchPointerDownOutsideEvent();
+        a.pointerType === "touch" ? (t.removeEventListener("click", r.current), r.current = l, t.addEventListener("click", r.current, {
+          once: !0
+        })) : l();
       } else
-        ownerDocument.removeEventListener("click", handleClickRef.current);
-      isPointerInsideReactTreeRef.current = false;
-    };
-    const timerId = window.setTimeout(() => {
-      ownerDocument.addEventListener("pointerdown", handlePointerDown);
+        t.removeEventListener("click", r.current);
+      o.current = !1;
+    }, i = window.setTimeout(() => {
+      t.addEventListener("pointerdown", c);
     }, 0);
     return () => {
-      window.clearTimeout(timerId);
-      ownerDocument.removeEventListener("pointerdown", handlePointerDown);
-      ownerDocument.removeEventListener("click", handleClickRef.current);
+      window.clearTimeout(i), t.removeEventListener("pointerdown", c), t.removeEventListener("click", r.current);
     };
   }, [
-    ownerDocument,
-    handlePointerDownOutside
-  ]);
-  return {
+    t,
+    n
+  ]), {
     // ensures we check React component tree (not just DOM tree)
-    onPointerDownCapture: () => isPointerInsideReactTreeRef.current = true
+    onPointerDownCapture: () => o.current = !0
   };
 }
-function $5cb92bef7577960e$var$useFocusOutside(onFocusOutside, ownerDocument = globalThis === null || globalThis === void 0 ? void 0 : globalThis.document) {
-  const handleFocusOutside = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onFocusOutside);
-  const isFocusInsideReactTreeRef = useRef(false);
-  useEffect(() => {
-    const handleFocus = (event) => {
-      if (event.target && !isFocusInsideReactTreeRef.current) {
-        const eventDetail = {
-          originalEvent: event
-        };
-        $5cb92bef7577960e$var$handleAndDispatchCustomEvent($5cb92bef7577960e$var$FOCUS_OUTSIDE, handleFocusOutside, eventDetail, {
-          discrete: false
-        });
-      }
+function yc(e, t = globalThis == null ? void 0 : globalThis.document) {
+  const n = se(e), o = D(!1);
+  return F(() => {
+    const r = (c) => {
+      c.target && !o.current && so($c, n, {
+        originalEvent: c
+      }, {
+        discrete: !1
+      });
     };
-    ownerDocument.addEventListener("focusin", handleFocus);
-    return () => ownerDocument.removeEventListener("focusin", handleFocus);
+    return t.addEventListener("focusin", r), () => t.removeEventListener("focusin", r);
   }, [
-    ownerDocument,
-    handleFocusOutside
-  ]);
-  return {
-    onFocusCapture: () => isFocusInsideReactTreeRef.current = true,
-    onBlurCapture: () => isFocusInsideReactTreeRef.current = false
+    t,
+    n
+  ]), {
+    onFocusCapture: () => o.current = !0,
+    onBlurCapture: () => o.current = !1
   };
 }
-function $5cb92bef7577960e$var$dispatchUpdate() {
-  const event = new CustomEvent($5cb92bef7577960e$var$CONTEXT_UPDATE);
-  document.dispatchEvent(event);
+function En() {
+  const e = new CustomEvent(Ut);
+  document.dispatchEvent(e);
 }
-function $5cb92bef7577960e$var$handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
-  const target = detail.originalEvent.target;
-  const event = new CustomEvent(name, {
-    bubbles: false,
-    cancelable: true,
-    detail
+function so(e, t, n, { discrete: o }) {
+  const r = n.originalEvent.target, c = new CustomEvent(e, {
+    bubbles: !1,
+    cancelable: !0,
+    detail: n
   });
-  if (handler)
-    target.addEventListener(name, handler, {
-      once: true
-    });
-  if (discrete)
-    $8927f6f2acc4f386$export$6d1a0317bde7de7f(target, event);
-  else
-    target.dispatchEvent(event);
+  t && r.addEventListener(e, t, {
+    once: !0
+  }), o ? ao(r, c) : r.dispatchEvent(c);
 }
-let $3db38b7d1fb3fe6a$var$count = 0;
-function $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c() {
-  useEffect(() => {
-    var _edgeGuards$, _edgeGuards$2;
-    const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
-    document.body.insertAdjacentElement("afterbegin", (_edgeGuards$ = edgeGuards[0]) !== null && _edgeGuards$ !== void 0 ? _edgeGuards$ : $3db38b7d1fb3fe6a$var$createFocusGuard());
-    document.body.insertAdjacentElement("beforeend", (_edgeGuards$2 = edgeGuards[1]) !== null && _edgeGuards$2 !== void 0 ? _edgeGuards$2 : $3db38b7d1fb3fe6a$var$createFocusGuard());
-    $3db38b7d1fb3fe6a$var$count++;
-    return () => {
-      if ($3db38b7d1fb3fe6a$var$count === 1)
-        document.querySelectorAll("[data-radix-focus-guard]").forEach(
-          (node) => node.remove()
-        );
-      $3db38b7d1fb3fe6a$var$count--;
+let Nt = 0;
+function en() {
+  F(() => {
+    var e, t;
+    const n = document.querySelectorAll("[data-radix-focus-guard]");
+    return document.body.insertAdjacentElement("afterbegin", (e = n[0]) !== null && e !== void 0 ? e : Pn()), document.body.insertAdjacentElement("beforeend", (t = n[1]) !== null && t !== void 0 ? t : Pn()), Nt++, () => {
+      Nt === 1 && document.querySelectorAll("[data-radix-focus-guard]").forEach(
+        (o) => o.remove()
+      ), Nt--;
     };
   }, []);
 }
-function $3db38b7d1fb3fe6a$var$createFocusGuard() {
-  const element = document.createElement("span");
-  element.setAttribute("data-radix-focus-guard", "");
-  element.tabIndex = 0;
-  element.style.cssText = "outline: none; opacity: 0; position: fixed; pointer-events: none";
-  return element;
+function Pn() {
+  const e = document.createElement("span");
+  return e.setAttribute("data-radix-focus-guard", ""), e.tabIndex = 0, e.style.cssText = "outline: none; opacity: 0; position: fixed; pointer-events: none", e;
 }
-const $d3863c46a17e8a28$var$AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
-const $d3863c46a17e8a28$var$AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
-const $d3863c46a17e8a28$var$EVENT_OPTIONS = {
-  bubbles: false,
-  cancelable: true
-};
-const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { loop = false, trapped = false, onMountAutoFocus: onMountAutoFocusProp, onUnmountAutoFocus: onUnmountAutoFocusProp, ...scopeProps } = props;
-  const [container1, setContainer] = useState(null);
-  const onMountAutoFocus = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onMountAutoFocusProp);
-  const onUnmountAutoFocus = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onUnmountAutoFocusProp);
-  const lastFocusedElementRef = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(
-    forwardedRef,
-    (node) => setContainer(node)
-  );
-  const focusScope = useRef({
-    paused: false,
+const Dt = "focusScope.autoFocusOnMount", Rt = "focusScope.autoFocusOnUnmount", _n = {
+  bubbles: !1,
+  cancelable: !0
+}, tn = /* @__PURE__ */ _((e, t) => {
+  const { loop: n = !1, trapped: o = !1, onMountAutoFocus: r, onUnmountAutoFocus: c, ...i } = e, [a, s] = U(null), l = se(r), u = se(c), d = D(null), m = G(
+    t,
+    (p) => s(p)
+  ), f = D({
+    paused: !1,
     pause() {
-      this.paused = true;
+      this.paused = !0;
     },
     resume() {
-      this.paused = false;
+      this.paused = !1;
     }
   }).current;
-  useEffect(() => {
-    if (trapped) {
-      let handleFocusIn = function(event) {
-        if (focusScope.paused || !container1)
+  F(() => {
+    if (o) {
+      let p = function(y) {
+        if (f.paused || !a)
           return;
-        const target = event.target;
-        if (container1.contains(target))
-          lastFocusedElementRef.current = target;
-        else
-          $d3863c46a17e8a28$var$focus(lastFocusedElementRef.current, {
-            select: true
-          });
-      }, handleFocusOut = function(event) {
-        if (focusScope.paused || !container1)
-          return;
-        const relatedTarget = event.relatedTarget;
-        if (relatedTarget === null)
-          return;
-        if (!container1.contains(relatedTarget))
-          $d3863c46a17e8a28$var$focus(lastFocusedElementRef.current, {
-            select: true
-          });
-      }, handleMutations = function(mutations) {
-        const focusedElement = document.activeElement;
-        if (focusedElement !== document.body)
-          return;
-        for (const mutation of mutations)
-          if (mutation.removedNodes.length > 0)
-            $d3863c46a17e8a28$var$focus(container1);
-      };
-      document.addEventListener("focusin", handleFocusIn);
-      document.addEventListener("focusout", handleFocusOut);
-      const mutationObserver = new MutationObserver(handleMutations);
-      if (container1)
-        mutationObserver.observe(container1, {
-          childList: true,
-          subtree: true
+        const x = y.target;
+        a.contains(x) ? d.current = x : we(d.current, {
+          select: !0
         });
-      return () => {
-        document.removeEventListener("focusin", handleFocusIn);
-        document.removeEventListener("focusout", handleFocusOut);
-        mutationObserver.disconnect();
+      }, b = function(y) {
+        if (f.paused || !a)
+          return;
+        const x = y.relatedTarget;
+        x !== null && (a.contains(x) || we(d.current, {
+          select: !0
+        }));
+      }, $ = function(y) {
+        if (document.activeElement === document.body)
+          for (const E of y)
+            E.removedNodes.length > 0 && we(a);
+      };
+      document.addEventListener("focusin", p), document.addEventListener("focusout", b);
+      const w = new MutationObserver($);
+      return a && w.observe(a, {
+        childList: !0,
+        subtree: !0
+      }), () => {
+        document.removeEventListener("focusin", p), document.removeEventListener("focusout", b), w.disconnect();
       };
     }
   }, [
-    trapped,
-    container1,
-    focusScope.paused
-  ]);
-  useEffect(() => {
-    if (container1) {
-      $d3863c46a17e8a28$var$focusScopesStack.add(focusScope);
-      const previouslyFocusedElement = document.activeElement;
-      const hasFocusedCandidate = container1.contains(previouslyFocusedElement);
-      if (!hasFocusedCandidate) {
-        const mountEvent = new CustomEvent($d3863c46a17e8a28$var$AUTOFOCUS_ON_MOUNT, $d3863c46a17e8a28$var$EVENT_OPTIONS);
-        container1.addEventListener($d3863c46a17e8a28$var$AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
-        container1.dispatchEvent(mountEvent);
-        if (!mountEvent.defaultPrevented) {
-          $d3863c46a17e8a28$var$focusFirst($d3863c46a17e8a28$var$removeLinks($d3863c46a17e8a28$var$getTabbableCandidates(container1)), {
-            select: true
-          });
-          if (document.activeElement === previouslyFocusedElement)
-            $d3863c46a17e8a28$var$focus(container1);
-        }
+    o,
+    a,
+    f.paused
+  ]), F(() => {
+    if (a) {
+      Sn.add(f);
+      const p = document.activeElement;
+      if (!a.contains(p)) {
+        const $ = new CustomEvent(Dt, _n);
+        a.addEventListener(Dt, l), a.dispatchEvent($), $.defaultPrevented || (Cc(Sc(lo(a)), {
+          select: !0
+        }), document.activeElement === p && we(a));
       }
       return () => {
-        container1.removeEventListener($d3863c46a17e8a28$var$AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
-        setTimeout(() => {
-          const unmountEvent = new CustomEvent($d3863c46a17e8a28$var$AUTOFOCUS_ON_UNMOUNT, $d3863c46a17e8a28$var$EVENT_OPTIONS);
-          container1.addEventListener($d3863c46a17e8a28$var$AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
-          container1.dispatchEvent(unmountEvent);
-          if (!unmountEvent.defaultPrevented)
-            $d3863c46a17e8a28$var$focus(previouslyFocusedElement !== null && previouslyFocusedElement !== void 0 ? previouslyFocusedElement : document.body, {
-              select: true
-            });
-          container1.removeEventListener($d3863c46a17e8a28$var$AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
-          $d3863c46a17e8a28$var$focusScopesStack.remove(focusScope);
+        a.removeEventListener(Dt, l), setTimeout(() => {
+          const $ = new CustomEvent(Rt, _n);
+          a.addEventListener(Rt, u), a.dispatchEvent($), $.defaultPrevented || we(p ?? document.body, {
+            select: !0
+          }), a.removeEventListener(Rt, u), Sn.remove(f);
         }, 0);
       };
     }
   }, [
-    container1,
-    onMountAutoFocus,
-    onUnmountAutoFocus,
-    focusScope
+    a,
+    l,
+    u,
+    f
   ]);
-  const handleKeyDown = useCallback((event) => {
-    if (!loop && !trapped)
+  const v = V((p) => {
+    if (!n && !o || f.paused)
       return;
-    if (focusScope.paused)
-      return;
-    const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
-    const focusedElement = document.activeElement;
-    if (isTabKey && focusedElement) {
-      const container = event.currentTarget;
-      const [first, last] = $d3863c46a17e8a28$var$getTabbableEdges(container);
-      const hasTabbableElementsInside = first && last;
-      if (!hasTabbableElementsInside) {
-        if (focusedElement === container)
-          event.preventDefault();
-      } else {
-        if (!event.shiftKey && focusedElement === last) {
-          event.preventDefault();
-          if (loop)
-            $d3863c46a17e8a28$var$focus(first, {
-              select: true
-            });
-        } else if (event.shiftKey && focusedElement === first) {
-          event.preventDefault();
-          if (loop)
-            $d3863c46a17e8a28$var$focus(last, {
-              select: true
-            });
-        }
-      }
+    const b = p.key === "Tab" && !p.altKey && !p.ctrlKey && !p.metaKey, $ = document.activeElement;
+    if (b && $) {
+      const w = p.currentTarget, [y, x] = Ec(w);
+      y && x ? !p.shiftKey && $ === x ? (p.preventDefault(), n && we(y, {
+        select: !0
+      })) : p.shiftKey && $ === y && (p.preventDefault(), n && we(x, {
+        select: !0
+      })) : $ === w && p.preventDefault();
     }
   }, [
-    loop,
-    trapped,
-    focusScope.paused
+    n,
+    o,
+    f.paused
   ]);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+  return /* @__PURE__ */ g(j.div, P({
     tabIndex: -1
-  }, scopeProps, {
-    ref: composedRefs,
-    onKeyDown: handleKeyDown
+  }, i, {
+    ref: m,
+    onKeyDown: v
   }));
 });
-function $d3863c46a17e8a28$var$focusFirst(candidates, { select = false } = {}) {
-  const previouslyFocusedElement = document.activeElement;
-  for (const candidate of candidates) {
-    $d3863c46a17e8a28$var$focus(candidate, {
-      select
-    });
-    if (document.activeElement !== previouslyFocusedElement)
+function Cc(e, { select: t = !1 } = {}) {
+  const n = document.activeElement;
+  for (const o of e)
+    if (we(o, {
+      select: t
+    }), document.activeElement !== n)
       return;
-  }
 }
-function $d3863c46a17e8a28$var$getTabbableEdges(container) {
-  const candidates = $d3863c46a17e8a28$var$getTabbableCandidates(container);
-  const first = $d3863c46a17e8a28$var$findVisible(candidates, container);
-  const last = $d3863c46a17e8a28$var$findVisible(candidates.reverse(), container);
+function Ec(e) {
+  const t = lo(e), n = On(t, e), o = On(t.reverse(), e);
   return [
-    first,
-    last
+    n,
+    o
   ];
 }
-function $d3863c46a17e8a28$var$getTabbableCandidates(container) {
-  const nodes = [];
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
-    acceptNode: (node) => {
-      const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
-      if (node.disabled || node.hidden || isHiddenInput)
-        return NodeFilter.FILTER_SKIP;
-      return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+function lo(e) {
+  const t = [], n = document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
+    acceptNode: (o) => {
+      const r = o.tagName === "INPUT" && o.type === "hidden";
+      return o.disabled || o.hidden || r ? NodeFilter.FILTER_SKIP : o.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
     }
   });
-  while (walker.nextNode())
-    nodes.push(walker.currentNode);
-  return nodes;
+  for (; n.nextNode(); )
+    t.push(n.currentNode);
+  return t;
 }
-function $d3863c46a17e8a28$var$findVisible(elements, container) {
-  for (const element of elements) {
-    if (!$d3863c46a17e8a28$var$isHidden(element, {
-      upTo: container
+function On(e, t) {
+  for (const n of e)
+    if (!Pc(n, {
+      upTo: t
     }))
-      return element;
+      return n;
+}
+function Pc(e, { upTo: t }) {
+  if (getComputedStyle(e).visibility === "hidden")
+    return !0;
+  for (; e; ) {
+    if (t !== void 0 && e === t)
+      return !1;
+    if (getComputedStyle(e).display === "none")
+      return !0;
+    e = e.parentElement;
+  }
+  return !1;
+}
+function _c(e) {
+  return e instanceof HTMLInputElement && "select" in e;
+}
+function we(e, { select: t = !1 } = {}) {
+  if (e && e.focus) {
+    const n = document.activeElement;
+    e.focus({
+      preventScroll: !0
+    }), e !== n && _c(e) && t && e.select();
   }
 }
-function $d3863c46a17e8a28$var$isHidden(node, { upTo }) {
-  if (getComputedStyle(node).visibility === "hidden")
-    return true;
-  while (node) {
-    if (upTo !== void 0 && node === upTo)
-      return false;
-    if (getComputedStyle(node).display === "none")
-      return true;
-    node = node.parentElement;
-  }
-  return false;
-}
-function $d3863c46a17e8a28$var$isSelectableInput(element) {
-  return element instanceof HTMLInputElement && "select" in element;
-}
-function $d3863c46a17e8a28$var$focus(element, { select = false } = {}) {
-  if (element && element.focus) {
-    const previouslyFocusedElement = document.activeElement;
-    element.focus({
-      preventScroll: true
-    });
-    if (element !== previouslyFocusedElement && $d3863c46a17e8a28$var$isSelectableInput(element) && select)
-      element.select();
-  }
-}
-const $d3863c46a17e8a28$var$focusScopesStack = $d3863c46a17e8a28$var$createFocusScopesStack();
-function $d3863c46a17e8a28$var$createFocusScopesStack() {
-  let stack = [];
+const Sn = Oc();
+function Oc() {
+  let e = [];
   return {
-    add(focusScope) {
-      const activeFocusScope = stack[0];
-      if (focusScope !== activeFocusScope)
-        activeFocusScope === null || activeFocusScope === void 0 || activeFocusScope.pause();
-      stack = $d3863c46a17e8a28$var$arrayRemove(stack, focusScope);
-      stack.unshift(focusScope);
+    add(t) {
+      const n = e[0];
+      t !== n && (n == null || n.pause()), e = Mn(e, t), e.unshift(t);
     },
-    remove(focusScope) {
-      var _stack$;
-      stack = $d3863c46a17e8a28$var$arrayRemove(stack, focusScope);
-      (_stack$ = stack[0]) === null || _stack$ === void 0 || _stack$.resume();
+    remove(t) {
+      var n;
+      e = Mn(e, t), (n = e[0]) === null || n === void 0 || n.resume();
     }
   };
 }
-function $d3863c46a17e8a28$var$arrayRemove(array, item) {
-  const updatedArray = [
-    ...array
-  ];
-  const index2 = updatedArray.indexOf(item);
-  if (index2 !== -1)
-    updatedArray.splice(index2, 1);
-  return updatedArray;
+function Mn(e, t) {
+  const n = [
+    ...e
+  ], o = n.indexOf(t);
+  return o !== -1 && n.splice(o, 1), n;
 }
-function $d3863c46a17e8a28$var$removeLinks(items) {
-  return items.filter(
-    (item) => item.tagName !== "A"
+function Sc(e) {
+  return e.filter(
+    (t) => t.tagName !== "A"
   );
 }
-const $9f79659886946c16$export$e5c5a5f917a5871c = Boolean(globalThis === null || globalThis === void 0 ? void 0 : globalThis.document) ? useLayoutEffect : () => {
-};
-const $1746a345f3d73bb7$var$useReactId = React["useId".toString()] || (() => void 0);
-let $1746a345f3d73bb7$var$count = 0;
-function $1746a345f3d73bb7$export$f680877a34711e37(deterministicId) {
-  const [id, setId] = React.useState($1746a345f3d73bb7$var$useReactId());
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    if (!deterministicId)
-      setId(
-        (reactId) => reactId !== null && reactId !== void 0 ? reactId : String($1746a345f3d73bb7$var$count++)
-      );
-  }, [
-    deterministicId
-  ]);
-  return deterministicId || (id ? `radix-${id}` : "");
-}
-const sides = ["top", "right", "bottom", "left"];
-const min = Math.min;
-const max = Math.max;
-const round = Math.round;
-const floor = Math.floor;
-const createCoords = (v) => ({
-  x: v,
-  y: v
+const Fe = globalThis != null && globalThis.document ? Qt : () => {
+}, Mc = C["useId".toString()] || (() => {
 });
-const oppositeSideMap = {
+let Nc = 0;
+function Se(e) {
+  const [t, n] = C.useState(Mc());
+  return Fe(() => {
+    e || n(
+      (o) => o ?? String(Nc++)
+    );
+  }, [
+    e
+  ]), e || (t ? `radix-${t}` : "");
+}
+const Dc = ["top", "right", "bottom", "left"], ye = Math.min, J = Math.max, vt = Math.round, rt = Math.floor, Ce = (e) => ({
+  x: e,
+  y: e
+}), Rc = {
   left: "right",
   right: "left",
   bottom: "top",
   top: "bottom"
-};
-const oppositeAlignmentMap = {
+}, Ac = {
   start: "end",
   end: "start"
 };
-function clamp(start, value, end) {
-  return max(start, min(value, end));
+function Wt(e, t, n) {
+  return J(e, ye(t, n));
 }
-function evaluate(value, param) {
-  return typeof value === "function" ? value(param) : value;
+function me(e, t) {
+  return typeof e == "function" ? e(t) : e;
 }
-function getSide(placement) {
-  return placement.split("-")[0];
+function he(e) {
+  return e.split("-")[0];
 }
-function getAlignment(placement) {
-  return placement.split("-")[1];
+function Ue(e) {
+  return e.split("-")[1];
 }
-function getOppositeAxis(axis) {
-  return axis === "x" ? "y" : "x";
+function nn(e) {
+  return e === "x" ? "y" : "x";
 }
-function getAxisLength(axis) {
-  return axis === "y" ? "height" : "width";
+function on(e) {
+  return e === "y" ? "height" : "width";
 }
-function getSideAxis(placement) {
-  return ["top", "bottom"].includes(getSide(placement)) ? "y" : "x";
+function We(e) {
+  return ["top", "bottom"].includes(he(e)) ? "y" : "x";
 }
-function getAlignmentAxis(placement) {
-  return getOppositeAxis(getSideAxis(placement));
+function rn(e) {
+  return nn(We(e));
 }
-function getAlignmentSides(placement, rects, rtl) {
-  if (rtl === void 0) {
-    rtl = false;
-  }
-  const alignment = getAlignment(placement);
-  const alignmentAxis = getAlignmentAxis(placement);
-  const length = getAxisLength(alignmentAxis);
-  let mainAlignmentSide = alignmentAxis === "x" ? alignment === (rtl ? "end" : "start") ? "right" : "left" : alignment === "start" ? "bottom" : "top";
-  if (rects.reference[length] > rects.floating[length]) {
-    mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
-  }
-  return [mainAlignmentSide, getOppositePlacement(mainAlignmentSide)];
+function Tc(e, t, n) {
+  n === void 0 && (n = !1);
+  const o = Ue(e), r = rn(e), c = on(r);
+  let i = r === "x" ? o === (n ? "end" : "start") ? "right" : "left" : o === "start" ? "bottom" : "top";
+  return t.reference[c] > t.floating[c] && (i = gt(i)), [i, gt(i)];
 }
-function getExpandedPlacements(placement) {
-  const oppositePlacement = getOppositePlacement(placement);
-  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+function kc(e) {
+  const t = gt(e);
+  return [zt(e), t, zt(t)];
 }
-function getOppositeAlignmentPlacement(placement) {
-  return placement.replace(/start|end/g, (alignment) => oppositeAlignmentMap[alignment]);
+function zt(e) {
+  return e.replace(/start|end/g, (t) => Ac[t]);
 }
-function getSideList(side, isStart, rtl) {
-  const lr = ["left", "right"];
-  const rl = ["right", "left"];
-  const tb = ["top", "bottom"];
-  const bt = ["bottom", "top"];
-  switch (side) {
+function Ic(e, t, n) {
+  const o = ["left", "right"], r = ["right", "left"], c = ["top", "bottom"], i = ["bottom", "top"];
+  switch (e) {
     case "top":
     case "bottom":
-      if (rtl)
-        return isStart ? rl : lr;
-      return isStart ? lr : rl;
+      return n ? t ? r : o : t ? o : r;
     case "left":
     case "right":
-      return isStart ? tb : bt;
+      return t ? c : i;
     default:
       return [];
   }
 }
-function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
-  const alignment = getAlignment(placement);
-  let list = getSideList(getSide(placement), direction === "start", rtl);
-  if (alignment) {
-    list = list.map((side) => side + "-" + alignment);
-    if (flipAlignment) {
-      list = list.concat(list.map(getOppositeAlignmentPlacement));
-    }
-  }
-  return list;
+function Fc(e, t, n, o) {
+  const r = Ue(e);
+  let c = Ic(he(e), n === "start", o);
+  return r && (c = c.map((i) => i + "-" + r), t && (c = c.concat(c.map(zt)))), c;
 }
-function getOppositePlacement(placement) {
-  return placement.replace(/left|right|bottom|top/g, (side) => oppositeSideMap[side]);
+function gt(e) {
+  return e.replace(/left|right|bottom|top/g, (t) => Rc[t]);
 }
-function expandPaddingObject(padding) {
+function Lc(e) {
   return {
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    ...padding
+    ...e
   };
 }
-function getPaddingObject(padding) {
-  return typeof padding !== "number" ? expandPaddingObject(padding) : {
-    top: padding,
-    right: padding,
-    bottom: padding,
-    left: padding
+function uo(e) {
+  return typeof e != "number" ? Lc(e) : {
+    top: e,
+    right: e,
+    bottom: e,
+    left: e
   };
 }
-function rectToClientRect(rect) {
+function bt(e) {
   return {
-    ...rect,
-    top: rect.y,
-    left: rect.x,
-    right: rect.x + rect.width,
-    bottom: rect.y + rect.height
+    ...e,
+    top: e.y,
+    left: e.x,
+    right: e.x + e.width,
+    bottom: e.y + e.height
   };
 }
-function computeCoordsFromPlacement(_ref, placement, rtl) {
+function Nn(e, t, n) {
   let {
-    reference,
-    floating
-  } = _ref;
-  const sideAxis = getSideAxis(placement);
-  const alignmentAxis = getAlignmentAxis(placement);
-  const alignLength = getAxisLength(alignmentAxis);
-  const side = getSide(placement);
-  const isVertical = sideAxis === "y";
-  const commonX = reference.x + reference.width / 2 - floating.width / 2;
-  const commonY = reference.y + reference.height / 2 - floating.height / 2;
-  const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
-  let coords;
-  switch (side) {
+    reference: o,
+    floating: r
+  } = e;
+  const c = We(t), i = rn(t), a = on(i), s = he(t), l = c === "y", u = o.x + o.width / 2 - r.width / 2, d = o.y + o.height / 2 - r.height / 2, m = o[a] / 2 - r[a] / 2;
+  let f;
+  switch (s) {
     case "top":
-      coords = {
-        x: commonX,
-        y: reference.y - floating.height
+      f = {
+        x: u,
+        y: o.y - r.height
       };
       break;
     case "bottom":
-      coords = {
-        x: commonX,
-        y: reference.y + reference.height
+      f = {
+        x: u,
+        y: o.y + o.height
       };
       break;
     case "right":
-      coords = {
-        x: reference.x + reference.width,
-        y: commonY
+      f = {
+        x: o.x + o.width,
+        y: d
       };
       break;
     case "left":
-      coords = {
-        x: reference.x - floating.width,
-        y: commonY
+      f = {
+        x: o.x - r.width,
+        y: d
       };
       break;
     default:
-      coords = {
-        x: reference.x,
-        y: reference.y
+      f = {
+        x: o.x,
+        y: o.y
       };
   }
-  switch (getAlignment(placement)) {
+  switch (Ue(t)) {
     case "start":
-      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+      f[i] -= m * (n && l ? -1 : 1);
       break;
     case "end":
-      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+      f[i] += m * (n && l ? -1 : 1);
       break;
   }
-  return coords;
+  return f;
 }
-const computePosition$1 = async (reference, floating, config) => {
+const Bc = async (e, t, n) => {
   const {
-    placement = "bottom",
-    strategy = "absolute",
-    middleware = [],
-    platform: platform2
-  } = config;
-  const validMiddleware = middleware.filter(Boolean);
-  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(floating));
-  let rects = await platform2.getElementRects({
-    reference,
-    floating,
-    strategy
-  });
-  let {
-    x,
-    y
-  } = computeCoordsFromPlacement(rects, placement, rtl);
-  let statefulPlacement = placement;
-  let middlewareData = {};
-  let resetCount = 0;
-  for (let i = 0; i < validMiddleware.length; i++) {
+    placement: o = "bottom",
+    strategy: r = "absolute",
+    middleware: c = [],
+    platform: i
+  } = n, a = c.filter(Boolean), s = await (i.isRTL == null ? void 0 : i.isRTL(t));
+  let l = await i.getElementRects({
+    reference: e,
+    floating: t,
+    strategy: r
+  }), {
+    x: u,
+    y: d
+  } = Nn(l, o, s), m = o, f = {}, v = 0;
+  for (let p = 0; p < a.length; p++) {
     const {
-      name,
-      fn
-    } = validMiddleware[i];
-    const {
-      x: nextX,
-      y: nextY,
-      data,
-      reset
-    } = await fn({
-      x,
+      name: b,
+      fn: $
+    } = a[p], {
+      x: w,
       y,
-      initialPlacement: placement,
-      placement: statefulPlacement,
-      strategy,
-      middlewareData,
-      rects,
-      platform: platform2,
+      data: x,
+      reset: E
+    } = await $({
+      x: u,
+      y: d,
+      initialPlacement: o,
+      placement: m,
+      strategy: r,
+      middlewareData: f,
+      rects: l,
+      platform: i,
       elements: {
-        reference,
-        floating
+        reference: e,
+        floating: t
       }
     });
-    x = nextX != null ? nextX : x;
-    y = nextY != null ? nextY : y;
-    middlewareData = {
-      ...middlewareData,
-      [name]: {
-        ...middlewareData[name],
-        ...data
+    if (u = w ?? u, d = y ?? d, f = {
+      ...f,
+      [b]: {
+        ...f[b],
+        ...x
       }
-    };
-    if (reset && resetCount <= 50) {
-      resetCount++;
-      if (typeof reset === "object") {
-        if (reset.placement) {
-          statefulPlacement = reset.placement;
-        }
-        if (reset.rects) {
-          rects = reset.rects === true ? await platform2.getElementRects({
-            reference,
-            floating,
-            strategy
-          }) : reset.rects;
-        }
-        ({
-          x,
-          y
-        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
-      }
-      i = -1;
+    }, E && v <= 50) {
+      v++, typeof E == "object" && (E.placement && (m = E.placement), E.rects && (l = E.rects === !0 ? await i.getElementRects({
+        reference: e,
+        floating: t,
+        strategy: r
+      }) : E.rects), {
+        x: u,
+        y: d
+      } = Nn(l, m, s)), p = -1;
       continue;
     }
   }
   return {
-    x,
-    y,
-    placement: statefulPlacement,
-    strategy,
-    middlewareData
+    x: u,
+    y: d,
+    placement: m,
+    strategy: r,
+    middlewareData: f
   };
 };
-async function detectOverflow(state, options) {
-  var _await$platform$isEle;
-  if (options === void 0) {
-    options = {};
-  }
+async function He(e, t) {
+  var n;
+  t === void 0 && (t = {});
   const {
-    x,
-    y,
-    platform: platform2,
-    rects,
-    elements,
-    strategy
-  } = state;
-  const {
-    boundary = "clippingAncestors",
-    rootBoundary = "viewport",
-    elementContext = "floating",
-    altBoundary = false,
-    padding = 0
-  } = evaluate(options, state);
-  const paddingObject = getPaddingObject(padding);
-  const altContext = elementContext === "floating" ? "reference" : "floating";
-  const element = elements[altBoundary ? altContext : elementContext];
-  const clippingClientRect = rectToClientRect(await platform2.getClippingRect({
-    element: ((_await$platform$isEle = await (platform2.isElement == null ? void 0 : platform2.isElement(element))) != null ? _await$platform$isEle : true) ? element : element.contextElement || await (platform2.getDocumentElement == null ? void 0 : platform2.getDocumentElement(elements.floating)),
-    boundary,
-    rootBoundary,
-    strategy
-  }));
-  const rect = elementContext === "floating" ? {
-    ...rects.floating,
-    x,
-    y
-  } : rects.reference;
-  const offsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(elements.floating));
-  const offsetScale = await (platform2.isElement == null ? void 0 : platform2.isElement(offsetParent)) ? await (platform2.getScale == null ? void 0 : platform2.getScale(offsetParent)) || {
+    x: o,
+    y: r,
+    platform: c,
+    rects: i,
+    elements: a,
+    strategy: s
+  } = e, {
+    boundary: l = "clippingAncestors",
+    rootBoundary: u = "viewport",
+    elementContext: d = "floating",
+    altBoundary: m = !1,
+    padding: f = 0
+  } = me(t, e), v = uo(f), b = a[m ? d === "floating" ? "reference" : "floating" : d], $ = bt(await c.getClippingRect({
+    element: (n = await (c.isElement == null ? void 0 : c.isElement(b))) == null || n ? b : b.contextElement || await (c.getDocumentElement == null ? void 0 : c.getDocumentElement(a.floating)),
+    boundary: l,
+    rootBoundary: u,
+    strategy: s
+  })), w = d === "floating" ? {
+    ...i.floating,
+    x: o,
+    y: r
+  } : i.reference, y = await (c.getOffsetParent == null ? void 0 : c.getOffsetParent(a.floating)), x = await (c.isElement == null ? void 0 : c.isElement(y)) ? await (c.getScale == null ? void 0 : c.getScale(y)) || {
     x: 1,
     y: 1
   } : {
     x: 1,
     y: 1
-  };
-  const elementClientRect = rectToClientRect(platform2.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform2.convertOffsetParentRelativeRectToViewportRelativeRect({
-    rect,
-    offsetParent,
-    strategy
-  }) : rect);
+  }, E = bt(c.convertOffsetParentRelativeRectToViewportRelativeRect ? await c.convertOffsetParentRelativeRectToViewportRelativeRect({
+    rect: w,
+    offsetParent: y,
+    strategy: s
+  }) : w);
   return {
-    top: (clippingClientRect.top - elementClientRect.top + paddingObject.top) / offsetScale.y,
-    bottom: (elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom) / offsetScale.y,
-    left: (clippingClientRect.left - elementClientRect.left + paddingObject.left) / offsetScale.x,
-    right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
+    top: ($.top - E.top + v.top) / x.y,
+    bottom: (E.bottom - $.bottom + v.bottom) / x.y,
+    left: ($.left - E.left + v.left) / x.x,
+    right: (E.right - $.right + v.right) / x.x
   };
 }
-const arrow$2 = (options) => ({
+const Uc = (e) => ({
   name: "arrow",
-  options,
-  async fn(state) {
+  options: e,
+  async fn(t) {
     const {
-      x,
-      y,
-      placement,
-      rects,
-      platform: platform2,
-      elements,
-      middlewareData
-    } = state;
-    const {
-      element,
-      padding = 0
-    } = evaluate(options, state) || {};
-    if (element == null) {
+      x: n,
+      y: o,
+      placement: r,
+      rects: c,
+      platform: i,
+      elements: a,
+      middlewareData: s
+    } = t, {
+      element: l,
+      padding: u = 0
+    } = me(e, t) || {};
+    if (l == null)
       return {};
-    }
-    const paddingObject = getPaddingObject(padding);
-    const coords = {
-      x,
-      y
-    };
-    const axis = getAlignmentAxis(placement);
-    const length = getAxisLength(axis);
-    const arrowDimensions = await platform2.getDimensions(element);
-    const isYAxis = axis === "y";
-    const minProp = isYAxis ? "top" : "left";
-    const maxProp = isYAxis ? "bottom" : "right";
-    const clientProp = isYAxis ? "clientHeight" : "clientWidth";
-    const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
-    const startDiff = coords[axis] - rects.reference[axis];
-    const arrowOffsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(element));
-    let clientSize = arrowOffsetParent ? arrowOffsetParent[clientProp] : 0;
-    if (!clientSize || !await (platform2.isElement == null ? void 0 : platform2.isElement(arrowOffsetParent))) {
-      clientSize = elements.floating[clientProp] || rects.floating[length];
-    }
-    const centerToReference = endDiff / 2 - startDiff / 2;
-    const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
-    const minPadding = min(paddingObject[minProp], largestPossiblePadding);
-    const maxPadding = min(paddingObject[maxProp], largestPossiblePadding);
-    const min$1 = minPadding;
-    const max2 = clientSize - arrowDimensions[length] - maxPadding;
-    const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset2 = clamp(min$1, center, max2);
-    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center != offset2 && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
-    const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max2 : 0;
+    const d = uo(u), m = {
+      x: n,
+      y: o
+    }, f = rn(r), v = on(f), p = await i.getDimensions(l), b = f === "y", $ = b ? "top" : "left", w = b ? "bottom" : "right", y = b ? "clientHeight" : "clientWidth", x = c.reference[v] + c.reference[f] - m[f] - c.floating[v], E = m[f] - c.reference[f], M = await (i.getOffsetParent == null ? void 0 : i.getOffsetParent(l));
+    let O = M ? M[y] : 0;
+    (!O || !await (i.isElement == null ? void 0 : i.isElement(M))) && (O = a.floating[y] || c.floating[v]);
+    const S = x / 2 - E / 2, k = O / 2 - p[v] / 2 - 1, W = ye(d[$], k), z = ye(d[w], k), L = W, q = O - p[v] - z, T = O / 2 - p[v] / 2 + S, B = Wt(L, T, q), I = !s.arrow && Ue(r) != null && T != B && c.reference[v] / 2 - (T < L ? W : z) - p[v] / 2 < 0, H = I ? T < L ? T - L : T - q : 0;
     return {
-      [axis]: coords[axis] + alignmentOffset,
+      [f]: m[f] + H,
       data: {
-        [axis]: offset2,
-        centerOffset: center - offset2 - alignmentOffset,
-        ...shouldAddOffset && {
-          alignmentOffset
+        [f]: B,
+        centerOffset: T - B - H,
+        ...I && {
+          alignmentOffset: H
         }
       },
-      reset: shouldAddOffset
+      reset: I
     };
   }
-});
-const flip$1 = function(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
+}), Wc = function(e) {
+  return e === void 0 && (e = {}), {
     name: "flip",
-    options,
-    async fn(state) {
-      var _middlewareData$arrow, _middlewareData$flip;
+    options: e,
+    async fn(t) {
+      var n, o;
       const {
-        placement,
-        middlewareData,
-        rects,
-        initialPlacement,
-        platform: platform2,
-        elements
-      } = state;
-      const {
-        mainAxis: checkMainAxis = true,
-        crossAxis: checkCrossAxis = true,
-        fallbackPlacements: specifiedFallbackPlacements,
-        fallbackStrategy = "bestFit",
-        fallbackAxisSideDirection = "none",
-        flipAlignment = true,
-        ...detectOverflowOptions
-      } = evaluate(options, state);
-      if ((_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+        placement: r,
+        middlewareData: c,
+        rects: i,
+        initialPlacement: a,
+        platform: s,
+        elements: l
+      } = t, {
+        mainAxis: u = !0,
+        crossAxis: d = !0,
+        fallbackPlacements: m,
+        fallbackStrategy: f = "bestFit",
+        fallbackAxisSideDirection: v = "none",
+        flipAlignment: p = !0,
+        ...b
+      } = me(e, t);
+      if ((n = c.arrow) != null && n.alignmentOffset)
         return {};
+      const $ = he(r), w = he(a) === a, y = await (s.isRTL == null ? void 0 : s.isRTL(l.floating)), x = m || (w || !p ? [gt(a)] : kc(a));
+      !m && v !== "none" && x.push(...Fc(a, p, v, y));
+      const E = [a, ...x], M = await He(t, b), O = [];
+      let S = ((o = c.flip) == null ? void 0 : o.overflows) || [];
+      if (u && O.push(M[$]), d) {
+        const L = Tc(r, i, y);
+        O.push(M[L[0]], M[L[1]]);
       }
-      const side = getSide(placement);
-      const isBasePlacement = getSide(initialPlacement) === initialPlacement;
-      const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
-      const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [getOppositePlacement(initialPlacement)] : getExpandedPlacements(initialPlacement));
-      if (!specifiedFallbackPlacements && fallbackAxisSideDirection !== "none") {
-        fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
-      }
-      const placements = [initialPlacement, ...fallbackPlacements];
-      const overflow = await detectOverflow(state, detectOverflowOptions);
-      const overflows = [];
-      let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
-      if (checkMainAxis) {
-        overflows.push(overflow[side]);
-      }
-      if (checkCrossAxis) {
-        const sides2 = getAlignmentSides(placement, rects, rtl);
-        overflows.push(overflow[sides2[0]], overflow[sides2[1]]);
-      }
-      overflowsData = [...overflowsData, {
-        placement,
-        overflows
-      }];
-      if (!overflows.every((side2) => side2 <= 0)) {
-        var _middlewareData$flip2, _overflowsData$filter;
-        const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
-        const nextPlacement = placements[nextIndex];
-        if (nextPlacement) {
+      if (S = [...S, {
+        placement: r,
+        overflows: O
+      }], !O.every((L) => L <= 0)) {
+        var k, W;
+        const L = (((k = c.flip) == null ? void 0 : k.index) || 0) + 1, q = E[L];
+        if (q)
           return {
             data: {
-              index: nextIndex,
-              overflows: overflowsData
+              index: L,
+              overflows: S
             },
             reset: {
-              placement: nextPlacement
+              placement: q
             }
           };
-        }
-        let resetPlacement = (_overflowsData$filter = overflowsData.filter((d) => d.overflows[0] <= 0).sort((a, b) => a.overflows[1] - b.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
-        if (!resetPlacement) {
-          switch (fallbackStrategy) {
+        let T = (W = S.filter((B) => B.overflows[0] <= 0).sort((B, I) => B.overflows[1] - I.overflows[1])[0]) == null ? void 0 : W.placement;
+        if (!T)
+          switch (f) {
             case "bestFit": {
-              var _overflowsData$map$so;
-              const placement2 = (_overflowsData$map$so = overflowsData.map((d) => [d.placement, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0];
-              if (placement2) {
-                resetPlacement = placement2;
-              }
+              var z;
+              const B = (z = S.map((I) => [I.placement, I.overflows.filter((H) => H > 0).reduce((H, Y) => H + Y, 0)]).sort((I, H) => I[1] - H[1])[0]) == null ? void 0 : z[0];
+              B && (T = B);
               break;
             }
             case "initialPlacement":
-              resetPlacement = initialPlacement;
+              T = a;
               break;
           }
-        }
-        if (placement !== resetPlacement) {
+        if (r !== T)
           return {
             reset: {
-              placement: resetPlacement
+              placement: T
             }
           };
-        }
       }
       return {};
     }
   };
 };
-function getSideOffsets(overflow, rect) {
+function Dn(e, t) {
   return {
-    top: overflow.top - rect.height,
-    right: overflow.right - rect.width,
-    bottom: overflow.bottom - rect.height,
-    left: overflow.left - rect.width
+    top: e.top - t.height,
+    right: e.right - t.width,
+    bottom: e.bottom - t.height,
+    left: e.left - t.width
   };
 }
-function isAnySideFullyClipped(overflow) {
-  return sides.some((side) => overflow[side] >= 0);
+function Rn(e) {
+  return Dc.some((t) => e[t] >= 0);
 }
-const hide$1 = function(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
+const zc = function(e) {
+  return e === void 0 && (e = {}), {
     name: "hide",
-    options,
-    async fn(state) {
+    options: e,
+    async fn(t) {
       const {
-        rects
-      } = state;
-      const {
-        strategy = "referenceHidden",
-        ...detectOverflowOptions
-      } = evaluate(options, state);
-      switch (strategy) {
+        rects: n
+      } = t, {
+        strategy: o = "referenceHidden",
+        ...r
+      } = me(e, t);
+      switch (o) {
         case "referenceHidden": {
-          const overflow = await detectOverflow(state, {
-            ...detectOverflowOptions,
+          const c = await He(t, {
+            ...r,
             elementContext: "reference"
-          });
-          const offsets = getSideOffsets(overflow, rects.reference);
+          }), i = Dn(c, n.reference);
           return {
             data: {
-              referenceHiddenOffsets: offsets,
-              referenceHidden: isAnySideFullyClipped(offsets)
+              referenceHiddenOffsets: i,
+              referenceHidden: Rn(i)
             }
           };
         }
         case "escaped": {
-          const overflow = await detectOverflow(state, {
-            ...detectOverflowOptions,
-            altBoundary: true
-          });
-          const offsets = getSideOffsets(overflow, rects.floating);
+          const c = await He(t, {
+            ...r,
+            altBoundary: !0
+          }), i = Dn(c, n.floating);
           return {
             data: {
-              escapedOffsets: offsets,
-              escaped: isAnySideFullyClipped(offsets)
+              escapedOffsets: i,
+              escaped: Rn(i)
             }
           };
         }
-        default: {
+        default:
           return {};
-        }
       }
     }
   };
 };
-async function convertValueToCoords(state, options) {
+async function Kc(e, t) {
   const {
-    placement,
-    platform: platform2,
-    elements
-  } = state;
-  const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating));
-  const side = getSide(placement);
-  const alignment = getAlignment(placement);
-  const isVertical = getSideAxis(placement) === "y";
-  const mainAxisMulti = ["left", "top"].includes(side) ? -1 : 1;
-  const crossAxisMulti = rtl && isVertical ? -1 : 1;
-  const rawValue = evaluate(options, state);
+    placement: n,
+    platform: o,
+    elements: r
+  } = e, c = await (o.isRTL == null ? void 0 : o.isRTL(r.floating)), i = he(n), a = Ue(n), s = We(n) === "y", l = ["left", "top"].includes(i) ? -1 : 1, u = c && s ? -1 : 1, d = me(t, e);
   let {
-    mainAxis,
-    crossAxis,
-    alignmentAxis
-  } = typeof rawValue === "number" ? {
-    mainAxis: rawValue,
+    mainAxis: m,
+    crossAxis: f,
+    alignmentAxis: v
+  } = typeof d == "number" ? {
+    mainAxis: d,
     crossAxis: 0,
     alignmentAxis: null
   } : {
     mainAxis: 0,
     crossAxis: 0,
     alignmentAxis: null,
-    ...rawValue
+    ...d
   };
-  if (alignment && typeof alignmentAxis === "number") {
-    crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
-  }
-  return isVertical ? {
-    x: crossAxis * crossAxisMulti,
-    y: mainAxis * mainAxisMulti
+  return a && typeof v == "number" && (f = a === "end" ? v * -1 : v), s ? {
+    x: f * u,
+    y: m * l
   } : {
-    x: mainAxis * mainAxisMulti,
-    y: crossAxis * crossAxisMulti
+    x: m * l,
+    y: f * u
   };
 }
-const offset = function(options) {
-  if (options === void 0) {
-    options = 0;
-  }
-  return {
+const Vc = function(e) {
+  return e === void 0 && (e = 0), {
     name: "offset",
-    options,
-    async fn(state) {
-      var _middlewareData$offse, _middlewareData$arrow;
+    options: e,
+    async fn(t) {
+      var n, o;
       const {
-        x,
-        y,
-        placement,
-        middlewareData
-      } = state;
-      const diffCoords = await convertValueToCoords(state, options);
-      if (placement === ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse.placement) && (_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
-        return {};
-      }
-      return {
-        x: x + diffCoords.x,
-        y: y + diffCoords.y,
+        x: r,
+        y: c,
+        placement: i,
+        middlewareData: a
+      } = t, s = await Kc(t, e);
+      return i === ((n = a.offset) == null ? void 0 : n.placement) && (o = a.arrow) != null && o.alignmentOffset ? {} : {
+        x: r + s.x,
+        y: c + s.y,
         data: {
-          ...diffCoords,
-          placement
+          ...s,
+          placement: i
         }
       };
     }
   };
-};
-const shift$1 = function(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
+}, jc = function(e) {
+  return e === void 0 && (e = {}), {
     name: "shift",
-    options,
-    async fn(state) {
+    options: e,
+    async fn(t) {
       const {
-        x,
-        y,
-        placement
-      } = state;
-      const {
-        mainAxis: checkMainAxis = true,
-        crossAxis: checkCrossAxis = false,
-        limiter = {
-          fn: (_ref) => {
+        x: n,
+        y: o,
+        placement: r
+      } = t, {
+        mainAxis: c = !0,
+        crossAxis: i = !1,
+        limiter: a = {
+          fn: (b) => {
             let {
-              x: x2,
-              y: y2
-            } = _ref;
+              x: $,
+              y: w
+            } = b;
             return {
-              x: x2,
-              y: y2
+              x: $,
+              y: w
             };
           }
         },
-        ...detectOverflowOptions
-      } = evaluate(options, state);
-      const coords = {
-        x,
-        y
-      };
-      const overflow = await detectOverflow(state, detectOverflowOptions);
-      const crossAxis = getSideAxis(getSide(placement));
-      const mainAxis = getOppositeAxis(crossAxis);
-      let mainAxisCoord = coords[mainAxis];
-      let crossAxisCoord = coords[crossAxis];
-      if (checkMainAxis) {
-        const minSide = mainAxis === "y" ? "top" : "left";
-        const maxSide = mainAxis === "y" ? "bottom" : "right";
-        const min2 = mainAxisCoord + overflow[minSide];
-        const max2 = mainAxisCoord - overflow[maxSide];
-        mainAxisCoord = clamp(min2, mainAxisCoord, max2);
+        ...s
+      } = me(e, t), l = {
+        x: n,
+        y: o
+      }, u = await He(t, s), d = We(he(r)), m = nn(d);
+      let f = l[m], v = l[d];
+      if (c) {
+        const b = m === "y" ? "top" : "left", $ = m === "y" ? "bottom" : "right", w = f + u[b], y = f - u[$];
+        f = Wt(w, f, y);
       }
-      if (checkCrossAxis) {
-        const minSide = crossAxis === "y" ? "top" : "left";
-        const maxSide = crossAxis === "y" ? "bottom" : "right";
-        const min2 = crossAxisCoord + overflow[minSide];
-        const max2 = crossAxisCoord - overflow[maxSide];
-        crossAxisCoord = clamp(min2, crossAxisCoord, max2);
+      if (i) {
+        const b = d === "y" ? "top" : "left", $ = d === "y" ? "bottom" : "right", w = v + u[b], y = v - u[$];
+        v = Wt(w, v, y);
       }
-      const limitedCoords = limiter.fn({
-        ...state,
-        [mainAxis]: mainAxisCoord,
-        [crossAxis]: crossAxisCoord
+      const p = a.fn({
+        ...t,
+        [m]: f,
+        [d]: v
       });
       return {
-        ...limitedCoords,
+        ...p,
         data: {
-          x: limitedCoords.x - x,
-          y: limitedCoords.y - y
+          x: p.x - n,
+          y: p.y - o
         }
       };
     }
   };
-};
-const limitShift$1 = function(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
-    options,
-    fn(state) {
+}, Hc = function(e) {
+  return e === void 0 && (e = {}), {
+    options: e,
+    fn(t) {
       const {
-        x,
-        y,
-        placement,
-        rects,
-        middlewareData
-      } = state;
-      const {
-        offset: offset2 = 0,
-        mainAxis: checkMainAxis = true,
-        crossAxis: checkCrossAxis = true
-      } = evaluate(options, state);
-      const coords = {
-        x,
-        y
-      };
-      const crossAxis = getSideAxis(placement);
-      const mainAxis = getOppositeAxis(crossAxis);
-      let mainAxisCoord = coords[mainAxis];
-      let crossAxisCoord = coords[crossAxis];
-      const rawOffset = evaluate(offset2, state);
-      const computedOffset = typeof rawOffset === "number" ? {
-        mainAxis: rawOffset,
+        x: n,
+        y: o,
+        placement: r,
+        rects: c,
+        middlewareData: i
+      } = t, {
+        offset: a = 0,
+        mainAxis: s = !0,
+        crossAxis: l = !0
+      } = me(e, t), u = {
+        x: n,
+        y: o
+      }, d = We(r), m = nn(d);
+      let f = u[m], v = u[d];
+      const p = me(a, t), b = typeof p == "number" ? {
+        mainAxis: p,
         crossAxis: 0
       } : {
         mainAxis: 0,
         crossAxis: 0,
-        ...rawOffset
+        ...p
       };
-      if (checkMainAxis) {
-        const len = mainAxis === "y" ? "height" : "width";
-        const limitMin = rects.reference[mainAxis] - rects.floating[len] + computedOffset.mainAxis;
-        const limitMax = rects.reference[mainAxis] + rects.reference[len] - computedOffset.mainAxis;
-        if (mainAxisCoord < limitMin) {
-          mainAxisCoord = limitMin;
-        } else if (mainAxisCoord > limitMax) {
-          mainAxisCoord = limitMax;
-        }
+      if (s) {
+        const y = m === "y" ? "height" : "width", x = c.reference[m] - c.floating[y] + b.mainAxis, E = c.reference[m] + c.reference[y] - b.mainAxis;
+        f < x ? f = x : f > E && (f = E);
       }
-      if (checkCrossAxis) {
-        var _middlewareData$offse, _middlewareData$offse2;
-        const len = mainAxis === "y" ? "width" : "height";
-        const isOriginSide = ["top", "left"].includes(getSide(placement));
-        const limitMin = rects.reference[crossAxis] - rects.floating[len] + (isOriginSide ? ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse[crossAxis]) || 0 : 0) + (isOriginSide ? 0 : computedOffset.crossAxis);
-        const limitMax = rects.reference[crossAxis] + rects.reference[len] + (isOriginSide ? 0 : ((_middlewareData$offse2 = middlewareData.offset) == null ? void 0 : _middlewareData$offse2[crossAxis]) || 0) - (isOriginSide ? computedOffset.crossAxis : 0);
-        if (crossAxisCoord < limitMin) {
-          crossAxisCoord = limitMin;
-        } else if (crossAxisCoord > limitMax) {
-          crossAxisCoord = limitMax;
-        }
+      if (l) {
+        var $, w;
+        const y = m === "y" ? "width" : "height", x = ["top", "left"].includes(he(r)), E = c.reference[d] - c.floating[y] + (x && (($ = i.offset) == null ? void 0 : $[d]) || 0) + (x ? 0 : b.crossAxis), M = c.reference[d] + c.reference[y] + (x ? 0 : ((w = i.offset) == null ? void 0 : w[d]) || 0) - (x ? b.crossAxis : 0);
+        v < E ? v = E : v > M && (v = M);
       }
       return {
-        [mainAxis]: mainAxisCoord,
-        [crossAxis]: crossAxisCoord
+        [m]: f,
+        [d]: v
       };
     }
   };
-};
-const size$1 = function(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
+}, Gc = function(e) {
+  return e === void 0 && (e = {}), {
     name: "size",
-    options,
-    async fn(state) {
+    options: e,
+    async fn(t) {
       const {
-        placement,
-        rects,
-        platform: platform2,
-        elements
-      } = state;
-      const {
-        apply = () => {
+        placement: n,
+        rects: o,
+        platform: r,
+        elements: c
+      } = t, {
+        apply: i = () => {
         },
-        ...detectOverflowOptions
-      } = evaluate(options, state);
-      const overflow = await detectOverflow(state, detectOverflowOptions);
-      const side = getSide(placement);
-      const alignment = getAlignment(placement);
-      const isYAxis = getSideAxis(placement) === "y";
-      const {
-        width,
-        height
-      } = rects.floating;
-      let heightSide;
-      let widthSide;
-      if (side === "top" || side === "bottom") {
-        heightSide = side;
-        widthSide = alignment === (await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating)) ? "start" : "end") ? "left" : "right";
+        ...a
+      } = me(e, t), s = await He(t, a), l = he(n), u = Ue(n), d = We(n) === "y", {
+        width: m,
+        height: f
+      } = o.floating;
+      let v, p;
+      l === "top" || l === "bottom" ? (v = l, p = u === (await (r.isRTL == null ? void 0 : r.isRTL(c.floating)) ? "start" : "end") ? "left" : "right") : (p = l, v = u === "end" ? "top" : "bottom");
+      const b = f - s[v], $ = m - s[p], w = !t.middlewareData.shift;
+      let y = b, x = $;
+      if (d) {
+        const M = m - s.left - s.right;
+        x = u || w ? ye($, M) : M;
       } else {
-        widthSide = side;
-        heightSide = alignment === "end" ? "top" : "bottom";
+        const M = f - s.top - s.bottom;
+        y = u || w ? ye(b, M) : M;
       }
-      const overflowAvailableHeight = height - overflow[heightSide];
-      const overflowAvailableWidth = width - overflow[widthSide];
-      const noShift = !state.middlewareData.shift;
-      let availableHeight = overflowAvailableHeight;
-      let availableWidth = overflowAvailableWidth;
-      if (isYAxis) {
-        const maximumClippingWidth = width - overflow.left - overflow.right;
-        availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
-      } else {
-        const maximumClippingHeight = height - overflow.top - overflow.bottom;
-        availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+      if (w && !u) {
+        const M = J(s.left, 0), O = J(s.right, 0), S = J(s.top, 0), k = J(s.bottom, 0);
+        d ? x = m - 2 * (M !== 0 || O !== 0 ? M + O : J(s.left, s.right)) : y = f - 2 * (S !== 0 || k !== 0 ? S + k : J(s.top, s.bottom));
       }
-      if (noShift && !alignment) {
-        const xMin = max(overflow.left, 0);
-        const xMax = max(overflow.right, 0);
-        const yMin = max(overflow.top, 0);
-        const yMax = max(overflow.bottom, 0);
-        if (isYAxis) {
-          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
-        } else {
-          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
-        }
-      }
-      await apply({
-        ...state,
-        availableWidth,
-        availableHeight
+      await i({
+        ...t,
+        availableWidth: x,
+        availableHeight: y
       });
-      const nextDimensions = await platform2.getDimensions(elements.floating);
-      if (width !== nextDimensions.width || height !== nextDimensions.height) {
-        return {
-          reset: {
-            rects: true
-          }
-        };
-      }
-      return {};
+      const E = await r.getDimensions(c.floating);
+      return m !== E.width || f !== E.height ? {
+        reset: {
+          rects: !0
+        }
+      } : {};
     }
   };
 };
-function getNodeName(node) {
-  if (isNode(node)) {
-    return (node.nodeName || "").toLowerCase();
-  }
-  return "#document";
+function Ee(e) {
+  return fo(e) ? (e.nodeName || "").toLowerCase() : "#document";
 }
-function getWindow(node) {
-  var _node$ownerDocument;
-  return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+function ee(e) {
+  var t;
+  return (e == null || (t = e.ownerDocument) == null ? void 0 : t.defaultView) || window;
 }
-function getDocumentElement(node) {
-  var _ref;
-  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+function ge(e) {
+  var t;
+  return (t = (fo(e) ? e.ownerDocument : e.document) || window.document) == null ? void 0 : t.documentElement;
 }
-function isNode(value) {
-  return value instanceof Node || value instanceof getWindow(value).Node;
+function fo(e) {
+  return e instanceof Node || e instanceof ee(e).Node;
 }
-function isElement(value) {
-  return value instanceof Element || value instanceof getWindow(value).Element;
+function ve(e) {
+  return e instanceof Element || e instanceof ee(e).Element;
 }
-function isHTMLElement(value) {
-  return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
+function le(e) {
+  return e instanceof HTMLElement || e instanceof ee(e).HTMLElement;
 }
-function isShadowRoot(value) {
-  if (typeof ShadowRoot === "undefined") {
-    return false;
-  }
-  return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
+function An(e) {
+  return typeof ShadowRoot > "u" ? !1 : e instanceof ShadowRoot || e instanceof ee(e).ShadowRoot;
 }
-function isOverflowElement(element) {
+function Je(e) {
   const {
-    overflow,
-    overflowX,
-    overflowY,
-    display
-  } = getComputedStyle$1(element);
-  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && !["inline", "contents"].includes(display);
+    overflow: t,
+    overflowX: n,
+    overflowY: o,
+    display: r
+  } = te(e);
+  return /auto|scroll|overlay|hidden|clip/.test(t + o + n) && !["inline", "contents"].includes(r);
 }
-function isTableElement(element) {
-  return ["table", "td", "th"].includes(getNodeName(element));
+function Yc(e) {
+  return ["table", "td", "th"].includes(Ee(e));
 }
-function isContainingBlock(element) {
-  const webkit = isWebKit();
-  const css = getComputedStyle$1(element);
-  return css.transform !== "none" || css.perspective !== "none" || (css.containerType ? css.containerType !== "normal" : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== "none" : false) || !webkit && (css.filter ? css.filter !== "none" : false) || ["transform", "perspective", "filter"].some((value) => (css.willChange || "").includes(value)) || ["paint", "layout", "strict", "content"].some((value) => (css.contain || "").includes(value));
+function cn(e) {
+  const t = an(), n = te(e);
+  return n.transform !== "none" || n.perspective !== "none" || (n.containerType ? n.containerType !== "normal" : !1) || !t && (n.backdropFilter ? n.backdropFilter !== "none" : !1) || !t && (n.filter ? n.filter !== "none" : !1) || ["transform", "perspective", "filter"].some((o) => (n.willChange || "").includes(o)) || ["paint", "layout", "strict", "content"].some((o) => (n.contain || "").includes(o));
 }
-function getContainingBlock(element) {
-  let currentNode = getParentNode(element);
-  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
-    if (isContainingBlock(currentNode)) {
-      return currentNode;
-    } else {
-      currentNode = getParentNode(currentNode);
-    }
+function Xc(e) {
+  let t = Le(e);
+  for (; le(t) && !yt(t); ) {
+    if (cn(t))
+      return t;
+    t = Le(t);
   }
   return null;
 }
-function isWebKit() {
-  if (typeof CSS === "undefined" || !CSS.supports)
-    return false;
-  return CSS.supports("-webkit-backdrop-filter", "none");
+function an() {
+  return typeof CSS > "u" || !CSS.supports ? !1 : CSS.supports("-webkit-backdrop-filter", "none");
 }
-function isLastTraversableNode(node) {
-  return ["html", "body", "#document"].includes(getNodeName(node));
+function yt(e) {
+  return ["html", "body", "#document"].includes(Ee(e));
 }
-function getComputedStyle$1(element) {
-  return getWindow(element).getComputedStyle(element);
+function te(e) {
+  return ee(e).getComputedStyle(e);
 }
-function getNodeScroll(element) {
-  if (isElement(element)) {
-    return {
-      scrollLeft: element.scrollLeft,
-      scrollTop: element.scrollTop
-    };
-  }
-  return {
-    scrollLeft: element.pageXOffset,
-    scrollTop: element.pageYOffset
+function Ct(e) {
+  return ve(e) ? {
+    scrollLeft: e.scrollLeft,
+    scrollTop: e.scrollTop
+  } : {
+    scrollLeft: e.pageXOffset,
+    scrollTop: e.pageYOffset
   };
 }
-function getParentNode(node) {
-  if (getNodeName(node) === "html") {
-    return node;
-  }
-  const result = (
+function Le(e) {
+  if (Ee(e) === "html")
+    return e;
+  const t = (
     // Step into the shadow DOM of the parent of a slotted node.
-    node.assignedSlot || // DOM Element detected.
-    node.parentNode || // ShadowRoot detected.
-    isShadowRoot(node) && node.host || // Fallback.
-    getDocumentElement(node)
+    e.assignedSlot || // DOM Element detected.
+    e.parentNode || // ShadowRoot detected.
+    An(e) && e.host || // Fallback.
+    ge(e)
   );
-  return isShadowRoot(result) ? result.host : result;
+  return An(t) ? t.host : t;
 }
-function getNearestOverflowAncestor(node) {
-  const parentNode = getParentNode(node);
-  if (isLastTraversableNode(parentNode)) {
-    return node.ownerDocument ? node.ownerDocument.body : node.body;
-  }
-  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
-    return parentNode;
-  }
-  return getNearestOverflowAncestor(parentNode);
+function po(e) {
+  const t = Le(e);
+  return yt(t) ? e.ownerDocument ? e.ownerDocument.body : e.body : le(t) && Je(t) ? t : po(t);
 }
-function getOverflowAncestors(node, list, traverseIframes) {
-  var _node$ownerDocument2;
-  if (list === void 0) {
-    list = [];
-  }
-  if (traverseIframes === void 0) {
-    traverseIframes = true;
-  }
-  const scrollableAncestor = getNearestOverflowAncestor(node);
-  const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
-  const win = getWindow(scrollableAncestor);
-  if (isBody) {
-    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], win.frameElement && traverseIframes ? getOverflowAncestors(win.frameElement) : []);
-  }
-  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
+function Ge(e, t, n) {
+  var o;
+  t === void 0 && (t = []), n === void 0 && (n = !0);
+  const r = po(e), c = r === ((o = e.ownerDocument) == null ? void 0 : o.body), i = ee(r);
+  return c ? t.concat(i, i.visualViewport || [], Je(r) ? r : [], i.frameElement && n ? Ge(i.frameElement) : []) : t.concat(r, Ge(r, [], n));
 }
-function getCssDimensions(element) {
-  const css = getComputedStyle$1(element);
-  let width = parseFloat(css.width) || 0;
-  let height = parseFloat(css.height) || 0;
-  const hasOffset = isHTMLElement(element);
-  const offsetWidth = hasOffset ? element.offsetWidth : width;
-  const offsetHeight = hasOffset ? element.offsetHeight : height;
-  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
-  if (shouldFallback) {
-    width = offsetWidth;
-    height = offsetHeight;
-  }
-  return {
-    width,
-    height,
-    $: shouldFallback
+function mo(e) {
+  const t = te(e);
+  let n = parseFloat(t.width) || 0, o = parseFloat(t.height) || 0;
+  const r = le(e), c = r ? e.offsetWidth : n, i = r ? e.offsetHeight : o, a = vt(n) !== c || vt(o) !== i;
+  return a && (n = c, o = i), {
+    width: n,
+    height: o,
+    $: a
   };
 }
-function unwrapElement(element) {
-  return !isElement(element) ? element.contextElement : element;
+function sn(e) {
+  return ve(e) ? e : e.contextElement;
 }
-function getScale(element) {
-  const domElement = unwrapElement(element);
-  if (!isHTMLElement(domElement)) {
-    return createCoords(1);
-  }
-  const rect = domElement.getBoundingClientRect();
-  const {
-    width,
-    height,
-    $
-  } = getCssDimensions(domElement);
-  let x = ($ ? round(rect.width) : rect.width) / width;
-  let y = ($ ? round(rect.height) : rect.height) / height;
-  if (!x || !Number.isFinite(x)) {
-    x = 1;
-  }
-  if (!y || !Number.isFinite(y)) {
-    y = 1;
-  }
-  return {
-    x,
-    y
+function Ie(e) {
+  const t = sn(e);
+  if (!le(t))
+    return Ce(1);
+  const n = t.getBoundingClientRect(), {
+    width: o,
+    height: r,
+    $: c
+  } = mo(t);
+  let i = (c ? vt(n.width) : n.width) / o, a = (c ? vt(n.height) : n.height) / r;
+  return (!i || !Number.isFinite(i)) && (i = 1), (!a || !Number.isFinite(a)) && (a = 1), {
+    x: i,
+    y: a
   };
 }
-const noOffsets = /* @__PURE__ */ createCoords(0);
-function getVisualOffsets(element) {
-  const win = getWindow(element);
-  if (!isWebKit() || !win.visualViewport) {
-    return noOffsets;
-  }
-  return {
-    x: win.visualViewport.offsetLeft,
-    y: win.visualViewport.offsetTop
+const Zc = /* @__PURE__ */ Ce(0);
+function ho(e) {
+  const t = ee(e);
+  return !an() || !t.visualViewport ? Zc : {
+    x: t.visualViewport.offsetLeft,
+    y: t.visualViewport.offsetTop
   };
 }
-function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
-  if (isFixed === void 0) {
-    isFixed = false;
-  }
-  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow(element)) {
-    return false;
-  }
-  return isFixed;
+function qc(e, t, n) {
+  return t === void 0 && (t = !1), !n || t && n !== ee(e) ? !1 : t;
 }
-function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
-  if (includeScale === void 0) {
-    includeScale = false;
-  }
-  if (isFixedStrategy === void 0) {
-    isFixedStrategy = false;
-  }
-  const clientRect = element.getBoundingClientRect();
-  const domElement = unwrapElement(element);
-  let scale = createCoords(1);
-  if (includeScale) {
-    if (offsetParent) {
-      if (isElement(offsetParent)) {
-        scale = getScale(offsetParent);
-      }
-    } else {
-      scale = getScale(element);
+function Me(e, t, n, o) {
+  t === void 0 && (t = !1), n === void 0 && (n = !1);
+  const r = e.getBoundingClientRect(), c = sn(e);
+  let i = Ce(1);
+  t && (o ? ve(o) && (i = Ie(o)) : i = Ie(e));
+  const a = qc(c, n, o) ? ho(c) : Ce(0);
+  let s = (r.left + a.x) / i.x, l = (r.top + a.y) / i.y, u = r.width / i.x, d = r.height / i.y;
+  if (c) {
+    const m = ee(c), f = o && ve(o) ? ee(o) : o;
+    let v = m.frameElement;
+    for (; v && o && f !== m; ) {
+      const p = Ie(v), b = v.getBoundingClientRect(), $ = te(v), w = b.left + (v.clientLeft + parseFloat($.paddingLeft)) * p.x, y = b.top + (v.clientTop + parseFloat($.paddingTop)) * p.y;
+      s *= p.x, l *= p.y, u *= p.x, d *= p.y, s += w, l += y, v = ee(v).frameElement;
     }
   }
-  const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : createCoords(0);
-  let x = (clientRect.left + visualOffsets.x) / scale.x;
-  let y = (clientRect.top + visualOffsets.y) / scale.y;
-  let width = clientRect.width / scale.x;
-  let height = clientRect.height / scale.y;
-  if (domElement) {
-    const win = getWindow(domElement);
-    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
-    let currentIFrame = win.frameElement;
-    while (currentIFrame && offsetParent && offsetWin !== win) {
-      const iframeScale = getScale(currentIFrame);
-      const iframeRect = currentIFrame.getBoundingClientRect();
-      const css = getComputedStyle$1(currentIFrame);
-      const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
-      const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
-      x *= iframeScale.x;
-      y *= iframeScale.y;
-      width *= iframeScale.x;
-      height *= iframeScale.y;
-      x += left;
-      y += top;
-      currentIFrame = getWindow(currentIFrame).frameElement;
-    }
-  }
-  return rectToClientRect({
-    width,
-    height,
-    x,
-    y
+  return bt({
+    width: u,
+    height: d,
+    x: s,
+    y: l
   });
 }
-function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+function Qc(e) {
   let {
-    rect,
-    offsetParent,
-    strategy
-  } = _ref;
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  if (offsetParent === documentElement) {
-    return rect;
-  }
-  let scroll = {
+    rect: t,
+    offsetParent: n,
+    strategy: o
+  } = e;
+  const r = le(n), c = ge(n);
+  if (n === c)
+    return t;
+  let i = {
     scrollLeft: 0,
     scrollTop: 0
-  };
-  let scale = createCoords(1);
-  const offsets = createCoords(0);
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
-    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isHTMLElement(offsetParent)) {
-      const offsetRect = getBoundingClientRect(offsetParent);
-      scale = getScale(offsetParent);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    }
+  }, a = Ce(1);
+  const s = Ce(0);
+  if ((r || !r && o !== "fixed") && ((Ee(n) !== "body" || Je(c)) && (i = Ct(n)), le(n))) {
+    const l = Me(n);
+    a = Ie(n), s.x = l.x + n.clientLeft, s.y = l.y + n.clientTop;
   }
   return {
-    width: rect.width * scale.x,
-    height: rect.height * scale.y,
-    x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x,
-    y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y
+    width: t.width * a.x,
+    height: t.height * a.y,
+    x: t.x * a.x - i.scrollLeft * a.x + s.x,
+    y: t.y * a.y - i.scrollTop * a.y + s.y
   };
 }
-function getClientRects(element) {
-  return Array.from(element.getClientRects());
+function Jc(e) {
+  return Array.from(e.getClientRects());
 }
-function getWindowScrollBarX(element) {
-  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+function vo(e) {
+  return Me(ge(e)).left + Ct(e).scrollLeft;
 }
-function getDocumentRect(element) {
-  const html = getDocumentElement(element);
-  const scroll = getNodeScroll(element);
-  const body = element.ownerDocument.body;
-  const width = max(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
-  const height = max(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
-  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
-  const y = -scroll.scrollTop;
-  if (getComputedStyle$1(body).direction === "rtl") {
-    x += max(html.clientWidth, body.clientWidth) - width;
+function ei(e) {
+  const t = ge(e), n = Ct(e), o = e.ownerDocument.body, r = J(t.scrollWidth, t.clientWidth, o.scrollWidth, o.clientWidth), c = J(t.scrollHeight, t.clientHeight, o.scrollHeight, o.clientHeight);
+  let i = -n.scrollLeft + vo(e);
+  const a = -n.scrollTop;
+  return te(o).direction === "rtl" && (i += J(t.clientWidth, o.clientWidth) - r), {
+    width: r,
+    height: c,
+    x: i,
+    y: a
+  };
+}
+function ti(e, t) {
+  const n = ee(e), o = ge(e), r = n.visualViewport;
+  let c = o.clientWidth, i = o.clientHeight, a = 0, s = 0;
+  if (r) {
+    c = r.width, i = r.height;
+    const l = an();
+    (!l || l && t === "fixed") && (a = r.offsetLeft, s = r.offsetTop);
   }
   return {
-    width,
-    height,
-    x,
-    y
+    width: c,
+    height: i,
+    x: a,
+    y: s
   };
 }
-function getViewportRect(element, strategy) {
-  const win = getWindow(element);
-  const html = getDocumentElement(element);
-  const visualViewport = win.visualViewport;
-  let width = html.clientWidth;
-  let height = html.clientHeight;
-  let x = 0;
-  let y = 0;
-  if (visualViewport) {
-    width = visualViewport.width;
-    height = visualViewport.height;
-    const visualViewportBased = isWebKit();
-    if (!visualViewportBased || visualViewportBased && strategy === "fixed") {
-      x = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
-    }
-  }
+function ni(e, t) {
+  const n = Me(e, !0, t === "fixed"), o = n.top + e.clientTop, r = n.left + e.clientLeft, c = le(e) ? Ie(e) : Ce(1), i = e.clientWidth * c.x, a = e.clientHeight * c.y, s = r * c.x, l = o * c.y;
   return {
-    width,
-    height,
-    x,
-    y
+    width: i,
+    height: a,
+    x: s,
+    y: l
   };
 }
-function getInnerBoundingClientRect(element, strategy) {
-  const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
-  const top = clientRect.top + element.clientTop;
-  const left = clientRect.left + element.clientLeft;
-  const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
-  const width = element.clientWidth * scale.x;
-  const height = element.clientHeight * scale.y;
-  const x = left * scale.x;
-  const y = top * scale.y;
-  return {
-    width,
-    height,
-    x,
-    y
-  };
-}
-function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
-  let rect;
-  if (clippingAncestor === "viewport") {
-    rect = getViewportRect(element, strategy);
-  } else if (clippingAncestor === "document") {
-    rect = getDocumentRect(getDocumentElement(element));
-  } else if (isElement(clippingAncestor)) {
-    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
-  } else {
-    const visualOffsets = getVisualOffsets(element);
-    rect = {
-      ...clippingAncestor,
-      x: clippingAncestor.x - visualOffsets.x,
-      y: clippingAncestor.y - visualOffsets.y
+function Tn(e, t, n) {
+  let o;
+  if (t === "viewport")
+    o = ti(e, n);
+  else if (t === "document")
+    o = ei(ge(e));
+  else if (ve(t))
+    o = ni(t, n);
+  else {
+    const r = ho(e);
+    o = {
+      ...t,
+      x: t.x - r.x,
+      y: t.y - r.y
     };
   }
-  return rectToClientRect(rect);
+  return bt(o);
 }
-function hasFixedPositionAncestor(element, stopNode) {
-  const parentNode = getParentNode(element);
-  if (parentNode === stopNode || !isElement(parentNode) || isLastTraversableNode(parentNode)) {
-    return false;
-  }
-  return getComputedStyle$1(parentNode).position === "fixed" || hasFixedPositionAncestor(parentNode, stopNode);
+function go(e, t) {
+  const n = Le(e);
+  return n === t || !ve(n) || yt(n) ? !1 : te(n).position === "fixed" || go(n, t);
 }
-function getClippingElementAncestors(element, cache) {
-  const cachedResult = cache.get(element);
-  if (cachedResult) {
-    return cachedResult;
+function oi(e, t) {
+  const n = t.get(e);
+  if (n)
+    return n;
+  let o = Ge(e, [], !1).filter((a) => ve(a) && Ee(a) !== "body"), r = null;
+  const c = te(e).position === "fixed";
+  let i = c ? Le(e) : e;
+  for (; ve(i) && !yt(i); ) {
+    const a = te(i), s = cn(i);
+    !s && a.position === "fixed" && (r = null), (c ? !s && !r : !s && a.position === "static" && !!r && ["absolute", "fixed"].includes(r.position) || Je(i) && !s && go(e, i)) ? o = o.filter((u) => u !== i) : r = a, i = Le(i);
   }
-  let result = getOverflowAncestors(element, [], false).filter((el) => isElement(el) && getNodeName(el) !== "body");
-  let currentContainingBlockComputedStyle = null;
-  const elementIsFixed = getComputedStyle$1(element).position === "fixed";
-  let currentNode = elementIsFixed ? getParentNode(element) : element;
-  while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
-    const computedStyle = getComputedStyle$1(currentNode);
-    const currentNodeIsContaining = isContainingBlock(currentNode);
-    if (!currentNodeIsContaining && computedStyle.position === "fixed") {
-      currentContainingBlockComputedStyle = null;
-    }
-    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === "static" && !!currentContainingBlockComputedStyle && ["absolute", "fixed"].includes(currentContainingBlockComputedStyle.position) || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
-    if (shouldDropCurrentNode) {
-      result = result.filter((ancestor) => ancestor !== currentNode);
-    } else {
-      currentContainingBlockComputedStyle = computedStyle;
-    }
-    currentNode = getParentNode(currentNode);
-  }
-  cache.set(element, result);
-  return result;
+  return t.set(e, o), o;
 }
-function getClippingRect(_ref) {
+function ri(e) {
   let {
-    element,
-    boundary,
-    rootBoundary,
-    strategy
-  } = _ref;
-  const elementClippingAncestors = boundary === "clippingAncestors" ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
-  const clippingAncestors = [...elementClippingAncestors, rootBoundary];
-  const firstClippingAncestor = clippingAncestors[0];
-  const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
-    const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
-    accRect.top = max(rect.top, accRect.top);
-    accRect.right = min(rect.right, accRect.right);
-    accRect.bottom = min(rect.bottom, accRect.bottom);
-    accRect.left = max(rect.left, accRect.left);
-    return accRect;
-  }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+    element: t,
+    boundary: n,
+    rootBoundary: o,
+    strategy: r
+  } = e;
+  const i = [...n === "clippingAncestors" ? oi(t, this._c) : [].concat(n), o], a = i[0], s = i.reduce((l, u) => {
+    const d = Tn(t, u, r);
+    return l.top = J(d.top, l.top), l.right = ye(d.right, l.right), l.bottom = ye(d.bottom, l.bottom), l.left = J(d.left, l.left), l;
+  }, Tn(t, a, r));
   return {
-    width: clippingRect.right - clippingRect.left,
-    height: clippingRect.bottom - clippingRect.top,
-    x: clippingRect.left,
-    y: clippingRect.top
+    width: s.right - s.left,
+    height: s.bottom - s.top,
+    x: s.left,
+    y: s.top
   };
 }
-function getDimensions(element) {
+function ci(e) {
   const {
-    width,
-    height
-  } = getCssDimensions(element);
+    width: t,
+    height: n
+  } = mo(e);
   return {
-    width,
-    height
+    width: t,
+    height: n
   };
 }
-function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  const isFixed = strategy === "fixed";
-  const rect = getBoundingClientRect(element, true, isFixed, offsetParent);
-  let scroll = {
+function ii(e, t, n) {
+  const o = le(t), r = ge(t), c = n === "fixed", i = Me(e, !0, c, t);
+  let a = {
     scrollLeft: 0,
     scrollTop: 0
   };
-  const offsets = createCoords(0);
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
-    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isOffsetParentAnElement) {
-      const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      offsets.x = getWindowScrollBarX(documentElement);
-    }
-  }
+  const s = Ce(0);
+  if (o || !o && !c)
+    if ((Ee(t) !== "body" || Je(r)) && (a = Ct(t)), o) {
+      const l = Me(t, !0, c, t);
+      s.x = l.x + t.clientLeft, s.y = l.y + t.clientTop;
+    } else
+      r && (s.x = vo(r));
   return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
-    width: rect.width,
-    height: rect.height
+    x: i.left + a.scrollLeft - s.x,
+    y: i.top + a.scrollTop - s.y,
+    width: i.width,
+    height: i.height
   };
 }
-function getTrueOffsetParent(element, polyfill) {
-  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
-    return null;
-  }
-  if (polyfill) {
-    return polyfill(element);
-  }
-  return element.offsetParent;
+function kn(e, t) {
+  return !le(e) || te(e).position === "fixed" ? null : t ? t(e) : e.offsetParent;
 }
-function getOffsetParent(element, polyfill) {
-  const window2 = getWindow(element);
-  if (!isHTMLElement(element)) {
-    return window2;
-  }
-  let offsetParent = getTrueOffsetParent(element, polyfill);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === "static") {
-    offsetParent = getTrueOffsetParent(offsetParent, polyfill);
-  }
-  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle$1(offsetParent).position === "static" && !isContainingBlock(offsetParent))) {
-    return window2;
-  }
-  return offsetParent || getContainingBlock(element) || window2;
+function bo(e, t) {
+  const n = ee(e);
+  if (!le(e))
+    return n;
+  let o = kn(e, t);
+  for (; o && Yc(o) && te(o).position === "static"; )
+    o = kn(o, t);
+  return o && (Ee(o) === "html" || Ee(o) === "body" && te(o).position === "static" && !cn(o)) ? n : o || Xc(e) || n;
 }
-const getElementRects = async function(_ref) {
+const ai = async function(e) {
   let {
-    reference,
-    floating,
-    strategy
-  } = _ref;
-  const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
-  const getDimensionsFn = this.getDimensions;
+    reference: t,
+    floating: n,
+    strategy: o
+  } = e;
+  const r = this.getOffsetParent || bo, c = this.getDimensions;
   return {
-    reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+    reference: ii(t, await r(n), o),
     floating: {
       x: 0,
       y: 0,
-      ...await getDimensionsFn(floating)
+      ...await c(n)
     }
   };
 };
-function isRTL(element) {
-  return getComputedStyle$1(element).direction === "rtl";
+function si(e) {
+  return te(e).direction === "rtl";
 }
-const platform = {
-  convertOffsetParentRelativeRectToViewportRelativeRect,
-  getDocumentElement,
-  getClippingRect,
-  getOffsetParent,
-  getElementRects,
-  getClientRects,
-  getDimensions,
-  getScale,
-  isElement,
-  isRTL
+const li = {
+  convertOffsetParentRelativeRectToViewportRelativeRect: Qc,
+  getDocumentElement: ge,
+  getClippingRect: ri,
+  getOffsetParent: bo,
+  getElementRects: ai,
+  getClientRects: Jc,
+  getDimensions: ci,
+  getScale: Ie,
+  isElement: ve,
+  isRTL: si
 };
-function observeMove(element, onMove) {
-  let io2 = null;
-  let timeoutId;
-  const root = getDocumentElement(element);
-  function cleanup() {
-    clearTimeout(timeoutId);
-    io2 && io2.disconnect();
-    io2 = null;
+function di(e, t) {
+  let n = null, o;
+  const r = ge(e);
+  function c() {
+    clearTimeout(o), n && n.disconnect(), n = null;
   }
-  function refresh(skip, threshold) {
-    if (skip === void 0) {
-      skip = false;
-    }
-    if (threshold === void 0) {
-      threshold = 1;
-    }
-    cleanup();
+  function i(a, s) {
+    a === void 0 && (a = !1), s === void 0 && (s = 1), c();
     const {
-      left,
-      top,
-      width,
-      height
-    } = element.getBoundingClientRect();
-    if (!skip) {
-      onMove();
-    }
-    if (!width || !height) {
+      left: l,
+      top: u,
+      width: d,
+      height: m
+    } = e.getBoundingClientRect();
+    if (a || t(), !d || !m)
       return;
-    }
-    const insetTop = floor(top);
-    const insetRight = floor(root.clientWidth - (left + width));
-    const insetBottom = floor(root.clientHeight - (top + height));
-    const insetLeft = floor(left);
-    const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
-    const options = {
-      rootMargin,
-      threshold: max(0, min(1, threshold)) || 1
+    const f = rt(u), v = rt(r.clientWidth - (l + d)), p = rt(r.clientHeight - (u + m)), b = rt(l), w = {
+      rootMargin: -f + "px " + -v + "px " + -p + "px " + -b + "px",
+      threshold: J(0, ye(1, s)) || 1
     };
-    let isFirstUpdate = true;
-    function handleObserve(entries) {
-      const ratio = entries[0].intersectionRatio;
-      if (ratio !== threshold) {
-        if (!isFirstUpdate) {
-          return refresh();
-        }
-        if (!ratio) {
-          timeoutId = setTimeout(() => {
-            refresh(false, 1e-7);
-          }, 100);
-        } else {
-          refresh(false, ratio);
-        }
+    let y = !0;
+    function x(E) {
+      const M = E[0].intersectionRatio;
+      if (M !== s) {
+        if (!y)
+          return i();
+        M ? i(!1, M) : o = setTimeout(() => {
+          i(!1, 1e-7);
+        }, 100);
       }
-      isFirstUpdate = false;
+      y = !1;
     }
     try {
-      io2 = new IntersectionObserver(handleObserve, {
-        ...options,
+      n = new IntersectionObserver(x, {
+        ...w,
         // Handle <iframe>s
-        root: root.ownerDocument
+        root: r.ownerDocument
       });
-    } catch (e) {
-      io2 = new IntersectionObserver(handleObserve, options);
+    } catch {
+      n = new IntersectionObserver(x, w);
     }
-    io2.observe(element);
+    n.observe(e);
   }
-  refresh(true);
-  return cleanup;
+  return i(!0), c;
 }
-function autoUpdate(reference, floating, update, options) {
-  if (options === void 0) {
-    options = {};
-  }
+function ui(e, t, n, o) {
+  o === void 0 && (o = {});
   const {
-    ancestorScroll = true,
-    ancestorResize = true,
-    elementResize = typeof ResizeObserver === "function",
-    layoutShift = typeof IntersectionObserver === "function",
-    animationFrame = false
-  } = options;
-  const referenceEl = unwrapElement(reference);
-  const ancestors = ancestorScroll || ancestorResize ? [...referenceEl ? getOverflowAncestors(referenceEl) : [], ...getOverflowAncestors(floating)] : [];
-  ancestors.forEach((ancestor) => {
-    ancestorScroll && ancestor.addEventListener("scroll", update, {
-      passive: true
-    });
-    ancestorResize && ancestor.addEventListener("resize", update);
+    ancestorScroll: r = !0,
+    ancestorResize: c = !0,
+    elementResize: i = typeof ResizeObserver == "function",
+    layoutShift: a = typeof IntersectionObserver == "function",
+    animationFrame: s = !1
+  } = o, l = sn(e), u = r || c ? [...l ? Ge(l) : [], ...Ge(t)] : [];
+  u.forEach(($) => {
+    r && $.addEventListener("scroll", n, {
+      passive: !0
+    }), c && $.addEventListener("resize", n);
   });
-  const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
-  let reobserveFrame = -1;
-  let resizeObserver = null;
-  if (elementResize) {
-    resizeObserver = new ResizeObserver((_ref) => {
-      let [firstEntry] = _ref;
-      if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
-        resizeObserver.unobserve(floating);
-        cancelAnimationFrame(reobserveFrame);
-        reobserveFrame = requestAnimationFrame(() => {
-          resizeObserver && resizeObserver.observe(floating);
-        });
-      }
-      update();
-    });
-    if (referenceEl && !animationFrame) {
-      resizeObserver.observe(referenceEl);
-    }
-    resizeObserver.observe(floating);
+  const d = l && a ? di(l, n) : null;
+  let m = -1, f = null;
+  i && (f = new ResizeObserver(($) => {
+    let [w] = $;
+    w && w.target === l && f && (f.unobserve(t), cancelAnimationFrame(m), m = requestAnimationFrame(() => {
+      f && f.observe(t);
+    })), n();
+  }), l && !s && f.observe(l), f.observe(t));
+  let v, p = s ? Me(e) : null;
+  s && b();
+  function b() {
+    const $ = Me(e);
+    p && ($.x !== p.x || $.y !== p.y || $.width !== p.width || $.height !== p.height) && n(), p = $, v = requestAnimationFrame(b);
   }
-  let frameId;
-  let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
-  if (animationFrame) {
-    frameLoop();
-  }
-  function frameLoop() {
-    const nextRefRect = getBoundingClientRect(reference);
-    if (prevRefRect && (nextRefRect.x !== prevRefRect.x || nextRefRect.y !== prevRefRect.y || nextRefRect.width !== prevRefRect.width || nextRefRect.height !== prevRefRect.height)) {
-      update();
-    }
-    prevRefRect = nextRefRect;
-    frameId = requestAnimationFrame(frameLoop);
-  }
-  update();
-  return () => {
-    ancestors.forEach((ancestor) => {
-      ancestorScroll && ancestor.removeEventListener("scroll", update);
-      ancestorResize && ancestor.removeEventListener("resize", update);
-    });
-    cleanupIo && cleanupIo();
-    resizeObserver && resizeObserver.disconnect();
-    resizeObserver = null;
-    if (animationFrame) {
-      cancelAnimationFrame(frameId);
-    }
+  return n(), () => {
+    u.forEach(($) => {
+      r && $.removeEventListener("scroll", n), c && $.removeEventListener("resize", n);
+    }), d && d(), f && f.disconnect(), f = null, s && cancelAnimationFrame(v);
   };
 }
-const shift = shift$1;
-const flip = flip$1;
-const size = size$1;
-const hide = hide$1;
-const arrow$1 = arrow$2;
-const limitShift = limitShift$1;
-const computePosition = (reference, floating, options) => {
-  const cache = /* @__PURE__ */ new Map();
-  const mergedOptions = {
-    platform,
-    ...options
+const fi = jc, pi = Wc, mi = Gc, hi = zc, In = Uc, vi = Hc, gi = (e, t, n) => {
+  const o = /* @__PURE__ */ new Map(), r = {
+    platform: li,
+    ...n
+  }, c = {
+    ...r.platform,
+    _c: o
   };
-  const platformWithCache = {
-    ...mergedOptions.platform,
-    _c: cache
-  };
-  return computePosition$1(reference, floating, {
-    ...mergedOptions,
-    platform: platformWithCache
+  return Bc(e, t, {
+    ...r,
+    platform: c
   });
-};
-const arrow = (options) => {
-  function isRef(value) {
-    return {}.hasOwnProperty.call(value, "current");
+}, bi = (e) => {
+  function t(n) {
+    return {}.hasOwnProperty.call(n, "current");
   }
   return {
     name: "arrow",
-    options,
-    fn(state) {
+    options: e,
+    fn(n) {
       const {
-        element,
-        padding
-      } = typeof options === "function" ? options(state) : options;
-      if (element && isRef(element)) {
-        if (element.current != null) {
-          return arrow$1({
-            element: element.current,
-            padding
-          }).fn(state);
-        }
-        return {};
-      } else if (element) {
-        return arrow$1({
-          element,
-          padding
-        }).fn(state);
-      }
-      return {};
+        element: o,
+        padding: r
+      } = typeof e == "function" ? e(n) : e;
+      return o && t(o) ? o.current != null ? In({
+        element: o.current,
+        padding: r
+      }).fn(n) : {} : o ? In({
+        element: o,
+        padding: r
+      }).fn(n) : {};
     }
   };
 };
-var index = typeof document !== "undefined" ? useLayoutEffect : useEffect;
-function deepEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-  if (typeof a !== typeof b) {
-    return false;
-  }
-  if (typeof a === "function" && a.toString() === b.toString()) {
-    return true;
-  }
-  let length, i, keys;
-  if (a && b && typeof a == "object") {
-    if (Array.isArray(a)) {
-      length = a.length;
-      if (length != b.length)
-        return false;
-      for (i = length; i-- !== 0; ) {
-        if (!deepEqual(a[i], b[i])) {
-          return false;
-        }
-      }
-      return true;
+var ut = typeof document < "u" ? Qt : F;
+function $t(e, t) {
+  if (e === t)
+    return !0;
+  if (typeof e != typeof t)
+    return !1;
+  if (typeof e == "function" && e.toString() === t.toString())
+    return !0;
+  let n, o, r;
+  if (e && t && typeof e == "object") {
+    if (Array.isArray(e)) {
+      if (n = e.length, n != t.length)
+        return !1;
+      for (o = n; o-- !== 0; )
+        if (!$t(e[o], t[o]))
+          return !1;
+      return !0;
     }
-    keys = Object.keys(a);
-    length = keys.length;
-    if (length !== Object.keys(b).length) {
-      return false;
+    if (r = Object.keys(e), n = r.length, n !== Object.keys(t).length)
+      return !1;
+    for (o = n; o-- !== 0; )
+      if (!{}.hasOwnProperty.call(t, r[o]))
+        return !1;
+    for (o = n; o-- !== 0; ) {
+      const c = r[o];
+      if (!(c === "_owner" && e.$$typeof) && !$t(e[c], t[c]))
+        return !1;
     }
-    for (i = length; i-- !== 0; ) {
-      if (!{}.hasOwnProperty.call(b, keys[i])) {
-        return false;
-      }
-    }
-    for (i = length; i-- !== 0; ) {
-      const key = keys[i];
-      if (key === "_owner" && a.$$typeof) {
-        continue;
-      }
-      if (!deepEqual(a[key], b[key])) {
-        return false;
-      }
-    }
-    return true;
+    return !0;
   }
-  return a !== a && b !== b;
+  return e !== e && t !== t;
 }
-function getDPR(element) {
-  if (typeof window === "undefined") {
-    return 1;
-  }
-  const win = element.ownerDocument.defaultView || window;
-  return win.devicePixelRatio || 1;
+function $o(e) {
+  return typeof window > "u" ? 1 : (e.ownerDocument.defaultView || window).devicePixelRatio || 1;
 }
-function roundByDPR(element, value) {
-  const dpr = getDPR(element);
-  return Math.round(value * dpr) / dpr;
+function Fn(e, t) {
+  const n = $o(e);
+  return Math.round(t * n) / n;
 }
-function useLatestRef(value) {
-  const ref = React.useRef(value);
-  index(() => {
-    ref.current = value;
-  });
-  return ref;
+function Ln(e) {
+  const t = C.useRef(e);
+  return ut(() => {
+    t.current = e;
+  }), t;
 }
-function useFloating(options) {
-  if (options === void 0) {
-    options = {};
-  }
+function $i(e) {
+  e === void 0 && (e = {});
   const {
-    placement = "bottom",
-    strategy = "absolute",
-    middleware = [],
-    platform: platform2,
+    placement: t = "bottom",
+    strategy: n = "absolute",
+    middleware: o = [],
+    platform: r,
     elements: {
-      reference: externalReference,
-      floating: externalFloating
+      reference: c,
+      floating: i
     } = {},
-    transform = true,
-    whileElementsMounted,
-    open
-  } = options;
-  const [data, setData] = React.useState({
+    transform: a = !0,
+    whileElementsMounted: s,
+    open: l
+  } = e, [u, d] = C.useState({
     x: 0,
     y: 0,
-    strategy,
-    placement,
+    strategy: n,
+    placement: t,
     middlewareData: {},
-    isPositioned: false
-  });
-  const [latestMiddleware, setLatestMiddleware] = React.useState(middleware);
-  if (!deepEqual(latestMiddleware, middleware)) {
-    setLatestMiddleware(middleware);
-  }
-  const [_reference, _setReference] = React.useState(null);
-  const [_floating, _setFloating] = React.useState(null);
-  const setReference = React.useCallback((node) => {
-    if (node != referenceRef.current) {
-      referenceRef.current = node;
-      _setReference(node);
-    }
-  }, [_setReference]);
-  const setFloating = React.useCallback((node) => {
-    if (node !== floatingRef.current) {
-      floatingRef.current = node;
-      _setFloating(node);
-    }
-  }, [_setFloating]);
-  const referenceEl = externalReference || _reference;
-  const floatingEl = externalFloating || _floating;
-  const referenceRef = React.useRef(null);
-  const floatingRef = React.useRef(null);
-  const dataRef = React.useRef(data);
-  const whileElementsMountedRef = useLatestRef(whileElementsMounted);
-  const platformRef = useLatestRef(platform2);
-  const update = React.useCallback(() => {
-    if (!referenceRef.current || !floatingRef.current) {
+    isPositioned: !1
+  }), [m, f] = C.useState(o);
+  $t(m, o) || f(o);
+  const [v, p] = C.useState(null), [b, $] = C.useState(null), w = C.useCallback((I) => {
+    I != M.current && (M.current = I, p(I));
+  }, [p]), y = C.useCallback((I) => {
+    I !== O.current && (O.current = I, $(I));
+  }, [$]), x = c || v, E = i || b, M = C.useRef(null), O = C.useRef(null), S = C.useRef(u), k = Ln(s), W = Ln(r), z = C.useCallback(() => {
+    if (!M.current || !O.current)
       return;
-    }
-    const config = {
-      placement,
-      strategy,
-      middleware: latestMiddleware
+    const I = {
+      placement: t,
+      strategy: n,
+      middleware: m
     };
-    if (platformRef.current) {
-      config.platform = platformRef.current;
-    }
-    computePosition(referenceRef.current, floatingRef.current, config).then((data2) => {
-      const fullData = {
-        ...data2,
-        isPositioned: true
+    W.current && (I.platform = W.current), gi(M.current, O.current, I).then((H) => {
+      const Y = {
+        ...H,
+        isPositioned: !0
       };
-      if (isMountedRef.current && !deepEqual(dataRef.current, fullData)) {
-        dataRef.current = fullData;
-        ReactDOM.flushSync(() => {
-          setData(fullData);
-        });
-      }
-    });
-  }, [latestMiddleware, placement, strategy, platformRef]);
-  index(() => {
-    if (open === false && dataRef.current.isPositioned) {
-      dataRef.current.isPositioned = false;
-      setData((data2) => ({
-        ...data2,
-        isPositioned: false
+      L.current && !$t(S.current, Y) && (S.current = Y, Zr.flushSync(() => {
+        d(Y);
       }));
+    });
+  }, [m, t, n, W]);
+  ut(() => {
+    l === !1 && S.current.isPositioned && (S.current.isPositioned = !1, d((I) => ({
+      ...I,
+      isPositioned: !1
+    })));
+  }, [l]);
+  const L = C.useRef(!1);
+  ut(() => (L.current = !0, () => {
+    L.current = !1;
+  }), []), ut(() => {
+    if (x && (M.current = x), E && (O.current = E), x && E) {
+      if (k.current)
+        return k.current(x, E, z);
+      z();
     }
-  }, [open]);
-  const isMountedRef = React.useRef(false);
-  index(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
-  index(() => {
-    if (referenceEl)
-      referenceRef.current = referenceEl;
-    if (floatingEl)
-      floatingRef.current = floatingEl;
-    if (referenceEl && floatingEl) {
-      if (whileElementsMountedRef.current) {
-        return whileElementsMountedRef.current(referenceEl, floatingEl, update);
-      } else {
-        update();
-      }
-    }
-  }, [referenceEl, floatingEl, update, whileElementsMountedRef]);
-  const refs = React.useMemo(() => ({
-    reference: referenceRef,
-    floating: floatingRef,
-    setReference,
-    setFloating
-  }), [setReference, setFloating]);
-  const elements = React.useMemo(() => ({
-    reference: referenceEl,
-    floating: floatingEl
-  }), [referenceEl, floatingEl]);
-  const floatingStyles = React.useMemo(() => {
-    const initialStyles = {
-      position: strategy,
+  }, [x, E, z, k]);
+  const q = C.useMemo(() => ({
+    reference: M,
+    floating: O,
+    setReference: w,
+    setFloating: y
+  }), [w, y]), T = C.useMemo(() => ({
+    reference: x,
+    floating: E
+  }), [x, E]), B = C.useMemo(() => {
+    const I = {
+      position: n,
       left: 0,
       top: 0
     };
-    if (!elements.floating) {
-      return initialStyles;
-    }
-    const x = roundByDPR(elements.floating, data.x);
-    const y = roundByDPR(elements.floating, data.y);
-    if (transform) {
-      return {
-        ...initialStyles,
-        transform: "translate(" + x + "px, " + y + "px)",
-        ...getDPR(elements.floating) >= 1.5 && {
-          willChange: "transform"
-        }
-      };
-    }
-    return {
-      position: strategy,
-      left: x,
-      top: y
+    if (!T.floating)
+      return I;
+    const H = Fn(T.floating, u.x), Y = Fn(T.floating, u.y);
+    return a ? {
+      ...I,
+      transform: "translate(" + H + "px, " + Y + "px)",
+      ...$o(T.floating) >= 1.5 && {
+        willChange: "transform"
+      }
+    } : {
+      position: n,
+      left: H,
+      top: Y
     };
-  }, [strategy, transform, elements.floating, data.x, data.y]);
-  return React.useMemo(() => ({
-    ...data,
-    update,
-    refs,
-    elements,
-    floatingStyles
-  }), [data, update, refs, elements, floatingStyles]);
+  }, [n, a, T.floating, u.x, u.y]);
+  return C.useMemo(() => ({
+    ...u,
+    update: z,
+    refs: q,
+    elements: T,
+    floatingStyles: B
+  }), [u, z, q, T, B]);
 }
-function $db6c3485150b8e66$export$1ab7ae714698c4b8(element) {
-  const [size2, setSize] = useState(void 0);
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    if (element) {
-      setSize({
-        width: element.offsetWidth,
-        height: element.offsetHeight
+function wi(e) {
+  const [t, n] = U(void 0);
+  return Fe(() => {
+    if (e) {
+      n({
+        width: e.offsetWidth,
+        height: e.offsetHeight
       });
-      const resizeObserver = new ResizeObserver((entries) => {
-        if (!Array.isArray(entries))
+      const o = new ResizeObserver((r) => {
+        if (!Array.isArray(r) || !r.length)
           return;
-        if (!entries.length)
-          return;
-        const entry = entries[0];
-        let width;
-        let height;
-        if ("borderBoxSize" in entry) {
-          const borderSizeEntry = entry["borderBoxSize"];
-          const borderSize = Array.isArray(borderSizeEntry) ? borderSizeEntry[0] : borderSizeEntry;
-          width = borderSize["inlineSize"];
-          height = borderSize["blockSize"];
-        } else {
-          width = element.offsetWidth;
-          height = element.offsetHeight;
-        }
-        setSize({
-          width,
-          height
+        const c = r[0];
+        let i, a;
+        if ("borderBoxSize" in c) {
+          const s = c.borderBoxSize, l = Array.isArray(s) ? s[0] : s;
+          i = l.inlineSize, a = l.blockSize;
+        } else
+          i = e.offsetWidth, a = e.offsetHeight;
+        n({
+          width: i,
+          height: a
         });
       });
-      resizeObserver.observe(element, {
+      return o.observe(e, {
         box: "border-box"
-      });
-      return () => resizeObserver.unobserve(element);
+      }), () => o.unobserve(e);
     } else
-      setSize(void 0);
+      n(void 0);
   }, [
-    element
-  ]);
-  return size2;
+    e
+  ]), t;
 }
-const $cf1ac5d9fe0e8206$var$POPPER_NAME = "Popper";
-const [$cf1ac5d9fe0e8206$var$createPopperContext, $cf1ac5d9fe0e8206$export$722aac194ae923] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($cf1ac5d9fe0e8206$var$POPPER_NAME);
-const [$cf1ac5d9fe0e8206$var$PopperProvider, $cf1ac5d9fe0e8206$var$usePopperContext] = $cf1ac5d9fe0e8206$var$createPopperContext($cf1ac5d9fe0e8206$var$POPPER_NAME);
-const $cf1ac5d9fe0e8206$export$badac9ada3a0bdf9 = (props) => {
-  const { __scopePopper, children } = props;
-  const [anchor, setAnchor] = useState(null);
-  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$var$PopperProvider, {
-    scope: __scopePopper,
-    anchor,
-    onAnchorChange: setAnchor
-  }, children);
-};
-const $cf1ac5d9fe0e8206$var$ANCHOR_NAME = "PopperAnchor";
-const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopePopper, virtualRef, ...anchorProps } = props;
-  const context = $cf1ac5d9fe0e8206$var$usePopperContext($cf1ac5d9fe0e8206$var$ANCHOR_NAME, __scopePopper);
-  const ref = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  useEffect(() => {
-    context.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
-  });
-  return virtualRef ? null : /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, anchorProps, {
-    ref: composedRefs
+const wo = "Popper", [xo, Et] = Ne(wo), [xi, yo] = xo(wo), yi = (e) => {
+  const { __scopePopper: t, children: n } = e, [o, r] = U(null);
+  return /* @__PURE__ */ g(xi, {
+    scope: t,
+    anchor: o,
+    onAnchorChange: r
+  }, n);
+}, Ci = "PopperAnchor", Ei = /* @__PURE__ */ _((e, t) => {
+  const { __scopePopper: n, virtualRef: o, ...r } = e, c = yo(Ci, n), i = D(null), a = G(t, i);
+  return F(() => {
+    c.onAnchorChange((o == null ? void 0 : o.current) || i.current);
+  }), o ? null : /* @__PURE__ */ g(j.div, P({}, r, {
+    ref: a
   }));
-});
-const $cf1ac5d9fe0e8206$var$CONTENT_NAME = "PopperContent";
-const [$cf1ac5d9fe0e8206$var$PopperContentProvider, $cf1ac5d9fe0e8206$var$useContentContext] = $cf1ac5d9fe0e8206$var$createPopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME);
-const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  var _arrowSize$width, _arrowSize$height, _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$trans, _middlewareData$trans2, _middlewareData$hide;
-  const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, avoidCollisions = true, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, updatePositionStrategy = "optimized", onPlaced, ...contentProps } = props;
-  const context = $cf1ac5d9fe0e8206$var$usePopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME, __scopePopper);
-  const [content, setContent] = useState(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(
-    forwardedRef,
-    (node) => setContent(node)
-  );
-  const [arrow$12, setArrow] = useState(null);
-  const arrowSize = $db6c3485150b8e66$export$1ab7ae714698c4b8(arrow$12);
-  const arrowWidth = (_arrowSize$width = arrowSize === null || arrowSize === void 0 ? void 0 : arrowSize.width) !== null && _arrowSize$width !== void 0 ? _arrowSize$width : 0;
-  const arrowHeight = (_arrowSize$height = arrowSize === null || arrowSize === void 0 ? void 0 : arrowSize.height) !== null && _arrowSize$height !== void 0 ? _arrowSize$height : 0;
-  const desiredPlacement = side + (align !== "center" ? "-" + align : "");
-  const collisionPadding = typeof collisionPaddingProp === "number" ? collisionPaddingProp : {
+}), Co = "PopperContent", [Pi, bd] = xo(Co), _i = /* @__PURE__ */ _((e, t) => {
+  var n, o, r, c, i, a, s, l;
+  const { __scopePopper: u, side: d = "bottom", sideOffset: m = 0, align: f = "center", alignOffset: v = 0, arrowPadding: p = 0, avoidCollisions: b = !0, collisionBoundary: $ = [], collisionPadding: w = 0, sticky: y = "partial", hideWhenDetached: x = !1, updatePositionStrategy: E = "optimized", onPlaced: M, ...O } = e, S = yo(Co, u), [k, W] = U(null), z = G(
+    t,
+    (Ve) => W(Ve)
+  ), [L, q] = U(null), T = wi(L), B = (n = T == null ? void 0 : T.width) !== null && n !== void 0 ? n : 0, I = (o = T == null ? void 0 : T.height) !== null && o !== void 0 ? o : 0, H = d + (f !== "center" ? "-" + f : ""), Y = typeof w == "number" ? w : {
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    ...collisionPaddingProp
-  };
-  const boundary = Array.isArray(collisionBoundary) ? collisionBoundary : [
-    collisionBoundary
-  ];
-  const hasExplicitBoundaries = boundary.length > 0;
-  const detectOverflowOptions = {
-    padding: collisionPadding,
-    boundary: boundary.filter($cf1ac5d9fe0e8206$var$isNotNull),
+    ...w
+  }, N = Array.isArray($) ? $ : [
+    $
+  ], K = N.length > 0, X = {
+    padding: Y,
+    boundary: N.filter(Oi),
     // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
-    altBoundary: hasExplicitBoundaries
-  };
-  const { refs, floatingStyles, placement, isPositioned, middlewareData } = useFloating({
+    altBoundary: K
+  }, { refs: fe, floatingStyles: be, placement: Ke, isPositioned: Pe, middlewareData: oe } = $i({
     // default to `fixed` strategy so users don't have to pick and we also avoid focus scroll issues
     strategy: "fixed",
-    placement: desiredPlacement,
-    whileElementsMounted: (...args) => {
-      const cleanup = autoUpdate(...args, {
-        animationFrame: updatePositionStrategy === "always"
-      });
-      return cleanup;
-    },
+    placement: H,
+    whileElementsMounted: (...Ve) => ui(...Ve, {
+      animationFrame: E === "always"
+    }),
     elements: {
-      reference: context.anchor
+      reference: S.anchor
     },
     middleware: [
-      offset({
-        mainAxis: sideOffset + arrowHeight,
-        alignmentAxis: alignOffset
+      Vc({
+        mainAxis: m + I,
+        alignmentAxis: v
       }),
-      avoidCollisions && shift({
-        mainAxis: true,
-        crossAxis: false,
-        limiter: sticky === "partial" ? limitShift() : void 0,
-        ...detectOverflowOptions
+      b && fi({
+        mainAxis: !0,
+        crossAxis: !1,
+        limiter: y === "partial" ? vi() : void 0,
+        ...X
       }),
-      avoidCollisions && flip({
-        ...detectOverflowOptions
+      b && pi({
+        ...X
       }),
-      size({
-        ...detectOverflowOptions,
-        apply: ({ elements, rects, availableWidth, availableHeight }) => {
-          const { width: anchorWidth, height: anchorHeight } = rects.reference;
-          const contentStyle = elements.floating.style;
-          contentStyle.setProperty("--radix-popper-available-width", `${availableWidth}px`);
-          contentStyle.setProperty("--radix-popper-available-height", `${availableHeight}px`);
-          contentStyle.setProperty("--radix-popper-anchor-width", `${anchorWidth}px`);
-          contentStyle.setProperty("--radix-popper-anchor-height", `${anchorHeight}px`);
+      mi({
+        ...X,
+        apply: ({ elements: Ve, rects: yn, availableWidth: Lr, availableHeight: Br }) => {
+          const { width: Ur, height: Wr } = yn.reference, ot = Ve.floating.style;
+          ot.setProperty("--radix-popper-available-width", `${Lr}px`), ot.setProperty("--radix-popper-available-height", `${Br}px`), ot.setProperty("--radix-popper-anchor-width", `${Ur}px`), ot.setProperty("--radix-popper-anchor-height", `${Wr}px`);
         }
       }),
-      arrow$12 && arrow({
-        element: arrow$12,
-        padding: arrowPadding
+      L && bi({
+        element: L,
+        padding: p
       }),
-      $cf1ac5d9fe0e8206$var$transformOrigin({
-        arrowWidth,
-        arrowHeight
+      Si({
+        arrowWidth: B,
+        arrowHeight: I
       }),
-      hideWhenDetached && hide({
+      x && hi({
         strategy: "referenceHidden",
-        ...detectOverflowOptions
+        ...X
       })
     ]
-  });
-  const [placedSide, placedAlign] = $cf1ac5d9fe0e8206$var$getSideAndAlignFromPlacement(placement);
-  const handlePlaced = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onPlaced);
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    if (isPositioned)
-      handlePlaced === null || handlePlaced === void 0 || handlePlaced();
+  }), [$e, tt] = Eo(Ke), Q = se(M);
+  Fe(() => {
+    Pe && (Q == null || Q());
   }, [
-    isPositioned,
-    handlePlaced
+    Pe,
+    Q
   ]);
-  const arrowX = (_middlewareData$arrow = middlewareData.arrow) === null || _middlewareData$arrow === void 0 ? void 0 : _middlewareData$arrow.x;
-  const arrowY = (_middlewareData$arrow2 = middlewareData.arrow) === null || _middlewareData$arrow2 === void 0 ? void 0 : _middlewareData$arrow2.y;
-  const cannotCenterArrow = ((_middlewareData$arrow3 = middlewareData.arrow) === null || _middlewareData$arrow3 === void 0 ? void 0 : _middlewareData$arrow3.centerOffset) !== 0;
-  const [contentZIndex, setContentZIndex] = useState();
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    if (content)
-      setContentZIndex(window.getComputedStyle(content).zIndex);
+  const nt = (r = oe.arrow) === null || r === void 0 ? void 0 : r.x, Tr = (c = oe.arrow) === null || c === void 0 ? void 0 : c.y, kr = ((i = oe.arrow) === null || i === void 0 ? void 0 : i.centerOffset) !== 0, [Ir, Fr] = U();
+  return Fe(() => {
+    k && Fr(window.getComputedStyle(k).zIndex);
   }, [
-    content
-  ]);
-  return /* @__PURE__ */ createElement("div", {
-    ref: refs.setFloating,
+    k
+  ]), /* @__PURE__ */ g("div", {
+    ref: fe.setFloating,
     "data-radix-popper-content-wrapper": "",
     style: {
-      ...floatingStyles,
-      transform: isPositioned ? floatingStyles.transform : "translate(0, -200%)",
+      ...be,
+      transform: Pe ? be.transform : "translate(0, -200%)",
       // keep off the page when measuring
       minWidth: "max-content",
-      zIndex: contentZIndex,
-      ["--radix-popper-transform-origin"]: [
-        (_middlewareData$trans = middlewareData.transformOrigin) === null || _middlewareData$trans === void 0 ? void 0 : _middlewareData$trans.x,
-        (_middlewareData$trans2 = middlewareData.transformOrigin) === null || _middlewareData$trans2 === void 0 ? void 0 : _middlewareData$trans2.y
+      zIndex: Ir,
+      "--radix-popper-transform-origin": [
+        (a = oe.transformOrigin) === null || a === void 0 ? void 0 : a.x,
+        (s = oe.transformOrigin) === null || s === void 0 ? void 0 : s.y
       ].join(" ")
     },
-    dir: props.dir
-  }, /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$var$PopperContentProvider, {
-    scope: __scopePopper,
-    placedSide,
-    onArrowChange: setArrow,
-    arrowX,
-    arrowY,
-    shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
-    "data-side": placedSide,
-    "data-align": placedAlign
-  }, contentProps, {
-    ref: composedRefs,
+    dir: e.dir
+  }, /* @__PURE__ */ g(Pi, {
+    scope: u,
+    placedSide: $e,
+    onArrowChange: q,
+    arrowX: nt,
+    arrowY: Tr,
+    shouldHideArrow: kr
+  }, /* @__PURE__ */ g(j.div, P({
+    "data-side": $e,
+    "data-align": tt
+  }, O, {
+    ref: z,
     style: {
-      ...contentProps.style,
+      ...O.style,
       // if the PopperContent hasn't been placed yet (not all measurements done)
       // we prevent animations so that users's animation don't kick in too early referring wrong sides
-      animation: !isPositioned ? "none" : void 0,
+      animation: Pe ? void 0 : "none",
       // hide the content if using the hide middleware and should be hidden
-      opacity: (_middlewareData$hide = middlewareData.hide) !== null && _middlewareData$hide !== void 0 && _middlewareData$hide.referenceHidden ? 0 : void 0
+      opacity: (l = oe.hide) !== null && l !== void 0 && l.referenceHidden ? 0 : void 0
     }
   }))));
 });
-function $cf1ac5d9fe0e8206$var$isNotNull(value) {
-  return value !== null;
+function Oi(e) {
+  return e !== null;
 }
-const $cf1ac5d9fe0e8206$var$transformOrigin = (options) => ({
+const Si = (e) => ({
   name: "transformOrigin",
-  options,
-  fn(data) {
-    var _middlewareData$arrow4, _middlewareData$arrow5, _middlewareData$arrow6, _middlewareData$arrow7, _middlewareData$arrow8;
-    const { placement, rects, middlewareData } = data;
-    const cannotCenterArrow = ((_middlewareData$arrow4 = middlewareData.arrow) === null || _middlewareData$arrow4 === void 0 ? void 0 : _middlewareData$arrow4.centerOffset) !== 0;
-    const isArrowHidden = cannotCenterArrow;
-    const arrowWidth = isArrowHidden ? 0 : options.arrowWidth;
-    const arrowHeight = isArrowHidden ? 0 : options.arrowHeight;
-    const [placedSide, placedAlign] = $cf1ac5d9fe0e8206$var$getSideAndAlignFromPlacement(placement);
-    const noArrowAlign = {
+  options: e,
+  fn(t) {
+    var n, o, r, c, i;
+    const { placement: a, rects: s, middlewareData: l } = t, d = ((n = l.arrow) === null || n === void 0 ? void 0 : n.centerOffset) !== 0, m = d ? 0 : e.arrowWidth, f = d ? 0 : e.arrowHeight, [v, p] = Eo(a), b = {
       start: "0%",
       center: "50%",
       end: "100%"
-    }[placedAlign];
-    const arrowXCenter = ((_middlewareData$arrow5 = (_middlewareData$arrow6 = middlewareData.arrow) === null || _middlewareData$arrow6 === void 0 ? void 0 : _middlewareData$arrow6.x) !== null && _middlewareData$arrow5 !== void 0 ? _middlewareData$arrow5 : 0) + arrowWidth / 2;
-    const arrowYCenter = ((_middlewareData$arrow7 = (_middlewareData$arrow8 = middlewareData.arrow) === null || _middlewareData$arrow8 === void 0 ? void 0 : _middlewareData$arrow8.y) !== null && _middlewareData$arrow7 !== void 0 ? _middlewareData$arrow7 : 0) + arrowHeight / 2;
-    let x = "";
-    let y = "";
-    if (placedSide === "bottom") {
-      x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
-      y = `${-arrowHeight}px`;
-    } else if (placedSide === "top") {
-      x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
-      y = `${rects.floating.height + arrowHeight}px`;
-    } else if (placedSide === "right") {
-      x = `${-arrowHeight}px`;
-      y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
-    } else if (placedSide === "left") {
-      x = `${rects.floating.width + arrowHeight}px`;
-      y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
-    }
-    return {
+    }[p], $ = ((o = (r = l.arrow) === null || r === void 0 ? void 0 : r.x) !== null && o !== void 0 ? o : 0) + m / 2, w = ((c = (i = l.arrow) === null || i === void 0 ? void 0 : i.y) !== null && c !== void 0 ? c : 0) + f / 2;
+    let y = "", x = "";
+    return v === "bottom" ? (y = d ? b : `${$}px`, x = `${-f}px`) : v === "top" ? (y = d ? b : `${$}px`, x = `${s.floating.height + f}px`) : v === "right" ? (y = `${-f}px`, x = d ? b : `${w}px`) : v === "left" && (y = `${s.floating.width + f}px`, x = d ? b : `${w}px`), {
       data: {
-        x,
-        y
+        x: y,
+        y: x
       }
     };
   }
 });
-function $cf1ac5d9fe0e8206$var$getSideAndAlignFromPlacement(placement) {
-  const [side, align = "center"] = placement.split("-");
+function Eo(e) {
+  const [t, n = "center"] = e.split("-");
   return [
-    side,
-    align
+    t,
+    n
   ];
 }
-const $cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9 = $cf1ac5d9fe0e8206$export$badac9ada3a0bdf9;
-const $cf1ac5d9fe0e8206$export$b688253958b8dfe7 = $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d;
-const $cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2 = $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc;
-const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  var _globalThis$document;
-  const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
-  return container ? /* @__PURE__ */ ReactDOM__default.createPortal(/* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, portalProps, {
-    ref: forwardedRef
-  })), container) : null;
+const Po = yi, _o = Ei, Oo = _i, ln = /* @__PURE__ */ _((e, t) => {
+  var n;
+  const { container: o = globalThis == null || (n = globalThis.document) === null || n === void 0 ? void 0 : n.body, ...r } = e;
+  return o ? /* @__PURE__ */ qr.createPortal(/* @__PURE__ */ g(j.div, P({}, r, {
+    ref: t
+  })), o) : null;
 });
-function $fe963b355347cc68$export$3e6543de14f8614f(initialState, machine) {
-  return useReducer((state, event) => {
-    const nextState = machine[state][event];
-    return nextState !== null && nextState !== void 0 ? nextState : state;
-  }, initialState);
+function Mi(e, t) {
+  return Kr((n, o) => {
+    const r = t[n][o];
+    return r ?? n;
+  }, e);
 }
-const $921a889cee6df7e8$export$99c2b779aa4e8b8b = (props) => {
-  const { present, children } = props;
-  const presence = $921a889cee6df7e8$var$usePresence(present);
-  const child = typeof children === "function" ? children({
-    present: presence.isPresent
-  }) : Children.only(children);
-  const ref = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(presence.ref, child.ref);
-  const forceMount = typeof children === "function";
-  return forceMount || presence.isPresent ? /* @__PURE__ */ cloneElement(child, {
-    ref
+const ue = (e) => {
+  const { present: t, children: n } = e, o = Ni(t), r = typeof n == "function" ? n({
+    present: o.isPresent
+  }) : Oe.only(n), c = G(o.ref, r.ref);
+  return typeof n == "function" || o.isPresent ? /* @__PURE__ */ Zt(r, {
+    ref: c
   }) : null;
 };
-$921a889cee6df7e8$export$99c2b779aa4e8b8b.displayName = "Presence";
-function $921a889cee6df7e8$var$usePresence(present) {
-  const [node1, setNode] = useState();
-  const stylesRef = useRef({});
-  const prevPresentRef = useRef(present);
-  const prevAnimationNameRef = useRef("none");
-  const initialState = present ? "mounted" : "unmounted";
-  const [state, send] = $fe963b355347cc68$export$3e6543de14f8614f(initialState, {
+ue.displayName = "Presence";
+function Ni(e) {
+  const [t, n] = U(), o = D({}), r = D(e), c = D("none"), i = e ? "mounted" : "unmounted", [a, s] = Mi(i, {
     mounted: {
       UNMOUNT: "unmounted",
       ANIMATION_OUT: "unmountSuspended"
@@ -2887,1062 +2078,729 @@ function $921a889cee6df7e8$var$usePresence(present) {
       MOUNT: "mounted"
     }
   });
-  useEffect(() => {
-    const currentAnimationName = $921a889cee6df7e8$var$getAnimationName(stylesRef.current);
-    prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
+  return F(() => {
+    const l = ct(o.current);
+    c.current = a === "mounted" ? l : "none";
   }, [
-    state
-  ]);
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    const styles = stylesRef.current;
-    const wasPresent = prevPresentRef.current;
-    const hasPresentChanged = wasPresent !== present;
-    if (hasPresentChanged) {
-      const prevAnimationName = prevAnimationNameRef.current;
-      const currentAnimationName = $921a889cee6df7e8$var$getAnimationName(styles);
-      if (present)
-        send("MOUNT");
-      else if (currentAnimationName === "none" || (styles === null || styles === void 0 ? void 0 : styles.display) === "none")
-        send("UNMOUNT");
-      else {
-        const isAnimating = prevAnimationName !== currentAnimationName;
-        if (wasPresent && isAnimating)
-          send("ANIMATION_OUT");
-        else
-          send("UNMOUNT");
-      }
-      prevPresentRef.current = present;
+    a
+  ]), Fe(() => {
+    const l = o.current, u = r.current;
+    if (u !== e) {
+      const m = c.current, f = ct(l);
+      e ? s("MOUNT") : f === "none" || (l == null ? void 0 : l.display) === "none" ? s("UNMOUNT") : s(u && m !== f ? "ANIMATION_OUT" : "UNMOUNT"), r.current = e;
     }
   }, [
-    present,
-    send
-  ]);
-  $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    if (node1) {
-      const handleAnimationEnd = (event) => {
-        const currentAnimationName = $921a889cee6df7e8$var$getAnimationName(stylesRef.current);
-        const isCurrentAnimation = currentAnimationName.includes(event.animationName);
-        if (event.target === node1 && isCurrentAnimation)
-          flushSync(
-            () => send("ANIMATION_END")
-          );
+    e,
+    s
+  ]), Fe(() => {
+    if (t) {
+      const l = (d) => {
+        const f = ct(o.current).includes(d.animationName);
+        d.target === t && f && io(
+          () => s("ANIMATION_END")
+        );
+      }, u = (d) => {
+        d.target === t && (c.current = ct(o.current));
       };
-      const handleAnimationStart = (event) => {
-        if (event.target === node1)
-          prevAnimationNameRef.current = $921a889cee6df7e8$var$getAnimationName(stylesRef.current);
-      };
-      node1.addEventListener("animationstart", handleAnimationStart);
-      node1.addEventListener("animationcancel", handleAnimationEnd);
-      node1.addEventListener("animationend", handleAnimationEnd);
-      return () => {
-        node1.removeEventListener("animationstart", handleAnimationStart);
-        node1.removeEventListener("animationcancel", handleAnimationEnd);
-        node1.removeEventListener("animationend", handleAnimationEnd);
+      return t.addEventListener("animationstart", u), t.addEventListener("animationcancel", l), t.addEventListener("animationend", l), () => {
+        t.removeEventListener("animationstart", u), t.removeEventListener("animationcancel", l), t.removeEventListener("animationend", l);
       };
     } else
-      send("ANIMATION_END");
+      s("ANIMATION_END");
   }, [
-    node1,
-    send
-  ]);
-  return {
+    t,
+    s
+  ]), {
     isPresent: [
       "mounted",
       "unmountSuspended"
-    ].includes(state),
-    ref: useCallback((node) => {
-      if (node)
-        stylesRef.current = getComputedStyle(node);
-      setNode(node);
+    ].includes(a),
+    ref: V((l) => {
+      l && (o.current = getComputedStyle(l)), n(l);
     }, [])
   };
 }
-function $921a889cee6df7e8$var$getAnimationName(styles) {
-  return (styles === null || styles === void 0 ? void 0 : styles.animationName) || "none";
+function ct(e) {
+  return (e == null ? void 0 : e.animationName) || "none";
 }
-function $71cd76cc60e0454e$export$6f32135080cb4c3({ prop, defaultProp, onChange = () => {
+function Pt({ prop: e, defaultProp: t, onChange: n = () => {
 } }) {
-  const [uncontrolledProp, setUncontrolledProp] = $71cd76cc60e0454e$var$useUncontrolledState({
-    defaultProp,
-    onChange
-  });
-  const isControlled = prop !== void 0;
-  const value1 = isControlled ? prop : uncontrolledProp;
-  const handleChange = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onChange);
-  const setValue = useCallback((nextValue) => {
-    if (isControlled) {
-      const setter = nextValue;
-      const value = typeof nextValue === "function" ? setter(prop) : nextValue;
-      if (value !== prop)
-        handleChange(value);
+  const [o, r] = Di({
+    defaultProp: t,
+    onChange: n
+  }), c = e !== void 0, i = c ? e : o, a = se(n), s = V((l) => {
+    if (c) {
+      const d = typeof l == "function" ? l(e) : l;
+      d !== e && a(d);
     } else
-      setUncontrolledProp(nextValue);
+      r(l);
   }, [
-    isControlled,
-    prop,
-    setUncontrolledProp,
-    handleChange
+    c,
+    e,
+    r,
+    a
   ]);
   return [
-    value1,
-    setValue
+    i,
+    s
   ];
 }
-function $71cd76cc60e0454e$var$useUncontrolledState({ defaultProp, onChange }) {
-  const uncontrolledState = useState(defaultProp);
-  const [value] = uncontrolledState;
-  const prevValueRef = useRef(value);
-  const handleChange = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onChange);
-  useEffect(() => {
-    if (prevValueRef.current !== value) {
-      handleChange(value);
-      prevValueRef.current = value;
-    }
+function Di({ defaultProp: e, onChange: t }) {
+  const n = U(e), [o] = n, r = D(o), c = se(t);
+  return F(() => {
+    r.current !== o && (c(o), r.current = o);
   }, [
-    value,
-    prevValueRef,
-    handleChange
-  ]);
-  return uncontrolledState;
+    o,
+    r,
+    c
+  ]), n;
 }
-var getDefaultParent = function(originalTarget) {
-  if (typeof document === "undefined") {
+var Ri = function(e) {
+  if (typeof document > "u")
     return null;
-  }
-  var sampleTarget = Array.isArray(originalTarget) ? originalTarget[0] : originalTarget;
-  return sampleTarget.ownerDocument.body;
-};
-var counterMap = /* @__PURE__ */ new WeakMap();
-var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
-var markerMap = {};
-var lockCount = 0;
-var unwrapHost = function(node) {
-  return node && (node.host || unwrapHost(node.parentNode));
-};
-var correctTargets = function(parent, targets) {
-  return targets.map(function(target) {
-    if (parent.contains(target)) {
-      return target;
-    }
-    var correctedTarget = unwrapHost(target);
-    if (correctedTarget && parent.contains(correctedTarget)) {
-      return correctedTarget;
-    }
-    console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
-    return null;
-  }).filter(function(x) {
-    return Boolean(x);
+  var t = Array.isArray(e) ? e[0] : e;
+  return t.ownerDocument.body;
+}, Ae = /* @__PURE__ */ new WeakMap(), it = /* @__PURE__ */ new WeakMap(), at = {}, At = 0, So = function(e) {
+  return e && (e.host || So(e.parentNode));
+}, Ai = function(e, t) {
+  return t.map(function(n) {
+    if (e.contains(n))
+      return n;
+    var o = So(n);
+    return o && e.contains(o) ? o : (console.error("aria-hidden", n, "in not contained inside", e, ". Doing nothing"), null);
+  }).filter(function(n) {
+    return !!n;
   });
-};
-var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
-  var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  if (!markerMap[markerName]) {
-    markerMap[markerName] = /* @__PURE__ */ new WeakMap();
-  }
-  var markerCounter = markerMap[markerName];
-  var hiddenNodes = [];
-  var elementsToKeep = /* @__PURE__ */ new Set();
-  var elementsToStop = new Set(targets);
-  var keep = function(el) {
-    if (!el || elementsToKeep.has(el)) {
-      return;
-    }
-    elementsToKeep.add(el);
-    keep(el.parentNode);
+}, Ti = function(e, t, n, o) {
+  var r = Ai(t, Array.isArray(e) ? e : [e]);
+  at[n] || (at[n] = /* @__PURE__ */ new WeakMap());
+  var c = at[n], i = [], a = /* @__PURE__ */ new Set(), s = new Set(r), l = function(d) {
+    !d || a.has(d) || (a.add(d), l(d.parentNode));
   };
-  targets.forEach(keep);
-  var deep = function(parent) {
-    if (!parent || elementsToStop.has(parent)) {
-      return;
-    }
-    Array.prototype.forEach.call(parent.children, function(node) {
-      if (elementsToKeep.has(node)) {
-        deep(node);
-      } else {
-        var attr = node.getAttribute(controlAttribute);
-        var alreadyHidden = attr !== null && attr !== "false";
-        var counterValue = (counterMap.get(node) || 0) + 1;
-        var markerValue = (markerCounter.get(node) || 0) + 1;
-        counterMap.set(node, counterValue);
-        markerCounter.set(node, markerValue);
-        hiddenNodes.push(node);
-        if (counterValue === 1 && alreadyHidden) {
-          uncontrolledNodes.set(node, true);
-        }
-        if (markerValue === 1) {
-          node.setAttribute(markerName, "true");
-        }
-        if (!alreadyHidden) {
-          node.setAttribute(controlAttribute, "true");
-        }
+  r.forEach(l);
+  var u = function(d) {
+    !d || s.has(d) || Array.prototype.forEach.call(d.children, function(m) {
+      if (a.has(m))
+        u(m);
+      else {
+        var f = m.getAttribute(o), v = f !== null && f !== "false", p = (Ae.get(m) || 0) + 1, b = (c.get(m) || 0) + 1;
+        Ae.set(m, p), c.set(m, b), i.push(m), p === 1 && v && it.set(m, !0), b === 1 && m.setAttribute(n, "true"), v || m.setAttribute(o, "true");
       }
     });
   };
-  deep(parentNode);
-  elementsToKeep.clear();
-  lockCount++;
-  return function() {
-    hiddenNodes.forEach(function(node) {
-      var counterValue = counterMap.get(node) - 1;
-      var markerValue = markerCounter.get(node) - 1;
-      counterMap.set(node, counterValue);
-      markerCounter.set(node, markerValue);
-      if (!counterValue) {
-        if (!uncontrolledNodes.has(node)) {
-          node.removeAttribute(controlAttribute);
-        }
-        uncontrolledNodes.delete(node);
-      }
-      if (!markerValue) {
-        node.removeAttribute(markerName);
-      }
-    });
-    lockCount--;
-    if (!lockCount) {
-      counterMap = /* @__PURE__ */ new WeakMap();
-      counterMap = /* @__PURE__ */ new WeakMap();
-      uncontrolledNodes = /* @__PURE__ */ new WeakMap();
-      markerMap = {};
-    }
+  return u(t), a.clear(), At++, function() {
+    i.forEach(function(d) {
+      var m = Ae.get(d) - 1, f = c.get(d) - 1;
+      Ae.set(d, m), c.set(d, f), m || (it.has(d) || d.removeAttribute(o), it.delete(d)), f || d.removeAttribute(n);
+    }), At--, At || (Ae = /* @__PURE__ */ new WeakMap(), Ae = /* @__PURE__ */ new WeakMap(), it = /* @__PURE__ */ new WeakMap(), at = {});
   };
-};
-var hideOthers = function(originalTarget, parentNode, markerName) {
-  if (markerName === void 0) {
-    markerName = "data-aria-hidden";
-  }
-  var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  var activeParentNode = parentNode || getDefaultParent(originalTarget);
-  if (!activeParentNode) {
-    return function() {
-      return null;
-    };
-  }
-  targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live]")));
-  return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
-};
-var __assign = function() {
-  __assign = Object.assign || function __assign2(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s)
-        if (Object.prototype.hasOwnProperty.call(s, p))
-          t[p] = s[p];
+}, dn = function(e, t, n) {
+  n === void 0 && (n = "data-aria-hidden");
+  var o = Array.from(Array.isArray(e) ? e : [e]), r = t || Ri(e);
+  return r ? (o.push.apply(o, Array.from(r.querySelectorAll("[aria-live]"))), Ti(o, r, n, "aria-hidden")) : function() {
+    return null;
+  };
+}, ae = function() {
+  return ae = Object.assign || function(t) {
+    for (var n, o = 1, r = arguments.length; o < r; o++) {
+      n = arguments[o];
+      for (var c in n)
+        Object.prototype.hasOwnProperty.call(n, c) && (t[c] = n[c]);
     }
     return t;
-  };
-  return __assign.apply(this, arguments);
+  }, ae.apply(this, arguments);
 };
-function __rest(s, e) {
-  var t = {};
-  for (var p in s)
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-      t[p] = s[p];
-  if (s != null && typeof Object.getOwnPropertySymbols === "function")
-    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-      if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-        t[p[i]] = s[p[i]];
-    }
-  return t;
+function Mo(e, t) {
+  var n = {};
+  for (var o in e)
+    Object.prototype.hasOwnProperty.call(e, o) && t.indexOf(o) < 0 && (n[o] = e[o]);
+  if (e != null && typeof Object.getOwnPropertySymbols == "function")
+    for (var r = 0, o = Object.getOwnPropertySymbols(e); r < o.length; r++)
+      t.indexOf(o[r]) < 0 && Object.prototype.propertyIsEnumerable.call(e, o[r]) && (n[o[r]] = e[o[r]]);
+  return n;
 }
-function __spreadArray(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i = 0, l = from.length, ar; i < l; i++) {
-      if (ar || !(i in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i);
-        ar[i] = from[i];
-      }
-    }
-  return to.concat(ar || Array.prototype.slice.call(from));
+function ki(e, t, n) {
+  if (n || arguments.length === 2)
+    for (var o = 0, r = t.length, c; o < r; o++)
+      (c || !(o in t)) && (c || (c = Array.prototype.slice.call(t, 0, o)), c[o] = t[o]);
+  return e.concat(c || Array.prototype.slice.call(t));
 }
-typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message) {
-  var e = new Error(message);
-  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
-var zeroRightClassName = "right-scroll-bar-position";
-var fullWidthClassName = "width-before-scroll-bar";
-var noScrollbarsClassName = "with-scroll-bars-hidden";
-var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-function assignRef(ref, value) {
-  if (typeof ref === "function") {
-    ref(value);
-  } else if (ref) {
-    ref.current = value;
-  }
-  return ref;
+var ft = "right-scroll-bar-position", pt = "width-before-scroll-bar", Ii = "with-scroll-bars-hidden", Fi = "--removed-body-scroll-bar-size";
+function Tt(e, t) {
+  return typeof e == "function" ? e(t) : e && (e.current = t), e;
 }
-function useCallbackRef(initialValue, callback) {
-  var ref = useState(function() {
+function Li(e, t) {
+  var n = U(function() {
     return {
       // value
-      value: initialValue,
+      value: e,
       // last callback
-      callback,
+      callback: t,
       // "memoized" public interface
       facade: {
         get current() {
-          return ref.value;
+          return n.value;
         },
-        set current(value) {
-          var last = ref.value;
-          if (last !== value) {
-            ref.value = value;
-            ref.callback(value, last);
-          }
+        set current(o) {
+          var r = n.value;
+          r !== o && (n.value = o, n.callback(o, r));
         }
       }
     };
   })[0];
-  ref.callback = callback;
-  return ref.facade;
+  return n.callback = t, n.facade;
 }
-var currentValues = /* @__PURE__ */ new WeakMap();
-function useMergeRefs(refs, defaultValue) {
-  var callbackRef = useCallbackRef(defaultValue || null, function(newValue) {
-    return refs.forEach(function(ref) {
-      return assignRef(ref, newValue);
+var Bn = /* @__PURE__ */ new WeakMap();
+function Bi(e, t) {
+  var n = Li(t || null, function(o) {
+    return e.forEach(function(r) {
+      return Tt(r, o);
     });
   });
-  React.useLayoutEffect(function() {
-    var oldValue = currentValues.get(callbackRef);
-    if (oldValue) {
-      var prevRefs_1 = new Set(oldValue);
-      var nextRefs_1 = new Set(refs);
-      var current_1 = callbackRef.current;
-      prevRefs_1.forEach(function(ref) {
-        if (!nextRefs_1.has(ref)) {
-          assignRef(ref, null);
-        }
-      });
-      nextRefs_1.forEach(function(ref) {
-        if (!prevRefs_1.has(ref)) {
-          assignRef(ref, current_1);
-        }
+  return C.useLayoutEffect(function() {
+    var o = Bn.get(n);
+    if (o) {
+      var r = new Set(o), c = new Set(e), i = n.current;
+      r.forEach(function(a) {
+        c.has(a) || Tt(a, null);
+      }), c.forEach(function(a) {
+        r.has(a) || Tt(a, i);
       });
     }
-    currentValues.set(callbackRef, refs);
-  }, [refs]);
-  return callbackRef;
+    Bn.set(n, e);
+  }, [e]), n;
 }
-function ItoI(a) {
-  return a;
+function Ui(e) {
+  return e;
 }
-function innerCreateMedium(defaults, middleware) {
-  if (middleware === void 0) {
-    middleware = ItoI;
-  }
-  var buffer = [];
-  var assigned = false;
-  var medium = {
+function Wi(e, t) {
+  t === void 0 && (t = Ui);
+  var n = [], o = !1, r = {
     read: function() {
-      if (assigned) {
+      if (o)
         throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
-      }
-      if (buffer.length) {
-        return buffer[buffer.length - 1];
-      }
-      return defaults;
+      return n.length ? n[n.length - 1] : e;
     },
-    useMedium: function(data) {
-      var item = middleware(data, assigned);
-      buffer.push(item);
-      return function() {
-        buffer = buffer.filter(function(x) {
-          return x !== item;
+    useMedium: function(c) {
+      var i = t(c, o);
+      return n.push(i), function() {
+        n = n.filter(function(a) {
+          return a !== i;
         });
       };
     },
-    assignSyncMedium: function(cb) {
-      assigned = true;
-      while (buffer.length) {
-        var cbs = buffer;
-        buffer = [];
-        cbs.forEach(cb);
+    assignSyncMedium: function(c) {
+      for (o = !0; n.length; ) {
+        var i = n;
+        n = [], i.forEach(c);
       }
-      buffer = {
-        push: function(x) {
-          return cb(x);
+      n = {
+        push: function(a) {
+          return c(a);
         },
         filter: function() {
-          return buffer;
+          return n;
         }
       };
     },
-    assignMedium: function(cb) {
-      assigned = true;
-      var pendingQueue = [];
-      if (buffer.length) {
-        var cbs = buffer;
-        buffer = [];
-        cbs.forEach(cb);
-        pendingQueue = buffer;
+    assignMedium: function(c) {
+      o = !0;
+      var i = [];
+      if (n.length) {
+        var a = n;
+        n = [], a.forEach(c), i = n;
       }
-      var executeQueue = function() {
-        var cbs2 = pendingQueue;
-        pendingQueue = [];
-        cbs2.forEach(cb);
+      var s = function() {
+        var u = i;
+        i = [], u.forEach(c);
+      }, l = function() {
+        return Promise.resolve().then(s);
       };
-      var cycle = function() {
-        return Promise.resolve().then(executeQueue);
-      };
-      cycle();
-      buffer = {
-        push: function(x) {
-          pendingQueue.push(x);
-          cycle();
+      l(), n = {
+        push: function(u) {
+          i.push(u), l();
         },
-        filter: function(filter) {
-          pendingQueue = pendingQueue.filter(filter);
-          return buffer;
+        filter: function(u) {
+          return i = i.filter(u), n;
         }
       };
     }
   };
-  return medium;
+  return r;
 }
-function createSidecarMedium(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  var medium = innerCreateMedium(null);
-  medium.options = __assign({ async: true, ssr: false }, options);
-  return medium;
+function zi(e) {
+  e === void 0 && (e = {});
+  var t = Wi(null);
+  return t.options = ae({ async: !0, ssr: !1 }, e), t;
 }
-var SideCar$1 = function(_a) {
-  var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
-  if (!sideCar) {
+var No = function(e) {
+  var t = e.sideCar, n = Mo(e, ["sideCar"]);
+  if (!t)
     throw new Error("Sidecar: please provide `sideCar` property to import the right car");
-  }
-  var Target = sideCar.read();
-  if (!Target) {
+  var o = t.read();
+  if (!o)
     throw new Error("Sidecar medium not found");
-  }
-  return React.createElement(Target, __assign({}, rest));
+  return C.createElement(o, ae({}, n));
 };
-SideCar$1.isSideCarExport = true;
-function exportSidecar(medium, exported) {
-  medium.useMedium(exported);
-  return SideCar$1;
+No.isSideCarExport = !0;
+function Ki(e, t) {
+  return e.useMedium(t), No;
 }
-var effectCar = createSidecarMedium();
-var nothing = function() {
-  return;
-};
-var RemoveScroll = React.forwardRef(function(props, parentRef) {
-  var ref = React.useRef(null);
-  var _a = React.useState({
-    onScrollCapture: nothing,
-    onWheelCapture: nothing,
-    onTouchMoveCapture: nothing
-  }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
-  var SideCar2 = sideCar;
-  var containerRef = useMergeRefs([ref, parentRef]);
-  var containerProps = __assign(__assign({}, rest), callbacks);
-  return React.createElement(
-    React.Fragment,
+var Do = zi(), kt = function() {
+}, _t = C.forwardRef(function(e, t) {
+  var n = C.useRef(null), o = C.useState({
+    onScrollCapture: kt,
+    onWheelCapture: kt,
+    onTouchMoveCapture: kt
+  }), r = o[0], c = o[1], i = e.forwardProps, a = e.children, s = e.className, l = e.removeScrollBar, u = e.enabled, d = e.shards, m = e.sideCar, f = e.noIsolation, v = e.inert, p = e.allowPinchZoom, b = e.as, $ = b === void 0 ? "div" : b, w = Mo(e, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]), y = m, x = Bi([n, t]), E = ae(ae({}, w), r);
+  return C.createElement(
+    C.Fragment,
     null,
-    enabled && React.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
-    forwardProps ? React.cloneElement(React.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : React.createElement(Container, __assign({}, containerProps, { className, ref: containerRef }), children)
+    u && C.createElement(y, { sideCar: Do, removeScrollBar: l, shards: d, noIsolation: f, inert: v, setCallbacks: c, allowPinchZoom: !!p, lockRef: n }),
+    i ? C.cloneElement(C.Children.only(a), ae(ae({}, E), { ref: x })) : C.createElement($, ae({}, E, { className: s, ref: x }), a)
   );
 });
-RemoveScroll.defaultProps = {
-  enabled: true,
-  removeScrollBar: true,
-  inert: false
+_t.defaultProps = {
+  enabled: !0,
+  removeScrollBar: !0,
+  inert: !1
 };
-RemoveScroll.classNames = {
-  fullWidth: fullWidthClassName,
-  zeroRight: zeroRightClassName
+_t.classNames = {
+  fullWidth: pt,
+  zeroRight: ft
 };
-var currentNonce;
-var getNonce = function() {
-  if (currentNonce) {
-    return currentNonce;
-  }
-  if (typeof __webpack_nonce__ !== "undefined") {
+var Un, Vi = function() {
+  if (Un)
+    return Un;
+  if (typeof __webpack_nonce__ < "u")
     return __webpack_nonce__;
-  }
-  return void 0;
 };
-function makeStyleTag() {
+function ji() {
   if (!document)
     return null;
-  var tag = document.createElement("style");
-  tag.type = "text/css";
-  var nonce = getNonce();
-  if (nonce) {
-    tag.setAttribute("nonce", nonce);
-  }
-  return tag;
+  var e = document.createElement("style");
+  e.type = "text/css";
+  var t = Vi();
+  return t && e.setAttribute("nonce", t), e;
 }
-function injectStyles(tag, css) {
-  if (tag.styleSheet) {
-    tag.styleSheet.cssText = css;
-  } else {
-    tag.appendChild(document.createTextNode(css));
-  }
+function Hi(e, t) {
+  e.styleSheet ? e.styleSheet.cssText = t : e.appendChild(document.createTextNode(t));
 }
-function insertStyleTag(tag) {
-  var head = document.head || document.getElementsByTagName("head")[0];
-  head.appendChild(tag);
+function Gi(e) {
+  var t = document.head || document.getElementsByTagName("head")[0];
+  t.appendChild(e);
 }
-var stylesheetSingleton = function() {
-  var counter = 0;
-  var stylesheet = null;
+var Yi = function() {
+  var e = 0, t = null;
   return {
-    add: function(style) {
-      if (counter == 0) {
-        if (stylesheet = makeStyleTag()) {
-          injectStyles(stylesheet, style);
-          insertStyleTag(stylesheet);
-        }
-      }
-      counter++;
+    add: function(n) {
+      e == 0 && (t = ji()) && (Hi(t, n), Gi(t)), e++;
     },
     remove: function() {
-      counter--;
-      if (!counter && stylesheet) {
-        stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
-        stylesheet = null;
-      }
+      e--, !e && t && (t.parentNode && t.parentNode.removeChild(t), t = null);
     }
   };
-};
-var styleHookSingleton = function() {
-  var sheet = stylesheetSingleton();
-  return function(styles, isDynamic) {
-    React.useEffect(function() {
-      sheet.add(styles);
-      return function() {
-        sheet.remove();
+}, Xi = function() {
+  var e = Yi();
+  return function(t, n) {
+    C.useEffect(function() {
+      return e.add(t), function() {
+        e.remove();
       };
-    }, [styles && isDynamic]);
+    }, [t && n]);
   };
-};
-var styleSingleton = function() {
-  var useStyle = styleHookSingleton();
-  var Sheet = function(_a) {
-    var styles = _a.styles, dynamic2 = _a.dynamic;
-    useStyle(styles, dynamic2);
-    return null;
+}, Ro = function() {
+  var e = Xi(), t = function(n) {
+    var o = n.styles, r = n.dynamic;
+    return e(o, r), null;
   };
-  return Sheet;
-};
-var zeroGap = {
+  return t;
+}, Zi = {
   left: 0,
   top: 0,
   right: 0,
   gap: 0
-};
-var parse = function(x) {
-  return parseInt(x || "", 10) || 0;
-};
-var getOffset = function(gapMode) {
-  var cs = window.getComputedStyle(document.body);
-  var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
-  var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
-  var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
-  return [parse(left), parse(top), parse(right)];
-};
-var getGapWidth = function(gapMode) {
-  if (gapMode === void 0) {
-    gapMode = "margin";
-  }
-  if (typeof window === "undefined") {
-    return zeroGap;
-  }
-  var offsets = getOffset(gapMode);
-  var documentWidth = document.documentElement.clientWidth;
-  var windowWidth = window.innerWidth;
+}, It = function(e) {
+  return parseInt(e || "", 10) || 0;
+}, qi = function(e) {
+  var t = window.getComputedStyle(document.body), n = t[e === "padding" ? "paddingLeft" : "marginLeft"], o = t[e === "padding" ? "paddingTop" : "marginTop"], r = t[e === "padding" ? "paddingRight" : "marginRight"];
+  return [It(n), It(o), It(r)];
+}, Qi = function(e) {
+  if (e === void 0 && (e = "margin"), typeof window > "u")
+    return Zi;
+  var t = qi(e), n = document.documentElement.clientWidth, o = window.innerWidth;
   return {
-    left: offsets[0],
-    top: offsets[1],
-    right: offsets[2],
-    gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+    left: t[0],
+    top: t[1],
+    right: t[2],
+    gap: Math.max(0, o - n + t[2] - t[0])
   };
-};
-var Style = styleSingleton();
-var getStyles = function(_a, allowRelative, gapMode, important) {
-  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
-  if (gapMode === void 0) {
-    gapMode = "margin";
+}, Ji = Ro(), ea = function(e, t, n, o) {
+  var r = e.left, c = e.top, i = e.right, a = e.gap;
+  return n === void 0 && (n = "margin"), `
+  .`.concat(Ii, ` {
+   overflow: hidden `).concat(o, `;
+   padding-right: `).concat(a, "px ").concat(o, `;
   }
-  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
-    allowRelative && "position: relative ".concat(important, ";"),
-    gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
-    gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
-  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
-};
-var RemoveScrollBar = function(props) {
-  var noRelative = props.noRelative, noImportant = props.noImportant, _a = props.gapMode, gapMode = _a === void 0 ? "margin" : _a;
-  var gap = React.useMemo(function() {
-    return getGapWidth(gapMode);
-  }, [gapMode]);
-  return React.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
-};
-var passiveSupported = false;
-if (typeof window !== "undefined") {
+  body {
+    overflow: hidden `).concat(o, `;
+    overscroll-behavior: contain;
+    `).concat([
+    t && "position: relative ".concat(o, ";"),
+    n === "margin" && `
+    padding-left: `.concat(r, `px;
+    padding-top: `).concat(c, `px;
+    padding-right: `).concat(i, `px;
+    margin-left:0;
+    margin-top:0;
+    margin-right: `).concat(a, "px ").concat(o, `;
+    `),
+    n === "padding" && "padding-right: ".concat(a, "px ").concat(o, ";")
+  ].filter(Boolean).join(""), `
+  }
+  
+  .`).concat(ft, ` {
+    right: `).concat(a, "px ").concat(o, `;
+  }
+  
+  .`).concat(pt, ` {
+    margin-right: `).concat(a, "px ").concat(o, `;
+  }
+  
+  .`).concat(ft, " .").concat(ft, ` {
+    right: 0 `).concat(o, `;
+  }
+  
+  .`).concat(pt, " .").concat(pt, ` {
+    margin-right: 0 `).concat(o, `;
+  }
+  
+  body {
+    `).concat(Fi, ": ").concat(a, `px;
+  }
+`);
+}, ta = function(e) {
+  var t = e.noRelative, n = e.noImportant, o = e.gapMode, r = o === void 0 ? "margin" : o, c = C.useMemo(function() {
+    return Qi(r);
+  }, [r]);
+  return C.createElement(Ji, { styles: ea(c, !t, r, n ? "" : "!important") });
+}, Kt = !1;
+if (typeof window < "u")
   try {
-    var options = Object.defineProperty({}, "passive", {
+    var st = Object.defineProperty({}, "passive", {
       get: function() {
-        passiveSupported = true;
-        return true;
+        return Kt = !0, !0;
       }
     });
-    window.addEventListener("test", options, options);
-    window.removeEventListener("test", options, options);
-  } catch (err) {
-    passiveSupported = false;
+    window.addEventListener("test", st, st), window.removeEventListener("test", st, st);
+  } catch {
+    Kt = !1;
   }
-}
-var nonPassive = passiveSupported ? { passive: false } : false;
-var alwaysContainsScroll = function(node) {
-  return node.tagName === "TEXTAREA";
-};
-var elementCanBeScrolled = function(node, overflow) {
-  var styles = window.getComputedStyle(node);
+var Te = Kt ? { passive: !1 } : !1, na = function(e) {
+  return e.tagName === "TEXTAREA";
+}, Ao = function(e, t) {
+  var n = window.getComputedStyle(e);
   return (
     // not-not-scrollable
-    styles[overflow] !== "hidden" && // contains scroll inside self
-    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible")
+    n[t] !== "hidden" && // contains scroll inside self
+    !(n.overflowY === n.overflowX && !na(e) && n[t] === "visible")
   );
-};
-var elementCouldBeVScrolled = function(node) {
-  return elementCanBeScrolled(node, "overflowY");
-};
-var elementCouldBeHScrolled = function(node) {
-  return elementCanBeScrolled(node, "overflowX");
-};
-var locationCouldBeScrolled = function(axis, node) {
-  var current = node;
+}, oa = function(e) {
+  return Ao(e, "overflowY");
+}, ra = function(e) {
+  return Ao(e, "overflowX");
+}, Wn = function(e, t) {
+  var n = t;
   do {
-    if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
-      current = current.host;
+    typeof ShadowRoot < "u" && n instanceof ShadowRoot && (n = n.host);
+    var o = To(e, n);
+    if (o) {
+      var r = ko(e, n), c = r[1], i = r[2];
+      if (c > i)
+        return !0;
     }
-    var isScrollable = elementCouldBeScrolled(axis, current);
-    if (isScrollable) {
-      var _a = getScrollVariables(axis, current), s = _a[1], d = _a[2];
-      if (s > d) {
-        return true;
-      }
-    }
-    current = current.parentNode;
-  } while (current && current !== document.body);
-  return false;
-};
-var getVScrollVariables = function(_a) {
-  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+    n = n.parentNode;
+  } while (n && n !== document.body);
+  return !1;
+}, ca = function(e) {
+  var t = e.scrollTop, n = e.scrollHeight, o = e.clientHeight;
   return [
-    scrollTop,
-    scrollHeight,
-    clientHeight
+    t,
+    n,
+    o
   ];
-};
-var getHScrollVariables = function(_a) {
-  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
+}, ia = function(e) {
+  var t = e.scrollLeft, n = e.scrollWidth, o = e.clientWidth;
   return [
-    scrollLeft,
-    scrollWidth,
-    clientWidth
+    t,
+    n,
+    o
   ];
-};
-var elementCouldBeScrolled = function(axis, node) {
-  return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
-};
-var getScrollVariables = function(axis, node) {
-  return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
-};
-var getDirectionFactor = function(axis, direction) {
-  return axis === "h" && direction === "rtl" ? -1 : 1;
-};
-var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
-  var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
-  var delta = directionFactor * sourceDelta;
-  var target = event.target;
-  var targetInLock = endTarget.contains(target);
-  var shouldCancelScroll = false;
-  var isDeltaPositive = delta > 0;
-  var availableScroll = 0;
-  var availableScrollTop = 0;
+}, To = function(e, t) {
+  return e === "v" ? oa(t) : ra(t);
+}, ko = function(e, t) {
+  return e === "v" ? ca(t) : ia(t);
+}, aa = function(e, t) {
+  return e === "h" && t === "rtl" ? -1 : 1;
+}, sa = function(e, t, n, o, r) {
+  var c = aa(e, window.getComputedStyle(t).direction), i = c * o, a = n.target, s = t.contains(a), l = !1, u = i > 0, d = 0, m = 0;
   do {
-    var _a = getScrollVariables(axis, target), position = _a[0], scroll_1 = _a[1], capacity = _a[2];
-    var elementScroll = scroll_1 - capacity - directionFactor * position;
-    if (position || elementScroll) {
-      if (elementCouldBeScrolled(axis, target)) {
-        availableScroll += elementScroll;
-        availableScrollTop += position;
-      }
-    }
-    target = target.parentNode;
+    var f = ko(e, a), v = f[0], p = f[1], b = f[2], $ = p - b - c * v;
+    (v || $) && To(e, a) && (d += $, m += v), a = a.parentNode;
   } while (
     // portaled content
-    !targetInLock && target !== document.body || // self content
-    targetInLock && (endTarget.contains(target) || endTarget === target)
+    !s && a !== document.body || // self content
+    s && (t.contains(a) || t === a)
   );
-  if (isDeltaPositive && (noOverscroll && availableScroll === 0 || !noOverscroll && delta > availableScroll)) {
-    shouldCancelScroll = true;
-  } else if (!isDeltaPositive && (noOverscroll && availableScrollTop === 0 || !noOverscroll && -delta > availableScrollTop)) {
-    shouldCancelScroll = true;
-  }
-  return shouldCancelScroll;
-};
-var getTouchXY = function(event) {
-  return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
-};
-var getDeltaXY = function(event) {
-  return [event.deltaX, event.deltaY];
-};
-var extractRef = function(ref) {
-  return ref && "current" in ref ? ref.current : ref;
-};
-var deltaCompare = function(x, y) {
-  return x[0] === y[0] && x[1] === y[1];
-};
-var generateStyle = function(id) {
-  return "\n  .block-interactivity-".concat(id, " {pointer-events: none;}\n  .allow-interactivity-").concat(id, " {pointer-events: all;}\n");
-};
-var idCounter = 0;
-var lockStack = [];
-function RemoveScrollSideCar(props) {
-  var shouldPreventQueue = React.useRef([]);
-  var touchStartRef = React.useRef([0, 0]);
-  var activeAxis = React.useRef();
-  var id = React.useState(idCounter++)[0];
-  var Style2 = React.useState(function() {
-    return styleSingleton();
-  })[0];
-  var lastProps = React.useRef(props);
-  React.useEffect(function() {
-    lastProps.current = props;
-  }, [props]);
-  React.useEffect(function() {
-    if (props.inert) {
-      document.body.classList.add("block-interactivity-".concat(id));
-      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
-      allow_1.forEach(function(el) {
-        return el.classList.add("allow-interactivity-".concat(id));
-      });
-      return function() {
-        document.body.classList.remove("block-interactivity-".concat(id));
-        allow_1.forEach(function(el) {
-          return el.classList.remove("allow-interactivity-".concat(id));
+  return (u && (r && d === 0 || !r && i > d) || !u && (r && m === 0 || !r && -i > m)) && (l = !0), l;
+}, lt = function(e) {
+  return "changedTouches" in e ? [e.changedTouches[0].clientX, e.changedTouches[0].clientY] : [0, 0];
+}, zn = function(e) {
+  return [e.deltaX, e.deltaY];
+}, Kn = function(e) {
+  return e && "current" in e ? e.current : e;
+}, la = function(e, t) {
+  return e[0] === t[0] && e[1] === t[1];
+}, da = function(e) {
+  return `
+  .block-interactivity-`.concat(e, ` {pointer-events: none;}
+  .allow-interactivity-`).concat(e, ` {pointer-events: all;}
+`);
+}, ua = 0, ke = [];
+function fa(e) {
+  var t = C.useRef([]), n = C.useRef([0, 0]), o = C.useRef(), r = C.useState(ua++)[0], c = C.useState(function() {
+    return Ro();
+  })[0], i = C.useRef(e);
+  C.useEffect(function() {
+    i.current = e;
+  }, [e]), C.useEffect(function() {
+    if (e.inert) {
+      document.body.classList.add("block-interactivity-".concat(r));
+      var p = ki([e.lockRef.current], (e.shards || []).map(Kn), !0).filter(Boolean);
+      return p.forEach(function(b) {
+        return b.classList.add("allow-interactivity-".concat(r));
+      }), function() {
+        document.body.classList.remove("block-interactivity-".concat(r)), p.forEach(function(b) {
+          return b.classList.remove("allow-interactivity-".concat(r));
         });
       };
     }
-    return;
-  }, [props.inert, props.lockRef.current, props.shards]);
-  var shouldCancelEvent = React.useCallback(function(event, parent) {
-    if ("touches" in event && event.touches.length === 2) {
-      return !lastProps.current.allowPinchZoom;
-    }
-    var touch = getTouchXY(event);
-    var touchStart = touchStartRef.current;
-    var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
-    var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
-    var currentAxis;
-    var target = event.target;
-    var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
-    if ("touches" in event && moveDirection === "h" && target.type === "range") {
-      return false;
-    }
-    var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
-    if (!canBeScrolledInMainDirection) {
-      return true;
-    }
-    if (canBeScrolledInMainDirection) {
-      currentAxis = moveDirection;
-    } else {
-      currentAxis = moveDirection === "v" ? "h" : "v";
-      canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
-    }
-    if (!canBeScrolledInMainDirection) {
-      return false;
-    }
-    if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) {
-      activeAxis.current = currentAxis;
-    }
-    if (!currentAxis) {
-      return true;
-    }
-    var cancelingAxis = activeAxis.current || currentAxis;
-    return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY, true);
-  }, []);
-  var shouldPrevent = React.useCallback(function(_event) {
-    var event = _event;
-    if (!lockStack.length || lockStack[lockStack.length - 1] !== Style2) {
-      return;
-    }
-    var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
-    var sourceEvent = shouldPreventQueue.current.filter(function(e) {
-      return e.name === event.type && e.target === event.target && deltaCompare(e.delta, delta);
-    })[0];
-    if (sourceEvent && sourceEvent.should) {
-      if (event.cancelable) {
-        event.preventDefault();
+  }, [e.inert, e.lockRef.current, e.shards]);
+  var a = C.useCallback(function(p, b) {
+    if ("touches" in p && p.touches.length === 2)
+      return !i.current.allowPinchZoom;
+    var $ = lt(p), w = n.current, y = "deltaX" in p ? p.deltaX : w[0] - $[0], x = "deltaY" in p ? p.deltaY : w[1] - $[1], E, M = p.target, O = Math.abs(y) > Math.abs(x) ? "h" : "v";
+    if ("touches" in p && O === "h" && M.type === "range")
+      return !1;
+    var S = Wn(O, M);
+    if (!S)
+      return !0;
+    if (S ? E = O : (E = O === "v" ? "h" : "v", S = Wn(O, M)), !S)
+      return !1;
+    if (!o.current && "changedTouches" in p && (y || x) && (o.current = E), !E)
+      return !0;
+    var k = o.current || E;
+    return sa(k, b, p, k === "h" ? y : x, !0);
+  }, []), s = C.useCallback(function(p) {
+    var b = p;
+    if (!(!ke.length || ke[ke.length - 1] !== c)) {
+      var $ = "deltaY" in b ? zn(b) : lt(b), w = t.current.filter(function(E) {
+        return E.name === b.type && E.target === b.target && la(E.delta, $);
+      })[0];
+      if (w && w.should) {
+        b.cancelable && b.preventDefault();
+        return;
       }
-      return;
-    }
-    if (!sourceEvent) {
-      var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
-        return node.contains(event.target);
-      });
-      var shouldStop = shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation;
-      if (shouldStop) {
-        if (event.cancelable) {
-          event.preventDefault();
-        }
+      if (!w) {
+        var y = (i.current.shards || []).map(Kn).filter(Boolean).filter(function(E) {
+          return E.contains(b.target);
+        }), x = y.length > 0 ? a(b, y[0]) : !i.current.noIsolation;
+        x && b.cancelable && b.preventDefault();
       }
     }
-  }, []);
-  var shouldCancel = React.useCallback(function(name, delta, target, should) {
-    var event = { name, delta, target, should };
-    shouldPreventQueue.current.push(event);
-    setTimeout(function() {
-      shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
-        return e !== event;
+  }, []), l = C.useCallback(function(p, b, $, w) {
+    var y = { name: p, delta: b, target: $, should: w };
+    t.current.push(y), setTimeout(function() {
+      t.current = t.current.filter(function(x) {
+        return x !== y;
       });
     }, 1);
+  }, []), u = C.useCallback(function(p) {
+    n.current = lt(p), o.current = void 0;
+  }, []), d = C.useCallback(function(p) {
+    l(p.type, zn(p), p.target, a(p, e.lockRef.current));
+  }, []), m = C.useCallback(function(p) {
+    l(p.type, lt(p), p.target, a(p, e.lockRef.current));
   }, []);
-  var scrollTouchStart = React.useCallback(function(event) {
-    touchStartRef.current = getTouchXY(event);
-    activeAxis.current = void 0;
-  }, []);
-  var scrollWheel = React.useCallback(function(event) {
-    shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
-  }, []);
-  var scrollTouchMove = React.useCallback(function(event) {
-    shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
-  }, []);
-  React.useEffect(function() {
-    lockStack.push(Style2);
-    props.setCallbacks({
-      onScrollCapture: scrollWheel,
-      onWheelCapture: scrollWheel,
-      onTouchMoveCapture: scrollTouchMove
-    });
-    document.addEventListener("wheel", shouldPrevent, nonPassive);
-    document.addEventListener("touchmove", shouldPrevent, nonPassive);
-    document.addEventListener("touchstart", scrollTouchStart, nonPassive);
-    return function() {
-      lockStack = lockStack.filter(function(inst) {
-        return inst !== Style2;
-      });
-      document.removeEventListener("wheel", shouldPrevent, nonPassive);
-      document.removeEventListener("touchmove", shouldPrevent, nonPassive);
-      document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
+  C.useEffect(function() {
+    return ke.push(c), e.setCallbacks({
+      onScrollCapture: d,
+      onWheelCapture: d,
+      onTouchMoveCapture: m
+    }), document.addEventListener("wheel", s, Te), document.addEventListener("touchmove", s, Te), document.addEventListener("touchstart", u, Te), function() {
+      ke = ke.filter(function(p) {
+        return p !== c;
+      }), document.removeEventListener("wheel", s, Te), document.removeEventListener("touchmove", s, Te), document.removeEventListener("touchstart", u, Te);
     };
   }, []);
-  var removeScrollBar = props.removeScrollBar, inert = props.inert;
-  return React.createElement(
-    React.Fragment,
+  var f = e.removeScrollBar, v = e.inert;
+  return C.createElement(
+    C.Fragment,
     null,
-    inert ? React.createElement(Style2, { styles: generateStyle(id) }) : null,
-    removeScrollBar ? React.createElement(RemoveScrollBar, { gapMode: "margin" }) : null
+    v ? C.createElement(c, { styles: da(r) }) : null,
+    f ? C.createElement(ta, { gapMode: "margin" }) : null
   );
 }
-const SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
-var ReactRemoveScroll = React.forwardRef(function(props, ref) {
-  return React.createElement(RemoveScroll, __assign({}, props, { ref, sideCar: SideCar }));
+const pa = Ki(Do, fa);
+var Io = C.forwardRef(function(e, t) {
+  return C.createElement(_t, ae({}, e, { ref: t, sideCar: pa }));
 });
-ReactRemoveScroll.classNames = RemoveScroll.classNames;
-const $67UHm$RemoveScroll = ReactRemoveScroll;
-const $cb5cc270b50c6fcd$var$POPOVER_NAME = "Popover";
-const [$cb5cc270b50c6fcd$var$createPopoverContext, $cb5cc270b50c6fcd$export$c8393c9e73286932] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($cb5cc270b50c6fcd$var$POPOVER_NAME, [
-  $cf1ac5d9fe0e8206$export$722aac194ae923
-]);
-const $cb5cc270b50c6fcd$var$usePopperScope = $cf1ac5d9fe0e8206$export$722aac194ae923();
-const [$cb5cc270b50c6fcd$var$PopoverProvider, $cb5cc270b50c6fcd$var$usePopoverContext] = $cb5cc270b50c6fcd$var$createPopoverContext($cb5cc270b50c6fcd$var$POPOVER_NAME);
-const $cb5cc270b50c6fcd$export$5b6b19405a83ff9d = (props) => {
-  const { __scopePopover, children, open: openProp, defaultOpen, onOpenChange, modal = false } = props;
-  const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
-  const triggerRef = useRef(null);
-  const [hasCustomAnchor, setHasCustomAnchor] = useState(false);
-  const [open = false, setOpen] = $71cd76cc60e0454e$export$6f32135080cb4c3({
-    prop: openProp,
-    defaultProp: defaultOpen,
-    onChange: onOpenChange
+Io.classNames = _t.classNames;
+const un = Io, Fo = "Popover", [Lo, $d] = Ne(Fo, [
+  Et
+]), fn = Et(), [ma, ze] = Lo(Fo), ha = (e) => {
+  const { __scopePopover: t, children: n, open: o, defaultOpen: r, onOpenChange: c, modal: i = !1 } = e, a = fn(t), s = D(null), [l, u] = U(!1), [d = !1, m] = Pt({
+    prop: o,
+    defaultProp: r,
+    onChange: c
   });
-  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9, popperScope, /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverProvider, {
-    scope: __scopePopover,
-    contentId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    triggerRef,
-    open,
-    onOpenChange: setOpen,
-    onOpenToggle: useCallback(
-      () => setOpen(
-        (prevOpen) => !prevOpen
+  return /* @__PURE__ */ g(Po, a, /* @__PURE__ */ g(ma, {
+    scope: t,
+    contentId: Se(),
+    triggerRef: s,
+    open: d,
+    onOpenChange: m,
+    onOpenToggle: V(
+      () => m(
+        (f) => !f
       ),
       [
-        setOpen
+        m
       ]
     ),
-    hasCustomAnchor,
-    onCustomAnchorAdd: useCallback(
-      () => setHasCustomAnchor(true),
+    hasCustomAnchor: l,
+    onCustomAnchorAdd: V(
+      () => u(!0),
       []
     ),
-    onCustomAnchorRemove: useCallback(
-      () => setHasCustomAnchor(false),
+    onCustomAnchorRemove: V(
+      () => u(!1),
       []
     ),
-    modal
-  }, children));
-};
-const $cb5cc270b50c6fcd$var$TRIGGER_NAME = "PopoverTrigger";
-const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopePopover, ...triggerProps } = props;
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$TRIGGER_NAME, __scopePopover);
-  const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
-  const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.triggerRef);
-  const trigger = /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    modal: i
+  }, n));
+}, va = "PopoverTrigger", ga = /* @__PURE__ */ _((e, t) => {
+  const { __scopePopover: n, ...o } = e, r = ze(va, n), c = fn(n), i = G(t, r.triggerRef), a = /* @__PURE__ */ g(j.button, P({
     type: "button",
     "aria-haspopup": "dialog",
-    "aria-expanded": context.open,
-    "aria-controls": context.contentId,
-    "data-state": $cb5cc270b50c6fcd$var$getState(context.open)
-  }, triggerProps, {
-    ref: composedTriggerRef,
-    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context.onOpenToggle)
+    "aria-expanded": r.open,
+    "aria-controls": r.contentId,
+    "data-state": Wo(r.open)
+  }, o, {
+    ref: i,
+    onClick: R(e.onClick, r.onOpenToggle)
   }));
-  return context.hasCustomAnchor ? trigger : /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends({
-    asChild: true
-  }, popperScope), trigger);
-});
-const $cb5cc270b50c6fcd$var$PORTAL_NAME = "PopoverPortal";
-const [$cb5cc270b50c6fcd$var$PortalProvider, $cb5cc270b50c6fcd$var$usePortalContext] = $cb5cc270b50c6fcd$var$createPopoverContext($cb5cc270b50c6fcd$var$PORTAL_NAME, {
+  return r.hasCustomAnchor ? a : /* @__PURE__ */ g(_o, P({
+    asChild: !0
+  }, c), a);
+}), Bo = "PopoverPortal", [ba, $a] = Lo(Bo, {
   forceMount: void 0
-});
-const $cb5cc270b50c6fcd$export$dd679ffb4362d2d4 = (props) => {
-  const { __scopePopover, forceMount, children, container } = props;
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$PORTAL_NAME, __scopePopover);
-  return /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PortalProvider, {
-    scope: __scopePopover,
-    forceMount
-  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, /* @__PURE__ */ createElement($f1701beae083dbae$export$602eac185826482c, {
-    asChild: true,
-    container
-  }, children)));
-};
-const $cb5cc270b50c6fcd$var$CONTENT_NAME = "PopoverContent";
-const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const portalContext = $cb5cc270b50c6fcd$var$usePortalContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
-  const { forceMount = portalContext.forceMount, ...contentProps } = props;
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
-  return /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, context.modal ? /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends({}, contentProps, {
-    ref: forwardedRef
-  })) : /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends({}, contentProps, {
-    ref: forwardedRef
+}), wa = (e) => {
+  const { __scopePopover: t, forceMount: n, children: o, container: r } = e, c = ze(Bo, t);
+  return /* @__PURE__ */ g(ba, {
+    scope: t,
+    forceMount: n
+  }, /* @__PURE__ */ g(ue, {
+    present: n || c.open
+  }, /* @__PURE__ */ g(ln, {
+    asChild: !0,
+    container: r
+  }, o)));
+}, Ye = "PopoverContent", xa = /* @__PURE__ */ _((e, t) => {
+  const n = $a(Ye, e.__scopePopover), { forceMount: o = n.forceMount, ...r } = e, c = ze(Ye, e.__scopePopover);
+  return /* @__PURE__ */ g(ue, {
+    present: o || c.open
+  }, c.modal ? /* @__PURE__ */ g(ya, P({}, r, {
+    ref: t
+  })) : /* @__PURE__ */ g(Ca, P({}, r, {
+    ref: t
   })));
-});
-const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
-  const contentRef = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, contentRef);
-  const isRightClickOutsideRef = useRef(false);
-  useEffect(() => {
-    const content = contentRef.current;
-    if (content)
-      return hideOthers(content);
-  }, []);
-  return /* @__PURE__ */ createElement($67UHm$RemoveScroll, {
-    as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
-    allowPinchZoom: true
-  }, /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends({}, props, {
-    ref: composedRefs,
-    trapFocus: context.open,
-    disableOutsidePointerEvents: true,
-    onCloseAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onCloseAutoFocus, (event) => {
-      var _context$triggerRef$c;
-      event.preventDefault();
-      if (!isRightClickOutsideRef.current)
-        (_context$triggerRef$c = context.triggerRef.current) === null || _context$triggerRef$c === void 0 || _context$triggerRef$c.focus();
+}), ya = /* @__PURE__ */ _((e, t) => {
+  const n = ze(Ye, e.__scopePopover), o = D(null), r = G(t, o), c = D(!1);
+  return F(() => {
+    const i = o.current;
+    if (i)
+      return dn(i);
+  }, []), /* @__PURE__ */ g(un, {
+    as: xe,
+    allowPinchZoom: !0
+  }, /* @__PURE__ */ g(Uo, P({}, e, {
+    ref: r,
+    trapFocus: n.open,
+    disableOutsidePointerEvents: !0,
+    onCloseAutoFocus: R(e.onCloseAutoFocus, (i) => {
+      var a;
+      i.preventDefault(), c.current || (a = n.triggerRef.current) === null || a === void 0 || a.focus();
     }),
-    onPointerDownOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDownOutside, (event) => {
-      const originalEvent = event.detail.originalEvent;
-      const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-      const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-      isRightClickOutsideRef.current = isRightClick;
+    onPointerDownOutside: R(e.onPointerDownOutside, (i) => {
+      const a = i.detail.originalEvent, s = a.button === 0 && a.ctrlKey === !0, l = a.button === 2 || s;
+      c.current = l;
     }, {
-      checkForDefaultPrevented: false
+      checkForDefaultPrevented: !1
     }),
-    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onFocusOutside,
-      (event) => event.preventDefault(),
+    onFocusOutside: R(
+      e.onFocusOutside,
+      (i) => i.preventDefault(),
       {
-        checkForDefaultPrevented: false
+        checkForDefaultPrevented: !1
       }
     )
   })));
-});
-const $cb5cc270b50c6fcd$var$PopoverContentNonModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
-  const hasInteractedOutsideRef = useRef(false);
-  const hasPointerDownOutsideRef = useRef(false);
-  return /* @__PURE__ */ createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends({}, props, {
-    ref: forwardedRef,
-    trapFocus: false,
-    disableOutsidePointerEvents: false,
-    onCloseAutoFocus: (event) => {
-      var _props$onCloseAutoFoc;
-      (_props$onCloseAutoFoc = props.onCloseAutoFocus) === null || _props$onCloseAutoFoc === void 0 || _props$onCloseAutoFoc.call(props, event);
-      if (!event.defaultPrevented) {
-        var _context$triggerRef$c2;
-        if (!hasInteractedOutsideRef.current)
-          (_context$triggerRef$c2 = context.triggerRef.current) === null || _context$triggerRef$c2 === void 0 || _context$triggerRef$c2.focus();
-        event.preventDefault();
+}), Ca = /* @__PURE__ */ _((e, t) => {
+  const n = ze(Ye, e.__scopePopover), o = D(!1), r = D(!1);
+  return /* @__PURE__ */ g(Uo, P({}, e, {
+    ref: t,
+    trapFocus: !1,
+    disableOutsidePointerEvents: !1,
+    onCloseAutoFocus: (c) => {
+      var i;
+      if ((i = e.onCloseAutoFocus) === null || i === void 0 || i.call(e, c), !c.defaultPrevented) {
+        var a;
+        o.current || (a = n.triggerRef.current) === null || a === void 0 || a.focus(), c.preventDefault();
       }
-      hasInteractedOutsideRef.current = false;
-      hasPointerDownOutsideRef.current = false;
+      o.current = !1, r.current = !1;
     },
-    onInteractOutside: (event) => {
-      var _props$onInteractOuts, _context$triggerRef$c3;
-      (_props$onInteractOuts = props.onInteractOutside) === null || _props$onInteractOuts === void 0 || _props$onInteractOuts.call(props, event);
-      if (!event.defaultPrevented) {
-        hasInteractedOutsideRef.current = true;
-        if (event.detail.originalEvent.type === "pointerdown")
-          hasPointerDownOutsideRef.current = true;
-      }
-      const target = event.target;
-      const targetIsTrigger = (_context$triggerRef$c3 = context.triggerRef.current) === null || _context$triggerRef$c3 === void 0 ? void 0 : _context$triggerRef$c3.contains(target);
-      if (targetIsTrigger)
-        event.preventDefault();
-      if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current)
-        event.preventDefault();
+    onInteractOutside: (c) => {
+      var i, a;
+      (i = e.onInteractOutside) === null || i === void 0 || i.call(e, c), c.defaultPrevented || (o.current = !0, c.detail.originalEvent.type === "pointerdown" && (r.current = !0));
+      const s = c.target;
+      ((a = n.triggerRef.current) === null || a === void 0 ? void 0 : a.contains(s)) && c.preventDefault(), c.detail.originalEvent.type === "focusin" && r.current && c.preventDefault();
     }
   }));
-});
-const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopePopover, trapFocus, onOpenAutoFocus, onCloseAutoFocus, disableOutsidePointerEvents, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, ...contentProps } = props;
-  const context = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, __scopePopover);
-  const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
-  $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c();
-  return /* @__PURE__ */ createElement($d3863c46a17e8a28$export$20e40289641fbbb6, {
-    asChild: true,
-    loop: true,
-    trapped: trapFocus,
-    onMountAutoFocus: onOpenAutoFocus,
-    onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ createElement($5cb92bef7577960e$export$177fb62ff3ec1f22, {
-    asChild: true,
-    disableOutsidePointerEvents,
-    onInteractOutside,
-    onEscapeKeyDown,
-    onPointerDownOutside,
-    onFocusOutside,
-    onDismiss: () => context.onOpenChange(false)
-  }, /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends({
-    "data-state": $cb5cc270b50c6fcd$var$getState(context.open),
+}), Uo = /* @__PURE__ */ _((e, t) => {
+  const { __scopePopover: n, trapFocus: o, onOpenAutoFocus: r, onCloseAutoFocus: c, disableOutsidePointerEvents: i, onEscapeKeyDown: a, onPointerDownOutside: s, onFocusOutside: l, onInteractOutside: u, ...d } = e, m = ze(Ye, n), f = fn(n);
+  return en(), /* @__PURE__ */ g(tn, {
+    asChild: !0,
+    loop: !0,
+    trapped: o,
+    onMountAutoFocus: r,
+    onUnmountAutoFocus: c
+  }, /* @__PURE__ */ g(Jt, {
+    asChild: !0,
+    disableOutsidePointerEvents: i,
+    onInteractOutside: u,
+    onEscapeKeyDown: a,
+    onPointerDownOutside: s,
+    onFocusOutside: l,
+    onDismiss: () => m.onOpenChange(!1)
+  }, /* @__PURE__ */ g(Oo, P({
+    "data-state": Wo(m.open),
     role: "dialog",
-    id: context.contentId
-  }, popperScope, contentProps, {
-    ref: forwardedRef,
+    id: m.contentId
+  }, f, d, {
+    ref: t,
     style: {
-      ...contentProps.style,
+      ...d.style,
       "--radix-popover-content-transform-origin": "var(--radix-popper-transform-origin)",
       "--radix-popover-content-available-width": "var(--radix-popper-available-width)",
       "--radix-popover-content-available-height": "var(--radix-popper-available-height)",
@@ -3951,33 +2809,28 @@ const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ forwardRef((pro
     }
   }))));
 });
-function $cb5cc270b50c6fcd$var$getState(open) {
-  return open ? "open" : "closed";
+function Wo(e) {
+  return e ? "open" : "closed";
 }
-const $cb5cc270b50c6fcd$export$be92b6f5f03c0fe9 = $cb5cc270b50c6fcd$export$5b6b19405a83ff9d;
-const $cb5cc270b50c6fcd$export$41fb9f06171c75f4 = $cb5cc270b50c6fcd$export$7dacb05d26466c3;
-const $cb5cc270b50c6fcd$export$602eac185826482c = $cb5cc270b50c6fcd$export$dd679ffb4362d2d4;
-const $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2 = $cb5cc270b50c6fcd$export$d7e1f420b25549ff;
-function cn(...inputs) {
-  return twMerge(clsx(inputs));
+const Ea = ha, Pa = ga, _a = wa, zo = xa;
+function Z(...e) {
+  return Jr(Qr(e));
 }
-const Popover = $cb5cc270b50c6fcd$export$be92b6f5f03c0fe9;
-const PopoverTrigger = $cb5cc270b50c6fcd$export$41fb9f06171c75f4;
-const PopoverContent = React.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx($cb5cc270b50c6fcd$export$602eac185826482c, { children: /* @__PURE__ */ jsx(
-  $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2,
+const Ko = Ea, Vo = Pa, pn = C.forwardRef(({ className: e, align: t = "center", sideOffset: n = 4, ...o }, r) => /* @__PURE__ */ h(_a, { children: /* @__PURE__ */ h(
+  zo,
   {
-    ref,
-    align,
-    sideOffset,
-    className: cn(
+    ref: r,
+    align: t,
+    sideOffset: n,
+    className: Z(
       "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
+      e
     ),
-    ...props
+    ...o
   }
 ) }));
-PopoverContent.displayName = $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2.displayName;
-const buttonVariants = cva(
+pn.displayName = zo.displayName;
+const Oa = ec(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
@@ -4001,392 +2854,292 @@ const buttonVariants = cva(
       size: "default"
     }
   }
-);
-const Button = React.forwardRef(
-  ({ className, variant, size: size2, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? $5e63c961fc1ce211$export$8c6ed5c666ac1360 : "button";
-    return /* @__PURE__ */ jsx(
-      Comp,
-      {
-        className: cn(buttonVariants({ variant, size: size2, className })),
-        ref,
-        ...props
-      }
-    );
-  }
-);
-Button.displayName = "Button";
-const getCookies = (document2) => {
-  if (!document2)
-    return null;
-  const cookies = document2.cookie.split("; ");
-  const cookiesObj = cookies.map((item) => {
-    const cookie = item.split("=");
-    return { [cookie[0]]: cookie[1] };
-  });
-  const result = cookiesObj.reduce((a, b) => {
-    return {
-      ...a,
-      ...b
-    };
-  });
-  return result;
-};
-const ProjectsGrid = () => {
-  const [cookies, setCookies] = useState(null);
-  const themeCookie = cookies ? cookies["theme"] : "dark";
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      const takenCookies = getCookies(document);
-      setCookies(takenCookies);
+), de = C.forwardRef(
+  ({ className: e, variant: t, size: n, asChild: o = !1, ...r }, c) => /* @__PURE__ */ h(
+    o ? xe : "button",
+    {
+      className: Z(Oa({ variant: t, size: n, className: e })),
+      ref: c,
+      ...r
     }
-  }, [typeof document]);
-  return /* @__PURE__ */ jsxs(Popover, { children: [
-    /* @__PURE__ */ jsx(PopoverTrigger, { asChild: true, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ jsx(Button, { size: "icon", variant: "ghost", children: /* @__PURE__ */ jsx(MdGridView, { size: 20 }) }) }),
-    /* @__PURE__ */ jsx(PopoverContent, { className: "projects-grid", children: projects.map(
-      (project) => /* @__PURE__ */ jsxs("a", { href: project.link, className: "w-full h-full flex flex-col items-center justify-center gap-2 rounded-md hover:bg-muted p-1", children: [
-        /* @__PURE__ */ jsx("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ jsx("img", { src: project.themedIcon ? project.themedIcon[themeCookie] : project.icon, className: "w-full h-full", alt: "project-icon" }) }),
-        /* @__PURE__ */ jsx("span", { className: "text-xs text-center", children: project.name })
-      ] }, project.key)
+  )
+);
+de.displayName = "Button";
+const Sa = (e) => e ? e.cookie.split("; ").map((r) => {
+  const c = r.split("=");
+  return { [c[0]]: c[1] };
+}).reduce((r, c) => ({
+  ...r,
+  ...c
+})) : null, wd = () => {
+  const [e, t] = U(null), n = e ? e.theme : "dark";
+  return F(() => {
+    if (typeof document < "u") {
+      const o = Sa(document);
+      t(o);
+    }
+  }, [typeof document]), /* @__PURE__ */ A(Ko, { children: [
+    /* @__PURE__ */ h(Vo, { asChild: !0, className: "rounded-full border w-9 h-9 flex items-center bg-background justify-center", children: /* @__PURE__ */ h(de, { size: "icon", variant: "ghost", children: /* @__PURE__ */ h(Xr, { size: 20 }) }) }),
+    /* @__PURE__ */ h(pn, { className: "projects-grid", children: lc.map(
+      (o) => /* @__PURE__ */ A("a", { href: o.link, className: "w-full h-full flex flex-col items-center justify-center gap-2 rounded-md hover:bg-muted p-1", children: [
+        /* @__PURE__ */ h("div", { className: "w-7 h-7 relative", children: /* @__PURE__ */ h("img", { src: o.themedIcon ? o.themedIcon[n] : o.icon, className: "w-full h-full", alt: "project-icon" }) }),
+        /* @__PURE__ */ h("span", { className: "text-xs text-center", children: o.name })
+      ] }, o.key)
     ) })
   ] });
-};
-const format = {
-  numbers: (num) => {
-    if (num < 999) {
-      return num;
-    } else if (num >= 1e3 && num <= 999999) {
-      return (num / 1e3).toFixed(1) + " тыс.";
-    } else
-      return (num / 1e6).toFixed(1) + " млн.";
-  },
-  random: (len, charSet) => {
-    charSet = charSet || "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var randomString = "";
-    for (var i = 0; i < len; i++) {
-      var randomPoz = Math.floor(Math.random() * charSet.length);
-      randomString += charSet.substring(randomPoz, randomPoz + 1);
+}, _e = {
+  numbers: (e) => e < 999 ? e : e >= 1e3 && e <= 999999 ? (e / 1e3).toFixed(1) + " тыс." : (e / 1e6).toFixed(1) + " млн.",
+  random: (e, t) => {
+    t = t || "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (var n = "", o = 0; o < e; o++) {
+      var r = Math.floor(Math.random() * t.length);
+      n += t.substring(r, r + 1);
     }
-    return randomString;
+    return n;
   },
-  generateId: (len, onlyNumbers) => {
-    const charSet = onlyNumbers ? "0123456789" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let result = "";
-    for (let i = 0; i < len; i++) {
-      const randomPoz = Math.floor(Math.random() * charSet.length);
-      result += charSet.substring(randomPoz, randomPoz + 1);
+  generateId: (e, t) => {
+    const n = t ? "0123456789" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let o = "";
+    for (let r = 0; r < e; r++) {
+      const c = Math.floor(Math.random() * n.length);
+      o += n.substring(c, c + 1);
     }
-    if (onlyNumbers)
-      return parseInt(result);
-    return result;
+    return t ? parseInt(o) : o;
   },
-  randomNum: (min2 = 0, max2 = 100) => Math.floor(Math.random() * (max2 - min2 + 1) + min2)
-};
-const defaultStyle = {
+  randomNum: (e = 0, t = 100) => Math.floor(Math.random() * (t - e + 1) + e)
+}, Ma = {
   resize: "none",
   outline: "none",
   display: "block",
   overflow: "hidden",
   backgroundColor: "transparent"
-};
-const Textarea = (props) => {
-  const ref = useRef(null);
-  const onChange = (e) => {
-    if (props.onChange)
-      props.onChange(e);
-    if (ref.current) {
-      ref.current.style.height = "40px";
-      const scrollHeight = ref.current.scrollHeight;
-      ref.current.style.height = scrollHeight + "px";
+}, xd = (e) => {
+  const t = D(null), n = (o) => {
+    if (e.onChange && e.onChange(o), t.current) {
+      t.current.style.height = "40px";
+      const r = t.current.scrollHeight;
+      t.current.style.height = r + "px";
     }
   };
-  useLayoutEffect(() => {
-    const area = ref.current;
-    if (props.value && area) {
-      ref.current.style.height = "40px";
-      const scrollHeight = ref.current.scrollHeight;
-      ref.current.style.height = scrollHeight + "px";
+  return Qt(() => {
+    const o = t.current;
+    if (e.value && o) {
+      t.current.style.height = "40px";
+      const r = t.current.scrollHeight;
+      t.current.style.height = r + "px";
     }
-  }, [props.value, ref]);
-  return /* @__PURE__ */ jsx("textarea", { ...props, ref, onChange, style: { ...defaultStyle } });
-};
-const Editor = dynamic(() => import("./markdown-88eabd60.mjs"), {
+  }, [e.value, t]), /* @__PURE__ */ h("textarea", { ...e, ref: t, onChange: n, style: { ...Ma } });
+}, Na = tc(() => import("./markdown-e5d6ecc8.mjs"), {
   // Make sure we turn SSR off
-  ssr: false
-});
-const ForwardRefEditor = forwardRef(
-  (props, ref) => /* @__PURE__ */ jsx(Editor, { ...props, editorRef: ref })
+  ssr: !1
+}), Da = _(
+  (e, t) => /* @__PURE__ */ h(Na, { ...e, editorRef: t })
 );
-ForwardRefEditor.displayName = "ForwardRefEditor";
-function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
-  const PROVIDER_NAME = name + "CollectionProvider";
-  const [createCollectionContext, createCollectionScope] = $c512c27ab02ef895$export$50c7b4e9d9f19c1(PROVIDER_NAME);
-  const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(PROVIDER_NAME, {
+Da.displayName = "ForwardRefEditor";
+function jo(e) {
+  const t = e + "CollectionProvider", [n, o] = Ne(t), [r, c] = n(t, {
     collectionRef: {
       current: null
     },
     itemMap: /* @__PURE__ */ new Map()
+  }), i = (f) => {
+    const { scope: v, children: p } = f, b = ie.useRef(null), $ = ie.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ ie.createElement(r, {
+      scope: v,
+      itemMap: $,
+      collectionRef: b
+    }, p);
+  }, a = e + "CollectionSlot", s = /* @__PURE__ */ ie.forwardRef((f, v) => {
+    const { scope: p, children: b } = f, $ = c(a, p), w = G(v, $.collectionRef);
+    return /* @__PURE__ */ ie.createElement(xe, {
+      ref: w
+    }, b);
+  }), l = e + "CollectionItemSlot", u = "data-radix-collection-item", d = /* @__PURE__ */ ie.forwardRef((f, v) => {
+    const { scope: p, children: b, ...$ } = f, w = ie.useRef(null), y = G(v, w), x = c(l, p);
+    return ie.useEffect(() => (x.itemMap.set(w, {
+      ref: w,
+      ...$
+    }), () => void x.itemMap.delete(w))), /* @__PURE__ */ ie.createElement(xe, {
+      [u]: "",
+      ref: y
+    }, b);
   });
-  const CollectionProvider = (props) => {
-    const { scope, children } = props;
-    const ref = React__default.useRef(null);
-    const itemMap = React__default.useRef(/* @__PURE__ */ new Map()).current;
-    return /* @__PURE__ */ React__default.createElement(CollectionProviderImpl, {
-      scope,
-      itemMap,
-      collectionRef: ref
-    }, children);
-  };
-  const COLLECTION_SLOT_NAME = name + "CollectionSlot";
-  const CollectionSlot = /* @__PURE__ */ React__default.forwardRef((props, forwardedRef) => {
-    const { scope, children } = props;
-    const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
-    const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.collectionRef);
-    return /* @__PURE__ */ React__default.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360, {
-      ref: composedRefs
-    }, children);
-  });
-  const ITEM_SLOT_NAME = name + "CollectionItemSlot";
-  const ITEM_DATA_ATTR = "data-radix-collection-item";
-  const CollectionItemSlot = /* @__PURE__ */ React__default.forwardRef((props, forwardedRef) => {
-    const { scope, children, ...itemData } = props;
-    const ref = React__default.useRef(null);
-    const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-    const context = useCollectionContext(ITEM_SLOT_NAME, scope);
-    React__default.useEffect(() => {
-      context.itemMap.set(ref, {
-        ref,
-        ...itemData
-      });
-      return () => void context.itemMap.delete(ref);
-    });
-    return /* @__PURE__ */ React__default.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360, {
-      [ITEM_DATA_ATTR]: "",
-      ref: composedRefs
-    }, children);
-  });
-  function useCollection(scope) {
-    const context = useCollectionContext(name + "CollectionConsumer", scope);
-    const getItems = React__default.useCallback(() => {
-      const collectionNode = context.collectionRef.current;
-      if (!collectionNode)
+  function m(f) {
+    const v = c(e + "CollectionConsumer", f);
+    return ie.useCallback(() => {
+      const b = v.collectionRef.current;
+      if (!b)
         return [];
-      const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
-      const items = Array.from(context.itemMap.values());
-      const orderedItems = items.sort(
-        (a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current)
+      const $ = Array.from(b.querySelectorAll(`[${u}]`));
+      return Array.from(v.itemMap.values()).sort(
+        (x, E) => $.indexOf(x.ref.current) - $.indexOf(E.ref.current)
       );
-      return orderedItems;
     }, [
-      context.collectionRef,
-      context.itemMap
+      v.collectionRef,
+      v.itemMap
     ]);
-    return getItems;
   }
   return [
     {
-      Provider: CollectionProvider,
-      Slot: CollectionSlot,
-      ItemSlot: CollectionItemSlot
+      Provider: i,
+      Slot: s,
+      ItemSlot: d
     },
-    useCollection,
-    createCollectionScope
+    m,
+    o
   ];
 }
-const $f631663db3294ace$var$DirectionContext = /* @__PURE__ */ createContext(void 0);
-function $f631663db3294ace$export$b39126d51d94e6f3(localDir) {
-  const globalDir = useContext($f631663db3294ace$var$DirectionContext);
-  return localDir || globalDir || "ltr";
+const Ra = /* @__PURE__ */ mt(void 0);
+function Ho(e) {
+  const t = Xt(Ra);
+  return e || t || "ltr";
 }
-const $d7bdfb9eb0fdf311$var$ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
-const $d7bdfb9eb0fdf311$var$EVENT_OPTIONS = {
-  bubbles: false,
-  cancelable: true
-};
-const $d7bdfb9eb0fdf311$var$GROUP_NAME = "RovingFocusGroup";
-const [$d7bdfb9eb0fdf311$var$Collection, $d7bdfb9eb0fdf311$var$useCollection, $d7bdfb9eb0fdf311$var$createCollectionScope] = $e02a7d9cb1dc128c$export$c74125a8e3af6bb2($d7bdfb9eb0fdf311$var$GROUP_NAME);
-const [$d7bdfb9eb0fdf311$var$createRovingFocusGroupContext, $d7bdfb9eb0fdf311$export$c7109489551a4f4] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($d7bdfb9eb0fdf311$var$GROUP_NAME, [
-  $d7bdfb9eb0fdf311$var$createCollectionScope
-]);
-const [$d7bdfb9eb0fdf311$var$RovingFocusProvider, $d7bdfb9eb0fdf311$var$useRovingFocusContext] = $d7bdfb9eb0fdf311$var$createRovingFocusGroupContext($d7bdfb9eb0fdf311$var$GROUP_NAME);
-const $d7bdfb9eb0fdf311$export$8699f7c8af148338 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.Provider, {
-    scope: props.__scopeRovingFocusGroup
-  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.Slot, {
-    scope: props.__scopeRovingFocusGroup
-  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$RovingFocusGroupImpl, _extends({}, props, {
-    ref: forwardedRef
-  }))));
-});
-const $d7bdfb9eb0fdf311$var$RovingFocusGroupImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeRovingFocusGroup, orientation, loop = false, dir, currentTabStopId: currentTabStopIdProp, defaultCurrentTabStopId, onCurrentTabStopIdChange, onEntryFocus, ...groupProps } = props;
-  const ref = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  const direction = $f631663db3294ace$export$b39126d51d94e6f3(dir);
-  const [currentTabStopId = null, setCurrentTabStopId] = $71cd76cc60e0454e$export$6f32135080cb4c3({
-    prop: currentTabStopIdProp,
-    defaultProp: defaultCurrentTabStopId,
-    onChange: onCurrentTabStopIdChange
-  });
-  const [isTabbingBackOut, setIsTabbingBackOut] = useState(false);
-  const handleEntryFocus = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onEntryFocus);
-  const getItems = $d7bdfb9eb0fdf311$var$useCollection(__scopeRovingFocusGroup);
-  const isClickFocusRef = useRef(false);
-  const [focusableItemsCount, setFocusableItemsCount] = useState(0);
-  useEffect(() => {
-    const node = ref.current;
-    if (node) {
-      node.addEventListener($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, handleEntryFocus);
-      return () => node.removeEventListener($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, handleEntryFocus);
-    }
+const Ft = "rovingFocusGroup.onEntryFocus", Aa = {
+  bubbles: !1,
+  cancelable: !0
+}, mn = "RovingFocusGroup", [Vt, Go, Ta] = jo(mn), [ka, Yo] = Ne(mn, [
+  Ta
+]), [Ia, Fa] = ka(mn), La = /* @__PURE__ */ _((e, t) => /* @__PURE__ */ g(Vt.Provider, {
+  scope: e.__scopeRovingFocusGroup
+}, /* @__PURE__ */ g(Vt.Slot, {
+  scope: e.__scopeRovingFocusGroup
+}, /* @__PURE__ */ g(Ba, P({}, e, {
+  ref: t
+}))))), Ba = /* @__PURE__ */ _((e, t) => {
+  const { __scopeRovingFocusGroup: n, orientation: o, loop: r = !1, dir: c, currentTabStopId: i, defaultCurrentTabStopId: a, onCurrentTabStopIdChange: s, onEntryFocus: l, ...u } = e, d = D(null), m = G(t, d), f = Ho(c), [v = null, p] = Pt({
+    prop: i,
+    defaultProp: a,
+    onChange: s
+  }), [b, $] = U(!1), w = se(l), y = Go(n), x = D(!1), [E, M] = U(0);
+  return F(() => {
+    const O = d.current;
+    if (O)
+      return O.addEventListener(Ft, w), () => O.removeEventListener(Ft, w);
   }, [
-    handleEntryFocus
-  ]);
-  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$RovingFocusProvider, {
-    scope: __scopeRovingFocusGroup,
-    orientation,
-    dir: direction,
-    loop,
-    currentTabStopId,
-    onItemFocus: useCallback(
-      (tabStopId) => setCurrentTabStopId(tabStopId),
+    w
+  ]), /* @__PURE__ */ g(Ia, {
+    scope: n,
+    orientation: o,
+    dir: f,
+    loop: r,
+    currentTabStopId: v,
+    onItemFocus: V(
+      (O) => p(O),
       [
-        setCurrentTabStopId
+        p
       ]
     ),
-    onItemShiftTab: useCallback(
-      () => setIsTabbingBackOut(true),
+    onItemShiftTab: V(
+      () => $(!0),
       []
     ),
-    onFocusableItemAdd: useCallback(
-      () => setFocusableItemsCount(
-        (prevCount) => prevCount + 1
+    onFocusableItemAdd: V(
+      () => M(
+        (O) => O + 1
       ),
       []
     ),
-    onFocusableItemRemove: useCallback(
-      () => setFocusableItemsCount(
-        (prevCount) => prevCount - 1
+    onFocusableItemRemove: V(
+      () => M(
+        (O) => O - 1
       ),
       []
     )
-  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
-    tabIndex: isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0,
-    "data-orientation": orientation
-  }, groupProps, {
-    ref: composedRefs,
+  }, /* @__PURE__ */ g(j.div, P({
+    tabIndex: b || E === 0 ? -1 : 0,
+    "data-orientation": o
+  }, u, {
+    ref: m,
     style: {
       outline: "none",
-      ...props.style
+      ...e.style
     },
-    onMouseDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onMouseDown, () => {
-      isClickFocusRef.current = true;
+    onMouseDown: R(e.onMouseDown, () => {
+      x.current = !0;
     }),
-    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onFocus, (event) => {
-      const isKeyboardFocus = !isClickFocusRef.current;
-      if (event.target === event.currentTarget && isKeyboardFocus && !isTabbingBackOut) {
-        const entryFocusEvent = new CustomEvent($d7bdfb9eb0fdf311$var$ENTRY_FOCUS, $d7bdfb9eb0fdf311$var$EVENT_OPTIONS);
-        event.currentTarget.dispatchEvent(entryFocusEvent);
-        if (!entryFocusEvent.defaultPrevented) {
-          const items = getItems().filter(
-            (item) => item.focusable
+    onFocus: R(e.onFocus, (O) => {
+      const S = !x.current;
+      if (O.target === O.currentTarget && S && !b) {
+        const k = new CustomEvent(Ft, Aa);
+        if (O.currentTarget.dispatchEvent(k), !k.defaultPrevented) {
+          const W = y().filter(
+            (B) => B.focusable
+          ), z = W.find(
+            (B) => B.active
+          ), L = W.find(
+            (B) => B.id === v
+          ), T = [
+            z,
+            L,
+            ...W
+          ].filter(Boolean).map(
+            (B) => B.ref.current
           );
-          const activeItem = items.find(
-            (item) => item.active
-          );
-          const currentItem = items.find(
-            (item) => item.id === currentTabStopId
-          );
-          const candidateItems = [
-            activeItem,
-            currentItem,
-            ...items
-          ].filter(Boolean);
-          const candidateNodes = candidateItems.map(
-            (item) => item.ref.current
-          );
-          $d7bdfb9eb0fdf311$var$focusFirst(candidateNodes);
+          Xo(T);
         }
       }
-      isClickFocusRef.current = false;
+      x.current = !1;
     }),
-    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onBlur,
-      () => setIsTabbingBackOut(false)
+    onBlur: R(
+      e.onBlur,
+      () => $(!1)
     )
   })));
-});
-const $d7bdfb9eb0fdf311$var$ITEM_NAME = "RovingFocusGroupItem";
-const $d7bdfb9eb0fdf311$export$ab9df7c53fe8454 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, ...itemProps } = props;
-  const autoId = $1746a345f3d73bb7$export$f680877a34711e37();
-  const id = tabStopId || autoId;
-  const context = $d7bdfb9eb0fdf311$var$useRovingFocusContext($d7bdfb9eb0fdf311$var$ITEM_NAME, __scopeRovingFocusGroup);
-  const isCurrentTabStop = context.currentTabStopId === id;
-  const getItems = $d7bdfb9eb0fdf311$var$useCollection(__scopeRovingFocusGroup);
-  const { onFocusableItemAdd, onFocusableItemRemove } = context;
-  useEffect(() => {
-    if (focusable) {
-      onFocusableItemAdd();
-      return () => onFocusableItemRemove();
-    }
+}), Ua = "RovingFocusGroupItem", Wa = /* @__PURE__ */ _((e, t) => {
+  const { __scopeRovingFocusGroup: n, focusable: o = !0, active: r = !1, tabStopId: c, ...i } = e, a = Se(), s = c || a, l = Fa(Ua, n), u = l.currentTabStopId === s, d = Go(n), { onFocusableItemAdd: m, onFocusableItemRemove: f } = l;
+  return F(() => {
+    if (o)
+      return m(), () => f();
   }, [
-    focusable,
-    onFocusableItemAdd,
-    onFocusableItemRemove
-  ]);
-  return /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$var$Collection.ItemSlot, {
-    scope: __scopeRovingFocusGroup,
-    id,
-    focusable,
-    active
-  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.span, _extends({
-    tabIndex: isCurrentTabStop ? 0 : -1,
-    "data-orientation": context.orientation
-  }, itemProps, {
-    ref: forwardedRef,
-    onMouseDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onMouseDown, (event) => {
-      if (!focusable)
-        event.preventDefault();
-      else
-        context.onItemFocus(id);
+    o,
+    m,
+    f
+  ]), /* @__PURE__ */ g(Vt.ItemSlot, {
+    scope: n,
+    id: s,
+    focusable: o,
+    active: r
+  }, /* @__PURE__ */ g(j.span, P({
+    tabIndex: u ? 0 : -1,
+    "data-orientation": l.orientation
+  }, i, {
+    ref: t,
+    onMouseDown: R(e.onMouseDown, (v) => {
+      o ? l.onItemFocus(s) : v.preventDefault();
     }),
-    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onFocus,
-      () => context.onItemFocus(id)
+    onFocus: R(
+      e.onFocus,
+      () => l.onItemFocus(s)
     ),
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
-      if (event.key === "Tab" && event.shiftKey) {
-        context.onItemShiftTab();
+    onKeyDown: R(e.onKeyDown, (v) => {
+      if (v.key === "Tab" && v.shiftKey) {
+        l.onItemShiftTab();
         return;
       }
-      if (event.target !== event.currentTarget)
+      if (v.target !== v.currentTarget)
         return;
-      const focusIntent = $d7bdfb9eb0fdf311$var$getFocusIntent(event, context.orientation, context.dir);
-      if (focusIntent !== void 0) {
-        event.preventDefault();
-        const items = getItems().filter(
-          (item) => item.focusable
+      const p = Va(v, l.orientation, l.dir);
+      if (p !== void 0) {
+        v.preventDefault();
+        let $ = d().filter(
+          (w) => w.focusable
+        ).map(
+          (w) => w.ref.current
         );
-        let candidateNodes = items.map(
-          (item) => item.ref.current
-        );
-        if (focusIntent === "last")
-          candidateNodes.reverse();
-        else if (focusIntent === "prev" || focusIntent === "next") {
-          if (focusIntent === "prev")
-            candidateNodes.reverse();
-          const currentIndex = candidateNodes.indexOf(event.currentTarget);
-          candidateNodes = context.loop ? $d7bdfb9eb0fdf311$var$wrapArray(candidateNodes, currentIndex + 1) : candidateNodes.slice(currentIndex + 1);
+        if (p === "last")
+          $.reverse();
+        else if (p === "prev" || p === "next") {
+          p === "prev" && $.reverse();
+          const w = $.indexOf(v.currentTarget);
+          $ = l.loop ? ja($, w + 1) : $.slice(w + 1);
         }
         setTimeout(
-          () => $d7bdfb9eb0fdf311$var$focusFirst(candidateNodes)
+          () => Xo($)
         );
       }
     })
   })));
-});
-const $d7bdfb9eb0fdf311$var$MAP_KEY_TO_FOCUS_INTENT = {
+}), za = {
   ArrowLeft: "prev",
   ArrowUp: "prev",
   ArrowRight: "next",
@@ -4396,954 +3149,679 @@ const $d7bdfb9eb0fdf311$var$MAP_KEY_TO_FOCUS_INTENT = {
   PageDown: "last",
   End: "last"
 };
-function $d7bdfb9eb0fdf311$var$getDirectionAwareKey(key, dir) {
-  if (dir !== "rtl")
-    return key;
-  return key === "ArrowLeft" ? "ArrowRight" : key === "ArrowRight" ? "ArrowLeft" : key;
+function Ka(e, t) {
+  return t !== "rtl" ? e : e === "ArrowLeft" ? "ArrowRight" : e === "ArrowRight" ? "ArrowLeft" : e;
 }
-function $d7bdfb9eb0fdf311$var$getFocusIntent(event, orientation, dir) {
-  const key = $d7bdfb9eb0fdf311$var$getDirectionAwareKey(event.key, dir);
-  if (orientation === "vertical" && [
+function Va(e, t, n) {
+  const o = Ka(e.key, n);
+  if (!(t === "vertical" && [
     "ArrowLeft",
     "ArrowRight"
-  ].includes(key))
-    return void 0;
-  if (orientation === "horizontal" && [
+  ].includes(o)) && !(t === "horizontal" && [
     "ArrowUp",
     "ArrowDown"
-  ].includes(key))
-    return void 0;
-  return $d7bdfb9eb0fdf311$var$MAP_KEY_TO_FOCUS_INTENT[key];
+  ].includes(o)))
+    return za[o];
 }
-function $d7bdfb9eb0fdf311$var$focusFirst(candidates) {
-  const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
-  for (const candidate of candidates) {
-    if (candidate === PREVIOUSLY_FOCUSED_ELEMENT)
+function Xo(e) {
+  const t = document.activeElement;
+  for (const n of e)
+    if (n === t || (n.focus(), document.activeElement !== t))
       return;
-    candidate.focus();
-    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT)
-      return;
-  }
 }
-function $d7bdfb9eb0fdf311$var$wrapArray(array, startIndex) {
-  return array.map(
-    (_, index2) => array[(startIndex + index2) % array.length]
+function ja(e, t) {
+  return e.map(
+    (n, o) => e[(t + o) % e.length]
   );
 }
-const $d7bdfb9eb0fdf311$export$be92b6f5f03c0fe9 = $d7bdfb9eb0fdf311$export$8699f7c8af148338;
-const $d7bdfb9eb0fdf311$export$6d08773d2e66f8f2 = $d7bdfb9eb0fdf311$export$ab9df7c53fe8454;
-const $6cc32821e9371a1c$var$SELECTION_KEYS = [
+const Ha = La, Ga = Wa, jt = [
   "Enter",
   " "
-];
-const $6cc32821e9371a1c$var$FIRST_KEYS = [
+], Ya = [
   "ArrowDown",
   "PageUp",
   "Home"
-];
-const $6cc32821e9371a1c$var$LAST_KEYS = [
+], Zo = [
   "ArrowUp",
   "PageDown",
   "End"
-];
-const $6cc32821e9371a1c$var$FIRST_LAST_KEYS = [
-  ...$6cc32821e9371a1c$var$FIRST_KEYS,
-  ...$6cc32821e9371a1c$var$LAST_KEYS
-];
-const $6cc32821e9371a1c$var$SUB_OPEN_KEYS = {
+], Xa = [
+  ...Ya,
+  ...Zo
+], Za = {
   ltr: [
-    ...$6cc32821e9371a1c$var$SELECTION_KEYS,
+    ...jt,
     "ArrowRight"
   ],
   rtl: [
-    ...$6cc32821e9371a1c$var$SELECTION_KEYS,
+    ...jt,
     "ArrowLeft"
   ]
-};
-const $6cc32821e9371a1c$var$SUB_CLOSE_KEYS = {
+}, qa = {
   ltr: [
     "ArrowLeft"
   ],
   rtl: [
     "ArrowRight"
   ]
-};
-const $6cc32821e9371a1c$var$MENU_NAME = "Menu";
-const [$6cc32821e9371a1c$var$Collection, $6cc32821e9371a1c$var$useCollection, $6cc32821e9371a1c$var$createCollectionScope] = $e02a7d9cb1dc128c$export$c74125a8e3af6bb2($6cc32821e9371a1c$var$MENU_NAME);
-const [$6cc32821e9371a1c$var$createMenuContext, $6cc32821e9371a1c$export$4027731b685e72eb] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($6cc32821e9371a1c$var$MENU_NAME, [
-  $6cc32821e9371a1c$var$createCollectionScope,
-  $cf1ac5d9fe0e8206$export$722aac194ae923,
-  $d7bdfb9eb0fdf311$export$c7109489551a4f4
-]);
-const $6cc32821e9371a1c$var$usePopperScope = $cf1ac5d9fe0e8206$export$722aac194ae923();
-const $6cc32821e9371a1c$var$useRovingFocusGroupScope = $d7bdfb9eb0fdf311$export$c7109489551a4f4();
-const [$6cc32821e9371a1c$var$MenuProvider, $6cc32821e9371a1c$var$useMenuContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$MENU_NAME);
-const [$6cc32821e9371a1c$var$MenuRootProvider, $6cc32821e9371a1c$var$useMenuRootContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$MENU_NAME);
-const $6cc32821e9371a1c$export$d9b273488cd8ce6f = (props) => {
-  const { __scopeMenu, open = false, children, dir, onOpenChange, modal = true } = props;
-  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
-  const [content, setContent] = useState(null);
-  const isUsingKeyboardRef = useRef(false);
-  const handleOpenChange = $b1b2314f5f9a1d84$export$25bec8c6f54ee79a(onOpenChange);
-  const direction = $f631663db3294ace$export$b39126d51d94e6f3(dir);
-  useEffect(() => {
-    const handleKeyDown = () => {
-      isUsingKeyboardRef.current = true;
-      document.addEventListener("pointerdown", handlePointer, {
-        capture: true,
-        once: true
+}, Ot = "Menu", [Xe, Qa, Ja] = jo(Ot), [De, qo] = Ne(Ot, [
+  Ja,
+  Et,
+  Yo
+]), hn = Et(), Qo = Yo(), [es, Re] = De(Ot), [ts, et] = De(Ot), ns = (e) => {
+  const { __scopeMenu: t, open: n = !1, children: o, dir: r, onOpenChange: c, modal: i = !0 } = e, a = hn(t), [s, l] = U(null), u = D(!1), d = se(c), m = Ho(r);
+  return F(() => {
+    const f = () => {
+      u.current = !0, document.addEventListener("pointerdown", v, {
+        capture: !0,
+        once: !0
+      }), document.addEventListener("pointermove", v, {
+        capture: !0,
+        once: !0
       });
-      document.addEventListener("pointermove", handlePointer, {
-        capture: true,
-        once: true
+    }, v = () => u.current = !1;
+    return document.addEventListener("keydown", f, {
+      capture: !0
+    }), () => {
+      document.removeEventListener("keydown", f, {
+        capture: !0
+      }), document.removeEventListener("pointerdown", v, {
+        capture: !0
+      }), document.removeEventListener("pointermove", v, {
+        capture: !0
       });
     };
-    const handlePointer = () => isUsingKeyboardRef.current = false;
-    document.addEventListener("keydown", handleKeyDown, {
-      capture: true
-    });
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown, {
-        capture: true
-      });
-      document.removeEventListener("pointerdown", handlePointer, {
-        capture: true
-      });
-      document.removeEventListener("pointermove", handlePointer, {
-        capture: true
-      });
-    };
-  }, []);
-  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9, popperScope, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuProvider, {
-    scope: __scopeMenu,
-    open,
-    onOpenChange: handleOpenChange,
-    content,
-    onContentChange: setContent
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootProvider, {
-    scope: __scopeMenu,
-    onClose: useCallback(
-      () => handleOpenChange(false),
+  }, []), /* @__PURE__ */ g(Po, a, /* @__PURE__ */ g(es, {
+    scope: t,
+    open: n,
+    onOpenChange: d,
+    content: s,
+    onContentChange: l
+  }, /* @__PURE__ */ g(ts, {
+    scope: t,
+    onClose: V(
+      () => d(!1),
       [
-        handleOpenChange
+        d
       ]
     ),
-    isUsingKeyboardRef,
-    dir: direction,
-    modal
-  }, children)));
-};
-const $6cc32821e9371a1c$export$9fa5ebd18bee4d43 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, ...anchorProps } = props;
-  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
-  return /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends({}, popperScope, anchorProps, {
-    ref: forwardedRef
+    isUsingKeyboardRef: u,
+    dir: m,
+    modal: i
+  }, o)));
+}, Jo = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, ...o } = e, r = hn(n);
+  return /* @__PURE__ */ g(_o, P({}, r, o, {
+    ref: t
   }));
-});
-const $6cc32821e9371a1c$var$PORTAL_NAME = "MenuPortal";
-const [$6cc32821e9371a1c$var$PortalProvider, $6cc32821e9371a1c$var$usePortalContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$PORTAL_NAME, {
+}), er = "MenuPortal", [os, tr] = De(er, {
   forceMount: void 0
-});
-const $6cc32821e9371a1c$export$793392f970497feb = (props) => {
-  const { __scopeMenu, forceMount, children, container } = props;
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$PORTAL_NAME, __scopeMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$PortalProvider, {
-    scope: __scopeMenu,
-    forceMount
-  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, /* @__PURE__ */ createElement($f1701beae083dbae$export$602eac185826482c, {
-    asChild: true,
-    container
-  }, children)));
-};
-const $6cc32821e9371a1c$var$CONTENT_NAME = "MenuContent";
-const [$6cc32821e9371a1c$var$MenuContentProvider, $6cc32821e9371a1c$var$useMenuContentContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$CONTENT_NAME);
-const $6cc32821e9371a1c$export$479f0f2f71193efe = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const portalContext = $6cc32821e9371a1c$var$usePortalContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const { forceMount = portalContext.forceMount, ...contentProps } = props;
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Provider, {
-    scope: props.__scopeMenu
-  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Slot, {
-    scope: props.__scopeMenu
-  }, rootContext.modal ? /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootContentModal, _extends({}, contentProps, {
-    ref: forwardedRef
-  })) : /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuRootContentNonModal, _extends({}, contentProps, {
-    ref: forwardedRef
+}), rs = (e) => {
+  const { __scopeMenu: t, forceMount: n, children: o, container: r } = e, c = Re(er, t);
+  return /* @__PURE__ */ g(os, {
+    scope: t,
+    forceMount: n
+  }, /* @__PURE__ */ g(ue, {
+    present: n || c.open
+  }, /* @__PURE__ */ g(ln, {
+    asChild: !0,
+    container: r
+  }, o)));
+}, re = "MenuContent", [cs, vn] = De(re), is = /* @__PURE__ */ _((e, t) => {
+  const n = tr(re, e.__scopeMenu), { forceMount: o = n.forceMount, ...r } = e, c = Re(re, e.__scopeMenu), i = et(re, e.__scopeMenu);
+  return /* @__PURE__ */ g(Xe.Provider, {
+    scope: e.__scopeMenu
+  }, /* @__PURE__ */ g(ue, {
+    present: o || c.open
+  }, /* @__PURE__ */ g(Xe.Slot, {
+    scope: e.__scopeMenu
+  }, i.modal ? /* @__PURE__ */ g(as, P({}, r, {
+    ref: t
+  })) : /* @__PURE__ */ g(ss, P({}, r, {
+    ref: t
   })))));
-});
-const $6cc32821e9371a1c$var$MenuRootContentModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const ref = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  useEffect(() => {
-    const content = ref.current;
-    if (content)
-      return hideOthers(content);
-  }, []);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({}, props, {
-    ref: composedRefs,
-    trapFocus: context.open,
-    disableOutsidePointerEvents: context.open,
-    disableOutsideScroll: true,
-    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onFocusOutside,
-      (event) => event.preventDefault(),
+}), as = /* @__PURE__ */ _((e, t) => {
+  const n = Re(re, e.__scopeMenu), o = D(null), r = G(t, o);
+  return F(() => {
+    const c = o.current;
+    if (c)
+      return dn(c);
+  }, []), /* @__PURE__ */ g(gn, P({}, e, {
+    ref: r,
+    trapFocus: n.open,
+    disableOutsidePointerEvents: n.open,
+    disableOutsideScroll: !0,
+    onFocusOutside: R(
+      e.onFocusOutside,
+      (c) => c.preventDefault(),
       {
-        checkForDefaultPrevented: false
+        checkForDefaultPrevented: !1
       }
     ),
-    onDismiss: () => context.onOpenChange(false)
+    onDismiss: () => n.onOpenChange(!1)
   }));
-});
-const $6cc32821e9371a1c$var$MenuRootContentNonModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({}, props, {
-    ref: forwardedRef,
-    trapFocus: false,
-    disableOutsidePointerEvents: false,
-    disableOutsideScroll: false,
-    onDismiss: () => context.onOpenChange(false)
+}), ss = /* @__PURE__ */ _((e, t) => {
+  const n = Re(re, e.__scopeMenu);
+  return /* @__PURE__ */ g(gn, P({}, e, {
+    ref: t,
+    trapFocus: !1,
+    disableOutsidePointerEvents: !1,
+    disableOutsideScroll: !1,
+    onDismiss: () => n.onOpenChange(!1)
   }));
-});
-const $6cc32821e9371a1c$var$MenuContentImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, loop = false, trapFocus, onOpenAutoFocus, onCloseAutoFocus, disableOutsidePointerEvents, onEntryFocus, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, disableOutsideScroll, ...contentProps } = props;
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, __scopeMenu);
-  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, __scopeMenu);
-  const popperScope = $6cc32821e9371a1c$var$usePopperScope(__scopeMenu);
-  const rovingFocusGroupScope = $6cc32821e9371a1c$var$useRovingFocusGroupScope(__scopeMenu);
-  const getItems = $6cc32821e9371a1c$var$useCollection(__scopeMenu);
-  const [currentItemId, setCurrentItemId] = useState(null);
-  const contentRef = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, contentRef, context.onContentChange);
-  const timerRef = useRef(0);
-  const searchRef = useRef("");
-  const pointerGraceTimerRef = useRef(0);
-  const pointerGraceIntentRef = useRef(null);
-  const pointerDirRef = useRef("right");
-  const lastPointerXRef = useRef(0);
-  const ScrollLockWrapper = disableOutsideScroll ? $67UHm$RemoveScroll : Fragment;
-  const scrollLockWrapperProps = disableOutsideScroll ? {
-    as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
-    allowPinchZoom: true
-  } : void 0;
-  const handleTypeaheadSearch = (key) => {
-    var _items$find, _items$find2;
-    const search = searchRef.current + key;
-    const items = getItems().filter(
-      (item) => !item.disabled
+}), gn = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, loop: o = !1, trapFocus: r, onOpenAutoFocus: c, onCloseAutoFocus: i, disableOutsidePointerEvents: a, onEntryFocus: s, onEscapeKeyDown: l, onPointerDownOutside: u, onFocusOutside: d, onInteractOutside: m, onDismiss: f, disableOutsideScroll: v, ...p } = e, b = Re(re, n), $ = et(re, n), w = hn(n), y = Qo(n), x = Qa(n), [E, M] = U(null), O = D(null), S = G(t, O, b.onContentChange), k = D(0), W = D(""), z = D(0), L = D(null), q = D("right"), T = D(0), B = v ? un : qt, I = v ? {
+    as: xe,
+    allowPinchZoom: !0
+  } : void 0, H = (N) => {
+    var K, X;
+    const fe = W.current + N, be = x().filter(
+      (Q) => !Q.disabled
+    ), Ke = document.activeElement, Pe = (K = be.find(
+      (Q) => Q.ref.current === Ke
+    )) === null || K === void 0 ? void 0 : K.textValue, oe = be.map(
+      (Q) => Q.textValue
+    ), $e = Es(oe, fe, Pe), tt = (X = be.find(
+      (Q) => Q.textValue === $e
+    )) === null || X === void 0 ? void 0 : X.ref.current;
+    (function Q(nt) {
+      W.current = nt, window.clearTimeout(k.current), nt !== "" && (k.current = window.setTimeout(
+        () => Q(""),
+        1e3
+      ));
+    })(fe), tt && setTimeout(
+      () => tt.focus()
     );
-    const currentItem = document.activeElement;
-    const currentMatch = (_items$find = items.find(
-      (item) => item.ref.current === currentItem
-    )) === null || _items$find === void 0 ? void 0 : _items$find.textValue;
-    const values = items.map(
-      (item) => item.textValue
-    );
-    const nextMatch = $6cc32821e9371a1c$var$getNextMatch(values, search, currentMatch);
-    const newItem = (_items$find2 = items.find(
-      (item) => item.textValue === nextMatch
-    )) === null || _items$find2 === void 0 ? void 0 : _items$find2.ref.current;
-    (function updateSearch(value) {
-      searchRef.current = value;
-      window.clearTimeout(timerRef.current);
-      if (value !== "")
-        timerRef.current = window.setTimeout(
-          () => updateSearch(""),
-          1e3
-        );
-    })(search);
-    if (newItem)
-      setTimeout(
-        () => newItem.focus()
-      );
   };
-  useEffect(() => {
-    return () => window.clearTimeout(timerRef.current);
+  F(() => () => window.clearTimeout(k.current), []), en();
+  const Y = V((N) => {
+    var K, X;
+    return q.current === ((K = L.current) === null || K === void 0 ? void 0 : K.side) && _s(N, (X = L.current) === null || X === void 0 ? void 0 : X.area);
   }, []);
-  $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c();
-  const isPointerMovingToSubmenu = useCallback((event) => {
-    var _pointerGraceIntentRe, _pointerGraceIntentRe2;
-    const isMovingTowards = pointerDirRef.current === ((_pointerGraceIntentRe = pointerGraceIntentRef.current) === null || _pointerGraceIntentRe === void 0 ? void 0 : _pointerGraceIntentRe.side);
-    return isMovingTowards && $6cc32821e9371a1c$var$isPointerInGraceArea(event, (_pointerGraceIntentRe2 = pointerGraceIntentRef.current) === null || _pointerGraceIntentRe2 === void 0 ? void 0 : _pointerGraceIntentRe2.area);
-  }, []);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentProvider, {
-    scope: __scopeMenu,
-    searchRef,
-    onItemEnter: useCallback((event) => {
-      if (isPointerMovingToSubmenu(event))
-        event.preventDefault();
+  return /* @__PURE__ */ g(cs, {
+    scope: n,
+    searchRef: W,
+    onItemEnter: V((N) => {
+      Y(N) && N.preventDefault();
     }, [
-      isPointerMovingToSubmenu
+      Y
     ]),
-    onItemLeave: useCallback((event) => {
-      var _contentRef$current;
-      if (isPointerMovingToSubmenu(event))
-        return;
-      (_contentRef$current = contentRef.current) === null || _contentRef$current === void 0 || _contentRef$current.focus();
-      setCurrentItemId(null);
+    onItemLeave: V((N) => {
+      var K;
+      Y(N) || ((K = O.current) === null || K === void 0 || K.focus(), M(null));
     }, [
-      isPointerMovingToSubmenu
+      Y
     ]),
-    onTriggerLeave: useCallback((event) => {
-      if (isPointerMovingToSubmenu(event))
-        event.preventDefault();
+    onTriggerLeave: V((N) => {
+      Y(N) && N.preventDefault();
     }, [
-      isPointerMovingToSubmenu
+      Y
     ]),
-    pointerGraceTimerRef,
-    onPointerGraceIntentChange: useCallback((intent) => {
-      pointerGraceIntentRef.current = intent;
+    pointerGraceTimerRef: z,
+    onPointerGraceIntentChange: V((N) => {
+      L.current = N;
     }, [])
-  }, /* @__PURE__ */ createElement(ScrollLockWrapper, scrollLockWrapperProps, /* @__PURE__ */ createElement($d3863c46a17e8a28$export$20e40289641fbbb6, {
-    asChild: true,
-    trapped: trapFocus,
-    onMountAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(onOpenAutoFocus, (event) => {
-      var _contentRef$current2;
-      event.preventDefault();
-      (_contentRef$current2 = contentRef.current) === null || _contentRef$current2 === void 0 || _contentRef$current2.focus();
+  }, /* @__PURE__ */ g(B, I, /* @__PURE__ */ g(tn, {
+    asChild: !0,
+    trapped: r,
+    onMountAutoFocus: R(c, (N) => {
+      var K;
+      N.preventDefault(), (K = O.current) === null || K === void 0 || K.focus();
     }),
-    onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ createElement($5cb92bef7577960e$export$177fb62ff3ec1f22, {
-    asChild: true,
-    disableOutsidePointerEvents,
-    onEscapeKeyDown,
-    onPointerDownOutside,
-    onFocusOutside,
-    onInteractOutside,
-    onDismiss
-  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$export$be92b6f5f03c0fe9, _extends({
-    asChild: true
-  }, rovingFocusGroupScope, {
-    dir: rootContext.dir,
+    onUnmountAutoFocus: i
+  }, /* @__PURE__ */ g(Jt, {
+    asChild: !0,
+    disableOutsidePointerEvents: a,
+    onEscapeKeyDown: l,
+    onPointerDownOutside: u,
+    onFocusOutside: d,
+    onInteractOutside: m,
+    onDismiss: f
+  }, /* @__PURE__ */ g(Ha, P({
+    asChild: !0
+  }, y, {
+    dir: $.dir,
     orientation: "vertical",
-    loop,
-    currentTabStopId: currentItemId,
-    onCurrentTabStopIdChange: setCurrentItemId,
-    onEntryFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(onEntryFocus, (event) => {
-      if (!rootContext.isUsingKeyboardRef.current)
-        event.preventDefault();
+    loop: o,
+    currentTabStopId: E,
+    onCurrentTabStopIdChange: M,
+    onEntryFocus: R(s, (N) => {
+      $.isUsingKeyboardRef.current || N.preventDefault();
     })
-  }), /* @__PURE__ */ createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends({
+  }), /* @__PURE__ */ g(Oo, P({
     role: "menu",
     "aria-orientation": "vertical",
-    "data-state": $6cc32821e9371a1c$var$getOpenState(context.open),
+    "data-state": ir(b.open),
     "data-radix-menu-content": "",
-    dir: rootContext.dir
-  }, popperScope, contentProps, {
-    ref: composedRefs,
+    dir: $.dir
+  }, w, p, {
+    ref: S,
     style: {
       outline: "none",
-      ...contentProps.style
+      ...p.style
     },
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(contentProps.onKeyDown, (event) => {
-      const target = event.target;
-      const isKeyDownInside = target.closest("[data-radix-menu-content]") === event.currentTarget;
-      const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
-      const isCharacterKey = event.key.length === 1;
-      if (isKeyDownInside) {
-        if (event.key === "Tab")
-          event.preventDefault();
-        if (!isModifierKey && isCharacterKey)
-          handleTypeaheadSearch(event.key);
-      }
-      const content = contentRef.current;
-      if (event.target !== content)
+    onKeyDown: R(p.onKeyDown, (N) => {
+      const X = N.target.closest("[data-radix-menu-content]") === N.currentTarget, fe = N.ctrlKey || N.altKey || N.metaKey, be = N.key.length === 1;
+      X && (N.key === "Tab" && N.preventDefault(), !fe && be && H(N.key));
+      const Ke = O.current;
+      if (N.target !== Ke || !Xa.includes(N.key))
         return;
-      if (!$6cc32821e9371a1c$var$FIRST_LAST_KEYS.includes(event.key))
-        return;
-      event.preventDefault();
-      const items = getItems().filter(
-        (item) => !item.disabled
+      N.preventDefault();
+      const oe = x().filter(
+        ($e) => !$e.disabled
+      ).map(
+        ($e) => $e.ref.current
       );
-      const candidateNodes = items.map(
-        (item) => item.ref.current
-      );
-      if ($6cc32821e9371a1c$var$LAST_KEYS.includes(event.key))
-        candidateNodes.reverse();
-      $6cc32821e9371a1c$var$focusFirst(candidateNodes);
+      Zo.includes(N.key) && oe.reverse(), ys(oe);
     }),
-    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onBlur, (event) => {
-      if (!event.currentTarget.contains(event.target)) {
-        window.clearTimeout(timerRef.current);
-        searchRef.current = "";
-      }
+    onBlur: R(e.onBlur, (N) => {
+      N.currentTarget.contains(N.target) || (window.clearTimeout(k.current), W.current = "");
     }),
-    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
-      const target = event.target;
-      const pointerXHasChanged = lastPointerXRef.current !== event.clientX;
-      if (event.currentTarget.contains(target) && pointerXHasChanged) {
-        const newDir = event.clientX > lastPointerXRef.current ? "right" : "left";
-        pointerDirRef.current = newDir;
-        lastPointerXRef.current = event.clientX;
+    onPointerMove: R(e.onPointerMove, Ze((N) => {
+      const K = N.target, X = T.current !== N.clientX;
+      if (N.currentTarget.contains(K) && X) {
+        const fe = N.clientX > T.current ? "right" : "left";
+        q.current = fe, T.current = N.clientX;
       }
     }))
   })))))));
-});
-const $6cc32821e9371a1c$export$dd37bec0e8a99143 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, ...labelProps } = props;
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, labelProps, {
-    ref: forwardedRef
+}), ls = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, ...o } = e;
+  return /* @__PURE__ */ g(j.div, P({}, o, {
+    ref: t
   }));
-});
-const $6cc32821e9371a1c$var$ITEM_NAME = "MenuItem";
-const $6cc32821e9371a1c$var$ITEM_SELECT = "menu.itemSelect";
-const $6cc32821e9371a1c$export$2ce376c2cc3355c8 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { disabled = false, onSelect, ...itemProps } = props;
-  const ref = useRef(null);
-  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$ITEM_NAME, props.__scopeMenu);
-  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$ITEM_NAME, props.__scopeMenu);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  const isPointerDownRef = useRef(false);
-  const handleSelect = () => {
-    const menuItem = ref.current;
-    if (!disabled && menuItem) {
-      const itemSelectEvent = new CustomEvent($6cc32821e9371a1c$var$ITEM_SELECT, {
-        bubbles: true,
-        cancelable: true
+}), Ht = "MenuItem", Vn = "menu.itemSelect", bn = /* @__PURE__ */ _((e, t) => {
+  const { disabled: n = !1, onSelect: o, ...r } = e, c = D(null), i = et(Ht, e.__scopeMenu), a = vn(Ht, e.__scopeMenu), s = G(t, c), l = D(!1), u = () => {
+    const d = c.current;
+    if (!n && d) {
+      const m = new CustomEvent(Vn, {
+        bubbles: !0,
+        cancelable: !0
       });
-      menuItem.addEventListener(
-        $6cc32821e9371a1c$var$ITEM_SELECT,
-        (event) => onSelect === null || onSelect === void 0 ? void 0 : onSelect(event),
+      d.addEventListener(
+        Vn,
+        (f) => o == null ? void 0 : o(f),
         {
-          once: true
+          once: !0
         }
-      );
-      $8927f6f2acc4f386$export$6d1a0317bde7de7f(menuItem, itemSelectEvent);
-      if (itemSelectEvent.defaultPrevented)
-        isPointerDownRef.current = false;
-      else
-        rootContext.onClose();
+      ), ao(d, m), m.defaultPrevented ? l.current = !1 : i.onClose();
     }
   };
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends({}, itemProps, {
-    ref: composedRefs,
-    disabled,
-    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, handleSelect),
-    onPointerDown: (event) => {
-      var _props$onPointerDown;
-      (_props$onPointerDown = props.onPointerDown) === null || _props$onPointerDown === void 0 || _props$onPointerDown.call(props, event);
-      isPointerDownRef.current = true;
+  return /* @__PURE__ */ g(nr, P({}, r, {
+    ref: s,
+    disabled: n,
+    onClick: R(e.onClick, u),
+    onPointerDown: (d) => {
+      var m;
+      (m = e.onPointerDown) === null || m === void 0 || m.call(e, d), l.current = !0;
     },
-    onPointerUp: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerUp, (event) => {
-      var _event$currentTarget;
-      if (!isPointerDownRef.current)
-        (_event$currentTarget = event.currentTarget) === null || _event$currentTarget === void 0 || _event$currentTarget.click();
+    onPointerUp: R(e.onPointerUp, (d) => {
+      var m;
+      l.current || (m = d.currentTarget) === null || m === void 0 || m.click();
     }),
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
-      const isTypingAhead = contentContext.searchRef.current !== "";
-      if (disabled || isTypingAhead && event.key === " ")
-        return;
-      if ($6cc32821e9371a1c$var$SELECTION_KEYS.includes(event.key)) {
-        event.currentTarget.click();
-        event.preventDefault();
-      }
+    onKeyDown: R(e.onKeyDown, (d) => {
+      const m = a.searchRef.current !== "";
+      n || m && d.key === " " || jt.includes(d.key) && (d.currentTarget.click(), d.preventDefault());
     })
   }));
-});
-const $6cc32821e9371a1c$var$MenuItemImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, disabled = false, textValue, ...itemProps } = props;
-  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$ITEM_NAME, __scopeMenu);
-  const rovingFocusGroupScope = $6cc32821e9371a1c$var$useRovingFocusGroupScope(__scopeMenu);
-  const ref = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  const [isFocused, setIsFocused] = useState(false);
-  const [textContent, setTextContent] = useState("");
-  useEffect(() => {
-    const menuItem = ref.current;
-    if (menuItem) {
-      var _menuItem$textContent;
-      setTextContent(((_menuItem$textContent = menuItem.textContent) !== null && _menuItem$textContent !== void 0 ? _menuItem$textContent : "").trim());
+}), nr = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, disabled: o = !1, textValue: r, ...c } = e, i = vn(Ht, n), a = Qo(n), s = D(null), l = G(t, s), [u, d] = U(!1), [m, f] = U("");
+  return F(() => {
+    const v = s.current;
+    if (v) {
+      var p;
+      f(((p = v.textContent) !== null && p !== void 0 ? p : "").trim());
     }
   }, [
-    itemProps.children
-  ]);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.ItemSlot, {
-    scope: __scopeMenu,
-    disabled,
-    textValue: textValue !== null && textValue !== void 0 ? textValue : textContent
-  }, /* @__PURE__ */ createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends({
-    asChild: true
-  }, rovingFocusGroupScope, {
-    focusable: !disabled
-  }), /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+    c.children
+  ]), /* @__PURE__ */ g(Xe.ItemSlot, {
+    scope: n,
+    disabled: o,
+    textValue: r ?? m
+  }, /* @__PURE__ */ g(Ga, P({
+    asChild: !0
+  }, a, {
+    focusable: !o
+  }), /* @__PURE__ */ g(j.div, P({
     role: "menuitem",
-    "data-highlighted": isFocused ? "" : void 0,
-    "aria-disabled": disabled || void 0,
-    "data-disabled": disabled ? "" : void 0
-  }, itemProps, {
-    ref: composedRefs,
-    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
-      if (disabled)
-        contentContext.onItemLeave(event);
-      else {
-        contentContext.onItemEnter(event);
-        if (!event.defaultPrevented) {
-          const item = event.currentTarget;
-          item.focus();
-        }
-      }
+    "data-highlighted": u ? "" : void 0,
+    "aria-disabled": o || void 0,
+    "data-disabled": o ? "" : void 0
+  }, c, {
+    ref: l,
+    onPointerMove: R(e.onPointerMove, Ze((v) => {
+      o ? i.onItemLeave(v) : (i.onItemEnter(v), v.defaultPrevented || v.currentTarget.focus());
     })),
-    onPointerLeave: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerLeave, $6cc32821e9371a1c$var$whenMouse(
-      (event) => contentContext.onItemLeave(event)
+    onPointerLeave: R(e.onPointerLeave, Ze(
+      (v) => i.onItemLeave(v)
     )),
-    onFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onFocus,
-      () => setIsFocused(true)
+    onFocus: R(
+      e.onFocus,
+      () => d(!0)
     ),
-    onBlur: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onBlur,
-      () => setIsFocused(false)
+    onBlur: R(
+      e.onBlur,
+      () => d(!1)
     )
   }))));
-});
-const $6cc32821e9371a1c$export$f6f243521332502d = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { checked = false, onCheckedChange, ...checkboxItemProps } = props;
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
-    scope: props.__scopeMenu,
-    checked
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends({
+}), ds = /* @__PURE__ */ _((e, t) => {
+  const { checked: n = !1, onCheckedChange: o, ...r } = e;
+  return /* @__PURE__ */ g(rr, {
+    scope: e.__scopeMenu,
+    checked: n
+  }, /* @__PURE__ */ g(bn, P({
     role: "menuitemcheckbox",
-    "aria-checked": $6cc32821e9371a1c$var$isIndeterminate(checked) ? "mixed" : checked
-  }, checkboxItemProps, {
-    ref: forwardedRef,
-    "data-state": $6cc32821e9371a1c$var$getCheckedState(checked),
-    onSelect: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      checkboxItemProps.onSelect,
-      () => onCheckedChange === null || onCheckedChange === void 0 ? void 0 : onCheckedChange($6cc32821e9371a1c$var$isIndeterminate(checked) ? true : !checked),
+    "aria-checked": wt(n) ? "mixed" : n
+  }, r, {
+    ref: t,
+    "data-state": $n(n),
+    onSelect: R(
+      r.onSelect,
+      () => o == null ? void 0 : o(wt(n) ? !0 : !n),
       {
-        checkForDefaultPrevented: false
+        checkForDefaultPrevented: !1
       }
     )
   })));
-});
-const $6cc32821e9371a1c$var$RADIO_GROUP_NAME = "MenuRadioGroup";
-const [$6cc32821e9371a1c$var$RadioGroupProvider, $6cc32821e9371a1c$var$useRadioGroupContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$RADIO_GROUP_NAME, {
+}), us = "MenuRadioGroup", [yd, fs] = De(us, {
   value: void 0,
   onValueChange: () => {
   }
-});
-const $6cc32821e9371a1c$var$RADIO_ITEM_NAME = "MenuRadioItem";
-const $6cc32821e9371a1c$export$69bd225e9817f6d0 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { value, ...radioItemProps } = props;
-  const context = $6cc32821e9371a1c$var$useRadioGroupContext($6cc32821e9371a1c$var$RADIO_ITEM_NAME, props.__scopeMenu);
-  const checked = value === context.value;
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
-    scope: props.__scopeMenu,
-    checked
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends({
+}), ps = "MenuRadioItem", ms = /* @__PURE__ */ _((e, t) => {
+  const { value: n, ...o } = e, r = fs(ps, e.__scopeMenu), c = n === r.value;
+  return /* @__PURE__ */ g(rr, {
+    scope: e.__scopeMenu,
+    checked: c
+  }, /* @__PURE__ */ g(bn, P({
     role: "menuitemradio",
-    "aria-checked": checked
-  }, radioItemProps, {
-    ref: forwardedRef,
-    "data-state": $6cc32821e9371a1c$var$getCheckedState(checked),
-    onSelect: $e42e1063c40fb3ef$export$b9ecd428b558ff10(radioItemProps.onSelect, () => {
-      var _context$onValueChang;
-      return (_context$onValueChang = context.onValueChange) === null || _context$onValueChang === void 0 ? void 0 : _context$onValueChang.call(context, value);
+    "aria-checked": c
+  }, o, {
+    ref: t,
+    "data-state": $n(c),
+    onSelect: R(o.onSelect, () => {
+      var i;
+      return (i = r.onValueChange) === null || i === void 0 ? void 0 : i.call(r, n);
     }, {
-      checkForDefaultPrevented: false
+      checkForDefaultPrevented: !1
     })
   })));
-});
-const $6cc32821e9371a1c$var$ITEM_INDICATOR_NAME = "MenuItemIndicator";
-const [$6cc32821e9371a1c$var$ItemIndicatorProvider, $6cc32821e9371a1c$var$useItemIndicatorContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, {
-  checked: false
-});
-const $6cc32821e9371a1c$export$a2593e23056970a3 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, forceMount, ...itemIndicatorProps } = props;
-  const indicatorContext = $6cc32821e9371a1c$var$useItemIndicatorContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, __scopeMenu);
-  return /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || $6cc32821e9371a1c$var$isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true
-  }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.span, _extends({}, itemIndicatorProps, {
-    ref: forwardedRef,
-    "data-state": $6cc32821e9371a1c$var$getCheckedState(indicatorContext.checked)
+}), or = "MenuItemIndicator", [rr, hs] = De(or, {
+  checked: !1
+}), vs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, forceMount: o, ...r } = e, c = hs(or, n);
+  return /* @__PURE__ */ g(ue, {
+    present: o || wt(c.checked) || c.checked === !0
+  }, /* @__PURE__ */ g(j.span, P({}, r, {
+    ref: t,
+    "data-state": $n(c.checked)
   })));
-});
-const $6cc32821e9371a1c$export$1cec7dcdd713e220 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeMenu, ...separatorProps } = props;
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
+}), gs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeMenu: n, ...o } = e;
+  return /* @__PURE__ */ g(j.div, P({
     role: "separator",
     "aria-orientation": "horizontal"
-  }, separatorProps, {
-    ref: forwardedRef
+  }, o, {
+    ref: t
   }));
-});
-const $6cc32821e9371a1c$var$SUB_NAME = "MenuSub";
-const [$6cc32821e9371a1c$var$MenuSubProvider, $6cc32821e9371a1c$var$useMenuSubContext] = $6cc32821e9371a1c$var$createMenuContext($6cc32821e9371a1c$var$SUB_NAME);
-const $6cc32821e9371a1c$var$SUB_TRIGGER_NAME = "MenuSubTrigger";
-const $6cc32821e9371a1c$export$5fbbb3ba7297405f = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
-  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
-  const subContext = $6cc32821e9371a1c$var$useMenuSubContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
-  const contentContext = $6cc32821e9371a1c$var$useMenuContentContext($6cc32821e9371a1c$var$SUB_TRIGGER_NAME, props.__scopeMenu);
-  const openTimerRef = useRef(null);
-  const { pointerGraceTimerRef, onPointerGraceIntentChange } = contentContext;
-  const scope = {
-    __scopeMenu: props.__scopeMenu
-  };
-  const clearOpenTimer = useCallback(() => {
-    if (openTimerRef.current)
-      window.clearTimeout(openTimerRef.current);
-    openTimerRef.current = null;
+}), bs = "MenuSub", [Cd, cr] = De(bs), dt = "MenuSubTrigger", $s = /* @__PURE__ */ _((e, t) => {
+  const n = Re(dt, e.__scopeMenu), o = et(dt, e.__scopeMenu), r = cr(dt, e.__scopeMenu), c = vn(dt, e.__scopeMenu), i = D(null), { pointerGraceTimerRef: a, onPointerGraceIntentChange: s } = c, l = {
+    __scopeMenu: e.__scopeMenu
+  }, u = V(() => {
+    i.current && window.clearTimeout(i.current), i.current = null;
   }, []);
-  useEffect(
-    () => clearOpenTimer,
+  return F(
+    () => u,
     [
-      clearOpenTimer
+      u
     ]
-  );
-  useEffect(() => {
-    const pointerGraceTimer = pointerGraceTimerRef.current;
+  ), F(() => {
+    const d = a.current;
     return () => {
-      window.clearTimeout(pointerGraceTimer);
-      onPointerGraceIntentChange(null);
+      window.clearTimeout(d), s(null);
     };
   }, [
-    pointerGraceTimerRef,
-    onPointerGraceIntentChange
-  ]);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$9fa5ebd18bee4d43, _extends({
-    asChild: true
-  }, scope), /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends({
-    id: subContext.triggerId,
+    a,
+    s
+  ]), /* @__PURE__ */ g(Jo, P({
+    asChild: !0
+  }, l), /* @__PURE__ */ g(nr, P({
+    id: r.triggerId,
     "aria-haspopup": "menu",
-    "aria-expanded": context.open,
-    "aria-controls": subContext.contentId,
-    "data-state": $6cc32821e9371a1c$var$getOpenState(context.open)
-  }, props, {
-    ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, subContext.onTriggerChange),
-    onClick: (event) => {
-      var _props$onClick;
-      (_props$onClick = props.onClick) === null || _props$onClick === void 0 || _props$onClick.call(props, event);
-      if (props.disabled || event.defaultPrevented)
-        return;
-      event.currentTarget.focus();
-      if (!context.open)
-        context.onOpenChange(true);
+    "aria-expanded": n.open,
+    "aria-controls": r.contentId,
+    "data-state": ir(n.open)
+  }, e, {
+    ref: xt(t, r.onTriggerChange),
+    onClick: (d) => {
+      var m;
+      (m = e.onClick) === null || m === void 0 || m.call(e, d), !(e.disabled || d.defaultPrevented) && (d.currentTarget.focus(), n.open || n.onOpenChange(!0));
     },
-    onPointerMove: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerMove, $6cc32821e9371a1c$var$whenMouse((event) => {
-      contentContext.onItemEnter(event);
-      if (event.defaultPrevented)
-        return;
-      if (!props.disabled && !context.open && !openTimerRef.current) {
-        contentContext.onPointerGraceIntentChange(null);
-        openTimerRef.current = window.setTimeout(() => {
-          context.onOpenChange(true);
-          clearOpenTimer();
-        }, 100);
-      }
+    onPointerMove: R(e.onPointerMove, Ze((d) => {
+      c.onItemEnter(d), !d.defaultPrevented && !e.disabled && !n.open && !i.current && (c.onPointerGraceIntentChange(null), i.current = window.setTimeout(() => {
+        n.onOpenChange(!0), u();
+      }, 100));
     })),
-    onPointerLeave: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerLeave, $6cc32821e9371a1c$var$whenMouse((event) => {
-      var _context$content;
-      clearOpenTimer();
-      const contentRect = (_context$content = context.content) === null || _context$content === void 0 ? void 0 : _context$content.getBoundingClientRect();
-      if (contentRect) {
-        var _context$content2;
-        const side = (_context$content2 = context.content) === null || _context$content2 === void 0 ? void 0 : _context$content2.dataset.side;
-        const rightSide = side === "right";
-        const bleed = rightSide ? -5 : 5;
-        const contentNearEdge = contentRect[rightSide ? "left" : "right"];
-        const contentFarEdge = contentRect[rightSide ? "right" : "left"];
-        contentContext.onPointerGraceIntentChange({
+    onPointerLeave: R(e.onPointerLeave, Ze((d) => {
+      var m;
+      u();
+      const f = (m = n.content) === null || m === void 0 ? void 0 : m.getBoundingClientRect();
+      if (f) {
+        var v;
+        const p = (v = n.content) === null || v === void 0 ? void 0 : v.dataset.side, b = p === "right", $ = b ? -5 : 5, w = f[b ? "left" : "right"], y = f[b ? "right" : "left"];
+        c.onPointerGraceIntentChange({
           area: [
             // consistently within polygon bounds
             {
-              x: event.clientX + bleed,
-              y: event.clientY
+              x: d.clientX + $,
+              y: d.clientY
             },
             {
-              x: contentNearEdge,
-              y: contentRect.top
+              x: w,
+              y: f.top
             },
             {
-              x: contentFarEdge,
-              y: contentRect.top
+              x: y,
+              y: f.top
             },
             {
-              x: contentFarEdge,
-              y: contentRect.bottom
+              x: y,
+              y: f.bottom
             },
             {
-              x: contentNearEdge,
-              y: contentRect.bottom
+              x: w,
+              y: f.bottom
             }
           ],
-          side
-        });
-        window.clearTimeout(pointerGraceTimerRef.current);
-        pointerGraceTimerRef.current = window.setTimeout(
-          () => contentContext.onPointerGraceIntentChange(null),
+          side: p
+        }), window.clearTimeout(a.current), a.current = window.setTimeout(
+          () => c.onPointerGraceIntentChange(null),
           300
         );
       } else {
-        contentContext.onTriggerLeave(event);
-        if (event.defaultPrevented)
+        if (c.onTriggerLeave(d), d.defaultPrevented)
           return;
-        contentContext.onPointerGraceIntentChange(null);
+        c.onPointerGraceIntentChange(null);
       }
     })),
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
-      const isTypingAhead = contentContext.searchRef.current !== "";
-      if (props.disabled || isTypingAhead && event.key === " ")
-        return;
-      if ($6cc32821e9371a1c$var$SUB_OPEN_KEYS[rootContext.dir].includes(event.key)) {
-        var _context$content3;
-        context.onOpenChange(true);
-        (_context$content3 = context.content) === null || _context$content3 === void 0 || _context$content3.focus();
-        event.preventDefault();
+    onKeyDown: R(e.onKeyDown, (d) => {
+      const m = c.searchRef.current !== "";
+      if (!(e.disabled || m && d.key === " ") && Za[o.dir].includes(d.key)) {
+        var f;
+        n.onOpenChange(!0), (f = n.content) === null || f === void 0 || f.focus(), d.preventDefault();
       }
     })
   })));
-});
-const $6cc32821e9371a1c$var$SUB_CONTENT_NAME = "MenuSubContent";
-const $6cc32821e9371a1c$export$e7142ab31822bde6 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const portalContext = $6cc32821e9371a1c$var$usePortalContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const { forceMount = portalContext.forceMount, ...subContentProps } = props;
-  const context = $6cc32821e9371a1c$var$useMenuContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const rootContext = $6cc32821e9371a1c$var$useMenuRootContext($6cc32821e9371a1c$var$CONTENT_NAME, props.__scopeMenu);
-  const subContext = $6cc32821e9371a1c$var$useMenuSubContext($6cc32821e9371a1c$var$SUB_CONTENT_NAME, props.__scopeMenu);
-  const ref = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, ref);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Provider, {
-    scope: props.__scopeMenu
-  }, /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$Collection.Slot, {
-    scope: props.__scopeMenu
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$var$MenuContentImpl, _extends({
-    id: subContext.contentId,
-    "aria-labelledby": subContext.triggerId
-  }, subContentProps, {
-    ref: composedRefs,
+}), ws = "MenuSubContent", xs = /* @__PURE__ */ _((e, t) => {
+  const n = tr(re, e.__scopeMenu), { forceMount: o = n.forceMount, ...r } = e, c = Re(re, e.__scopeMenu), i = et(re, e.__scopeMenu), a = cr(ws, e.__scopeMenu), s = D(null), l = G(t, s);
+  return /* @__PURE__ */ g(Xe.Provider, {
+    scope: e.__scopeMenu
+  }, /* @__PURE__ */ g(ue, {
+    present: o || c.open
+  }, /* @__PURE__ */ g(Xe.Slot, {
+    scope: e.__scopeMenu
+  }, /* @__PURE__ */ g(gn, P({
+    id: a.contentId,
+    "aria-labelledby": a.triggerId
+  }, r, {
+    ref: l,
     align: "start",
-    side: rootContext.dir === "rtl" ? "left" : "right",
-    disableOutsidePointerEvents: false,
-    disableOutsideScroll: false,
-    trapFocus: false,
-    onOpenAutoFocus: (event) => {
-      var _ref$current;
-      if (rootContext.isUsingKeyboardRef.current)
-        (_ref$current = ref.current) === null || _ref$current === void 0 || _ref$current.focus();
-      event.preventDefault();
+    side: i.dir === "rtl" ? "left" : "right",
+    disableOutsidePointerEvents: !1,
+    disableOutsideScroll: !1,
+    trapFocus: !1,
+    onOpenAutoFocus: (u) => {
+      var d;
+      i.isUsingKeyboardRef.current && ((d = s.current) === null || d === void 0 || d.focus()), u.preventDefault();
     },
-    onCloseAutoFocus: (event) => event.preventDefault(),
-    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onFocusOutside, (event) => {
-      if (event.target !== subContext.trigger)
-        context.onOpenChange(false);
+    onCloseAutoFocus: (u) => u.preventDefault(),
+    onFocusOutside: R(e.onFocusOutside, (u) => {
+      u.target !== a.trigger && c.onOpenChange(!1);
     }),
-    onEscapeKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onEscapeKeyDown, (event) => {
-      rootContext.onClose();
-      event.preventDefault();
+    onEscapeKeyDown: R(e.onEscapeKeyDown, (u) => {
+      i.onClose(), u.preventDefault();
     }),
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
-      const isKeyDownInside = event.currentTarget.contains(event.target);
-      const isCloseKey = $6cc32821e9371a1c$var$SUB_CLOSE_KEYS[rootContext.dir].includes(event.key);
-      if (isKeyDownInside && isCloseKey) {
-        var _subContext$trigger;
-        context.onOpenChange(false);
-        (_subContext$trigger = subContext.trigger) === null || _subContext$trigger === void 0 || _subContext$trigger.focus();
-        event.preventDefault();
+    onKeyDown: R(e.onKeyDown, (u) => {
+      const d = u.currentTarget.contains(u.target), m = qa[i.dir].includes(u.key);
+      if (d && m) {
+        var f;
+        c.onOpenChange(!1), (f = a.trigger) === null || f === void 0 || f.focus(), u.preventDefault();
       }
     })
   })))));
 });
-function $6cc32821e9371a1c$var$getOpenState(open) {
-  return open ? "open" : "closed";
+function ir(e) {
+  return e ? "open" : "closed";
 }
-function $6cc32821e9371a1c$var$isIndeterminate(checked) {
-  return checked === "indeterminate";
+function wt(e) {
+  return e === "indeterminate";
 }
-function $6cc32821e9371a1c$var$getCheckedState(checked) {
-  return $6cc32821e9371a1c$var$isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
+function $n(e) {
+  return wt(e) ? "indeterminate" : e ? "checked" : "unchecked";
 }
-function $6cc32821e9371a1c$var$focusFirst(candidates) {
-  const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
-  for (const candidate of candidates) {
-    if (candidate === PREVIOUSLY_FOCUSED_ELEMENT)
+function ys(e) {
+  const t = document.activeElement;
+  for (const n of e)
+    if (n === t || (n.focus(), document.activeElement !== t))
       return;
-    candidate.focus();
-    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT)
-      return;
+}
+function Cs(e, t) {
+  return e.map(
+    (n, o) => e[(t + o) % e.length]
+  );
+}
+function Es(e, t, n) {
+  const r = t.length > 1 && Array.from(t).every(
+    (l) => l === t[0]
+  ) ? t[0] : t, c = n ? e.indexOf(n) : -1;
+  let i = Cs(e, Math.max(c, 0));
+  r.length === 1 && (i = i.filter(
+    (l) => l !== n
+  ));
+  const s = i.find(
+    (l) => l.toLowerCase().startsWith(r.toLowerCase())
+  );
+  return s !== n ? s : void 0;
+}
+function Ps(e, t) {
+  const { x: n, y: o } = e;
+  let r = !1;
+  for (let c = 0, i = t.length - 1; c < t.length; i = c++) {
+    const a = t[c].x, s = t[c].y, l = t[i].x, u = t[i].y;
+    s > o != u > o && n < (l - a) * (o - s) / (u - s) + a && (r = !r);
   }
+  return r;
 }
-function $6cc32821e9371a1c$var$wrapArray(array, startIndex) {
-  return array.map(
-    (_, index2) => array[(startIndex + index2) % array.length]
-  );
-}
-function $6cc32821e9371a1c$var$getNextMatch(values, search, currentMatch) {
-  const isRepeated = search.length > 1 && Array.from(search).every(
-    (char) => char === search[0]
-  );
-  const normalizedSearch = isRepeated ? search[0] : search;
-  const currentMatchIndex = currentMatch ? values.indexOf(currentMatch) : -1;
-  let wrappedValues = $6cc32821e9371a1c$var$wrapArray(values, Math.max(currentMatchIndex, 0));
-  const excludeCurrentMatch = normalizedSearch.length === 1;
-  if (excludeCurrentMatch)
-    wrappedValues = wrappedValues.filter(
-      (v) => v !== currentMatch
-    );
-  const nextMatch = wrappedValues.find(
-    (value) => value.toLowerCase().startsWith(normalizedSearch.toLowerCase())
-  );
-  return nextMatch !== currentMatch ? nextMatch : void 0;
-}
-function $6cc32821e9371a1c$var$isPointInPolygon(point, polygon) {
-  const { x, y } = point;
-  let inside = false;
-  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-    const xi = polygon[i].x;
-    const yi = polygon[i].y;
-    const xj = polygon[j].x;
-    const yj = polygon[j].y;
-    const intersect = yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi;
-    if (intersect)
-      inside = !inside;
-  }
-  return inside;
-}
-function $6cc32821e9371a1c$var$isPointerInGraceArea(event, area) {
-  if (!area)
-    return false;
-  const cursorPos = {
-    x: event.clientX,
-    y: event.clientY
+function _s(e, t) {
+  if (!t)
+    return !1;
+  const n = {
+    x: e.clientX,
+    y: e.clientY
   };
-  return $6cc32821e9371a1c$var$isPointInPolygon(cursorPos, area);
+  return Ps(n, t);
 }
-function $6cc32821e9371a1c$var$whenMouse(handler) {
-  return (event) => event.pointerType === "mouse" ? handler(event) : void 0;
+function Ze(e) {
+  return (t) => t.pointerType === "mouse" ? e(t) : void 0;
 }
-const $6cc32821e9371a1c$export$be92b6f5f03c0fe9 = $6cc32821e9371a1c$export$d9b273488cd8ce6f;
-const $6cc32821e9371a1c$export$b688253958b8dfe7 = $6cc32821e9371a1c$export$9fa5ebd18bee4d43;
-const $6cc32821e9371a1c$export$602eac185826482c = $6cc32821e9371a1c$export$793392f970497feb;
-const $6cc32821e9371a1c$export$7c6e2c02157bb7d2 = $6cc32821e9371a1c$export$479f0f2f71193efe;
-const $6cc32821e9371a1c$export$b04be29aa201d4f5 = $6cc32821e9371a1c$export$dd37bec0e8a99143;
-const $6cc32821e9371a1c$export$6d08773d2e66f8f2 = $6cc32821e9371a1c$export$2ce376c2cc3355c8;
-const $6cc32821e9371a1c$export$16ce288f89fa631c = $6cc32821e9371a1c$export$f6f243521332502d;
-const $6cc32821e9371a1c$export$371ab307eab489c0 = $6cc32821e9371a1c$export$69bd225e9817f6d0;
-const $6cc32821e9371a1c$export$c3468e2714d175fa = $6cc32821e9371a1c$export$a2593e23056970a3;
-const $6cc32821e9371a1c$export$1ff3c3f08ae963c0 = $6cc32821e9371a1c$export$1cec7dcdd713e220;
-const $6cc32821e9371a1c$export$2ea8a7a591ac5eac = $6cc32821e9371a1c$export$5fbbb3ba7297405f;
-const $6cc32821e9371a1c$export$6d4de93b380beddf = $6cc32821e9371a1c$export$e7142ab31822bde6;
-const $d08ef79370b62062$var$DROPDOWN_MENU_NAME = "DropdownMenu";
-const [$d08ef79370b62062$var$createDropdownMenuContext, $d08ef79370b62062$export$c0623cd925aeb687] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($d08ef79370b62062$var$DROPDOWN_MENU_NAME, [
-  $6cc32821e9371a1c$export$4027731b685e72eb
-]);
-const $d08ef79370b62062$var$useMenuScope = $6cc32821e9371a1c$export$4027731b685e72eb();
-const [$d08ef79370b62062$var$DropdownMenuProvider, $d08ef79370b62062$var$useDropdownMenuContext] = $d08ef79370b62062$var$createDropdownMenuContext($d08ef79370b62062$var$DROPDOWN_MENU_NAME);
-const $d08ef79370b62062$export$e44a253a59704894 = (props) => {
-  const { __scopeDropdownMenu, children, dir, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  const triggerRef = useRef(null);
-  const [open = false, setOpen] = $71cd76cc60e0454e$export$6f32135080cb4c3({
-    prop: openProp,
-    defaultProp: defaultOpen,
-    onChange: onOpenChange
+const Os = ns, Ss = Jo, Ms = rs, Ns = is, Ds = ls, Rs = bn, As = ds, Ts = ms, ks = vs, Is = gs, Fs = $s, Ls = xs, ar = "DropdownMenu", [Bs, Ed] = Ne(ar, [
+  qo
+]), ne = qo(), [Us, sr] = Bs(ar), Ws = (e) => {
+  const { __scopeDropdownMenu: t, children: n, dir: o, open: r, defaultOpen: c, onOpenChange: i, modal: a = !0 } = e, s = ne(t), l = D(null), [u = !1, d] = Pt({
+    prop: r,
+    defaultProp: c,
+    onChange: i
   });
-  return /* @__PURE__ */ createElement($d08ef79370b62062$var$DropdownMenuProvider, {
-    scope: __scopeDropdownMenu,
-    triggerId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    triggerRef,
-    contentId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    open,
-    onOpenChange: setOpen,
-    onOpenToggle: useCallback(
-      () => setOpen(
-        (prevOpen) => !prevOpen
+  return /* @__PURE__ */ g(Us, {
+    scope: t,
+    triggerId: Se(),
+    triggerRef: l,
+    contentId: Se(),
+    open: u,
+    onOpenChange: d,
+    onOpenToggle: V(
+      () => d(
+        (m) => !m
       ),
       [
-        setOpen
+        d
       ]
     ),
-    modal
-  }, /* @__PURE__ */ createElement($6cc32821e9371a1c$export$be92b6f5f03c0fe9, _extends({}, menuScope, {
-    open,
-    onOpenChange: setOpen,
-    dir,
-    modal
-  }), children));
-};
-const $d08ef79370b62062$var$TRIGGER_NAME = "DropdownMenuTrigger";
-const $d08ef79370b62062$export$d2469213b3befba9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, disabled = false, ...triggerProps } = props;
-  const context = $d08ef79370b62062$var$useDropdownMenuContext($d08ef79370b62062$var$TRIGGER_NAME, __scopeDropdownMenu);
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$b688253958b8dfe7, _extends({
-    asChild: true
-  }, menuScope), /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    modal: a
+  }, /* @__PURE__ */ g(Os, P({}, s, {
+    open: u,
+    onOpenChange: d,
+    dir: o,
+    modal: a
+  }), n));
+}, zs = "DropdownMenuTrigger", Ks = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, disabled: o = !1, ...r } = e, c = sr(zs, n), i = ne(n);
+  return /* @__PURE__ */ g(Ss, P({
+    asChild: !0
+  }, i), /* @__PURE__ */ g(j.button, P({
     type: "button",
-    id: context.triggerId,
+    id: c.triggerId,
     "aria-haspopup": "menu",
-    "aria-expanded": context.open,
-    "aria-controls": context.open ? context.contentId : void 0,
-    "data-state": context.open ? "open" : "closed",
-    "data-disabled": disabled ? "" : void 0,
-    disabled
-  }, triggerProps, {
-    ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, context.triggerRef),
-    onPointerDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDown, (event) => {
-      if (!disabled && event.button === 0 && event.ctrlKey === false) {
-        context.onOpenToggle();
-        if (!context.open)
-          event.preventDefault();
-      }
+    "aria-expanded": c.open,
+    "aria-controls": c.open ? c.contentId : void 0,
+    "data-state": c.open ? "open" : "closed",
+    "data-disabled": o ? "" : void 0,
+    disabled: o
+  }, r, {
+    ref: xt(t, c.triggerRef),
+    onPointerDown: R(e.onPointerDown, (a) => {
+      !o && a.button === 0 && a.ctrlKey === !1 && (c.onOpenToggle(), c.open || a.preventDefault());
     }),
-    onKeyDown: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onKeyDown, (event) => {
-      if (disabled)
-        return;
-      if ([
+    onKeyDown: R(e.onKeyDown, (a) => {
+      o || ([
         "Enter",
         " "
-      ].includes(event.key))
-        context.onOpenToggle();
-      if (event.key === "ArrowDown")
-        context.onOpenChange(true);
-      if ([
+      ].includes(a.key) && c.onOpenToggle(), a.key === "ArrowDown" && c.onOpenChange(!0), [
         "Enter",
         " ",
         "ArrowDown"
-      ].includes(event.key))
-        event.preventDefault();
+      ].includes(a.key) && a.preventDefault());
     })
   })));
-});
-const $d08ef79370b62062$export$cd369b4d4d54efc9 = (props) => {
-  const { __scopeDropdownMenu, ...portalProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$602eac185826482c, _extends({}, menuScope, portalProps));
-};
-const $d08ef79370b62062$var$CONTENT_NAME = "DropdownMenuContent";
-const $d08ef79370b62062$export$6e76d93a37c01248 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...contentProps } = props;
-  const context = $d08ef79370b62062$var$useDropdownMenuContext($d08ef79370b62062$var$CONTENT_NAME, __scopeDropdownMenu);
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  const hasInteractedOutsideRef = useRef(false);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$7c6e2c02157bb7d2, _extends({
-    id: context.contentId,
-    "aria-labelledby": context.triggerId
-  }, menuScope, contentProps, {
-    ref: forwardedRef,
-    onCloseAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onCloseAutoFocus, (event) => {
-      var _context$triggerRef$c;
-      if (!hasInteractedOutsideRef.current)
-        (_context$triggerRef$c = context.triggerRef.current) === null || _context$triggerRef$c === void 0 || _context$triggerRef$c.focus();
-      hasInteractedOutsideRef.current = false;
-      event.preventDefault();
+}), Vs = (e) => {
+  const { __scopeDropdownMenu: t, ...n } = e, o = ne(t);
+  return /* @__PURE__ */ g(Ms, P({}, o, n));
+}, js = "DropdownMenuContent", Hs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = sr(js, n), c = ne(n), i = D(!1);
+  return /* @__PURE__ */ g(Ns, P({
+    id: r.contentId,
+    "aria-labelledby": r.triggerId
+  }, c, o, {
+    ref: t,
+    onCloseAutoFocus: R(e.onCloseAutoFocus, (a) => {
+      var s;
+      i.current || (s = r.triggerRef.current) === null || s === void 0 || s.focus(), i.current = !1, a.preventDefault();
     }),
-    onInteractOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onInteractOutside, (event) => {
-      const originalEvent = event.detail.originalEvent;
-      const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-      const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-      if (!context.modal || isRightClick)
-        hasInteractedOutsideRef.current = true;
+    onInteractOutside: R(e.onInteractOutside, (a) => {
+      const s = a.detail.originalEvent, l = s.button === 0 && s.ctrlKey === !0, u = s.button === 2 || l;
+      (!r.modal || u) && (i.current = !0);
     }),
     style: {
-      ...props.style,
+      ...e.style,
       "--radix-dropdown-menu-content-transform-origin": "var(--radix-popper-transform-origin)",
       "--radix-dropdown-menu-content-available-width": "var(--radix-popper-available-width)",
       "--radix-dropdown-menu-content-available-height": "var(--radix-popper-available-height)",
@@ -5351,63 +3829,47 @@ const $d08ef79370b62062$export$6e76d93a37c01248 = /* @__PURE__ */ forwardRef((pr
       "--radix-dropdown-menu-trigger-height": "var(--radix-popper-anchor-height)"
     }
   }));
-});
-const $d08ef79370b62062$export$76e48c5b57f24495 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...labelProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$b04be29aa201d4f5, _extends({}, menuScope, labelProps, {
-    ref: forwardedRef
+}), Gs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Ds, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$ed97964d1871885d = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...itemProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$6d08773d2e66f8f2, _extends({}, menuScope, itemProps, {
-    ref: forwardedRef
+}), Ys = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Rs, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$53a69729da201fa9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...checkboxItemProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends({}, menuScope, checkboxItemProps, {
-    ref: forwardedRef
+}), Xs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(As, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$e4f69b41b1637536 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...radioItemProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends({}, menuScope, radioItemProps, {
-    ref: forwardedRef
+}), Zs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Ts, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$42355ae145153fb6 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends({}, menuScope, itemIndicatorProps, {
-    ref: forwardedRef
+}), qs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(ks, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$da160178fd3bc7e9 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...separatorProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$1ff3c3f08ae963c0, _extends({}, menuScope, separatorProps, {
-    ref: forwardedRef
+}), Qs = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Is, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$21dcb7ec56f874cf = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...subTriggerProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$2ea8a7a591ac5eac, _extends({}, menuScope, subTriggerProps, {
-    ref: forwardedRef
+}), Js = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Fs, P({}, r, o, {
+    ref: t
   }));
-});
-const $d08ef79370b62062$export$f34ec8bc2482cc5f = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDropdownMenu, ...subContentProps } = props;
-  const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ createElement($6cc32821e9371a1c$export$6d4de93b380beddf, _extends({}, menuScope, subContentProps, {
-    ref: forwardedRef,
+}), el = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDropdownMenu: n, ...o } = e, r = ne(n);
+  return /* @__PURE__ */ g(Ls, P({}, r, o, {
+    ref: t,
     style: {
-      ...props.style,
+      ...e.style,
       "--radix-dropdown-menu-content-transform-origin": "var(--radix-popper-transform-origin)",
       "--radix-dropdown-menu-content-available-width": "var(--radix-popper-available-width)",
       "--radix-dropdown-menu-content-available-height": "var(--radix-popper-available-height)",
@@ -5415,217 +3877,190 @@ const $d08ef79370b62062$export$f34ec8bc2482cc5f = /* @__PURE__ */ forwardRef((pr
       "--radix-dropdown-menu-trigger-height": "var(--radix-popper-anchor-height)"
     }
   }));
-});
-const $d08ef79370b62062$export$be92b6f5f03c0fe9 = $d08ef79370b62062$export$e44a253a59704894;
-const $d08ef79370b62062$export$41fb9f06171c75f4 = $d08ef79370b62062$export$d2469213b3befba9;
-const $d08ef79370b62062$export$602eac185826482c = $d08ef79370b62062$export$cd369b4d4d54efc9;
-const $d08ef79370b62062$export$7c6e2c02157bb7d2 = $d08ef79370b62062$export$6e76d93a37c01248;
-const $d08ef79370b62062$export$b04be29aa201d4f5 = $d08ef79370b62062$export$76e48c5b57f24495;
-const $d08ef79370b62062$export$6d08773d2e66f8f2 = $d08ef79370b62062$export$ed97964d1871885d;
-const $d08ef79370b62062$export$16ce288f89fa631c = $d08ef79370b62062$export$53a69729da201fa9;
-const $d08ef79370b62062$export$371ab307eab489c0 = $d08ef79370b62062$export$e4f69b41b1637536;
-const $d08ef79370b62062$export$c3468e2714d175fa = $d08ef79370b62062$export$42355ae145153fb6;
-const $d08ef79370b62062$export$1ff3c3f08ae963c0 = $d08ef79370b62062$export$da160178fd3bc7e9;
-const $d08ef79370b62062$export$2ea8a7a591ac5eac = $d08ef79370b62062$export$21dcb7ec56f874cf;
-const $d08ef79370b62062$export$6d4de93b380beddf = $d08ef79370b62062$export$f34ec8bc2482cc5f;
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null)
+}), tl = Ws, nl = Ks, ol = Vs, lr = Hs, dr = Gs, ur = Ys, fr = Xs, pr = Zs, mr = qs, hr = Qs, vr = Js, gr = el;
+function St(e, t) {
+  if (e == null)
     return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0)
-      continue;
-    target[key] = source[key];
-  }
-  return target;
+  var n = {}, o = Object.keys(e), r, c;
+  for (c = 0; c < o.length; c++)
+    r = o[c], !(t.indexOf(r) >= 0) && (n[r] = e[r]);
+  return n;
 }
-var _excluded$T = ["color"];
-var CheckIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
-  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$T);
-  return createElement("svg", Object.assign({
+var rl = ["color"], cl = /* @__PURE__ */ _(function(e, t) {
+  var n = e.color, o = n === void 0 ? "currentColor" : n, r = St(e, rl);
+  return g("svg", Object.assign({
     width: "15",
     height: "15",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props, {
-    ref: forwardedRef
-  }), createElement("path", {
+  }, r, {
+    ref: t
+  }), g("path", {
     d: "M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z",
-    fill: color,
+    fill: o,
     fillRule: "evenodd",
     clipRule: "evenodd"
   }));
-});
-var _excluded$Y = ["color"];
-var ChevronRightIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
-  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$Y);
-  return createElement("svg", Object.assign({
+}), il = ["color"], al = /* @__PURE__ */ _(function(e, t) {
+  var n = e.color, o = n === void 0 ? "currentColor" : n, r = St(e, il);
+  return g("svg", Object.assign({
     width: "15",
     height: "15",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props, {
-    ref: forwardedRef
-  }), createElement("path", {
+  }, r, {
+    ref: t
+  }), g("path", {
     d: "M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z",
-    fill: color,
+    fill: o,
     fillRule: "evenodd",
     clipRule: "evenodd"
   }));
-});
-var _excluded$1r = ["color"];
-var Cross2Icon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
-  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$1r);
-  return createElement("svg", Object.assign({
+}), sl = ["color"], ll = /* @__PURE__ */ _(function(e, t) {
+  var n = e.color, o = n === void 0 ? "currentColor" : n, r = St(e, sl);
+  return g("svg", Object.assign({
     width: "15",
     height: "15",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props, {
-    ref: forwardedRef
-  }), createElement("path", {
+  }, r, {
+    ref: t
+  }), g("path", {
     d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
-    fill: color,
+    fill: o,
     fillRule: "evenodd",
     clipRule: "evenodd"
   }));
-});
-var _excluded$1I = ["color"];
-var DotFilledIcon = /* @__PURE__ */ forwardRef(function(_ref, forwardedRef) {
-  var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$1I);
-  return createElement("svg", Object.assign({
+}), dl = ["color"], ul = /* @__PURE__ */ _(function(e, t) {
+  var n = e.color, o = n === void 0 ? "currentColor" : n, r = St(e, dl);
+  return g("svg", Object.assign({
     width: "15",
     height: "15",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props, {
-    ref: forwardedRef
-  }), createElement("path", {
+  }, r, {
+    ref: t
+  }), g("path", {
     d: "M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z",
-    fill: color
+    fill: o
   }));
 });
-const DropdownMenu = $d08ef79370b62062$export$be92b6f5f03c0fe9;
-const DropdownMenuTrigger = $d08ef79370b62062$export$41fb9f06171c75f4;
-const DropdownMenuSubTrigger = React.forwardRef(({ className, inset, children, ...props }, ref) => /* @__PURE__ */ jsxs(
-  $d08ef79370b62062$export$2ea8a7a591ac5eac,
+const fl = tl, pl = nl, ml = C.forwardRef(({ className: e, inset: t, children: n, ...o }, r) => /* @__PURE__ */ A(
+  vr,
   {
-    ref,
-    className: cn(
+    ref: r,
+    className: Z(
       "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
-      inset && "pl-8",
-      className
+      t && "pl-8",
+      e
     ),
-    ...props,
+    ...o,
     children: [
-      children,
-      /* @__PURE__ */ jsx(ChevronRightIcon, { className: "ml-auto h-4 w-4" })
+      n,
+      /* @__PURE__ */ h(al, { className: "ml-auto h-4 w-4" })
     ]
   }
 ));
-DropdownMenuSubTrigger.displayName = $d08ef79370b62062$export$2ea8a7a591ac5eac.displayName;
-const DropdownMenuSubContent = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  $d08ef79370b62062$export$6d4de93b380beddf,
+ml.displayName = vr.displayName;
+const hl = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ h(
+  gr,
   {
-    ref,
-    className: cn(
+    ref: n,
+    className: Z(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
+      e
     ),
-    ...props
+    ...t
   }
 ));
-DropdownMenuSubContent.displayName = $d08ef79370b62062$export$6d4de93b380beddf.displayName;
-const DropdownMenuContent = React.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx($d08ef79370b62062$export$602eac185826482c, { children: /* @__PURE__ */ jsx(
-  $d08ef79370b62062$export$7c6e2c02157bb7d2,
+hl.displayName = gr.displayName;
+const br = C.forwardRef(({ className: e, sideOffset: t = 4, ...n }, o) => /* @__PURE__ */ h(ol, { children: /* @__PURE__ */ h(
+  lr,
   {
-    ref,
-    sideOffset,
-    className: cn(
+    ref: o,
+    sideOffset: t,
+    className: Z(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
+      e
     ),
-    ...props
+    ...n
   }
 ) }));
-DropdownMenuContent.displayName = $d08ef79370b62062$export$7c6e2c02157bb7d2.displayName;
-const DropdownMenuItem = React.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx(
-  $d08ef79370b62062$export$6d08773d2e66f8f2,
+br.displayName = lr.displayName;
+const Mt = C.forwardRef(({ className: e, inset: t, ...n }, o) => /* @__PURE__ */ h(
+  ur,
   {
-    ref,
-    className: cn(
+    ref: o,
+    className: Z(
       "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      inset && "pl-8",
-      className
+      t && "pl-8",
+      e
     ),
-    ...props
+    ...n
   }
 ));
-DropdownMenuItem.displayName = $d08ef79370b62062$export$6d08773d2e66f8f2.displayName;
-const DropdownMenuCheckboxItem = React.forwardRef(({ className, children, checked, ...props }, ref) => /* @__PURE__ */ jsxs(
-  $d08ef79370b62062$export$16ce288f89fa631c,
+Mt.displayName = ur.displayName;
+const vl = C.forwardRef(({ className: e, children: t, checked: n, ...o }, r) => /* @__PURE__ */ A(
+  fr,
   {
-    ref,
-    className: cn(
+    ref: r,
+    className: Z(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      e
     ),
-    checked,
-    ...props,
+    checked: n,
+    ...o,
     children: [
-      /* @__PURE__ */ jsx("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx($d08ef79370b62062$export$c3468e2714d175fa, { children: /* @__PURE__ */ jsx(CheckIcon, { className: "h-4 w-4" }) }) }),
-      children
+      /* @__PURE__ */ h("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ h(mr, { children: /* @__PURE__ */ h(cl, { className: "h-4 w-4" }) }) }),
+      t
     ]
   }
 ));
-DropdownMenuCheckboxItem.displayName = $d08ef79370b62062$export$16ce288f89fa631c.displayName;
-const DropdownMenuRadioItem = React.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs(
-  $d08ef79370b62062$export$371ab307eab489c0,
+vl.displayName = fr.displayName;
+const gl = C.forwardRef(({ className: e, children: t, ...n }, o) => /* @__PURE__ */ A(
+  pr,
   {
-    ref,
-    className: cn(
+    ref: o,
+    className: Z(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      e
     ),
-    ...props,
+    ...n,
     children: [
-      /* @__PURE__ */ jsx("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx($d08ef79370b62062$export$c3468e2714d175fa, { children: /* @__PURE__ */ jsx(DotFilledIcon, { className: "h-4 w-4 fill-current" }) }) }),
-      children
+      /* @__PURE__ */ h("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ h(mr, { children: /* @__PURE__ */ h(ul, { className: "h-4 w-4 fill-current" }) }) }),
+      t
     ]
   }
 ));
-DropdownMenuRadioItem.displayName = $d08ef79370b62062$export$371ab307eab489c0.displayName;
-const DropdownMenuLabel = React.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx(
-  $d08ef79370b62062$export$b04be29aa201d4f5,
+gl.displayName = pr.displayName;
+const $r = C.forwardRef(({ className: e, inset: t, ...n }, o) => /* @__PURE__ */ h(
+  dr,
   {
-    ref,
-    className: cn(
+    ref: o,
+    className: Z(
       "px-2 py-1.5 text-sm font-semibold",
-      inset && "pl-8",
-      className
+      t && "pl-8",
+      e
     ),
-    ...props
+    ...n
   }
 ));
-DropdownMenuLabel.displayName = $d08ef79370b62062$export$b04be29aa201d4f5.displayName;
-const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  $d08ef79370b62062$export$1ff3c3f08ae963c0,
+$r.displayName = dr.displayName;
+const qe = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ h(
+  hr,
   {
-    ref,
-    className: cn("-mx-1 my-1 h-px bg-muted", className),
-    ...props
+    ref: n,
+    className: Z("-mx-1 my-1 h-px bg-muted", e),
+    ...t
   }
 ));
-DropdownMenuSeparator.displayName = $d08ef79370b62062$export$1ff3c3f08ae963c0.displayName;
-const defaultMenuMap = [
+qe.displayName = hr.displayName;
+const wn = [
   {
     type: "wrapper",
     className: "flex flex-col w-full h-fit",
@@ -5637,12 +4072,12 @@ const defaultMenuMap = [
         type: "links",
         items: [
           {
-            icon: TiDocumentText,
+            icon: nc,
             text: "Документация",
             link: "https://docs.darkmaterial.space"
           },
           {
-            icon: BiCog,
+            icon: Vr,
             text: "Настройки",
             link: "/settings"
           }
@@ -5662,763 +4097,558 @@ const defaultMenuMap = [
         activeState: "inactive",
         state: {
           active: "У вас уже есть Плюс",
-          inactive: /* @__PURE__ */ jsx(Button, { variant: "outline", className: "w-full", children: /* @__PURE__ */ jsx("a", { href: "/plus", children: "Получить Плюс" }) })
+          inactive: /* @__PURE__ */ h(de, { variant: "outline", className: "w-full", children: /* @__PURE__ */ h("a", { href: "/plus", children: "Получить Плюс" }) })
         }
       }
     ]
   }
-];
-const UserSection$1 = ({ description, displayName }) => {
-  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
-    /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
-    /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
-  ] });
-};
-const LinksSection$1 = ({ section }) => {
-  const isEmpty = section.items.length === 0;
-  const noTitle = !section.title;
-  if (!noTitle || !isEmpty)
-    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-      /* @__PURE__ */ jsx("span", { children: section.title }),
-      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-      section.items && section.items.map(
-        (item) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
-          item.icon && item.icon({}),
-          item.text
+], jn = ({ description: e, displayName: t }) => /* @__PURE__ */ A("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+  /* @__PURE__ */ h("span", { className: "text-lg font-semibold text-accent-foreground", children: t }),
+  /* @__PURE__ */ h("span", { className: "text-sm font-normal text-muted-foreground", children: e })
+] }), Hn = ({ section: e }) => {
+  const t = e.items.length === 0;
+  if (!!e.title || !t)
+    return /* @__PURE__ */ A(pe, { children: [
+      /* @__PURE__ */ h("span", { children: e.title }),
+      /* @__PURE__ */ h(qe, {}),
+      e.items && e.items.map(
+        (o) => /* @__PURE__ */ h(Mt, { asChild: !0, children: /* @__PURE__ */ A("a", { href: o.link, className: "flex items-center py-2 justify-start gap-2", children: [
+          o.icon && o.icon({}),
+          o.text
         ] }) })
       )
     ] });
-};
-const ProjectsSection$1 = ({ section }) => {
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-    /* @__PURE__ */ jsx(DropdownMenuLabel, { children: "Проекты" }),
-    section.projects && section.projects.map(
-      (project) => /* @__PURE__ */ jsx(DropdownMenuItem, { asChild: true, children: /* @__PURE__ */ jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
-        /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
-        /* @__PURE__ */ jsx(MdOpenInNew, { size: 18, className: "ml-auto" })
-      ] }) }, project.key + "-menu")
-    )
-  ] });
-};
-const MembershipSection$1 = ({ section }) => {
-  if (typeof section.state[section.activeState] === "string")
-    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-      /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-      /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
-    ] });
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx(DropdownMenuSeparator, {}),
-    section.state[section.activeState]
-  ] });
-};
-const SignOutSection$1 = ({ section }) => {
-  return /* @__PURE__ */ jsxs(DropdownMenuItem, { className: "gap-2 py-2", onClick: section.action && section.action, children: [
-    /* @__PURE__ */ jsx(BiLogOut, {}),
-    "Выйти из профиля"
-  ] });
-};
-const DesktopMenu = ({ user, size: size2 = 36, buttonSize, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
-  const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
-  if (!user)
-    return /* @__PURE__ */ jsx(Button, { size: buttonSize, variant: "outline", asChild: true, children: /* @__PURE__ */ jsx("a", { href: `${defaultLoginLink}${loginLink}`, children: "Войти" }) });
-  return /* @__PURE__ */ jsxs(DropdownMenu, { children: [
-    /* @__PURE__ */ jsx(DropdownMenuTrigger, { asChild: true, children: user.photoURL ? /* @__PURE__ */ jsx("div", { style: { width: `${size2}px`, height: `${size2}px` }, children: /* @__PURE__ */ jsx("img", { src: user.photoURL, alt: "user-profile-img", className: "w-full h-full rounded-full object-cover" }) }) : /* @__PURE__ */ jsx(
+}, Gn = ({ section: e }) => /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(qe, {}),
+  /* @__PURE__ */ h($r, { children: "Проекты" }),
+  e.projects && e.projects.map(
+    (t) => /* @__PURE__ */ h(Mt, { asChild: !0, children: /* @__PURE__ */ A("a", { href: t.link, className: "flex px-0 items-center justify-between w-full", children: [
+      /* @__PURE__ */ h("span", { className: "text-base", children: t.name }),
+      /* @__PURE__ */ h(co, { size: 18, className: "ml-auto" })
+    ] }) }, t.key + "-menu")
+  )
+] }), Yn = ({ section: e }) => typeof e.state[e.activeState] == "string" ? /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(qe, {}),
+  /* @__PURE__ */ h("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ h("span", { className: "text-sm text-muted-foreground", children: e.state[e.activeState] }) })
+] }) : /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(qe, {}),
+  e.state[e.activeState]
+] }), Xn = ({ section: e }) => /* @__PURE__ */ A(Mt, { className: "gap-2 py-2", onClick: e.action && e.action, children: [
+  /* @__PURE__ */ h(ro, {}),
+  "Выйти из профиля"
+] }), bl = ({ user: e, size: t = 36, buttonSize: n, loginLink: o = "https://darkmaterial.space", menuMap: r = wn }) => {
+  const c = "https://auth.darkmaterial.space/login?continue=";
+  return e ? /* @__PURE__ */ A(fl, { children: [
+    /* @__PURE__ */ h(pl, { asChild: !0, children: e.photoURL ? /* @__PURE__ */ h("div", { style: { width: `${t}px`, height: `${t}px` }, children: /* @__PURE__ */ h("img", { src: e.photoURL, alt: "user-profile-img", className: "w-full h-full rounded-full object-cover" }) }) : /* @__PURE__ */ h(
       "div",
       {
-        style: { width: `${size2}px`, height: `${size2}px` },
+        style: { width: `${t}px`, height: `${t}px` },
         className: "w-9 h-9 rounded-full bg-muted border shrink-0 flex items-center justify-center",
-        children: /* @__PURE__ */ jsx(BiUser, { size: 18 })
+        children: /* @__PURE__ */ h(oo, { size: 18 })
       }
     ) }),
-    /* @__PURE__ */ jsx(DropdownMenuContent, { className: "p-4 w-60 rounded-xl", children: menuMap && menuMap.map((item, i) => {
-      if (item.type === "user")
-        return /* @__PURE__ */ jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-item-no-wrapper");
-      if (item.type === "links")
-        return /* @__PURE__ */ jsx(LinksSection$1, { section: item }, i + "-item-no-wrapper");
-      if (item.type === "projects")
-        return /* @__PURE__ */ jsx(ProjectsSection$1, { section: item }, i + "-item-no-wrapper");
-      if (item.type === "membership")
-        return /* @__PURE__ */ jsx(MembershipSection$1, { section: item }, i + "-item-no-wrapper");
-      if (item.type === "sign-out")
-        return /* @__PURE__ */ jsx(SignOutSection$1, { section: item }, i + "-item-no-wrapper");
-      if (item.type === "wrapper") {
-        return /* @__PURE__ */ jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
-          if (wrapperItem.type === "user")
-            return /* @__PURE__ */ jsx(UserSection$1, { displayName: user.displayName || "Пользователь", description: user.email || "Не указано" }, i + "-" + index2 + "item-with-wrapper");
-          if (wrapperItem.type === "links")
-            return /* @__PURE__ */ jsx(LinksSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
-          if (wrapperItem.type === "projects")
-            return /* @__PURE__ */ jsx(ProjectsSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
-          if (wrapperItem.type === "membership")
-            return /* @__PURE__ */ jsx(MembershipSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
-          if (wrapperItem.type === "sign-out")
-            return /* @__PURE__ */ jsx(SignOutSection$1, { section: wrapperItem }, i + "-" + index2 + "item-with-wrapper");
-        }) }, i + "-item-wrapper");
-      }
-      return null;
-    }) })
-  ] });
-};
-const $5d3850c4d0b4e6c7$var$DIALOG_NAME = "Dialog";
-const [$5d3850c4d0b4e6c7$var$createDialogContext, $5d3850c4d0b4e6c7$export$cc702773b8ea3e41] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($5d3850c4d0b4e6c7$var$DIALOG_NAME);
-const [$5d3850c4d0b4e6c7$var$DialogProvider, $5d3850c4d0b4e6c7$var$useDialogContext] = $5d3850c4d0b4e6c7$var$createDialogContext($5d3850c4d0b4e6c7$var$DIALOG_NAME);
-const $5d3850c4d0b4e6c7$export$3ddf2d174ce01153 = (props) => {
-  const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
-  const triggerRef = useRef(null);
-  const contentRef = useRef(null);
-  const [open = false, setOpen] = $71cd76cc60e0454e$export$6f32135080cb4c3({
-    prop: openProp,
-    defaultProp: defaultOpen,
-    onChange: onOpenChange
+    /* @__PURE__ */ h(br, { className: "p-4 w-60 rounded-xl", children: r && r.map((i, a) => i.type === "user" ? /* @__PURE__ */ h(jn, { displayName: e.displayName || "Пользователь", description: e.email || "Не указано" }, a + "-item-no-wrapper") : i.type === "links" ? /* @__PURE__ */ h(Hn, { section: i }, a + "-item-no-wrapper") : i.type === "projects" ? /* @__PURE__ */ h(Gn, { section: i }, a + "-item-no-wrapper") : i.type === "membership" ? /* @__PURE__ */ h(Yn, { section: i }, a + "-item-no-wrapper") : i.type === "sign-out" ? /* @__PURE__ */ h(Xn, { section: i }, a + "-item-no-wrapper") : i.type === "wrapper" ? /* @__PURE__ */ h("div", { className: i.className || "", children: i.items && i.items.map((s, l) => {
+      if (s.type === "user")
+        return /* @__PURE__ */ h(jn, { displayName: e.displayName || "Пользователь", description: e.email || "Не указано" }, a + "-" + l + "item-with-wrapper");
+      if (s.type === "links")
+        return /* @__PURE__ */ h(Hn, { section: s }, a + "-" + l + "item-with-wrapper");
+      if (s.type === "projects")
+        return /* @__PURE__ */ h(Gn, { section: s }, a + "-" + l + "item-with-wrapper");
+      if (s.type === "membership")
+        return /* @__PURE__ */ h(Yn, { section: s }, a + "-" + l + "item-with-wrapper");
+      if (s.type === "sign-out")
+        return /* @__PURE__ */ h(Xn, { section: s }, a + "-" + l + "item-with-wrapper");
+    }) }, a + "-item-wrapper") : null) })
+  ] }) : /* @__PURE__ */ h(de, { size: n, variant: "outline", asChild: !0, children: /* @__PURE__ */ h("a", { href: `${c}${o}`, children: "Войти" }) });
+}, wr = "Dialog", [xr, Pd] = Ne(wr), [$l, ce] = xr(wr), wl = (e) => {
+  const { __scopeDialog: t, children: n, open: o, defaultOpen: r, onOpenChange: c, modal: i = !0 } = e, a = D(null), s = D(null), [l = !1, u] = Pt({
+    prop: o,
+    defaultProp: r,
+    onChange: c
   });
-  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogProvider, {
-    scope: __scopeDialog,
-    triggerRef,
-    contentRef,
-    contentId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    titleId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    descriptionId: $1746a345f3d73bb7$export$f680877a34711e37(),
-    open,
-    onOpenChange: setOpen,
-    onOpenToggle: useCallback(
-      () => setOpen(
-        (prevOpen) => !prevOpen
+  return /* @__PURE__ */ g($l, {
+    scope: t,
+    triggerRef: a,
+    contentRef: s,
+    contentId: Se(),
+    titleId: Se(),
+    descriptionId: Se(),
+    open: l,
+    onOpenChange: u,
+    onOpenToggle: V(
+      () => u(
+        (d) => !d
       ),
       [
-        setOpen
+        u
       ]
     ),
-    modal
-  }, children);
-};
-const $5d3850c4d0b4e6c7$var$TRIGGER_NAME = "DialogTrigger";
-const $5d3850c4d0b4e6c7$export$2e1e1122cf0cba88 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, ...triggerProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$TRIGGER_NAME, __scopeDialog);
-  const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.triggerRef);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+    modal: i
+  }, n);
+}, xl = "DialogTrigger", yl = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, ...o } = e, r = ce(xl, n), c = G(t, r.triggerRef);
+  return /* @__PURE__ */ g(j.button, P({
     type: "button",
     "aria-haspopup": "dialog",
-    "aria-expanded": context.open,
-    "aria-controls": context.contentId,
-    "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
-  }, triggerProps, {
-    ref: composedTriggerRef,
-    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context.onOpenToggle)
+    "aria-expanded": r.open,
+    "aria-controls": r.contentId,
+    "data-state": xn(r.open)
+  }, o, {
+    ref: c,
+    onClick: R(e.onClick, r.onOpenToggle)
   }));
-});
-const $5d3850c4d0b4e6c7$var$PORTAL_NAME = "DialogPortal";
-const [$5d3850c4d0b4e6c7$var$PortalProvider, $5d3850c4d0b4e6c7$var$usePortalContext] = $5d3850c4d0b4e6c7$var$createDialogContext($5d3850c4d0b4e6c7$var$PORTAL_NAME, {
+}), yr = "DialogPortal", [Cl, Cr] = xr(yr, {
   forceMount: void 0
-});
-const $5d3850c4d0b4e6c7$export$dad7c95542bacce0 = (props) => {
-  const { __scopeDialog, forceMount, children, container } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$PORTAL_NAME, __scopeDialog);
-  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$PortalProvider, {
-    scope: __scopeDialog,
-    forceMount
-  }, Children.map(
-    children,
-    (child) => /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-      present: forceMount || context.open
-    }, /* @__PURE__ */ createElement($f1701beae083dbae$export$602eac185826482c, {
-      asChild: true,
-      container
-    }, child))
+}), El = (e) => {
+  const { __scopeDialog: t, forceMount: n, children: o, container: r } = e, c = ce(yr, t);
+  return /* @__PURE__ */ g(Cl, {
+    scope: t,
+    forceMount: n
+  }, Oe.map(
+    o,
+    (i) => /* @__PURE__ */ g(ue, {
+      present: n || c.open
+    }, /* @__PURE__ */ g(ln, {
+      asChild: !0,
+      container: r
+    }, i))
   ));
-};
-const $5d3850c4d0b4e6c7$var$OVERLAY_NAME = "DialogOverlay";
-const $5d3850c4d0b4e6c7$export$bd1d06c79be19e17 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const portalContext = $5d3850c4d0b4e6c7$var$usePortalContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
-  const { forceMount = portalContext.forceMount, ...overlayProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
-  return context.modal ? /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends({}, overlayProps, {
-    ref: forwardedRef
+}, Gt = "DialogOverlay", Pl = /* @__PURE__ */ _((e, t) => {
+  const n = Cr(Gt, e.__scopeDialog), { forceMount: o = n.forceMount, ...r } = e, c = ce(Gt, e.__scopeDialog);
+  return c.modal ? /* @__PURE__ */ g(ue, {
+    present: o || c.open
+  }, /* @__PURE__ */ g(_l, P({}, r, {
+    ref: t
   }))) : null;
-});
-const $5d3850c4d0b4e6c7$var$DialogOverlayImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, ...overlayProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, __scopeDialog);
+}), _l = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, ...o } = e, r = ce(Gt, n);
   return (
     // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
     // ie. when `Overlay` and `Content` are siblings
-    /* @__PURE__ */ createElement($67UHm$RemoveScroll, {
-      as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
-      allowPinchZoom: true,
+    /* @__PURE__ */ g(un, {
+      as: xe,
+      allowPinchZoom: !0,
       shards: [
-        context.contentRef
+        r.contentRef
       ]
-    }, /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
-      "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
-    }, overlayProps, {
-      ref: forwardedRef,
+    }, /* @__PURE__ */ g(j.div, P({
+      "data-state": xn(r.open)
+    }, o, {
+      ref: t,
       style: {
         pointerEvents: "auto",
-        ...overlayProps.style
+        ...o.style
       }
     })))
   );
-});
-const $5d3850c4d0b4e6c7$var$CONTENT_NAME = "DialogContent";
-const $5d3850c4d0b4e6c7$export$b6d9565de1e068cf = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const portalContext = $5d3850c4d0b4e6c7$var$usePortalContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
-  const { forceMount = portalContext.forceMount, ...contentProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
-  return /* @__PURE__ */ createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
-    present: forceMount || context.open
-  }, context.modal ? /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends({}, contentProps, {
-    ref: forwardedRef
-  })) : /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends({}, contentProps, {
-    ref: forwardedRef
+}), Qe = "DialogContent", Ol = /* @__PURE__ */ _((e, t) => {
+  const n = Cr(Qe, e.__scopeDialog), { forceMount: o = n.forceMount, ...r } = e, c = ce(Qe, e.__scopeDialog);
+  return /* @__PURE__ */ g(ue, {
+    present: o || c.open
+  }, c.modal ? /* @__PURE__ */ g(Sl, P({}, r, {
+    ref: t
+  })) : /* @__PURE__ */ g(Ml, P({}, r, {
+    ref: t
   })));
-});
-const $5d3850c4d0b4e6c7$var$DialogContentModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
-  const contentRef = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context.contentRef, contentRef);
-  useEffect(() => {
-    const content = contentRef.current;
-    if (content)
-      return hideOthers(content);
-  }, []);
-  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends({}, props, {
-    ref: composedRefs,
-    trapFocus: context.open,
-    disableOutsidePointerEvents: true,
-    onCloseAutoFocus: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onCloseAutoFocus, (event) => {
-      var _context$triggerRef$c;
-      event.preventDefault();
-      (_context$triggerRef$c = context.triggerRef.current) === null || _context$triggerRef$c === void 0 || _context$triggerRef$c.focus();
+}), Sl = /* @__PURE__ */ _((e, t) => {
+  const n = ce(Qe, e.__scopeDialog), o = D(null), r = G(t, n.contentRef, o);
+  return F(() => {
+    const c = o.current;
+    if (c)
+      return dn(c);
+  }, []), /* @__PURE__ */ g(Er, P({}, e, {
+    ref: r,
+    trapFocus: n.open,
+    disableOutsidePointerEvents: !0,
+    onCloseAutoFocus: R(e.onCloseAutoFocus, (c) => {
+      var i;
+      c.preventDefault(), (i = n.triggerRef.current) === null || i === void 0 || i.focus();
     }),
-    onPointerDownOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onPointerDownOutside, (event) => {
-      const originalEvent = event.detail.originalEvent;
-      const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-      const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-      if (isRightClick)
-        event.preventDefault();
+    onPointerDownOutside: R(e.onPointerDownOutside, (c) => {
+      const i = c.detail.originalEvent, a = i.button === 0 && i.ctrlKey === !0;
+      (i.button === 2 || a) && c.preventDefault();
     }),
-    onFocusOutside: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onFocusOutside,
-      (event) => event.preventDefault()
+    onFocusOutside: R(
+      e.onFocusOutside,
+      (c) => c.preventDefault()
     )
   }));
-});
-const $5d3850c4d0b4e6c7$var$DialogContentNonModal = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
-  const hasInteractedOutsideRef = useRef(false);
-  const hasPointerDownOutsideRef = useRef(false);
-  return /* @__PURE__ */ createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends({}, props, {
-    ref: forwardedRef,
-    trapFocus: false,
-    disableOutsidePointerEvents: false,
-    onCloseAutoFocus: (event) => {
-      var _props$onCloseAutoFoc;
-      (_props$onCloseAutoFoc = props.onCloseAutoFocus) === null || _props$onCloseAutoFoc === void 0 || _props$onCloseAutoFoc.call(props, event);
-      if (!event.defaultPrevented) {
-        var _context$triggerRef$c2;
-        if (!hasInteractedOutsideRef.current)
-          (_context$triggerRef$c2 = context.triggerRef.current) === null || _context$triggerRef$c2 === void 0 || _context$triggerRef$c2.focus();
-        event.preventDefault();
+}), Ml = /* @__PURE__ */ _((e, t) => {
+  const n = ce(Qe, e.__scopeDialog), o = D(!1), r = D(!1);
+  return /* @__PURE__ */ g(Er, P({}, e, {
+    ref: t,
+    trapFocus: !1,
+    disableOutsidePointerEvents: !1,
+    onCloseAutoFocus: (c) => {
+      var i;
+      if ((i = e.onCloseAutoFocus) === null || i === void 0 || i.call(e, c), !c.defaultPrevented) {
+        var a;
+        o.current || (a = n.triggerRef.current) === null || a === void 0 || a.focus(), c.preventDefault();
       }
-      hasInteractedOutsideRef.current = false;
-      hasPointerDownOutsideRef.current = false;
+      o.current = !1, r.current = !1;
     },
-    onInteractOutside: (event) => {
-      var _props$onInteractOuts, _context$triggerRef$c3;
-      (_props$onInteractOuts = props.onInteractOutside) === null || _props$onInteractOuts === void 0 || _props$onInteractOuts.call(props, event);
-      if (!event.defaultPrevented) {
-        hasInteractedOutsideRef.current = true;
-        if (event.detail.originalEvent.type === "pointerdown")
-          hasPointerDownOutsideRef.current = true;
-      }
-      const target = event.target;
-      const targetIsTrigger = (_context$triggerRef$c3 = context.triggerRef.current) === null || _context$triggerRef$c3 === void 0 ? void 0 : _context$triggerRef$c3.contains(target);
-      if (targetIsTrigger)
-        event.preventDefault();
-      if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current)
-        event.preventDefault();
+    onInteractOutside: (c) => {
+      var i, a;
+      (i = e.onInteractOutside) === null || i === void 0 || i.call(e, c), c.defaultPrevented || (o.current = !0, c.detail.originalEvent.type === "pointerdown" && (r.current = !0));
+      const s = c.target;
+      ((a = n.triggerRef.current) === null || a === void 0 ? void 0 : a.contains(s)) && c.preventDefault(), c.detail.originalEvent.type === "focusin" && r.current && c.preventDefault();
     }
   }));
-});
-const $5d3850c4d0b4e6c7$var$DialogContentImpl = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, __scopeDialog);
-  const contentRef = useRef(null);
-  const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, contentRef);
-  $3db38b7d1fb3fe6a$export$b7ece24a22aeda8c();
-  return /* @__PURE__ */ createElement(Fragment, null, /* @__PURE__ */ createElement($d3863c46a17e8a28$export$20e40289641fbbb6, {
-    asChild: true,
-    loop: true,
-    trapped: trapFocus,
-    onMountAutoFocus: onOpenAutoFocus,
-    onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ createElement($5cb92bef7577960e$export$177fb62ff3ec1f22, _extends({
+}), Er = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, trapFocus: o, onOpenAutoFocus: r, onCloseAutoFocus: c, ...i } = e, a = ce(Qe, n), s = D(null), l = G(t, s);
+  return en(), /* @__PURE__ */ g(qt, null, /* @__PURE__ */ g(tn, {
+    asChild: !0,
+    loop: !0,
+    trapped: o,
+    onMountAutoFocus: r,
+    onUnmountAutoFocus: c
+  }, /* @__PURE__ */ g(Jt, P({
     role: "dialog",
-    id: context.contentId,
-    "aria-describedby": context.descriptionId,
-    "aria-labelledby": context.titleId,
-    "data-state": $5d3850c4d0b4e6c7$var$getState(context.open)
-  }, contentProps, {
-    ref: composedRefs,
-    onDismiss: () => context.onOpenChange(false)
-  }))), false);
-});
-const $5d3850c4d0b4e6c7$var$TITLE_NAME = "DialogTitle";
-const $5d3850c4d0b4e6c7$export$16f7638e4a34b909 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, ...titleProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$TITLE_NAME, __scopeDialog);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.h2, _extends({
-    id: context.titleId
-  }, titleProps, {
-    ref: forwardedRef
+    id: a.contentId,
+    "aria-describedby": a.descriptionId,
+    "aria-labelledby": a.titleId,
+    "data-state": xn(a.open)
+  }, i, {
+    ref: l,
+    onDismiss: () => a.onOpenChange(!1)
+  }))), !1);
+}), Nl = "DialogTitle", Dl = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, ...o } = e, r = ce(Nl, n);
+  return /* @__PURE__ */ g(j.h2, P({
+    id: r.titleId
+  }, o, {
+    ref: t
   }));
-});
-const $5d3850c4d0b4e6c7$var$DESCRIPTION_NAME = "DialogDescription";
-const $5d3850c4d0b4e6c7$export$94e94c2ec2c954d5 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, ...descriptionProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$DESCRIPTION_NAME, __scopeDialog);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.p, _extends({
-    id: context.descriptionId
-  }, descriptionProps, {
-    ref: forwardedRef
+}), Rl = "DialogDescription", Al = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, ...o } = e, r = ce(Rl, n);
+  return /* @__PURE__ */ g(j.p, P({
+    id: r.descriptionId
+  }, o, {
+    ref: t
   }));
-});
-const $5d3850c4d0b4e6c7$var$CLOSE_NAME = "DialogClose";
-const $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { __scopeDialog, ...closeProps } = props;
-  const context = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CLOSE_NAME, __scopeDialog);
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends({
+}), Tl = "DialogClose", kl = /* @__PURE__ */ _((e, t) => {
+  const { __scopeDialog: n, ...o } = e, r = ce(Tl, n);
+  return /* @__PURE__ */ g(j.button, P({
     type: "button"
-  }, closeProps, {
-    ref: forwardedRef,
-    onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(
-      props.onClick,
-      () => context.onOpenChange(false)
+  }, o, {
+    ref: t,
+    onClick: R(
+      e.onClick,
+      () => r.onOpenChange(!1)
     )
   }));
 });
-function $5d3850c4d0b4e6c7$var$getState(open) {
-  return open ? "open" : "closed";
+function xn(e) {
+  return e ? "open" : "closed";
 }
-const $5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9 = $5d3850c4d0b4e6c7$export$3ddf2d174ce01153;
-const $5d3850c4d0b4e6c7$export$41fb9f06171c75f4 = $5d3850c4d0b4e6c7$export$2e1e1122cf0cba88;
-const $5d3850c4d0b4e6c7$export$602eac185826482c = $5d3850c4d0b4e6c7$export$dad7c95542bacce0;
-const $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff = $5d3850c4d0b4e6c7$export$bd1d06c79be19e17;
-const $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2 = $5d3850c4d0b4e6c7$export$b6d9565de1e068cf;
-const $5d3850c4d0b4e6c7$export$f99233281efd08a0 = $5d3850c4d0b4e6c7$export$16f7638e4a34b909;
-const $5d3850c4d0b4e6c7$export$393edc798c47379d = $5d3850c4d0b4e6c7$export$94e94c2ec2c954d5;
-const $5d3850c4d0b4e6c7$export$f39c2d165cd861fe = $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac;
-const Dialog = $5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9;
-const DialogTrigger = $5d3850c4d0b4e6c7$export$41fb9f06171c75f4;
-const DialogPortal = $5d3850c4d0b4e6c7$export$602eac185826482c;
-const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff,
+const Il = wl, Fl = yl, Ll = El, Pr = Pl, _r = Ol, Or = Dl, Sr = Al, Bl = kl, Ul = Il, Wl = Fl, zl = Ll, Mr = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ h(
+  Pr,
   {
-    ref,
-    className: cn(
+    ref: n,
+    className: Z(
       "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
+      e
     ),
-    ...props
+    ...t
   }
 ));
-DialogOverlay.displayName = $5d3850c4d0b4e6c7$export$c6fdb837b070b4ff.displayName;
-const DialogContent = React.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs(DialogPortal, { children: [
-  /* @__PURE__ */ jsx(DialogOverlay, {}),
-  /* @__PURE__ */ jsxs(
-    $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2,
+Mr.displayName = Pr.displayName;
+const Nr = C.forwardRef(({ className: e, children: t, ...n }, o) => /* @__PURE__ */ A(zl, { children: [
+  /* @__PURE__ */ h(Mr, {}),
+  /* @__PURE__ */ A(
+    _r,
     {
-      ref,
-      className: cn(
+      ref: o,
+      className: Z(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
-        className
+        e
       ),
-      ...props,
+      ...n,
       children: [
-        children,
-        /* @__PURE__ */ jsxs($5d3850c4d0b4e6c7$export$f39c2d165cd861fe, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", children: [
-          /* @__PURE__ */ jsx(Cross2Icon, { className: "h-4 w-4" }),
-          /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Close" })
+        t,
+        /* @__PURE__ */ A(Bl, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", children: [
+          /* @__PURE__ */ h(ll, { className: "h-4 w-4" }),
+          /* @__PURE__ */ h("span", { className: "sr-only", children: "Close" })
         ] })
       ]
     }
   )
 ] }));
-DialogContent.displayName = $5d3850c4d0b4e6c7$export$7c6e2c02157bb7d2.displayName;
-const DialogTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  $5d3850c4d0b4e6c7$export$f99233281efd08a0,
+Nr.displayName = _r.displayName;
+const Kl = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ h(
+  Or,
   {
-    ref,
-    className: cn(
+    ref: n,
+    className: Z(
       "text-lg font-semibold leading-none tracking-tight",
-      className
+      e
     ),
-    ...props
+    ...t
   }
 ));
-DialogTitle.displayName = $5d3850c4d0b4e6c7$export$f99233281efd08a0.displayName;
-const DialogDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
-  $5d3850c4d0b4e6c7$export$393edc798c47379d,
+Kl.displayName = Or.displayName;
+const Vl = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ h(
+  Sr,
   {
-    ref,
-    className: cn("text-sm text-muted-foreground", className),
-    ...props
+    ref: n,
+    className: Z("text-sm text-muted-foreground", e),
+    ...t
   }
 ));
-DialogDescription.displayName = $5d3850c4d0b4e6c7$export$393edc798c47379d.displayName;
-const $89eedd556c436f6a$var$DEFAULT_ORIENTATION = "horizontal";
-const $89eedd556c436f6a$var$ORIENTATIONS = [
+Vl.displayName = Sr.displayName;
+const Yt = "horizontal", jl = [
   "horizontal",
   "vertical"
-];
-const $89eedd556c436f6a$export$1ff3c3f08ae963c0 = /* @__PURE__ */ forwardRef((props, forwardedRef) => {
-  const { decorative, orientation: orientationProp = $89eedd556c436f6a$var$DEFAULT_ORIENTATION, ...domProps } = props;
-  const orientation = $89eedd556c436f6a$var$isValidOrientation(orientationProp) ? orientationProp : $89eedd556c436f6a$var$DEFAULT_ORIENTATION;
-  const ariaOrientation = orientation === "vertical" ? orientation : void 0;
-  const semanticProps = decorative ? {
+], Dr = /* @__PURE__ */ _((e, t) => {
+  const { decorative: n, orientation: o = Yt, ...r } = e, c = Rr(o) ? o : Yt, a = n ? {
     role: "none"
   } : {
-    "aria-orientation": ariaOrientation,
+    "aria-orientation": c === "vertical" ? c : void 0,
     role: "separator"
   };
-  return /* @__PURE__ */ createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({
-    "data-orientation": orientation
-  }, semanticProps, domProps, {
-    ref: forwardedRef
+  return /* @__PURE__ */ g(j.div, P({
+    "data-orientation": c
+  }, a, r, {
+    ref: t
   }));
 });
-$89eedd556c436f6a$export$1ff3c3f08ae963c0.propTypes = {
-  orientation(props, propName, componentName) {
-    const propValue = props[propName];
-    const strVal = String(propValue);
-    if (propValue && !$89eedd556c436f6a$var$isValidOrientation(propValue))
-      return new Error($89eedd556c436f6a$var$getInvalidOrientationError(strVal, componentName));
-    return null;
+Dr.propTypes = {
+  orientation(e, t, n) {
+    const o = e[t], r = String(o);
+    return o && !Rr(o) ? new Error(Hl(r, n)) : null;
   }
 };
-function $89eedd556c436f6a$var$getInvalidOrientationError(value, componentName) {
-  return `Invalid prop \`orientation\` of value \`${value}\` supplied to \`${componentName}\`, expected one of:
+function Hl(e, t) {
+  return `Invalid prop \`orientation\` of value \`${e}\` supplied to \`${t}\`, expected one of:
   - horizontal
   - vertical
 
-Defaulting to \`${$89eedd556c436f6a$var$DEFAULT_ORIENTATION}\`.`;
+Defaulting to \`${Yt}\`.`;
 }
-function $89eedd556c436f6a$var$isValidOrientation(orientation) {
-  return $89eedd556c436f6a$var$ORIENTATIONS.includes(orientation);
+function Rr(e) {
+  return jl.includes(e);
 }
-const $89eedd556c436f6a$export$be92b6f5f03c0fe9 = $89eedd556c436f6a$export$1ff3c3f08ae963c0;
-const Separator = React.forwardRef(
-  ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => /* @__PURE__ */ jsx(
-    $89eedd556c436f6a$export$be92b6f5f03c0fe9,
+const Ar = Dr, Be = C.forwardRef(
+  ({ className: e, orientation: t = "horizontal", decorative: n = !0, ...o }, r) => /* @__PURE__ */ h(
+    Ar,
     {
-      ref,
-      decorative,
-      orientation,
-      className: cn(
+      ref: r,
+      decorative: n,
+      orientation: t,
+      className: Z(
         "shrink-0 bg-border",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
-        className
+        t === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        e
       ),
-      ...props
+      ...o
     }
   )
 );
-Separator.displayName = $89eedd556c436f6a$export$be92b6f5f03c0fe9.displayName;
-const LinksSection = ({ section }) => {
-  const isEmpty = section.items.length === 0;
-  const noTitle = !section.title;
-  if (!noTitle || !isEmpty)
-    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-      /* @__PURE__ */ jsx("span", { children: section.title }),
-      /* @__PURE__ */ jsx(Separator, { className: "my-2" }),
-      section.items && section.items.map(
-        (item) => /* @__PURE__ */ jsxs("a", { href: item.link, className: "flex items-center py-2 justify-start gap-2", children: [
-          item.icon && item.icon({}),
-          item.text
+Be.displayName = Ar.displayName;
+const Zn = ({ section: e }) => {
+  const t = e.items.length === 0;
+  if (!!e.title || !t)
+    return /* @__PURE__ */ A(pe, { children: [
+      /* @__PURE__ */ h("span", { children: e.title }),
+      /* @__PURE__ */ h(Be, { className: "my-2" }),
+      e.items && e.items.map(
+        (o) => /* @__PURE__ */ A("a", { href: o.link, className: "flex items-center py-2 justify-start gap-2", children: [
+          o.icon && o.icon({}),
+          o.text
         ] })
       )
     ] });
-};
-const MembershipSection = ({ section }) => {
-  if (typeof section.state[section.activeState] === "string")
-    return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-      /* @__PURE__ */ jsx(Separator, {}),
-      /* @__PURE__ */ jsx("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: section.state[section.activeState] }) })
-    ] });
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx(Separator, { className: "my-2" }),
-    section.state[section.activeState]
+}, qn = ({ section: e }) => typeof e.state[e.activeState] == "string" ? /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(Be, {}),
+  /* @__PURE__ */ h("div", { className: "w-full h-fit pt-5 flex items-center justify-center", children: /* @__PURE__ */ h("span", { className: "text-sm text-muted-foreground", children: e.state[e.activeState] }) })
+] }) : /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(Be, { className: "my-2" }),
+  e.state[e.activeState]
+] }), Qn = ({ section: e }) => /* @__PURE__ */ A(pe, { children: [
+  /* @__PURE__ */ h(Be, {}),
+  /* @__PURE__ */ A("div", { className: "w-full h-fit flex flex-col my-4", children: [
+    /* @__PURE__ */ h("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
+    e.projects && e.projects.map(
+      (t) => /* @__PURE__ */ h(de, { asChild: !0, variant: "ghost", children: /* @__PURE__ */ A("a", { href: t.link, className: "flex px-0 items-center justify-between w-full", children: [
+        /* @__PURE__ */ h("span", { className: "text-base", children: t.name }),
+        /* @__PURE__ */ h(co, { size: 18, className: "ml-auto" })
+      ] }) }, t.key + "-menu")
+    )
+  ] })
+] }), Jn = ({ section: e }) => /* @__PURE__ */ A(de, { className: "gap-2 py-2", variant: "ghost", onClick: e.action && e.action, children: [
+  /* @__PURE__ */ h(ro, {}),
+  "Выйти из профиля"
+] }), eo = ({ description: e, displayName: t }) => /* @__PURE__ */ A("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
+  /* @__PURE__ */ h("span", { className: "text-lg font-semibold text-accent-foreground", children: t }),
+  /* @__PURE__ */ h("span", { className: "text-sm font-normal text-muted-foreground", children: e })
+] }), to = ({ loginLink: e = "https://darkmaterial.space" }) => {
+  const t = "https://auth.darkmaterial.space/login?continue=", n = "https://auth.darkmaterial.space/signup?continue=", o = `${t}${e}`, r = `${n}${e}`;
+  return /* @__PURE__ */ A("div", { className: "w-full h-fit flex flex-col gap-2 mb-4", children: [
+    /* @__PURE__ */ h(de, { asChild: !0, variant: "outline", children: /* @__PURE__ */ h("a", { href: o, children: "Войти" }) }),
+    /* @__PURE__ */ h(de, { asChild: !0, variant: "default", children: /* @__PURE__ */ h("a", { href: r, children: "Зарегистрироваться" }) })
   ] });
-};
-const ProjectsSection = ({ section }) => {
-  return /* @__PURE__ */ jsxs(Fragment$1, { children: [
-    /* @__PURE__ */ jsx(Separator, {}),
-    /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col my-4", children: [
-      /* @__PURE__ */ jsx("span", { className: "text-base font-medium mb-2", children: "Проекты" }),
-      section.projects && section.projects.map(
-        (project) => /* @__PURE__ */ jsx(Button, { asChild: true, variant: "ghost", children: /* @__PURE__ */ jsxs("a", { href: project.link, className: "flex px-0 items-center justify-between w-full", children: [
-          /* @__PURE__ */ jsx("span", { className: "text-base", children: project.name }),
-          /* @__PURE__ */ jsx(MdOpenInNew, { size: 18, className: "ml-auto" })
-        ] }) }, project.key + "-menu")
-      )
-    ] })
-  ] });
-};
-const SignOutSection = ({ section }) => {
-  return /* @__PURE__ */ jsxs(Button, { className: "gap-2 py-2", variant: "ghost", onClick: section.action && section.action, children: [
-    /* @__PURE__ */ jsx(BiLogOut, {}),
-    "Выйти из профиля"
-  ] });
-};
-const UserSection = ({ description, displayName }) => {
-  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit pb-4 flex flex-col justify-start", children: [
-    /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold text-accent-foreground", children: displayName }),
-    /* @__PURE__ */ jsx("span", { className: "text-sm font-normal text-muted-foreground", children: description })
-  ] });
-};
-const AuthSection = ({ loginLink = "https://darkmaterial.space" }) => {
-  const defaultLoginLink = "https://auth.darkmaterial.space/login?continue=";
-  const defaultSignUpLink = "https://auth.darkmaterial.space/signup?continue=";
-  const sign_in_link = `${defaultLoginLink}${loginLink}`;
-  const sign_up_link = `${defaultSignUpLink}${loginLink}`;
-  return /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col gap-2 mb-4", children: [
-    /* @__PURE__ */ jsx(Button, { asChild: true, variant: "outline", children: /* @__PURE__ */ jsx("a", { href: sign_in_link, children: "Войти" }) }),
-    /* @__PURE__ */ jsx(Button, { asChild: true, variant: "default", children: /* @__PURE__ */ jsx("a", { href: sign_up_link, children: "Зарегистрироваться" }) })
-  ] });
-};
-const MobileMenu = ({ user, loginLink = "https://darkmaterial.space", menuMap = defaultMenuMap }) => {
-  return /* @__PURE__ */ jsxs(Dialog, { children: [
-    /* @__PURE__ */ jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ jsx(BiMenu, { size: 20 }) }) }),
-    /* @__PURE__ */ jsx(DialogContent, { className: "rounded-none w-full h-full", children: menuMap && menuMap.map((item, i) => {
-      if (item.type === "user") {
-        if (user)
-          return /* @__PURE__ */ jsx(
-            UserSection,
-            {
-              displayName: user.displayName || "Пользователь",
-              description: user.email || "Не указано"
-            },
-            i + "mobile-item-no-wrapper"
-          );
-        return /* @__PURE__ */ jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
-      }
-      if (item.type === "links")
-        return /* @__PURE__ */ jsx(LinksSection, { section: item }, i + "mobile-item-no-wrapper");
-      if (item.type === "projects")
-        return /* @__PURE__ */ jsx(ProjectsSection, { section: item }, i + "mobile-item-no-wrapper");
-      if (item.type === "membership")
-        return /* @__PURE__ */ jsx(MembershipSection, { section: item }, i + "mobile-item-no-wrapper");
-      if (item.type === "sign-out" && user)
-        return /* @__PURE__ */ jsx(SignOutSection, { section: item }, i + "mobile-item-no-wrapper");
-      if (item.type === "wrapper") {
-        return /* @__PURE__ */ jsx("div", { className: item.className || "", children: item.items && item.items.map((wrapperItem, index2) => {
-          if (wrapperItem.type === "user") {
-            if (user)
-              return /* @__PURE__ */ jsx(
-                UserSection,
-                {
-                  displayName: user.displayName || "Пользователь",
-                  description: user.email || "Не указано"
-                },
-                i + "-" + index2 + "mobile-item-with-wrapper"
-              );
-            return /* @__PURE__ */ jsx(AuthSection, { loginLink }, i + "mobile-item-no-wrapper");
-          }
-          if (wrapperItem.type === "links")
-            return /* @__PURE__ */ jsx(LinksSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-          if (wrapperItem.type === "projects")
-            return /* @__PURE__ */ jsx(ProjectsSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-          if (wrapperItem.type === "membership")
-            return /* @__PURE__ */ jsx(MembershipSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-          if (wrapperItem.type === "sign-out" && user)
-            return /* @__PURE__ */ jsx(SignOutSection, { section: wrapperItem }, i + "-" + index2 + "mobile-item-with-wrapper");
-        }) }, i + "-mobile-item-wrapper");
-      }
-      return null;
-    }) })
-  ] });
-};
-const UserCircle = ({
-  user,
-  size: size2 = 36,
-  loginLink = "https://darkmaterial.space",
-  activeMenu = "desktop",
-  buttonSize = "default",
-  map = defaultMenuMap
-}) => {
-  if (activeMenu === "desktop")
-    return /* @__PURE__ */ jsx(
-      DesktopMenu,
-      {
-        buttonSize,
-        user,
-        size: size2,
-        menuMap: map,
-        loginLink
-      }
-    );
-  return /* @__PURE__ */ jsx(
-    MobileMenu,
+}, Gl = ({ user: e, loginLink: t = "https://darkmaterial.space", menuMap: n = wn }) => /* @__PURE__ */ A(Ul, { children: [
+  /* @__PURE__ */ h(Wl, { asChild: !0, children: /* @__PURE__ */ h("div", { className: "w-9 h-9 rounded-full border shrink-0 bg-background flex items-center justify-center", children: /* @__PURE__ */ h(jr, { size: 20 }) }) }),
+  /* @__PURE__ */ h(Nr, { className: "rounded-none w-full h-full", children: n && n.map((o, r) => o.type === "user" ? e ? /* @__PURE__ */ h(
+    eo,
     {
-      user,
-      menuMap: map,
-      loginLink
-    }
-  );
-};
-const Notification = ({ notification }) => {
-  const ref = useRef(null);
-  const [isInView] = useInViewport(ref);
-  const { fromSeconds } = DateTime;
-  const formattedDate = fromSeconds(notification.createdAt);
-  useEffect(() => {
-    if (!notification.isViewed && isInView)
-      notifications.patch(notification.receiver, notification.doc_id, { isViewed: true });
-  }, [notification.isViewed, isInView]);
-  return /* @__PURE__ */ jsxs("div", { ref, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
-    notification.link ? /* @__PURE__ */ jsxs(Link, { className: "w-fit h-fit flex items-center", href: notification.link, children: [
-      /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
-      /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
-        /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
-        /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+      displayName: e.displayName || "Пользователь",
+      description: e.email || "Не указано"
+    },
+    r + "mobile-item-no-wrapper"
+  ) : /* @__PURE__ */ h(to, { loginLink: t }, r + "mobile-item-no-wrapper") : o.type === "links" ? /* @__PURE__ */ h(Zn, { section: o }, r + "mobile-item-no-wrapper") : o.type === "projects" ? /* @__PURE__ */ h(Qn, { section: o }, r + "mobile-item-no-wrapper") : o.type === "membership" ? /* @__PURE__ */ h(qn, { section: o }, r + "mobile-item-no-wrapper") : o.type === "sign-out" && e ? /* @__PURE__ */ h(Jn, { section: o }, r + "mobile-item-no-wrapper") : o.type === "wrapper" ? /* @__PURE__ */ h("div", { className: o.className || "", children: o.items && o.items.map((c, i) => {
+    if (c.type === "user")
+      return e ? /* @__PURE__ */ h(
+        eo,
+        {
+          displayName: e.displayName || "Пользователь",
+          description: e.email || "Не указано"
+        },
+        r + "-" + i + "mobile-item-with-wrapper"
+      ) : /* @__PURE__ */ h(to, { loginLink: t }, r + "mobile-item-no-wrapper");
+    if (c.type === "links")
+      return /* @__PURE__ */ h(Zn, { section: c }, r + "-" + i + "mobile-item-with-wrapper");
+    if (c.type === "projects")
+      return /* @__PURE__ */ h(Qn, { section: c }, r + "-" + i + "mobile-item-with-wrapper");
+    if (c.type === "membership")
+      return /* @__PURE__ */ h(qn, { section: c }, r + "-" + i + "mobile-item-with-wrapper");
+    if (c.type === "sign-out" && e)
+      return /* @__PURE__ */ h(Jn, { section: c }, r + "-" + i + "mobile-item-with-wrapper");
+  }) }, r + "-mobile-item-wrapper") : null) })
+] }), _d = ({
+  user: e,
+  size: t = 36,
+  loginLink: n = "https://darkmaterial.space",
+  activeMenu: o = "desktop",
+  buttonSize: r = "default",
+  map: c = wn
+}) => o === "desktop" ? /* @__PURE__ */ h(
+  bl,
+  {
+    buttonSize: r,
+    user: e,
+    size: t,
+    menuMap: c,
+    loginLink: n
+  }
+) : /* @__PURE__ */ h(
+  Gl,
+  {
+    user: e,
+    menuMap: c,
+    loginLink: n
+  }
+), Yl = ({ notification: e }) => {
+  const t = D(null), [n] = cc(t), { fromSeconds: o } = rc, r = o(e.createdAt);
+  return F(() => {
+    !e.isViewed && n && Lt.patch(e.receiver, e.doc_id, { isViewed: !0 });
+  }, [e.isViewed, n]), /* @__PURE__ */ A("div", { ref: t, className: "w-full h-fit flex group cursor-pointer hover:bg-card transition-colors", children: [
+    e.link ? /* @__PURE__ */ A(ic, { className: "w-fit h-fit flex items-center", href: e.link, children: [
+      /* @__PURE__ */ h("div", { className: "p-4", children: /* @__PURE__ */ h("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+      /* @__PURE__ */ A("div", { className: "w-full h-fit flex flex-col py-4", children: [
+        /* @__PURE__ */ h("span", { className: "text-sm", children: e.message }),
+        /* @__PURE__ */ h("span", { className: "text-xs text-muted-foreground", children: r.setLocale("ru").toRelative() })
       ] })
-    ] }) : /* @__PURE__ */ jsxs("div", { className: "w-fit h-fit flex items-center", children: [
-      /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
-      /* @__PURE__ */ jsxs("div", { className: "w-full h-fit flex flex-col py-4", children: [
-        /* @__PURE__ */ jsx("span", { className: "text-sm", children: notification.message }),
-        /* @__PURE__ */ jsx("span", { className: "text-xs text-muted-foreground", children: formattedDate.setLocale("ru").toRelative() })
+    ] }) : /* @__PURE__ */ A("div", { className: "w-fit h-fit flex items-center", children: [
+      /* @__PURE__ */ h("div", { className: "p-4", children: /* @__PURE__ */ h("div", { className: "w-9 h-9 rounded-full bg-muted" }) }),
+      /* @__PURE__ */ A("div", { className: "w-full h-fit flex flex-col py-4", children: [
+        /* @__PURE__ */ h("span", { className: "text-sm", children: e.message }),
+        /* @__PURE__ */ h("span", { className: "text-xs text-muted-foreground", children: r.setLocale("ru").toRelative() })
       ] })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: "p-4", children: /* @__PURE__ */ jsx(
-      Button,
+    /* @__PURE__ */ h("div", { className: "p-4", children: /* @__PURE__ */ h(
+      de,
       {
         size: "icon",
         variant: "ghost",
         className: "opacity-0 group-hover:opacity-100 transition-opacity rounded-full",
-        onClick: () => notifications.delete(notification.receiver, notification.doc_id),
-        children: /* @__PURE__ */ jsx(BiTrashAlt, {})
+        onClick: () => Lt.delete(e.receiver, e.doc_id),
+        children: /* @__PURE__ */ h(Hr, {})
       }
     ) })
   ] });
-};
-const Notification$1 = memo(Notification);
-const api_host = (
+}, Xl = no(Yl), Zl = (
   // process.env.NEXT_PUBLIC_API_HOST_PROD as string
   process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_API_HOST_DEV : process.env.NEXT_PUBLIC_API_HOST_PROD
-);
-const Notifications = ({ auth }) => {
-  const [open, setOpen] = useState(false);
-  const [user] = useAuthState(auth);
-  const [received, setReceived] = useState([]);
-  const hasNoViewed = received.filter((notification) => !notification.isViewed);
-  const clear = () => {
-    if (received.length && user) {
-      received.forEach(
-        (item) => notifications.delete(user.uid, item.doc_id)
-      );
-    }
+), Od = ({ auth: e }) => {
+  const [t, n] = U(!1), [o] = oc(e), [r, c] = U([]), i = r.filter((s) => !s.isViewed), a = () => {
+    r.length && o && r.forEach(
+      (s) => Lt.delete(o.uid, s.doc_id)
+    );
   };
-  useEffect(() => {
-    const socket = io(api_host);
-    socket.on("connect", () => {
-      console.log("Connected to notifications");
-      if (user) {
-        socket.emit("notifications", user.uid);
-      }
-    });
-    socket.on("notifications", (data) => {
-      setReceived(data);
-    });
-    socket.on("exception", (data) => {
-      console.log("event", data);
-    });
-    socket.on("disconnect", () => {
+  return F(() => {
+    const s = ac(Zl);
+    return s.on("connect", () => {
+      console.log("Connected to notifications"), o && s.emit("notifications", o.uid);
+    }), s.on("notifications", (l) => {
+      c(l);
+    }), s.on("exception", (l) => {
+      console.log("event", l);
+    }), s.on("disconnect", () => {
       console.log("Disconnected");
-    });
-    return () => {
-      socket.close();
+    }), () => {
+      s.close();
     };
-  }, [user == null ? void 0 : user.uid]);
-  if (!user || !auth)
-    return null;
-  return /* @__PURE__ */ jsxs(Popover, { open: user ? open : false, onOpenChange: (state) => setOpen(state), children: [
-    /* @__PURE__ */ jsxs(PopoverTrigger, { className: "relative w-9 h-9 rounded-full flex items-center justify-center border bg-background", children: [
-      hasNoViewed.length !== 0 && /* @__PURE__ */ jsx("div", { className: "absolute top-0 left-0 w-2.5 h-2.5 rounded-full bg-primary" }),
-      /* @__PURE__ */ jsx(PiBellBold, { size: 16 })
+  }, [o == null ? void 0 : o.uid]), !o || !e ? null : /* @__PURE__ */ A(Ko, { open: o ? t : !1, onOpenChange: (s) => n(s), children: [
+    /* @__PURE__ */ A(Vo, { className: "relative w-9 h-9 rounded-full flex items-center justify-center border bg-background", children: [
+      i.length !== 0 && /* @__PURE__ */ h("div", { className: "absolute top-0 left-0 w-2.5 h-2.5 rounded-full bg-primary" }),
+      /* @__PURE__ */ h(Yr, { size: 16 })
     ] }),
-    /* @__PURE__ */ jsxs(PopoverContent, { className: "w-96 p-0 flex flex-col bg-background", children: [
-      /* @__PURE__ */ jsx("div", { className: "w-full border-b p-3 flex items-center", children: /* @__PURE__ */ jsx("div", { className: "w-fit h-fit flex items-center gap-4", children: /* @__PURE__ */ jsx("span", { className: "text-sm text-muted-foreground", children: "Входящие" }) }) }),
-      /* @__PURE__ */ jsx("div", { className: "w-full h-full flex flex-col", children: !received.length ? /* @__PURE__ */ jsx("div", { className: "w-full h-64 flex items-center justify-center", children: /* @__PURE__ */ jsx("span", { className: "text-center text-sm text-muted-foreground", children: "Нет новых уведомлений" }) }) : received.map(
-        (notification, i) => /* @__PURE__ */ jsxs(Fragment$1, { children: [
-          /* @__PURE__ */ jsx(Notification$1, { notification }, notification.doc_id),
-          i !== received.length - 1 && /* @__PURE__ */ jsx(Separator, {}, notification.doc_id + "-separator")
+    /* @__PURE__ */ A(pn, { className: "w-96 p-0 flex flex-col bg-background", children: [
+      /* @__PURE__ */ h("div", { className: "w-full border-b p-3 flex items-center", children: /* @__PURE__ */ h("div", { className: "w-fit h-fit flex items-center gap-4", children: /* @__PURE__ */ h("span", { className: "text-sm text-muted-foreground", children: "Входящие" }) }) }),
+      /* @__PURE__ */ h("div", { className: "w-full h-full flex flex-col", children: r.length ? r.map(
+        (s, l) => /* @__PURE__ */ A(pe, { children: [
+          /* @__PURE__ */ h(Xl, { notification: s }, s.doc_id),
+          l !== r.length - 1 && /* @__PURE__ */ h(Be, {}, s.doc_id + "-separator")
         ] })
-      ) }),
-      /* @__PURE__ */ jsx("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ jsx(Button, { size: "sm", onClick: clear, variant: "ghost", children: "Очистить" }) })
+      ) : /* @__PURE__ */ h("div", { className: "w-full h-64 flex items-center justify-center", children: /* @__PURE__ */ h("span", { className: "text-center text-sm text-muted-foreground", children: "Нет новых уведомлений" }) }) }),
+      /* @__PURE__ */ h("div", { className: "w-full h-fit p-2 border-t flex items-center justify-center", children: /* @__PURE__ */ h(de, { size: "sm", onClick: a, variant: "ghost", children: "Очистить" }) })
     ] })
   ] });
-};
-const Star = ({ index: index2, height, width }) => {
-  const delay = format.randomNum(0, 10);
-  const brightLevel = format.randomNum(0, 2);
-  const duration = format.randomNum(1, 3);
-  const size2 = format.randomNum(1, 3);
-  const levels = [
+}, ql = ({ index: e, height: t, width: n }) => {
+  const o = _e.randomNum(0, 10), r = _e.randomNum(0, 2), c = _e.randomNum(1, 3), i = _e.randomNum(1, 3), a = [
     { min: 0.25, max: 0.5 },
     { min: 0.5, max: 0.7 },
     { min: 0.6, max: 1 }
   ];
-  return /* @__PURE__ */ jsx(
-    motion.div,
+  return /* @__PURE__ */ h(
+    sc.div,
     {
-      initial: { opacity: levels[brightLevel].min },
-      animate: { opacity: levels[brightLevel].max },
-      transition: { repeat: Infinity, repeatType: "mirror", duration, delay },
+      initial: { opacity: a[r].min },
+      animate: { opacity: a[r].max },
+      transition: { repeat: 1 / 0, repeatType: "mirror", duration: c, delay: o },
       style: {
-        width: `${size2}px`,
-        height: `${size2}px`,
-        top: format.randomNum(0 + 10, height - 10),
-        left: format.randomNum(0 + 10, width - 10)
+        width: `${i}px`,
+        height: `${i}px`,
+        top: _e.randomNum(0 + 10, t - 10),
+        left: _e.randomNum(0 + 10, n - 10)
       },
       className: "absolute w-0.5 h-0.5 rounded-full bg-primary"
     },
-    "star-" + index2
+    "star-" + e
   );
-};
-const StarField = ({ starsCount = 50 }) => {
-  const stars = useMemo(() => {
-    return Array.from({ length: starsCount }).map((_, i) => i);
-  }, []);
-  const ref = useRef(null);
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const div = ref.current;
-    if (div) {
-      const { offsetWidth, offsetHeight } = div;
-      setWidth(offsetWidth);
-      setHeight(offsetHeight);
-      setVisible(true);
+}, Sd = ({ starsCount: e = 50 }) => {
+  const t = je(() => Array.from({ length: e }).map((l, u) => u), []), n = D(null), [o, r] = U(0), [c, i] = U(0), [a, s] = U(!1);
+  return F(() => {
+    const l = n.current;
+    if (l) {
+      const { offsetWidth: u, offsetHeight: d } = l;
+      r(u), i(d), s(!0);
     }
-  }, [ref]);
-  return /* @__PURE__ */ jsx("div", { ref, className: cn(
-    visible ? "opacity-100" : "opacity-0",
+  }, [n]), /* @__PURE__ */ h("div", { ref: n, className: Z(
+    a ? "opacity-100" : "opacity-0",
     "absolute w-full h-full z-[-1]"
-  ), children: stars.map(
-    (star) => /* @__PURE__ */ jsx(Star, { width, height, index: star }, "star-" + star + "-" + format.generateId(6))
+  ), children: t.map(
+    (l) => /* @__PURE__ */ h(ql, { width: o, height: c, index: l }, "star-" + l + "-" + _e.generateId(6))
   ) });
 };
 export {
-  avatar as Avatar,
-  ForwardRefEditor,
-  Notifications,
-  ProjectsGrid,
-  StarField,
-  Textarea,
-  UserCircle,
-  projects
+  gd as Avatar,
+  Da as ForwardRefEditor,
+  Od as Notifications,
+  wd as ProjectsGrid,
+  Sd as StarField,
+  xd as Textarea,
+  _d as UserCircle,
+  lc as projects
 };
