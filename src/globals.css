@@ -68,7 +68,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply !border-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -94,22 +94,22 @@
 
 @layer base {
   h1 {
-    @apply text-4xl font-bold text-accent-foreground;
+    @apply !text-4xl !font-bold text-accent-foreground;
   }
   h2 {
-    @apply text-3xl font-bold text-accent-foreground;
+    @apply !text-3xl !font-bold text-accent-foreground;
   }
   h3 {
-    @apply text-2xl font-bold text-accent-foreground;
+    @apply !text-2xl !font-bold text-accent-foreground;
   }
   h4 {
-    @apply text-xl font-bold text-accent-foreground;
+    @apply !text-xl !font-bold text-accent-foreground;
   }
   h5 {
-    @apply text-lg font-bold text-accent-foreground;
+    @apply !text-lg !font-bold text-accent-foreground;
   }
   h6 {
-    @apply text-base font-bold text-accent-foreground;
+    @apply !text-base !font-bold text-accent-foreground;
   }
   ul {
     @apply m-2 ml-4 list-none list-inside;
