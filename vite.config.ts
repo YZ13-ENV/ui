@@ -39,7 +39,7 @@ const app = async (): Promise<UserConfigExport> => {
     build: {
       minify: 'esbuild',
       ssr: true,
-      cssMinify: true,
+      // cssMinify: true,
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
         name: formattedName,
@@ -58,6 +58,7 @@ const app = async (): Promise<UserConfigExport> => {
             "socket.io-client": "socket.io-client",
             "next/image.js": "next/image",
             "next/link.js": "next/link",
+            "@mdxeditor/editor": "@mdxeditor/editor",
             "framer-motion": "framer-motion",
             "tailwind-merge": "tailwind-merge",
             "class-variance-authority": "class-variance-authority",
