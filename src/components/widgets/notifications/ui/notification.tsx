@@ -22,10 +22,11 @@ const Notification = ({ notification }: Props) => {
       notifications.patch(notification.receiver, notification.doc_id, { isViewed: true })
     },[notification.isViewed, isInView])
     return (
-      <div ref={ref} className="w-full h-fit flex group cursor-pointer hover:bg-card transition-colors">
+      <div ref={ref} className="w-full h-fit flex justify-between group cursor-pointer hover:bg-card transition-colors">
         {
           notification.link
-          ? <Link className="w-fit h-fit flex items-center" href={notification.link}>
+          ? <div className="w-fit h-fit flex items-center relative" >
+            <Link href={notification.link} className="absolute w-full h-full left-0 top-0" />
             <div className="p-4">
               <div className="w-9 h-9 rounded-full bg-muted"></div>
             </div>
@@ -33,7 +34,7 @@ const Notification = ({ notification }: Props) => {
               <span className='text-sm'>{notification.message}</span>
               <span className="text-xs text-muted-foreground">{formattedDate.setLocale('ru').toRelative()}</span>
             </div>
-          </Link>
+          </div>
           : <div className="w-fit h-fit flex items-center">
             <div className="p-4">
               <div className="w-9 h-9 rounded-full bg-muted"></div>
