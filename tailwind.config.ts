@@ -9,11 +9,9 @@ const config = {
     './src/**/*.{ts,tsx}',
 	],
   prefix: "",
+  important: true,
   corePlugins: {
     preflight: false,
-  },
-  experimental: {
-    optimizeUniversalDefaults: true
   },
   theme: {
     container: {
