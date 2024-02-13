@@ -9,7 +9,6 @@ const config = {
     './src/**/*.{ts,tsx}',
 	],
   prefix: "",
-  important: true,
   corePlugins: {
     preflight: false,
   },

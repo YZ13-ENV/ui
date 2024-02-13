@@ -128,7 +128,7 @@
     @apply font-bold text-inherit;
   }
   blockquote {
-    @apply p-2 my-2 rounded-lg h-fit bg-card;
+    @apply !p-2 !my-2 rounded-lg h-fit bg-card;
   }
   a[href]:after {
     content: '';
