@@ -23,13 +23,11 @@ const app = async (): Promise<UserConfigExport> => {
       }),
     ],
     resolve: {
-      alias: [
-        { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
-      ]
+      alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
     },
     ssr: {
       target: 'node',
-      noExternal: [ "@radix-ui/*" ]
+      noExternal: ['@radix-ui/*'],
     },
     css: {
       postcss: {
@@ -51,18 +49,19 @@ const app = async (): Promise<UserConfigExport> => {
         output: {
           banner: '"use client";',
           globals: {
-            "react-icons/bi/index.esm.js": "react-icons/bi",
-            "react-icons/pi/index.esm.js": "react-icons/pi",
-            "react-icons/md/index.esm.js": "react-icons/md",
-            "react-icons/ti/index.esm.js": "react-icons/ti",
-            "socket.io-client": "socket.io-client",
-            "next/image.js": "next/image",
-            "next/link.js": "next/link",
-            "@mdxeditor/editor": "@mdxeditor/editor",
-            "framer-motion": "framer-motion",
-            "tailwind-merge": "tailwind-merge",
-            "class-variance-authority": "class-variance-authority",
-            "react-firebase-hooks/auth/dist/index.esm.js": "react-firebase-hooks/auth",
+            'react-icons/bi/index.esm.js': 'react-icons/bi',
+            'react-icons/pi/index.esm.js': 'react-icons/pi',
+            'react-icons/md/index.esm.js': 'react-icons/md',
+            'react-icons/ti/index.esm.js': 'react-icons/ti',
+            'socket.io-client': 'socket.io-client',
+            'next/image.js': 'next/image',
+            'next/dynamic.js': 'next/dynamic',
+            'next/link.js': 'next/link',
+            '@mdxeditor/editor': '@mdxeditor/editor',
+            'framer-motion': 'framer-motion',
+            'tailwind-merge': 'tailwind-merge',
+            'class-variance-authority': 'class-variance-authority',
+            'react-firebase-hooks/auth/dist/index.esm.js': 'react-firebase-hooks/auth',
             react: 'React',
             'react/jsx-runtime': 'react/jsx-runtime',
             'react-dom': 'ReactDOM',
@@ -70,7 +69,7 @@ const app = async (): Promise<UserConfigExport> => {
           },
         },
       },
-    }
+    },
   })
 }
 // https://vitejs.dev/config/
