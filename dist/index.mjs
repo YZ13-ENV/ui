@@ -1026,7 +1026,7 @@ const Kc = (e) => ({
           switch (f) {
             case "bestFit": {
               var z;
-              const U = (z = S.map((I) => [I.placement, I.overflows.filter((H) => H > 0).reduce((H, Y) => H + Y, 0)]).sort((I, H) => I[1] - H[1])[0]) == null ? void 0 : z[0];
+              const U = (z = S.map((I) => [I.placement, I.overflows.filter((H) => H > 0).reduce((H, X) => H + X, 0)]).sort((I, H) => I[1] - H[1])[0]) == null ? void 0 : z[0];
               U && (A = U);
               break;
             }
@@ -1824,12 +1824,12 @@ function Ci(e) {
       middleware: h
     };
     W.current && (I.platform = W.current), xi(M.current, O.current, I).then((H) => {
-      const Y = {
+      const X = {
         ...H,
         isPositioned: !0
       };
-      B.current && !$t(S.current, Y) && (S.current = Y, Qr.flushSync(() => {
-        d(Y);
+      B.current && !$t(S.current, X) && (S.current = X, Qr.flushSync(() => {
+        d(X);
       }));
     });
   }, [h, t, n, W]);
@@ -1865,17 +1865,17 @@ function Ci(e) {
     };
     if (!A.floating)
       return I;
-    const H = Ln(A.floating, u.x), Y = Ln(A.floating, u.y);
+    const H = Ln(A.floating, u.x), X = Ln(A.floating, u.y);
     return a ? {
       ...I,
-      transform: "translate(" + H + "px, " + Y + "px)",
+      transform: "translate(" + H + "px, " + X + "px)",
       ...wo(A.floating) >= 1.5 && {
         willChange: "transform"
       }
     } : {
       position: n,
       left: H,
-      top: Y
+      top: X
     };
   }, [n, a, A.floating, u.x, u.y]);
   return C.useMemo(() => ({
@@ -1937,7 +1937,7 @@ const xo = "Popper", [yo, Et] = Me(xo), [Pi, Co] = yo(xo), _i = (e) => {
   const { __scopePopper: u, side: d = "bottom", sideOffset: h = 0, align: f = "center", alignOffset: v = 0, arrowPadding: m = 0, avoidCollisions: b = !0, collisionBoundary: $ = [], collisionPadding: w = 0, sticky: y = "partial", hideWhenDetached: x = !1, updatePositionStrategy: E = "optimized", onPlaced: M, ...O } = e, S = Co(Eo, u), [T, W] = L(null), z = G(
     t,
     (Ke) => W(Ke)
-  ), [B, q] = L(null), A = Ei(B), U = (n = A == null ? void 0 : A.width) !== null && n !== void 0 ? n : 0, I = (o = A == null ? void 0 : A.height) !== null && o !== void 0 ? o : 0, H = d + (f !== "center" ? "-" + f : ""), Y = typeof w == "number" ? w : {
+  ), [B, q] = L(null), A = Ei(B), U = (n = A == null ? void 0 : A.width) !== null && n !== void 0 ? n : 0, I = (o = A == null ? void 0 : A.height) !== null && o !== void 0 ? o : 0, H = d + (f !== "center" ? "-" + f : ""), X = typeof w == "number" ? w : {
     top: 0,
     right: 0,
     bottom: 0,
@@ -1946,7 +1946,7 @@ const xo = "Popper", [yo, Et] = Me(xo), [Pi, Co] = yo(xo), _i = (e) => {
   }, D = Array.isArray($) ? $ : [
     $
   ], j = D.length > 0, Z = {
-    padding: Y,
+    padding: X,
     boundary: D.filter(Di),
     // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
     altBoundary: j
@@ -2843,7 +2843,7 @@ function zo(e) {
   return e ? "open" : "closed";
 }
 const Sa = $a, Na = xa, Ma = Ea, jo = Pa;
-function X(...e) {
+function Y(...e) {
   return tc(ec(e));
 }
 const Ko = Sa, Vo = Na, mn = C.forwardRef(({ className: e, align: t = "center", sideOffset: n = 4, ...o }, r) => /* @__PURE__ */ p(Ma, { children: /* @__PURE__ */ p(
@@ -2852,7 +2852,7 @@ const Ko = Sa, Vo = Na, mn = C.forwardRef(({ className: e, align: t = "center", 
     ref: r,
     align: t,
     sideOffset: n,
-    className: X(
+    className: Y(
       "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       e
     ),
@@ -2888,7 +2888,7 @@ const Da = nc(
   ({ className: e, variant: t, size: n, asChild: o = !1, ...r }, c) => /* @__PURE__ */ p(
     o ? xe : "button",
     {
-      className: X(Da({ variant: t, size: n, className: e })),
+      className: Y(Da({ variant: t, size: n, className: e })),
       ref: c,
       ...r
     }
@@ -3364,7 +3364,7 @@ const Za = za, qa = Va, Vt = [
     );
   };
   F(() => () => window.clearTimeout(T.current), []), tn();
-  const Y = K((D) => {
+  const X = K((D) => {
     var j, Z;
     return q.current === ((j = B.current) === null || j === void 0 ? void 0 : j.side) && Ms(D, (Z = B.current) === null || Z === void 0 ? void 0 : Z.area);
   }, []);
@@ -3372,20 +3372,20 @@ const Za = za, qa = Va, Vt = [
     scope: n,
     searchRef: W,
     onItemEnter: K((D) => {
-      Y(D) && D.preventDefault();
+      X(D) && D.preventDefault();
     }, [
-      Y
+      X
     ]),
     onItemLeave: K((D) => {
       var j;
-      Y(D) || ((j = O.current) === null || j === void 0 || j.focus(), M(null));
+      X(D) || ((j = O.current) === null || j === void 0 || j.focus(), M(null));
     }, [
-      Y
+      X
     ]),
     onTriggerLeave: K((D) => {
-      Y(D) && D.preventDefault();
+      X(D) && D.preventDefault();
     }, [
-      Y
+      X
     ]),
     pointerGraceTimerRef: z,
     onPointerGraceIntentChange: K((D) => {
@@ -3983,7 +3983,7 @@ const vl = cl, gl = il, bl = C.forwardRef(({ className: e, inset: t, children: n
   gr,
   {
     ref: r,
-    className: X(
+    className: Y(
       "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
       t && "pl-8",
       e
@@ -4000,7 +4000,7 @@ const $l = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ p(
   br,
   {
     ref: n,
-    className: X(
+    className: Y(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       e
     ),
@@ -4013,7 +4013,7 @@ const $r = C.forwardRef(({ className: e, sideOffset: t = 4, ...n }, o) => /* @__
   {
     ref: o,
     sideOffset: t,
-    className: X(
+    className: Y(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       e
@@ -4026,7 +4026,7 @@ const Nt = C.forwardRef(({ className: e, inset: t, ...n }, o) => /* @__PURE__ */
   fr,
   {
     ref: o,
-    className: X(
+    className: Y(
       "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       t && "pl-8",
       e
@@ -4039,7 +4039,7 @@ const wl = C.forwardRef(({ className: e, children: t, checked: n, ...o }, r) => 
   pr,
   {
     ref: r,
-    className: X(
+    className: Y(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       e
     ),
@@ -4056,7 +4056,7 @@ const xl = C.forwardRef(({ className: e, children: t, ...n }, o) => /* @__PURE__
   mr,
   {
     ref: o,
-    className: X(
+    className: Y(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       e
     ),
@@ -4072,7 +4072,7 @@ const wr = C.forwardRef(({ className: e, inset: t, ...n }, o) => /* @__PURE__ */
   ur,
   {
     ref: o,
-    className: X(
+    className: Y(
       "px-2 py-1.5 text-sm font-semibold",
       t && "pl-8",
       e
@@ -4085,7 +4085,7 @@ const qe = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ p(
   vr,
   {
     ref: n,
-    className: X("-mx-1 my-1 h-px bg-muted", e),
+    className: Y("-mx-1 my-1 h-px bg-muted", e),
     ...t
   }
 ));
@@ -4375,7 +4375,7 @@ const Ul = El, Wl = _l, zl = Sl, _r = Nl, Or = Dl, Sr = Tl, Nr = Fl, jl = Bl, Kl
   _r,
   {
     ref: n,
-    className: X(
+    className: Y(
       "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       e
     ),
@@ -4389,7 +4389,7 @@ const Dr = C.forwardRef(({ className: e, children: t, ...n }, o) => /* @__PURE__
     Or,
     {
       ref: o,
-      className: X(
+      className: Y(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         e
       ),
@@ -4409,7 +4409,7 @@ const Gl = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ p(
   Sr,
   {
     ref: n,
-    className: X(
+    className: Y(
       "text-lg font-semibold leading-none tracking-tight",
       e
     ),
@@ -4421,7 +4421,7 @@ const Yl = C.forwardRef(({ className: e, ...t }, n) => /* @__PURE__ */ p(
   Nr,
   {
     ref: n,
-    className: X("text-sm text-muted-foreground", e),
+    className: Y("text-sm text-muted-foreground", e),
     ...t
   }
 ));
@@ -4465,7 +4465,7 @@ const Ar = kr, Be = C.forwardRef(
       ref: r,
       decorative: n,
       orientation: t,
-      className: X(
+      className: Y(
         "shrink-0 bg-border",
         t === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
         e
@@ -4666,7 +4666,7 @@ const qn = ({ section: e }) => {
       const { offsetWidth: u, offsetHeight: d } = l;
       r(u), i(d), s(!0);
     }
-  }, [n]), /* @__PURE__ */ p("div", { ref: n, className: X(
+  }, [n]), /* @__PURE__ */ p("div", { ref: n, className: Y(
     a ? "opacity-100" : "opacity-0",
     "absolute w-full h-full z-[-1]"
   ), children: t.map(
@@ -4680,7 +4680,7 @@ const qn = ({ section: e }) => {
     "div",
     {
       onClick: () => c && e && e(c),
-      className: X(
+      className: Y(
         r ? "border-b-0" : "border-b",
         "w-full p-3 flex items-center gap-2 hover:bg-card transition-colors cursor-pointer"
       ),
@@ -4696,36 +4696,43 @@ const qn = ({ section: e }) => {
       ]
     }
   ) : null;
-}, Ad = ({ onUser: e, members: t = [], user: n = null }) => {
-  const [o, r] = L(!1), [c, i] = L(null), a = () => {
-    c && e && e(c.uid);
+}, Ad = ({ position: e = "absolute", onUser: t, members: n = [], user: o = null }) => {
+  const [r, c] = L(!1), [i, a] = L(null), s = () => {
+    i && t && t(i.uid);
   };
-  return o ? null : /* @__PURE__ */ p("div", { className: "absolute md:!top-4 -top-2.5 md:!right-4 -right-6 md:!w-96 w-screen h-fit rounded-lg bg-background border z-50", children: /* @__PURE__ */ N("div", { className: "w-full h-fit p-4 space-y-2", children: [
-    /* @__PURE__ */ N("div", { className: "flex items-center w-full justify-between", children: [
-      /* @__PURE__ */ N("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ p(Xt, { src: ic("/dm/icons/dm-star-dark.svg"), width: 24, height: 24, alt: "star-logo" }),
-        /* @__PURE__ */ p("span", { className: "text-base font-medium", children: "Darkmaterial" })
-      ] }),
-      /* @__PURE__ */ p(ne, { size: "icon", variant: "ghost", onClick: () => r(!0), children: /* @__PURE__ */ p(Yr, { size: 18 }) })
-    ] }),
-    /* @__PURE__ */ p("div", { className: "w-full flex flex-col", children: t.map(
-      (s, l, u) => /* @__PURE__ */ p(
-        nd,
-        {
-          uid: s,
-          noBorder: l === u.length - 1,
-          onSelect: i,
-          isSelected: c ? s === c.uid : !1,
-          isCurrent: n ? s === n.uid : !1
-        },
-        s + "-fast-pick"
-      )
-    ) }),
-    c && /* @__PURE__ */ N(ne, { className: "w-full", onClick: a, children: [
-      "Продолжить как ",
-      c.nickname || c.displayName || "Пользователь"
-    ] })
-  ] }) });
+  return r ? null : /* @__PURE__ */ p(
+    "div",
+    {
+      className: Y(
+        e,
+        "md:!top-4 -top-2.5 md:!right-4 -right-6 md:!w-96 w-screen h-fit rounded-lg bg-background border z-50"
+      ),
+      children: /* @__PURE__ */ N("div", { className: "w-full h-fit p-4 space-y-2", children: [
+        /* @__PURE__ */ N("div", { className: "flex items-center w-full justify-between", children: [
+          /* @__PURE__ */ N("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ p(Xt, { src: ic("/dm/icons/dm-star-dark.svg"), width: 24, height: 24, alt: "star-logo" }),
+            /* @__PURE__ */ p("span", { className: "text-base font-medium", children: "Darkmaterial" })
+          ] }),
+          /* @__PURE__ */ p(ne, { size: "icon", variant: "ghost", onClick: () => c(!0), children: /* @__PURE__ */ p(Yr, { size: 18 }) })
+        ] }),
+        /* @__PURE__ */ p("div", { className: "w-full flex flex-col", children: n.map((l, u, d) => /* @__PURE__ */ p(
+          nd,
+          {
+            uid: l,
+            noBorder: u === d.length - 1,
+            onSelect: a,
+            isSelected: i ? l === i.uid : !1,
+            isCurrent: o ? l === o.uid : !1
+          },
+          l + "-fast-pick"
+        )) }),
+        i && /* @__PURE__ */ N(ne, { className: "w-full", onClick: s, children: [
+          "Продолжить как ",
+          i.nickname || i.displayName || "Пользователь"
+        ] })
+      ] })
+    }
+  );
 };
 export {
   yd as Avatar,
