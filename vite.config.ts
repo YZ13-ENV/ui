@@ -1,11 +1,11 @@
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
-import { defineConfig } from 'vitest/config'
-import dts from 'vite-plugin-dts'
+import { fileURLToPath } from 'node:url'
 import tailwindcss from 'tailwindcss'
 import { UserConfigExport } from 'vite'
+import dts from 'vite-plugin-dts'
+import { defineConfig } from 'vitest/config'
 import { name } from './package.json'
-import { fileURLToPath } from 'node:url'
 
 const app = async (): Promise<UserConfigExport> => {
   /**
@@ -55,8 +55,11 @@ const app = async (): Promise<UserConfigExport> => {
             'react-icons/ti/index.esm.js': 'react-icons/ti',
             'socket.io-client': 'socket.io-client',
             'next/image.js': 'next/image',
+            'next/navigation.js': 'next/navigation',
             'next/dynamic.js': 'next/dynamic',
+            'next/web-vitals.js': 'next/web-vitals',
             'next/link.js': 'next/link',
+            'react-responsive': 'react-responsive',
             '@mdxeditor/editor': '@mdxeditor/editor',
             'framer-motion': 'framer-motion',
             'tailwind-merge': 'tailwind-merge',
