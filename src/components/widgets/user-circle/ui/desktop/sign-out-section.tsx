@@ -7,11 +7,11 @@ type Props = {
 }
 const SignOutSection = ({ section }: Props) => {
     return (
-        <DropdownMenuItem className='gap-2 py-2' onClick={section.action && section.action}>
+        <DropdownMenuItem className='gap-2 py-2 px-3 rounded-none' onClick={section.action && section.action}>
             <BiLogOut />
             Выйти из профиля
         </DropdownMenuItem>
     )
 }
 
-    export default SignOutSection
+export default SignOutSection
