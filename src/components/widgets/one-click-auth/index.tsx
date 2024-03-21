@@ -1,7 +1,7 @@
 'use client'
 import UserToSelect from './user-to-select'
 import { useState } from 'react'
-import { ShortUserData, cdn } from 'api'
+import { ShortUserData, cdn } from '@darkmaterial/api'
 import { Button } from '@/components/ui/button'
 import { User } from 'firebase/auth'
 import Image from 'next/image'
@@ -61,4 +61,3 @@ const OneClickAuth = ({ position = 'absolute', onUser, members = [], user = null
 }
 
 export { OneClickAuth }
-

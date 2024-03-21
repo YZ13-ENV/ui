@@ -49,6 +49,7 @@ const app = async (): Promise<UserConfigExport> => {
         output: {
           banner: '"use client";',
           globals: {
+            '@darkmaterial/api': '@darkmaterial/api',
             'react-icons/bi/index.esm.js': 'react-icons/bi',
             'react-icons/pi/index.esm.js': 'react-icons/pi',
             'react-icons/md/index.esm.js': 'react-icons/md',

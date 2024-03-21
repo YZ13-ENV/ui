@@ -2,10 +2,12 @@ import type { Config } from 'tailwindcss'
 
 const config = {
   darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: [],
+  // ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   prefix: '',
   corePlugins: {
-    preflight: process.env.NODE_ENV ? process.env.NODE_ENV === 'development' : false,
+    preflight: false,
+    // process.env.NODE_ENV ? process.env.NODE_ENV === 'development' : false,
   },
   theme: {
     container: {

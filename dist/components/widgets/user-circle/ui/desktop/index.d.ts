@@ -1,6 +1,6 @@
+import { ButtonProps } from '../../../../../components/ui/button';
 import { MenuMapProps } from '../../../../../types/common';
 import { User } from "firebase/auth";
-import { ButtonProps } from '../../../../../components/ui/button';
 type Props = {
     user?: User;
     size?: number;

@@ -1,4 +1,4 @@
-import { ShortUserData } from "api";
+import { ShortUserData } from '@darkmaterial/api';
 type Props = {
     isCurrent?: boolean;
     isSelected?: boolean;

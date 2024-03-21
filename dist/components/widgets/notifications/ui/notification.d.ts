@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import type { DocNotification } from "api";
+import type { DocNotification } from '@darkmaterial/api';
 type Props = {
     notification: DocNotification;
 };

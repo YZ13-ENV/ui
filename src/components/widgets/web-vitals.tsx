@@ -1,6 +1,6 @@
-"use client"
-import type { SpeedInsight } from 'api'
-import { speed_insights } from 'api'
+'use client'
+import type { SpeedInsight } from '@darkmaterial/api'
+import { speed_insights } from '@darkmaterial/api'
 import { DateTime } from 'luxon'
 import { usePathname } from 'next/navigation'
 import { useReportWebVitals } from 'next/web-vitals'
@@ -18,7 +18,7 @@ export function WebVitals({ appId }: Props) {
         path: path,
         createdAt: DateTime.now().toSeconds(),
         metric: metric,
-        type: isMobile ? "mobile" : "desktop"
+        type: isMobile ? 'mobile' : 'desktop',
       }
       // process.env.NODE_ENV === 'development' && console.log(insight)
       process.env.NODE_ENV === 'production' && speed_insights.upload(appId, insight)
@@ -26,3 +26,4 @@ export function WebVitals({ appId }: Props) {
   })
   return <></>
 }
+

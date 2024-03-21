@@ -1,6 +1,6 @@
 import { ButtonProps } from '../../../components/ui/button';
-import { User } from "firebase/auth";
 import { MenuMapProps } from '../../../types/common';
+import { User } from "firebase/auth";
 type Props = {
     user?: User;
     activeMenu?: 'desktop' | 'mobile';
